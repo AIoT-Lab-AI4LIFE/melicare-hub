@@ -1,0 +1,77 @@
+MELICARE — BẢN CÂN BẰNG ĐƯỜNG VIỀN
+Cập nhật: 03/10/2026
+
+CÁCH MỞ
+Giải nén toàn bộ vào một thư mục mới. Giữ thư mục assets cạnh các file HTML.
+Mở MELICARE.html; DANH_SACH_TRANG.html là mục lục các trang.
+Không trộn file HTML/CSS với bundle cũ.
+
+Để thử các trang trong cùng một nguồn trình duyệt, chạy:
+    python CHAY_THU.py
+Máy chủ tệp cục bộ mở trang chủ tại http://127.0.0.1:8080/MELICARE.html.
+CHAY_THU.py không phải máy chủ xác thực hay dịch vụ AI.
+
+THAY ĐỔI TRONG BẢN NÀY
+- Khung nội dung lớn: một viền xám xanh mảnh và bóng nhẹ.
+- Khối con: ưu tiên nền sáng và khoảng cách; giảm viền bao quanh lồng nhau.
+- Hàng chỉ số/giải thích: nền nhẹ, cạnh nhấn nhỏ; bỏ đường viền bao quanh thanh đo.
+- Bảng/lịch: đường phân cách nhẹ; ngày và mục đang chọn vẫn có điểm nhấn.
+- Ô nhập: viền rõ hơn khung trang, trạng thái focus và lỗi được giữ riêng.
+- Vùng tải tệp: bỏ khung lồng/halo dư; giữ nền xanh–kem, icon và nút vàng.
+- Menu ứng dụng và popup: một viền nhẹ, bóng vừa phải; giữ icon và nhãn đầy đủ.
+- Giữ độ đậm của chữ từ bản tăng độ rõ, không làm nhạt chữ trở lại.
+- Sửa một chỗ tràn ngang nhỏ ở các ô thống kê thiết bị MELIOR trên màn hình hẹp.
+
+Thay đổi trực tiếp trong assets/melicare-readability.css; không thêm một CSS
+bản sao. Quy tắc co ô thống kê thiết bị nằm trong assets/melicare-layout-v3.css.
+Tất cả 16 HTML và toàn bộ JavaScript giữ nguyên byte so với bundle đầu vào.
+Trang chủ được giữ nguyên. Chiều cao/typography các hàng lâm sàng không đổi.
+
+DANH SÁCH FILE HTML CHUẨN
+Trang chủ                 MELICARE.html
+Đăng nhập                 MELICARE_Login.html
+Dashboard Admin           MELICARE_Dashboard_Admin.html
+Dashboard Doctor          MELICARE_Dashboard_Doctor.html
+MELIOR                    MELI_OR.html
+MELIOCR                   MELI_OCR.html
+MELIVoice                 MELI_Voice.html
+MELIVLM                   MELI_VLM.html
+Danh mục MELIDx           MELIDx.html
+MELIMind                  MELIMind.html
+MELIStroke                MELIStroke.html
+MELICardio                MELICardio.html
+MELIAlz                   MELIAlz.html
+MELIDiabetes              MELIDiabetes.html
+MELIPos / hậu phẫu        MELIPostOp.html
+Mục lục                   DANH_SACH_TRANG.html
+
+Không có index.html/bí danh hoặc bản (1) trùng lặp.
+MELIRoute và MELISearch vẫn được gỡ khỏi giao diện và mã điều hướng.
+assets/melicare-routes.js giữ cấu hình đường dẫn chuẩn.
+MELIGuide và MELICDSS vẫn mở ứng dụng bên ngoài theo bản nguồn.
+
+ĐĂNG NHẬP DEMO
+admin  / Admin@123  → Dashboard Admin
+doctor / Doctor@123 → Dashboard Doctor
+Vai trò tài khoản quyết định dashboard đích; có menu tài khoản/đăng xuất.
+Mật khẩu không được lưu. Phiên mẫu dùng sessionStorage; khi mở file:// có
+fallback window.name trong cùng thư mục và cùng tab như bản trước.
+Đây là mô phỏng phía trình duyệt, không có phân quyền bảo mật phía máy chủ.
+Không dùng tài khoản, mật khẩu hoặc dữ liệu người bệnh thật.
+
+MELIOR — LỊCH TRỰC ĐƯỢC GIỮ NGUYÊN
+Mở MELI_OR.html#duty hoặc bấm Lịch trực trong MELIOR.
+- Bác sỹ trực hôm nay: bấm để xem các ca mổ của bác sỹ trong ngày.
+- Calendar thứ Hai–Chủ nhật: tuần trước/sau, Hôm nay, chọn ngày và xem
+  kíp trực/ca mổ của ngày được chọn.
+- Danh bạ khoa mổ: tìm kiếm, lọc chuyên khoa, xem hồ sơ và lịch trực.
+Lịch hôm nay độc lập với tuần đang duyệt. Ca đêm thuộc ngày bắt đầu.
+Dữ liệu lịch trực, ca mổ và hồ sơ trong bản mẫu đều là minh họa.
+Không sửa thuật toán, dữ liệu hoặc các chức năng khác trong lần chỉnh viền này.
+
+FONT VÀ PHẠM VI BẢN MẪU
+Giữ nguyên cấu hình font của từng trang trong bản nguồn. Font trực tuyến tải
+qua Google Fonts khi có Internet; trình duyệt dùng font dự phòng khi ngoại tuyến.
+Bundle không kèm file font. Chức năng AI, OCR và phân tích lâm sàng là mô phỏng
+hoặc giữ theo bản nguồn, chưa bổ sung backend hay kết nối hệ thống bệnh viện.
+Chi tiết phạm vi kiểm tra của lần sửa này nằm trong KIEM_TRA.txt.

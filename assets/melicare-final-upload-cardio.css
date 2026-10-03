@@ -1,0 +1,8 @@
+body#mcTypography.suite-ocr :is(#upload .mc-upload-zone,#uploadModal .dropzone){border-style:solid!important}
+body#mcTypography.suite-voice :is(.drop.mc-upload-zone,.card.upload,.mc-upload-zone){border-style:solid!important}
+body#mcTypography.suite-cardio .compactClinicalGrid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important;gap:16px!important}
+body#mcTypography.suite-cardio .compactClinicalGrid .riskLifestyleRow{display:contents!important}
+body#mcTypography.suite-cardio .compactClinicalGrid :is(.riskPanel,.lifestylePanel,.reasonPanel){display:flex!important;flex-direction:column!important;height:560px!important;min-height:0!important;max-height:560px!important;min-width:0!important;overflow:hidden!important;grid-column:auto!important;grid-row:auto!important}
+body#mcTypography.suite-cardio .compactClinicalGrid .panelHead{flex:0 0 auto!important;min-height:100px!important;box-sizing:border-box!important}
+body#mcTypography.suite-cardio .compactClinicalGrid :is(.combinedRiskBody,.lifestyleList,.reasonList){flex:1 1 0!important;height:auto!important;min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;max-height:none!important;align-content:start!important}
+@media(max-width:950px){body#mcTypography.suite-cardio .compactClinicalGrid{grid-template-columns:1fr!important}}

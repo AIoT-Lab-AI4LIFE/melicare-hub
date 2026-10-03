@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>MELICARE — AI cho bệnh viện thông minh</title>
+<meta content="MELICARE kết nối 4 công cụ vận hành bệnh viện và 3 nhóm giải pháp khám bệnh, điều trị, chăm sóc hậu điều trị thông minh." name="description"/>
+<meta content="#15384f" name="theme-color"/><meta content="light" name="color-scheme"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%2315384f'/%3E%3Cpath d='M16 9h8v7h7v8h-7v7h-8v-7H9v-8h7Z' fill='%23f5c54b'/%3E%3C/svg%3E" rel="icon"/>
+<!-- Web fonts are optional: system fallbacks work without a network connection. No external scripts or images. -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=Nunito+Sans:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>/* MELICARE — a single, responsive design system. No UI framework required. */
+:root{--ink:#17344a;--navy:#15384f;--muted:#586f7e;--blue:#128ac3;--sky:#eaf7ff;--yellow:#f5c54b;--cream:#fff7e3;--line:#e0e9ee;--paper:#fff;--bg:#fff;--display:"Plus Jakarta Sans","Avenir Next","Trebuchet MS","Segoe UI",sans-serif;--body:"Nunito Sans","Avenir Next","Segoe UI",Arial,sans-serif;--brand:"Nunito Sans","Avenir Next","Segoe UI",sans-serif;--radius:22px;--ease:cubic-bezier(.22,.65,.35,1)}
+*{box-sizing:border-box}html{scrollbar-gutter:stable;scroll-behavior:smooth;scroll-padding-top:104px}body{margin:0;font-family:var(--body);color:var(--ink);background:var(--bg);font-size:19px;line-height:1.65;-webkit-font-smoothing:antialiased}h1,h2,h3,h4,p{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer;color:inherit;border:0}a{color:inherit;text-decoration:none}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}button,a{touch-action:manipulation}button,a{transition:background .2s,border-color .2s,color .2s,box-shadow .2s,transform .2s}button:disabled{cursor:wait;opacity:.65}svg{display:block;max-width:100%}.icon{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.icon-sprite{position:absolute;width:0;height:0;overflow:hidden}.container{width:min(1240px,calc(100% - 96px));margin-inline:auto}[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}:focus-visible{outline:3px solid #36a9df;outline-offset:5px}::selection{background:#fde59b;color:var(--navy)}.skip-link{position:fixed;z-index:200;top:-80px;left:20px;padding:12px 20px;background:var(--navy);color:#fff;border-radius:10px}.skip-link:focus{top:12px}.site-header{position:sticky;top:0;z-index:40;height:82px;background:#ffffffed;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid #e6edf1;transition:box-shadow .25s}.site-header.is-scrolled{box-shadow:0 5px 25px #163d5308}.header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:32px}.brand{display:inline-flex;align-items:center;gap:9px;flex-shrink:0;line-height:1.2}.brand-symbol{width:35px;height:35px;color:var(--blue)}.brand-type{display:flex;flex-direction:column;gap:4px}.brand-word{font-family:var(--display);font-size:29.8px;font-weight:800;letter-spacing:-1.3px;color:var(--navy)}.brand-light{font-family:var(--brand);font-weight:450;color:var(--blue);letter-spacing:-.5px}.brand-tagline{font-size:12px;letter-spacing:2px;font-weight:500;color:#687f8e;padding-left:1px}.desktop-nav{display:flex;align-items:center;gap:34px}.desktop-nav>a{position:relative;font-size:17px;font-weight:500;padding:12px 0;color:#405b6c;white-space:nowrap}.desktop-nav>a:after{content:"";position:absolute;bottom:5px;left:0;width:0;height:2px;background:var(--blue);border-radius:2px;transition:width .25s}.desktop-nav>a:hover,.desktop-nav>a.is-current{color:var(--blue)}.desktop-nav>a:hover:after,.desktop-nav>a.is-current:after{width:100%}.contact-button{background:var(--yellow);display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:44px;padding:10px 19px;border-radius:11px;color:#293c48;font-size:17px;font-weight:600;white-space:nowrap}.contact-button:hover{background:#efb82f;box-shadow:0 5px 18px #e5b24335;transform:translateY(-1px)}.contact-button .icon{width:17px;height:17px}.menu-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;background:var(--sky);border:1px solid #d5e9f4;border-radius:11px;color:var(--navy)}.mobile-nav{background:#fff;border-bottom:1px solid var(--line);box-shadow:0 15px 25px #102e4210;padding:10px 24px 20px}.mobile-nav>a,.mobile-nav>button{display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;font-size:18px;padding:14px 8px;min-height:48px;border-bottom:1px solid var(--line);background:transparent}.mobile-nav>button{border:0;color:#167fab}
+/* Hero is an open composition, not a card. */
+.hero{position:relative;overflow:clip;isolation:isolate;padding:24px 0 0;background:radial-gradient(ellipse at 78% 36%,#e2f4fd99,transparent 45%),radial-gradient(ellipse at 7% 10%,#ffedb12e,transparent 46%)}.hero-grid{display:grid;grid-template-columns:1.14fr 1fr;gap:0;align-items:center;min-height:424px}.hero-copy{position:relative;z-index:2;padding:30px 0 46px;min-width:0}.eyebrow{display:flex;align-items:center;gap:9px;color:#577687;font-weight:600;font-size:14.5px;letter-spacing:1.45px;line-height:1.5;text-transform:uppercase}.eyebrow-dot{width:7px;height:7px;flex-shrink:0;border-radius:50%;background:var(--blue);box-shadow:0 0 0 5px #dff2fc}.hero h1{font-family:var(--display);font-weight:750;font-size:clamp(45.2px,3.85vw,66.6px);letter-spacing:-2.35px;line-height:1.23;margin-top:24px}.hero h1 .hero-line{display:block;white-space:nowrap}.hero h1 .headline-accent{color:var(--blue)}.headline-mark{position:relative;display:inline-block;isolation:isolate}.headline-mark:after{content:"";position:absolute;bottom:3px;left:3px;right:-3px;height:11px;z-index:-1;background:#f8d978a3;border-radius:80% 20% 40% 30%;transform:rotate(-1.2deg)}.hero-description{font-size:20px;line-height:1.9;max-width:525px;color:#607683;margin-top:26px}.hero-art{position:relative;min-width:0;margin:0 -23px 0 -24px;align-self:center}.hero-svg{width:100%;height:auto;overflow:visible;position:relative}.hero-svg text{font-family:var(--display)}.hero-svg>text:not(:last-child){font-size:17px;font-weight:600;fill:#466b80}.hero-svg>text:last-child{font-size:13px;letter-spacing:2.2px;fill:#6b899a}.hero-halo{position:absolute;inset:7% -4% 5% -5%;background:radial-gradient(ellipse at 56% 40%,#cdeafb60,transparent 64%);filter:blur(25px)}
+/* One connected platform — the anchor between introduction and products. */
+.platform-rail{position:relative;background:var(--navy);color:#fff;border-radius:18px;padding:27px 30px;display:flex;gap:42px;align-items:center;justify-content:space-between;overflow:hidden;box-shadow:0 10px 27px #2446540b}.platform-rail:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 95% 0,#3094c928,transparent 55%)}.rail-intro{display:flex;align-items:center;gap:15px;flex-shrink:0;position:relative;z-index:1}.rail-mark{width:42px;height:42px;border:1px solid #f5c54b70;border-radius:12px;background:#f5c54b12;display:grid;place-items:center;color:var(--yellow);transform:rotate(-5deg)}.rail-mark>.icon{width:23px;height:23px;transform:rotate(5deg)}.rail-intro h2{font-family:var(--display);font-size:23px;line-height:1.4;font-weight:650;letter-spacing:-.45px}.rail-intro h2 span{color:#f7d474}.rail-flow{display:flex;align-items:center;justify-content:space-between;flex:1;max-width:655px;gap:15px;position:relative;z-index:1}.rail-item{display:flex;gap:12px;align-items:center;font-size:17px;line-height:1.65;color:#e3eff5;white-space:nowrap}.rail-item>.icon{color:#8ad2f4;width:25px;height:25px}.rail-item:hover{color:#ffdb77;transform:translateY(-1px)}.rail-arrow{color:#5e849a}.rail-arrow .icon{width:18px;height:18px}
+/* Product identity. MELI is invariant; suffix and icon are tool-specific. */
+.tool-wordmark{font-family:var(--display);font-weight:800;letter-spacing:-1px;color:var(--navy);line-height:1.25;white-space:nowrap}.tool-wordmark .tool-suffix{font-family:var(--brand);font-weight:450;letter-spacing:-.4px;color:var(--accent,var(--blue))}.tool-theme-melior{--accent:#1188bb;--tint:#e6f5fc;--edge:#b9dfef}.tool-theme-meliocr{--accent:#a0781a;--tint:#fff5d9;--edge:#efdfb0}.tool-theme-melivoice{--accent:#7062b1;--tint:#f1edfb;--edge:#dbd4f0}.tool-theme-meliguide{--accent:#a66a41;--tint:#fcf0e4;--edge:#edd5bd}.tool-theme-melivlm{--accent:#128ac3;--tint:#e6f5fc}.tool-theme-melidx{--accent:#6d63ad;--tint:#f0edfa}.tool-theme-melipos{--accent:#a37720;--tint:#fff5da}
+.operations{padding:76px 0 78px}.section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:50px;margin-bottom:30px}.section-number{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;letter-spacing:1.35px;color:#698190;margin-bottom:15px}.section-number>span{display:grid;place-items:center;font-size:14px;letter-spacing:0;width:27px;height:27px;border-radius:8px;background:#e8f5fc;color:#2289b8;border:1px solid #cee6f3}.section-heading h2{font-family:var(--display);font-size:45.2px;line-height:1.25;letter-spacing:-1.5px;font-weight:700;color:var(--navy)}.section-heading h2 span{color:var(--blue)}.section-intro{color:var(--muted);font-size:19px;line-height:1.85;max-width:365px;padding-bottom:4px}.operation-workspace{display:grid;grid-template-columns:303px minmax(0,1fr);border:1px solid #dce7ee;border-radius:var(--radius);background:#fff;box-shadow:0 14px 50px #17496907;overflow:hidden;min-width:0;align-items:stretch}.operation-directory{display:flex;flex-direction:column;padding:22px 14px 18px;background:#f6f9fb;border-right:1px solid var(--line)}.directory-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 13px 15px;font-size:14px;letter-spacing:1px;color:#708593;font-weight:600}.directory-heading>span:last-child{display:grid;place-items:center;width:24px;height:22px;border-radius:6px;background:#e5edf2;font-size:14px;letter-spacing:0;color:#4a697b}.tool-tabs{display:flex;flex-direction:column;gap:5px}.tool-tab{position:relative;width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:transparent;border:1px solid transparent;border-radius:12px;padding:12px 11px;min-height:80px}.tool-tab:before{content:"";width:3px;background:var(--accent);border-radius:3px;position:absolute;top:19px;bottom:19px;left:-1px;opacity:0}.tool-tab:hover{background:#ffffffba;border-color:#e2ecf2;transform:translateX(2px)}.tool-tab.is-active{background:#fff;border-color:var(--edge);box-shadow:0 3px 12px #32596e08}.tool-tab.is-active:before{opacity:1}.tool-icon{width:37px;height:39px;flex-shrink:0;display:grid;place-items:center;color:var(--accent);background:var(--tint);border-radius:10px;transition:background .2s}.tool-icon>.icon{width:21px;height:21px}.tool-tab-copy{display:flex;flex-direction:column;gap:4px;min-width:0}.tool-tab-copy strong{font-size:24px}.tool-tab-copy>.tool-subtitle{font-size:16px;line-height:1.6;color:#617a8b}.tool-tab-arrow{margin-left:auto;color:var(--accent);opacity:0;flex-shrink:0}.tool-tab-arrow .icon{width:15px;height:15px}.tool-tab.is-active .tool-tab-arrow,.tool-tab:hover .tool-tab-arrow{opacity:1}.directory-note{margin:19px 12px 0;display:flex;gap:7px;align-items:center;font-size:14px;line-height:1.6;color:#788f9d}.directory-note .icon{width:14px;height:14px;color:#5b9dbc}.preview-region{padding:28px 30px 20px;min-width:0;background:radial-gradient(ellipse at 100% 0,#f3faff,transparent 50%),#fff}.tool-panel{min-width:0}.tool-panel:not([hidden]){animation:panel-in .24s var(--ease) both}@keyframes panel-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}.preview-intro{display:flex;align-items:center;justify-content:space-between;gap:20px}.preview-intro>div{min-width:0}.preview-eyebrow{display:block;color:#607b8b;font-size:14.5px;margin-top:4px;line-height:1.6}.preview-intro h3{font-size:39.3px;line-height:1.2;margin:0}.text-button{background:#fff;border:1px solid #d6e5ed;border-radius:10px;color:#376279;display:flex;align-items:center;justify-content:center;gap:10px;min-height:41px;padding:10px 13px;white-space:nowrap;font-size:15px;font-weight:500}.text-button .icon{width:16px;height:16px}.text-button:hover{color:var(--accent);border-color:var(--accent);background:var(--tint)}.preview-description{color:#597282;font-size:18px;line-height:1.8;margin-top:15px;max-width:660px;min-height:47px}.app-window{display:flex;flex-direction:column;background:#fff;border:1px solid #dfe8ef;border-radius:13px;margin-top:20px;box-shadow:0 8px 26px #16416405;overflow:hidden;min-height:372px}.app-head{padding:12px 17px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #e4edf2;background:#f7fafc}.app-title{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:600;color:#38566b}.window-dots{display:flex;gap:4px;align-items:center;margin-right:4px}.window-dots i{display:block;width:5px;height:5px;border-radius:50%;background:#d8e4ec}.window-dots i:first-child{background:#e9c879}.window-dots i:nth-child(2){background:#a9cee3}.app-badge{display:flex;align-items:center;gap:6px;flex-shrink:0;font-size:13px;color:#7490a0}.app-badge i{width:5px;height:5px;background:#81b6cf;border-radius:50%}.app-bottom{margin-top:auto;border-top:1px solid #e9eff3;min-height:43px;padding:11px 17px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:#607b8b;font-size:13.5px;line-height:1.6}.app-bottom>span:first-child{display:flex;align-items:center;gap:6px;min-width:0}.app-bottom .icon{width:13px;height:13px;color:var(--accent)}.status-tag{color:var(--accent);background:var(--tint);white-space:nowrap;padding:3px 7px;border-radius:5px;font-size:13px;font-weight:500}.preview-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14px;color:#627b8a;margin-top:15px}.preview-footer>span:first-child{display:flex;align-items:center;gap:6px}.preview-footer .icon{width:12px;height:12px}.preview-footer>span:last-child{font-family:var(--brand);font-size:16px;letter-spacing:1px;color:#6893aa}
+/* Interactive app samples retain their original synthetic data. */
+.or-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:13px 17px}.mini-tabs{display:flex;padding:3px;gap:3px;background:#eef4f7;border-radius:8px}.mini-tab{padding:7px 12px;min-height:33px;background:transparent;border-radius:6px;color:#7590a0;font-size:14px;font-weight:500}.mini-tab.is-active{background:white;color:#1c81b1;box-shadow:0 2px 6px #224c6612}.mini-tab:hover{color:#177daa}.toolbar-note{display:flex;align-items:center;gap:6px;font-size:13px;color:#607b8b}.toolbar-note>.icon{width:13px;height:13px}.schedule-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#aecfe0 #eff6fa}.schedule{padding:0 17px 9px;min-width:600px}.time-axis{display:flex;font-size:13px;color:#667f8d;padding:3px 0 10px;border-bottom:1px solid #e2eaf0;align-items:center}.time-axis>span{flex-shrink:0;width:102px;font-size:13px;color:#607887}.axis-hours{position:relative;display:block;height:15px;flex:1}.axis-hours>span{position:absolute;top:0;left:var(--tick);transform:translateX(-50%);font-size:13px;line-height:15px}.axis-hours>span:first-child{transform:none}.axis-hours>span:last-child{transform:translateX(-100%)}.schedule-row{display:grid;grid-template-columns:102px 1fr;min-height:83px;border-bottom:1px solid #e9eff3}.schedule-row:last-child{border:0}.room{align-self:center;font-size:15px;font-weight:600;line-height:1.7;color:#425d70}.room small{font-size:12px;font-weight:400;color:#6e8390;display:block}.room-dot{display:inline-block;width:5px;height:5px;background:#43a8d4;border-radius:50%;margin-right:5px;vertical-align:1px}.room-dot.blue{background:#7890c6}.room-dot.gold{background:#d6a93d}.schedule-track{position:relative;margin:6px 0;background:repeating-linear-gradient(90deg,#e8eff4 0,#e8eff4 1px,transparent 1px,transparent 25%)}.case{position:absolute;left:var(--start);width:var(--span);top:1px;bottom:1px;border-left:3px solid #4faad4;background:#e8f5fc;color:#286585;line-height:1.4;border-radius:5px;padding:6px 10px;display:flex;flex-direction:column;justify-content:center;gap:3px;text-align:left;overflow:hidden}.case:hover{filter:brightness(.98);box-shadow:0 4px 10px #24486710;transform:translateY(-1px)}.case strong{font-size:14px;font-weight:600;white-space:normal}.case>span{font-size:13px}.case small{font-size:12px;display:flex;align-items:center;gap:4px;color:#678fa6;white-space:nowrap}.case .icon{width:10px;height:10px}.case-b{background:#eff1fb;border-left-color:#8c96c7;color:#5b6894}.case-b small{color:#7f88a5}.case-c{background:#fdf5dd;border-left-color:#ddaf48;color:#8c7030}.case-c small{color:#9a874f}.free-slot{position:absolute;left:69%;top:26px;font-size:13px;color:#718b98}.open-slot{position:absolute;left:58%;right:0;top:7px;bottom:7px;border:1px dashed #d9e6ec;border-radius:5px;display:flex;align-items:center;justify-content:center;gap:5px;color:#698694;font-size:13px;background:#fbfdff}.open-slot .icon{width:12px;height:12px}.week-schedule{padding:1px 17px 9px;min-width:625px;min-height:258px}.week-heading,.week-row{display:grid;grid-template-columns:60px repeat(5,minmax(0,1fr))}.week-heading{padding:6px 0 10px;border-bottom:1px solid #e4edf2;color:#7c91a0;font-size:14px}.week-heading b{font-weight:500;text-align:center}.week-row{min-height:74px;border-bottom:1px solid #edf2f5;align-items:center;font-size:14px}.week-row:last-child{border:0}.week-row>b{font-size:14px;color:#577084;font-weight:500}.week-row>div{padding:5px;border-left:1px solid #edf2f6}.week-row small{display:block;padding:3px;color:#68828f;font-size:12px}.week-case{display:block;background:#e8f5fc;color:#407e9d;border-radius:4px;font-size:12px;padding:6px;min-height:34px;line-height:1.6}.week-case.b{background:#eff1fb;color:#68799e}.week-case.c{background:#fdf5de;color:#9a8245}.schedule-scroll-hint{display:none;padding:4px 17px 8px;font-size:14px;color:#758c99}
+.ocr-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:center;padding:22px;min-height:320px;background:linear-gradient(90deg,#fbfaf5 47%,white 47%)}.receipt{position:relative;display:flex;align-items:center;flex-direction:column;background:#fff;padding:18px 15px;border:1px solid #e7e6db;box-shadow:0 7px 15px #34556b08;border-radius:5px;transform:rotate(-2deg);min-height:257px;overflow:hidden}.receipt-icon{margin-bottom:6px;color:#ba983d}.receipt-icon .icon{width:21px;height:21px}.receipt>b{font-size:15px;letter-spacing:.6px;color:#59616a}.receipt>span{font-size:12px;color:#787a6c;margin-top:4px}.receipt-divider{height:1px;width:100%;background:#e8e8e0;margin:13px 0 10px}.receipt-line{align-self:flex-start;width:60%;height:4px;background:#ecebe3;border-radius:2px;margin:3px 0}.receipt-line.long{width:95%}.receipt-line.medium{width:80%}.receipt-table{display:grid;grid-template-columns:1.25fr .3fr 1fr;gap:11px 5px;width:100%;font-size:13px;color:#6d7264;margin:16px 0;line-height:1.5}.receipt-table span:nth-child(-n/**/+3){font-weight:500;color:#5b665d}.receipt-table span:nth-child(3n){text-align:right}.receipt-total{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid #e9e8df;padding-top:10px;font-size:13px;color:#6b756c;width:100%}.receipt-total b{color:#647160}.scan-line{position:absolute;left:8px;right:8px;height:1px;top:61%;background:#efcc74;box-shadow:0 0 12px 3px #f4db941f}.extracted{min-width:0}.extracted-label{display:flex;align-items:center;gap:6px;font-size:13px;letter-spacing:.6px;font-weight:500;color:#9b853f;margin-bottom:12px}.extracted-label>.icon{width:14px;height:14px}.extracted label{display:block;font-size:14px;color:#66745f;margin-top:9px}.extracted input{display:block;width:100%;min-width:0;border:1px solid #e4e6d8;border-radius:7px;background:#fdfdf9;font-size:16px;color:#526052;padding:8px 9px;margin-top:5px}.field-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field-pair>*{min-width:0}.demo-action{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;border-radius:8px;background:#ad892d;color:#fff;padding:10px;margin-top:13px;min-height:39px;font-size:14px;font-weight:500}.demo-action .icon{width:15px;height:15px}.demo-action:hover{background:#9a7720}.demo-inline-status{font-size:13px;color:#667960;line-height:1.6;margin-top:8px;min-height:28px}.voice-recorder{display:flex;align-items:center;gap:12px;padding:20px;background:#f8f7fc;border-bottom:1px solid #ebe7f1;flex-wrap:wrap}.record-button{display:grid;place-items:center;flex-shrink:0;width:43px;height:43px;border-radius:50%;background:#7b6cb9;color:white}.record-button .icon{width:21px;height:21px}.record-button:hover{background:#685aa5;box-shadow:0 0 0 5px #e6e1f4}.voice-recorder>div:not(.waveform){display:flex;flex-direction:column;gap:3px}.voice-recorder strong{font-size:16px;font-weight:500;color:#5c547f}.voice-recorder span{font-size:13px;color:#7a708e}.waveform{display:flex;align-items:center;justify-content:center;gap:3px;margin-left:auto;height:42px;flex-shrink:0}.waveform i{width:3px;height:var(--h);background:#a696d1;border-radius:5px}.voice-playing .waveform i{animation:wave .65s var(--d) ease-in-out infinite alternate}@keyframes wave{to{transform:scaleY(.25);opacity:.5}}.record-time{font-size:15px!important;font-variant-numeric:tabular-nums}.voice-columns{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:23px;min-height:212px}.voice-columns>div{min-width:0}.micro-label{display:flex;align-items:center;gap:6px;font-size:13px;letter-spacing:.6px;color:#7c6d93;font-weight:500}.micro-label .icon{width:14px;height:14px}.transcript p{font-size:16px;line-height:1.85;margin-top:11px;color:#6c647f}.note-pill{display:inline-flex;align-items:center;font-size:13px;line-height:1.5;color:#7c7391;background:#f0edf8;padding:4px 8px;border-radius:5px}.transcript .note-pill{margin-top:13px}.emr-fields>div:not(.micro-label){display:flex;flex-direction:column;gap:3px;padding:9px 0;border-bottom:1px solid #eeebf3}.emr-fields>div>span{font-size:13px;color:#7d718e}.emr-fields strong{font-size:16px;font-weight:500;color:#685b7d}.routing-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 21px}.routing-top>span:first-child{display:flex;align-items:center;gap:7px;font-size:16px;color:#527670}.routing-top .icon{width:16px;height:16px}.routing-top .note-pill{color:#5b8f86;background:#e9f5f1}.routing-flow{display:flex;align-items:center;padding:6px 22px 18px;min-height:204px}.guide-conversation{padding:22px 22px 13px}.guide-question{max-width:88%;margin-left:auto;padding:11px 14px;border-radius:10px 10px 2px 10px;background:#f9f2e8;color:#907454;font-size:16px;line-height:1.7}.guide-answer{display:flex;align-items:flex-start;gap:11px;margin-top:22px}.assistant-mark{display:grid;place-items:center;flex-shrink:0;width:31px;height:31px;border-radius:9px;background:#aa845d;color:#fff2df}.assistant-mark>.icon{width:19px;height:19px}.guide-answer>div{min-width:0}.guide-answer b{font-size:16px;font-weight:600;color:#886e4e}.guide-answer p{font-size:16px;color:#796b53;line-height:1.8;margin-top:6px}.citation-chips{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:11px}.citation-chips>span{display:flex;align-items:center;gap:5px;padding:5px 7px;border-radius:5px;font-size:13px;background:#faf5ed;color:#867050}.citation-chips .icon{width:13px;height:13px}.guide-notice{margin:12px 0 0 42px;font-size:13px;line-height:1.7;color:#87765e}.guide-suggestions{display:flex;gap:9px;flex-wrap:wrap;padding:8px 22px 20px}.guide-suggestions button{display:flex;align-items:center;gap:11px;padding:9px 11px;background:#fff;border:1px solid #eae2d7;border-radius:7px;font-size:14px;color:#9c825f;min-height:36px}.guide-suggestions button:hover{background:#fbf4e9}.guide-suggestions .icon{width:14px;height:14px}
+/* The care pathway uses a continuous journey, with one meaningful visual per stage. */
+.clinical-band{background:linear-gradient(180deg,#f2f8fc,#f7fbfd);border-top:1px solid #eaf1f6;border-bottom:1px solid #eaf1f6;padding:66px 0 32px;position:relative}.clinical .section-heading{margin-bottom:38px}.clinical .section-number>span{background:#fff6dd;border-color:#f1dfad;color:#aa8527}.clinical .section-intro{max-width:355px}.care-journey{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:27px}.care-stage{position:relative;min-width:0}.stage-label{position:relative;display:flex;align-items:center;gap:9px;min-height:31px;margin-bottom:19px}.stage-label>span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:white;border:1px solid #d6e4ed;font-size:14px;font-weight:500;color:#577b90;flex-shrink:0}.stage-label h3{font-size:17px;font-weight:500;line-height:1.5;color:#527087}.care-stage:not(:last-child) .stage-label:after{content:"→";margin-left:auto;margin-right:1px;line-height:1;color:#8caabd;font-size:22px}.visual-panel{position:relative;height:213px;border-radius:17px;border:1px solid #214c68;overflow:hidden;background:radial-gradient(ellipse at 55% 20%,#20608245,transparent 80%),#15384f;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px #173c5108}.clinical-visual{height:190px;margin:0 auto;position:relative;width:100%;max-width:320px;color:#c8e6f5}.vlm-visual{display:flex;align-items:center;justify-content:center;padding:0 8px}.scan-film{width:129px;height:150px;background:linear-gradient(145deg,#2c6080,#234a64);border:1px solid #729eb655;border-radius:8px;position:relative;transform:rotate(-5deg);box-shadow:0 8px 17px #08223225;flex-shrink:0}.scan-film>svg{width:100%;height:128px}.scan-film>span{display:block;font-size:11px;letter-spacing:.7px;color:#b0ccdd;text-align:center}.scan-film>svg path{stroke:#afd6e9}.scan-report{width:143px;height:130px;background:linear-gradient(125deg,#fff8e4,#fefcf6);border:1px solid #faeac6;border-radius:9px;padding:12px;transform:rotate(5deg);position:relative;margin-left:-8px;margin-top:22px;box-shadow:0 7px 20px #051e2d25;flex-shrink:0}.report-ai{font-size:11px;font-weight:500;color:#ab8c46;letter-spacing:.4px}.scan-report>b{font-size:14px;color:#6b613f;display:block;margin:6px 0 12px;font-weight:500}.scan-report>i{display:block;height:3px;background:#d7c9987a;margin-top:6px;border-radius:3px;width:95%}.scan-report>i:nth-of-type(2){width:78%}.scan-report>i:nth-of-type(3){width:87%}.report-ready{display:block;color:#9e8a53;font-size:11px;margin-top:13px}.dx-visual{max-width:320px;display:flex;align-items:center;justify-content:center}.dx-center{position:absolute;left:50%;top:51%;transform:translate(-50%,-50%);height:59px;width:59px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,#5689ab,#284c6b);color:#e3f3fc;border:1px solid #9ec6df66;z-index:2;box-shadow:0 7px 18px #031c2d28}.dx-center .icon{width:30px;height:30px;stroke-width:1.5}.dx-lines{position:absolute;width:175px;height:94px;border:1px solid #7fbad048;border-radius:50%;transform:rotate(-14deg)}.dx-lines:before{content:"";position:absolute;inset:9px -10px;border-top:1px dashed #accfed33;border-bottom:1px dashed #accfed33;border-radius:50%;transform:rotate(72deg)}.dx-node{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px;color:#c7dce9;font-size:12px;z-index:3}.dx-node>.icon{width:36px;height:36px;padding:8px;background:#27516c;border:1px solid #658eaa88;border-radius:50%;stroke-width:1.6}.dx-heart{top:24px;left:38px}.dx-heart>.icon{color:#93d4ef}.dx-brain{top:34px;right:31px}.dx-brain>.icon{color:#b8b2f0}.dx-drop{bottom:14px;left:80px}.dx-drop>.icon{color:#f1d580}.pos-visual{max-width:286px;padding-top:24px;height:190px}.monitor-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#c4dce9}.monitor-top>span{display:flex;align-items:center;gap:6px}.monitor-top i{width:5px;height:5px;background:#7ecce9;border-radius:50%;box-shadow:0 0 0 3px #7ecce911}.monitor-top>b{font-family:var(--brand);font-size:14px;letter-spacing:1px;color:#9bdaf4;font-weight:500}.pos-visual>svg{width:100%;height:auto;margin-top:7px}.pos-visual>svg text{font-size:12px;fill:#9dbacb;font-family:var(--body)}.monitor-alert{display:flex;align-items:center;justify-content:space-between;margin-top:7px;padding:6px 9px;border-radius:5px;border:1px solid #f1ca6655;background:#f1ca6610;color:#e4cb8f;font-size:12px}.care-copy{padding:22px 1px 0}.care-copy h4{font-size:35.7px;line-height:1.25}.care-copy p{font-size:18px;line-height:1.85;color:#526f82;margin-top:10px;min-height:71px;max-width:355px}.care-link{width:100%;display:flex;align-items:center;justify-content:space-between;padding:12px 0 4px;border-top:1px solid #dce8f0;margin-top:20px;background:transparent;color:#51718a;font-size:15px;font-weight:500;min-height:43px;text-align:left}.care-link>.icon{width:27px;height:27px;padding:5px;border:1px solid #d3e5f0;border-radius:50%;background:#fff;color:#4290b7;transition:transform .2s,background .2s,color .2s}.care-link:hover{color:var(--accent)}.care-link:hover>.icon{transform:rotate(45deg);background:var(--blue);color:white;border-color:var(--blue)}.clinical-note{display:flex;align-items:center;justify-content:center;gap:8px;padding-top:33px;text-align:center;font-size:14px;line-height:1.7;color:#6b8493}.clinical-note .icon{width:14px;height:14px;color:#739bad}
+/* Footer keeps just one invitation and one way back. */
+.ecosystem-footer{padding-top:43px}.footer-upper{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:0 0 34px}.footer-copy .eyebrow{font-size:13px;letter-spacing:1.2px;color:#627f90;margin-bottom:10px}.footer-copy>p:last-child{font-family:var(--display);font-size:30.9px;font-weight:650;line-height:1.4;letter-spacing:-.8px}.footer-copy>p:last-child>span{color:var(--blue)}.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:23px 0}.footer-bottom .brand-symbol{width:25px;height:25px}.footer-bottom .brand-word{font-size:24px}.footer-bottom .brand-tagline{display:none}.footer-bottom>p{font-size:14px;color:#617d8d}.footer-back{display:grid;place-items:center;width:35px;height:35px;border:1px solid #d8e8f1;border-radius:50%;background:#f5fbff;color:#5d94b0}.footer-back .icon{width:16px;height:16px;transform:rotate(-90deg)}.footer-back:hover{background:var(--sky);transform:translateY(-2px)}
+/* Dialogs use native focus trapping and Escape behavior. */
+.detail-dialog,.contact-dialog{padding:0;border:1px solid #dbe7ee;border-radius:22px;color:var(--ink);background:#fff;width:min(560px,calc(100% - 36px));max-height:calc(100dvh - 42px);overflow:auto;overscroll-behavior:contain;box-shadow:0 30px 100px #12334b35}.detail-dialog::backdrop,.contact-dialog::backdrop{background:#0b243957;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}.dialog-inner{padding:30px}.dialog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:19px}.dialog-icon{width:49px;height:49px;display:grid;place-items:center;color:var(--accent,var(--blue));background:var(--tint,var(--sky));border-radius:14px}.dialog-icon>.icon{width:26px;height:26px}.dialog-close{background:#f1f6f9;border:1px solid #e5edf2;border-radius:50%;width:36px;height:36px;display:grid;place-items:center;color:#5f7e90}.dialog-close .icon{width:19px;height:19px}.dialog-close:hover{background:#e6f2f9;color:var(--navy)}.dialog-kicker{font-size:14px;font-weight:500;color:#657f90;margin-bottom:8px}.detail-dialog h2{font-family:var(--display);font-size:33.3px;line-height:1.4;letter-spacing:-1px}.dialog-description{font-size:17px;color:#6e8695;line-height:1.9;margin-top:12px}.dialog-features{list-style:none;display:flex;flex-direction:column;gap:15px;margin:25px 0;padding:0}.dialog-features li{display:flex;align-items:flex-start;gap:10px;font-size:16px;line-height:1.85;color:#4d6c7e}.dialog-features li>.icon{width:17px;height:17px;margin-top:3px;color:var(--accent,var(--blue))}.dialog-disclaimer{font-size:14px;line-height:1.85;color:#667e8b;padding:13px 15px;background:#f6f9fb;border-radius:10px}.dialog-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:23px}.dialog-actions button,.dialog-actions a{display:flex;align-items:center;justify-content:center;gap:10px;font-size:16px;font-weight:500;min-height:43px;padding:11px 17px;border-radius:9px;background:var(--navy);color:white}.dialog-actions .subtle{border:1px solid #b6d9ee;color:#2687b4;background:#eff8fe}.dialog-actions .icon{width:16px;height:16px}.dialog-actions button:hover{background:#246283}.dialog-actions .subtle:hover{background:#e3f4ff}.contact-dialog{width:min(660px,calc(100% - 36px))}.contact-inner{padding:31px 34px}.contact-inner .dialog-top{margin-bottom:13px}.contact-inner .dialog-icon{background:var(--cream);color:#b29237}.contact-inner h2{font-family:var(--display);font-size:33.3px;font-weight:700;letter-spacing:-1px;line-height:1.45}.contact-inner h2 span{color:var(--blue)}.contact-lead{color:#627d8d;font-size:16px;margin-top:11px;line-height:1.8}.contact-form{margin-top:24px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px 16px}.form-field{display:flex;flex-direction:column;gap:6px;min-width:0}.form-field>span{font-size:15px;font-weight:500;color:#607c8e}.form-field .required{color:#b38f39;font-weight:500}.full-width{grid-column:1/-1}.form-field input,.form-field select,.form-field textarea{width:100%;border:1px solid #dce7ef;border-radius:9px;background:#fbfdff;color:var(--ink);padding:11px 12px;font-size:16px;min-height:44px;min-width:0}.form-field textarea{min-height:96px;resize:vertical;line-height:1.7}.form-field input::placeholder,.form-field textarea::placeholder{color:#a0afba}.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:2px solid #8bcced;outline-offset:2px;border-color:#9bd2ec}.form-note{display:flex;align-items:flex-start;gap:7px;font-size:14px;color:#687e8d;line-height:1.75;margin-top:15px;padding:12px;background:#f5f9fc;border-radius:8px}.form-note .icon{width:15px;height:15px;margin-top:1px}.contact-submit{margin-top:19px;width:100%;font-size:16px;min-height:46px;border-radius:9px}.form-status{font-size:15px;line-height:1.8;color:#507f88;margin-top:12px;min-height:0}.form-status:empty{display:none}.form-status.is-error{color:#a65945}.noscript-notice{padding:15px;text-align:center;font-size:16px;background:var(--cream);color:#967c38}
+/* Larger app text improves legibility without changing the product layout. */
+@media(min-width:1280px){.app-title{font-size:18px}.app-badge{font-size:14px}.mini-tab{font-size:15px}.toolbar-note{font-size:14px}.case strong{font-size:17px}.case>span{font-size:15px}.case small{font-size:14px}.room{font-size:17px}.room small{font-size:14px}.time-axis,.time-axis>span,.axis-hours>span{font-size:14px}.week-case{font-size:13px}.week-heading{font-size:15px}.week-row small{font-size:13px}.app-bottom{font-size:14px}.receipt-table,.receipt-total{font-size:14px}.receipt>b{font-size:16px}.receipt>span{font-size:13px}.extracted label{font-size:15px}.extracted input{font-size:17px}.demo-action{font-size:15px}.demo-inline-status{font-size:14px}.voice-recorder strong{font-size:17px}.voice-recorder span{font-size:14px}.transcript p,.emr-fields strong,.guide-answer p{font-size:17px}.micro-label,.emr-fields>div>span{font-size:14px}.guide-question{font-size:17px}.guide-notice{font-size:14px}.guide-suggestions button{font-size:15px}}
+@media(min-width:1500px){.hero h1{font-size:66.6px}.hero-grid{min-height:460px}.hero-description{font-size:20px}.hero-copy{padding-bottom:40px}}
+@media(max-width:1180px){.container{width:calc(100% - 64px)}.desktop-nav{gap:24px}.desktop-nav>a{font-size:16px}.hero h1{font-size:clamp(41.6px,3.65vw,57.1px);letter-spacing:-1.8px}.hero-grid{min-height:384px}.hero-description{font-size:18px;max-width:465px}.platform-rail{padding:25px 24px;gap:30px}.rail-intro h2{font-size:21px}.rail-flow{gap:12px}.rail-item{font-size:15px;gap:8px}.rail-item>.icon{width:23px;height:23px}.rail-mark{width:37px;height:37px}.operation-workspace{grid-template-columns:280px minmax(0,1fr)}.preview-region{padding:27px 24px 20px}.tool-tab-copy strong{font-size:23px}.tool-tab{padding:12px 9px;gap:10px}.tool-tab-copy>.tool-subtitle{font-size:14px}.care-journey{gap:22px}.pos-visual{max-width:245px}.care-copy p{font-size:16px}.stage-label h3{font-size:15px}.visual-panel{height:205px}.scan-film{width:115px;height:145px}.scan-report{width:126px;height:125px;padding:10px}.scan-report>b{font-size:13px}}
+@media(max-width:1080px){.desktop-nav{display:none}.menu-toggle{display:flex}.site-header{height:75px}.header-inner{gap:18px}.mobile-nav:not([hidden]){display:block}.hero h1{font-size:44px;letter-spacing:-1.6px}.hero-description{font-size:17px}.hero-art{margin-right:-17px}.hero-grid{min-height:365px}.hero-copy{padding:25px 0 35px}.rail-mark{display:none}.section-heading h2{font-size:40.5px}.section-intro{font-size:16px;max-width:320px}.operations{padding:65px 0}.operation-workspace{grid-template-columns:1fr}.operation-directory{padding:19px 20px 20px;border-right:0;border-bottom:1px solid var(--line)}.directory-heading{padding:0 1px 14px}.tool-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}.tool-tab{flex-direction:column;justify-content:center;text-align:center;gap:9px;padding:12px 5px;min-height:86px;border-radius:10px;background:#ffffff60}.tool-tab:hover{transform:translateY(-1px)}.tool-tab:before{left:22%;right:22%;width:auto;top:auto;bottom:-1px;height:2px}.tool-tab-copy strong{font-size:21px;letter-spacing:-.9px}.tool-tab-copy>.tool-subtitle,.tool-tab-arrow,.directory-note{display:none!important}.tool-icon{width:32px;height:32px;border-radius:8px}.tool-icon>.icon{width:19px;height:19px}.preview-region{padding:28px}.preview-description{max-width:720px;min-height:0}.app-window{min-height:380px}.case strong{font-size:16px}.case>span{font-size:14px}.case small{font-size:13px}.room{font-size:16px}.room small{font-size:13px}.week-case{font-size:14px}.preview-footer{font-size:14px}.section-heading{gap:28px}.hero .eyebrow{font-size:13px;letter-spacing:1.1px}.clinical-band{padding-top:57px}.care-journey{gap:19px}.visual-panel{height:183px}.clinical-visual{height:175px}.scan-film{width:103px;height:130px}.scan-film>svg{height:109px}.scan-report{width:115px;height:111px;padding:9px}.report-ai{font-size:11px}.scan-report>b{font-size:12px;margin:5px 0 9px}.scan-report>i{margin-top:6px;height:2px}.report-ready{font-size:11px;margin-top:10px}.scan-film>span{font-size:11px}.dx-heart{left:19px}.dx-brain{right:10px}.dx-drop{left:55px}.pos-visual{max-width:215px;padding:25px 8px 0}.monitor-top{font-size:11px}.monitor-alert{font-size:11px}.care-copy h4{font-size:30.9px}.care-copy p{min-height:91px}.footer-copy>p:last-child{font-size:28.6px}}
+@media(max-width:820px){.hero-grid{grid-template-columns:1.15fr 1fr;min-height:325px}.hero h1{font-size:35.7px;letter-spacing:-1.1px}.hero-description{font-size:16px;margin-top:18px}.hero-copy{padding:23px 0 31px}.hero h1{margin-top:18px}.hero .eyebrow{font-size:12px;letter-spacing:.85px;gap:8px}.hero-art{margin-left:-13px;margin-right:-23px}.platform-rail{gap:22px;padding:23px 20px;border-radius:15px}.rail-intro h2{font-size:19px;letter-spacing:-.3px}.rail-item{font-size:14px;gap:6px}.rail-item>.icon{width:20px;height:20px}.rail-flow{gap:9px}.rail-arrow>.icon{width:12px;height:12px}.section-heading h2{font-size:36.9px;letter-spacing:-1.1px}.section-intro{max-width:280px;font-size:15.5px}.tool-tab-copy strong{font-size:20px}.care-journey{gap:16px}.stage-label h3{font-size:14px}.stage-label>span{width:23px;height:23px;font-size:13px}.care-stage:not(:last-child) .stage-label:after{display:none}.stage-label{gap:7px}.visual-panel{height:164px;border-radius:14px}.clinical-visual{height:157px}.vlm-visual{padding:0}.scan-film{width:92px;height:123px}.scan-film>svg{height:104px}.scan-report{width:99px;height:106px;margin-left:-9px;padding:8px}.scan-report>b{font-size:11px}.report-ai{font-size:11px}.report-ready{font-size:11px}.dx-center{width:47px;height:47px;border-radius:13px}.dx-center>.icon{width:25px;height:25px}.dx-lines{width:130px;height:80px}.dx-node{font-size:11px}.dx-node>.icon{width:30px;height:30px;padding:7px}.dx-heart{top:18px;left:15px}.dx-brain{top:25px;right:7px}.dx-drop{bottom:12px;left:45px}.pos-visual{padding:24px 12px 0}.monitor-top{font-size:11px}.monitor-top>b{font-size:12px}.monitor-alert{font-size:11px;margin-top:5px;padding:5px 7px}.care-copy h4{font-size:28.6px}.care-copy p{font-size:15px;min-height:83px}.care-link{font-size:14px;margin-top:15px}.care-copy{padding-top:18px}.footer-copy>p:last-child{font-size:26.2px}.footer-copy .eyebrow{font-size:12px}.footer-upper .contact-button{font-size:15px}}
+@media(max-width:640px){.container{width:calc(100% - 40px)}html{scroll-padding-top:88px}.site-header{height:70px}.brand-symbol{width:30px;height:30px}.brand-word{font-size:27.4px}.brand-tagline{font-size:11px;letter-spacing:1.7px}.brand{gap:8px}.hero{padding-top:26px;background:radial-gradient(ellipse at 75% 56%,#e9f8ff,transparent 53%),radial-gradient(ellipse at 0 0,#fff4d742,transparent 50%)}.hero-grid{display:flex;flex-direction:column;gap:0;min-height:0}.hero-copy{width:100%;padding:15px 0 0}.hero .eyebrow{font-size:13px;letter-spacing:1.15px}.hero h1{font-size:clamp(32.1px,7.5vw,53.5px);line-height:1.28;letter-spacing:-1.2px;margin-top:23px}.headline-mark:after{height:8px;bottom:2px}.hero-description{font-size:18px;line-height:1.9;max-width:485px;margin-top:20px}.hero-art{width:min(460px,calc(100% + 16px));margin:-1px -8px -6px}.hero-svg>text:not(:last-child){font-size:17px}.hero-svg>text:last-child{font-size:13px}.platform-rail{flex-direction:column;align-items:stretch;padding:20px 20px 24px;border-radius:16px;gap:19px}.rail-intro{padding-bottom:16px;border-bottom:1px solid #496f8455;gap:12px}.rail-mark{display:grid;width:32px;height:32px;border-radius:9px}.rail-mark>.icon{width:18px;height:18px}.rail-intro h2{font-size:20px;letter-spacing:-.35px}.rail-intro h2 br{display:none}.rail-flow{max-width:none;gap:5px}.rail-item{flex-direction:column;text-align:center;align-items:center;gap:8px;font-size:14px;line-height:1.7;flex:1}.rail-item>.icon{width:22px;height:22px}.rail-arrow{align-self:flex-start;padding-top:7px}.rail-arrow>.icon{width:14px;height:14px}.operations{padding:53px 0 54px}.section-heading{display:block;margin-bottom:25px}.section-number{font-size:13px;margin-bottom:14px;letter-spacing:1.2px}.section-heading h2{font-size:36.9px;line-height:1.28;letter-spacing:-1.2px}.section-intro{margin-top:17px;font-size:17px;line-height:1.85;max-width:440px;padding:0}.operation-workspace{border-radius:17px}.operation-directory{padding:17px 13px 15px}.directory-heading{font-size:13px;letter-spacing:.55px;padding-bottom:13px}.tool-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.tool-tab{min-height:78px;padding:10px 4px;gap:7px}.tool-tab-copy strong{font-size:21px;letter-spacing:-.7px}.tool-icon{width:29px;height:29px}.tool-icon>.icon{width:18px;height:18px}.preview-region{padding:23px 16px 16px;background:#fff}.preview-intro{gap:10px;align-items:center}.preview-intro h3{font-size:34.5px;line-height:1.3}.preview-eyebrow{font-size:13px;line-height:1.7;max-width:177px}.text-button{min-height:39px;padding:8px 9px;gap:6px;font-size:14px}.text-button>.icon{width:14px;height:14px}.preview-description{font-size:17px;line-height:1.85;margin-top:15px}.app-window{margin-top:17px;min-height:365px;border-radius:10px}.app-head{padding:11px 12px;gap:7px}.app-title{font-size:14px;line-height:1.6}.window-dots{display:none}.app-badge{font-size:12px;gap:4px}.app-badge i{width:4px;height:4px}.app-bottom{padding:10px 12px;font-size:13px;gap:8px}.app-bottom .status-tag{font-size:12px}.or-toolbar{padding:11px 12px}.toolbar-note{display:none}.mini-tab{font-size:14px;min-height:33px}.schedule{padding:0 12px 7px;min-width:566px}.case strong{font-size:14px}.case>span{font-size:13px}.case small{font-size:12px}.room{font-size:14px}.room small{font-size:12px}.schedule-row{min-height:76px}.schedule-scroll-hint{display:block;font-size:13px;margin:0;padding:7px 12px}.week-schedule{min-width:600px;min-height:263px;padding-left:12px;padding-right:12px}.preview-footer{font-size:12px;line-height:1.6;margin-top:13px;align-items:flex-start;gap:7px}.preview-footer>span:last-child{font-size:14px;white-space:nowrap}.preview-footer .icon{width:11px;height:11px}.ocr-layout{grid-template-columns:1fr;padding:20px 16px 16px;gap:25px;background:linear-gradient(180deg,#fbfaf4 46%,white 46%)}.receipt{max-width:235px;width:100%;margin:0 auto;min-height:255px;padding:17px}.receipt>b{font-size:15px}.receipt-table,.receipt-total{font-size:13px}.receipt>span{font-size:12px}.extracted-label{font-size:14px}.extracted label{font-size:14px}.extracted input{font-size:20px;padding:8px 9px}.demo-action{min-height:43px;font-size:15px}.demo-inline-status{font-size:14px}.voice-recorder{padding:15px 13px;gap:9px}.voice-recorder strong{font-size:15px}.voice-recorder span{font-size:13px}.record-button{width:40px;height:40px}.waveform{order:4;flex-basis:100%;justify-content:flex-start;margin-left:49px;height:26px}.waveform i{max-height:25px}.record-time{margin-left:auto;font-size:14px!important}.voice-columns{grid-template-columns:1fr;padding:18px 14px;gap:25px}.transcript p{font-size:16px}.micro-label{font-size:14px}.emr-fields strong{font-size:16px}.emr-fields>div>span{font-size:14px}.routing-top{padding:15px 12px}.routing-top>span:first-child{font-size:14px}.routing-top .note-pill{font-size:12px}.routing-flow{flex-wrap:wrap;justify-content:center;gap:0;padding:6px 15px 14px}.guide-conversation{padding:18px 12px 12px}.guide-question{font-size:15px;padding:10px 11px;max-width:94%}.guide-answer{gap:8px;margin-top:21px}.assistant-mark{width:27px;height:27px}.assistant-mark .icon{width:17px;height:17px}.guide-answer p{font-size:15px;line-height:1.9}.guide-answer b{font-size:16px}.citation-chips>span{font-size:12px;padding:5px}.guide-notice{margin-left:35px;font-size:13px}.guide-suggestions{padding:7px 12px 16px;flex-direction:column;gap:7px}.guide-suggestions button{justify-content:space-between;font-size:14px;min-height:39px}.clinical-band{padding:48px 0 27px}.clinical .section-heading{margin-bottom:30px}.clinical .section-intro{max-width:425px}.care-journey{display:flex;flex-direction:column;gap:33px}.care-stage{padding-left:34px}.care-stage:before{content:"";position:absolute;left:12px;top:30px;bottom:-28px;width:1px;background:#d9e5ed}.care-stage:last-child:before{bottom:0}.stage-label{margin-left:-34px;margin-bottom:15px;gap:10px}.stage-label>span{width:25px;height:25px;font-size:14px}.stage-label h3{font-size:16px}.visual-panel{height:200px;border-radius:14px}.clinical-visual{height:186px;max-width:300px}.scan-film{width:120px;height:145px}.scan-film>svg{height:124px}.scan-film>span{font-size:11px}.scan-report{width:136px;height:125px;padding:11px;margin-left:-9px;margin-top:19px}.scan-report>b{font-size:14px;margin:6px 0 11px}.report-ai{font-size:11px}.scan-report>i{height:3px;margin-top:6px}.report-ready{font-size:11px;margin-top:11px}.dx-center{width:58px;height:58px;border-radius:16px}.dx-center .icon{width:30px;height:30px}.dx-lines{width:174px;height:99px}.dx-node{font-size:12px;gap:6px}.dx-node>.icon{width:35px;height:35px;padding:8px}.dx-heart{left:35px;top:23px}.dx-brain{right:25px;top:34px}.dx-drop{left:73px;bottom:13px}.pos-visual{max-width:267px;padding:23px 13px 0;height:185px}.monitor-top{font-size:12px}.monitor-top>b{font-size:14px}.monitor-alert{font-size:12px;padding:6px 8px;margin-top:7px}.care-copy{padding-top:18px}.care-copy h4{font-size:33.3px}.care-copy p{font-size:17px;min-height:0;max-width:100%;line-height:1.9;margin-top:9px}.care-link{font-size:14px;min-height:44px;margin-top:17px;padding-top:10px}.clinical-note{font-size:13px;padding-top:29px;align-items:flex-start;text-align:left;gap:7px}.clinical-note .icon{width:13px;height:13px;margin-top:2px}.ecosystem-footer{padding-top:31px}.footer-upper{align-items:flex-start;flex-direction:column;gap:22px;padding-bottom:28px}.footer-copy>p:last-child{font-size:26.2px;line-height:1.55}.footer-copy>p:last-child>span{display:block}.footer-copy .eyebrow{font-size:12px;margin-bottom:9px}.footer-upper .contact-button{font-size:15px;min-height:43px}.footer-bottom{display:grid;grid-template-columns:1fr auto;gap:12px;padding:21px 0}.footer-bottom>p{grid-row:2;font-size:13px}.footer-bottom .footer-back{grid-column:2;grid-row:1/3}.footer-bottom .brand-word{font-size:23px}.footer-bottom .brand-symbol{width:23px;height:23px}.dialog-inner{padding:25px 22px}.detail-dialog,.contact-dialog{max-height:calc(100dvh - 26px);border-radius:18px;width:calc(100% - 26px)}.detail-dialog h2{font-size:30.9px}.dialog-description{font-size:16px}.dialog-features{gap:14px;margin:23px 0}.dialog-features li{font-size:15px}.dialog-disclaimer{font-size:14px}.dialog-actions{gap:9px}.dialog-actions button,.dialog-actions a{font-size:15px;flex:1;padding:10px}.contact-inner{padding:24px 22px}.contact-inner h2{font-size:28.6px;line-height:1.4;letter-spacing:-.6px}.contact-lead{font-size:15px}.form-grid{gap:14px;grid-template-columns:1fr}.form-field input,.form-field select,.form-field textarea{font-size:20px;padding:10px}.form-field>span{font-size:14px}.form-note{font-size:13px;padding:10px}.form-status{font-size:14px}.contact-submit{font-size:15px}.contact-form{margin-top:20px}}
+@media(max-width:359px){.container{width:calc(100% - 32px)}.hero h1{font-size:clamp(27.4px,7.45vw,32.1px);letter-spacing:-1.3px}.hero .eyebrow{font-size:12px}.hero-description{font-size:16px}.rail-intro h2{font-size:18px}.rail-mark{width:29px;height:29px}.platform-rail{padding:19px 16px 22px}.rail-item{font-size:13px}.preview-region{padding-inline:13px}.tool-tab-copy strong{font-size:19px}.text-button{font-size:13px;padding:8px}.preview-eyebrow{max-width:142px}.preview-intro h3{font-size:32.1px}.care-stage{padding-left:29px}.care-stage:before{left:11px}.stage-label{margin-left:-29px}.scan-film{width:106px;height:133px}.scan-film>svg{height:113px}.scan-report{width:118px;height:117px;padding:10px}.scan-report>b{font-size:12px}.report-ready{font-size:11px}.visual-panel{height:183px}.dx-heart{left:25px}.dx-brain{right:15px}.pos-visual{padding-left:12px;padding-right:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{.site-header,.menu-toggle,.contact-button,.footer-back,.detail-dialog,.contact-dialog,.text-button{display:none!important}body{font-size:16px}.container{width:100%;margin:0}.hero{padding:0}.hero-grid{min-height:0}.operations{padding:25px 0}.platform-rail{print-color-adjust:exact;-webkit-print-color-adjust:exact;box-shadow:none}.operation-workspace,.visual-panel{break-inside:avoid;box-shadow:none}.clinical-band{padding:25px 0}.care-journey{display:grid;grid-template-columns:repeat(3,1fr)}.care-stage{padding-left:0}.care-stage:before{display:none}.stage-label{margin-left:0}.tool-panel[hidden]{display:block!important;break-inside:avoid;margin-top:25px}.tool-panel:not([hidden]){animation:none}.operation-workspace{display:block}.operation-directory{border:0}.tool-tabs{display:grid;grid-template-columns:repeat(6,1fr)}.hero-art{max-width:350px}.clinical-note{font-size:14px}.visual-panel{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+
+/* Typography revision: larger type, comfortable line lengths, no CSS zoom. */
+:root{
+ --text-xs:14px;--text-sm:16px;--text-body:18px;--text-lead:20px;
+ --display:"Plus Jakarta Sans","Avenir Next","Trebuchet MS","Segoe UI",sans-serif;
+ --body:"Nunito Sans","Avenir Next","Segoe UI",Arial,sans-serif;
+ --brand:"Nunito Sans","Avenir Next","Segoe UI",sans-serif;
+}
+body{font-size:var(--text-body);font-weight:500;line-height:1.7}
+.container{width:min(1320px,calc(100% - 96px))}
+.site-header{height:92px}
+.header-inner{gap:28px}
+.brand-word{font-size:31px;letter-spacing:-1.15px}
+.brand-light{font-weight:500;letter-spacing:-.8px}
+.brand-symbol{width:41px;height:41px}
+.brand-tagline{font-size:10px;letter-spacing:1.75px}
+.desktop-nav{gap:30px}
+.desktop-nav>a{font-size:17px;font-weight:600;white-space:normal;line-height:1.5}
+.contact-button{font-size:17px;min-height:50px;padding:12px 22px}
+.contact-button .icon{width:20px;height:20px}
+.mobile-nav>a,.mobile-nav>button{font-size:18px;font-weight:600;line-height:1.6}
+.hero-grid{grid-template-columns:1.25fr 1fr;min-height:460px;gap:6px}
+.hero-copy{padding:40px 0 45px}
+.eyebrow,.hero .eyebrow{font-size:13px;letter-spacing:1.1px;line-height:1.65}
+.hero h1{font-size:clamp(42px,4.2vw,64px);font-weight:700;letter-spacing:-2.1px;line-height:1.28;margin-top:24px}
+.hero h1 .hero-line{white-space:normal}
+.headline-mark{white-space:nowrap}
+.hero-description{font-size:20px;line-height:1.8;max-width:600px;margin-top:24px;color:#486274}
+.hero-svg>text:not(:last-child){font-size:16px}
+.hero-svg>text:last-child{font-size:10px;letter-spacing:1.3px}
+.platform-rail{gap:28px;padding:28px 30px}
+.rail-intro{flex-shrink:1;min-width:0}
+.rail-intro h2{font-size:24px;line-height:1.5;letter-spacing:-.5px}
+.rail-mark{width:46px;height:46px;flex-shrink:0}
+.rail-flow{gap:14px;min-width:0;max-width:690px}
+.rail-item{font-size:17px;line-height:1.55;gap:10px;white-space:normal}
+.rail-item .icon{flex-shrink:0}
+.section-heading{gap:44px;margin-bottom:32px}
+.section-heading>div{min-width:0}
+.section-heading h2{font-size:44px;font-weight:700;letter-spacing:-1.35px;line-height:1.3}
+.section-number{font-size:13px;letter-spacing:1.2px;line-height:1.6}
+.section-number>span{font-size:13px;width:31px;height:31px}
+.section-intro,.clinical .section-intro{font-size:18px;line-height:1.75;max-width:435px;flex:0 1 435px;color:#486477}
+.operation-workspace{grid-template-columns:340px minmax(0,1fr)}
+.operation-directory{padding:24px 15px 20px}
+.directory-heading{font-size:13px;letter-spacing:.7px}
+.directory-heading>span:last-child{font-size:13px;width:29px;height:27px}
+.tool-tabs{gap:6px}
+.tool-tab{min-height:96px;padding:14px 12px;gap:13px}
+.tool-tab-copy{gap:5px}
+.tool-tab-copy strong{font-size:25px;letter-spacing:-.85px}
+.tool-tab-copy>.tool-subtitle{font-size:16px;line-height:1.5;color:#506b7e}
+.tool-icon{width:42px;height:44px}
+.tool-icon>.icon{width:24px;height:24px}
+.tool-wordmark{font-weight:800;letter-spacing:-1.1px}
+.tool-wordmark .tool-suffix{font-weight:500;letter-spacing:-.7px}
+.directory-note{font-size:14px;align-items:flex-start;color:#576e7c}
+.directory-note .icon{margin-top:5px;flex-shrink:0}
+.preview-region{padding:30px 30px 22px}
+.preview-intro{gap:20px;align-items:flex-start}
+.preview-intro h3{font-size:40px;line-height:1.25}
+.preview-eyebrow{font-size:15px;line-height:1.6;max-width:none;margin-top:6px}
+.text-button{font-size:16px;min-height:47px;padding:11px 14px;flex-shrink:0}
+.preview-description{font-size:18px;line-height:1.75;max-width:740px;min-height:0;color:#486477}
+.app-window{min-height:450px;margin-top:22px}
+.app-head{padding:15px 18px;flex-wrap:wrap;gap:8px 12px}
+.app-title{font-size:17px;line-height:1.5}
+.app-badge{font-size:13px}
+.app-bottom{font-size:14px;line-height:1.6;padding:12px 18px;flex-wrap:wrap;gap:8px 12px}
+.app-bottom .icon{width:16px;height:16px}
+.status-tag,.app-bottom .status-tag{font-size:13px}
+.preview-footer{font-size:14px;line-height:1.6;align-items:flex-start}
+.preview-footer>span:last-child{font-size:14px;white-space:nowrap}
+.preview-footer .icon{width:15px;height:15px;flex-shrink:0}
+.or-toolbar{padding:15px 18px}
+.mini-tab{font-size:15px;min-height:40px;padding:8px 14px}
+.toolbar-note{font-size:13px}
+.schedule{min-width:650px;padding:0 18px 10px}
+.time-axis,.time-axis>span,.axis-hours>span{font-size:13px;line-height:1.5}
+.time-axis>span{width:115px}
+.axis-hours{height:21px}
+.schedule-row{grid-template-columns:115px 1fr;min-height:110px}
+.room{font-size:16px;line-height:1.6}
+.room small{font-size:13px;line-height:1.5;max-width:103px}
+.case{gap:4px;padding:8px 11px}
+.case strong{font-size:16px;line-height:1.35}
+.case>span{font-size:14px;line-height:1.4}
+.case small{font-size:13px;line-height:1.5;white-space:normal}
+.case .icon{width:13px;height:13px}
+.free-slot,.open-slot{font-size:13px;line-height:1.5}
+.free-slot{top:39px}
+.week-schedule{min-width:780px;min-height:340px}
+.week-heading,.week-row{grid-template-columns:68px repeat(5,minmax(0,1fr))}
+.week-row{min-height:98px}
+.week-heading,.week-row>b{font-size:14px}
+.week-case{font-size:14px;line-height:1.55;min-height:42px}
+.week-row small{font-size:13px}
+.schedule-scroll-hint{font-size:13px;padding:9px 18px}
+.ocr-layout{gap:25px;padding:25px 22px;min-height:380px}
+.receipt{min-height:302px;padding:19px 17px}
+.receipt>b{font-size:15px;letter-spacing:.1px}
+.receipt>span{font-size:12px}
+.receipt-table,.receipt-total{font-size:13px;line-height:1.6}
+.receipt-table{grid-template-columns:1.3fr .3fr 1fr;gap:12px 6px}
+.extracted-label{font-size:14px;letter-spacing:.3px;align-items:flex-start}
+.extracted label{font-size:15px}
+.extracted input{font-size:17px;min-height:44px}
+.demo-action{font-size:16px;min-height:46px;line-height:1.5}
+.demo-inline-status{font-size:14px;line-height:1.6;min-height:0}
+.voice-recorder strong{font-size:17px}
+.voice-recorder span{font-size:14px}
+.record-time{font-size:15px!important}
+.micro-label{font-size:14px;letter-spacing:.3px}
+.transcript p,.emr-fields strong{font-size:17px;line-height:1.75}
+.emr-fields>div>span{font-size:14px}
+.note-pill{font-size:13px}
+.routing-top>span:first-child{font-size:16px}
+
+
+
+
+
+
+
+
+
+
+.guide-question{font-size:17px}
+.guide-answer b{font-size:18px}
+.guide-answer p{font-size:17px;line-height:1.75}
+.citation-chips>span{font-size:13px}
+.guide-notice{font-size:14px;line-height:1.7}
+.guide-suggestions button{font-size:15px;min-height:44px}
+.stage-label{min-height:58px;align-items:center;gap:10px}
+.stage-label h3{font-size:18px;line-height:1.5;font-weight:600}
+.stage-label>span{font-size:14px;width:30px;height:30px}
+.visual-panel{height:235px}
+.clinical-visual{height:206px}
+.scan-film{width:133px;height:164px}
+.scan-film>svg{height:136px}
+.scan-film>span{font-size:10px;letter-spacing:.25px}
+.scan-report{width:151px;height:150px;padding:12px}
+.report-ai{font-size:10px;letter-spacing:0}
+.scan-report>b{font-size:13px;line-height:1.4;margin:6px 0 8px}
+.scan-report>i{margin-top:5px}
+.report-ready{font-size:10px;margin-top:10px;line-height:1.45}
+.dx-node{font-size:12px}
+.pos-visual{max-width:290px;height:206px;padding-top:18px}
+.monitor-top{font-size:12px}
+.monitor-top>b{font-size:13px}
+.pos-visual>svg text{font-size:10px}
+.monitor-alert{font-size:12px;padding:8px 9px}
+.care-copy h4{font-size:36px;line-height:1.3}
+.care-copy p{font-size:18px;line-height:1.75;min-height:95px;max-width:none}
+.care-link{font-size:16px;line-height:1.6;min-height:49px;margin-top:22px}
+.clinical-note{font-size:14px;line-height:1.7}
+.clinical-note .icon{width:18px;height:18px;flex-shrink:0}
+.footer-copy .eyebrow{font-size:12px}
+.footer-copy>p:last-child{font-size:31px;line-height:1.5;letter-spacing:-.8px}
+.footer-bottom>p{font-size:14px}
+.footer-bottom .brand-word{font-size:26px}
+.footer-bottom .brand-symbol{width:31px;height:31px}
+.footer-upper .contact-button{font-size:16px}
+.detail-dialog{width:min(650px,calc(100% - 36px))}
+.contact-dialog{width:min(760px,calc(100% - 36px))}
+.detail-dialog h2,.contact-inner h2{font-size:34px;line-height:1.45;letter-spacing:-.8px}
+.dialog-kicker{font-size:15px}
+.dialog-description,.contact-lead{font-size:18px;line-height:1.75}
+.dialog-features li{font-size:17px;line-height:1.7}
+.dialog-disclaimer{font-size:15px;line-height:1.7}
+.dialog-actions button,.dialog-actions a{font-size:16px;min-height:47px}
+.form-field>span{font-size:16px}
+.form-field input,.form-field select,.form-field textarea{font-size:17px;min-height:48px}
+.form-note{font-size:14px;line-height:1.7}
+.form-status{font-size:15px}
+.contact-submit{font-size:17px;min-height:50px}
+@media(max-width:1180px){
+ .container{width:calc(100% - 64px)}
+ .desktop-nav{gap:22px}.desktop-nav>a{font-size:16px}
+ .hero h1{font-size:clamp(40px,4.1vw,49px);letter-spacing:-1.7px}
+ .hero-description{font-size:19px}
+ .section-heading h2{font-size:39px}
+ .section-intro,.clinical .section-intro{font-size:18px;max-width:390px}
+ .operation-workspace{grid-template-columns:310px minmax(0,1fr)}
+ .tool-tab-copy strong{font-size:24px}.tool-tab-copy>.tool-subtitle{font-size:15px}
+ .preview-region{padding:28px 24px 22px}
+ .rail-intro h2{font-size:22px}.rail-item{font-size:16px}.rail-flow{gap:10px}
+ .stage-label h3{font-size:17px}
+ .visual-panel{height:227px}.clinical-visual{max-width:280px}
+ .scan-film{width:115px;height:157px}.scan-film>svg{height:130px}
+ .scan-report{width:138px;height:146px}
+ .care-copy p{font-size:18px;min-height:125px}
+ .footer-copy>p:last-child{font-size:28px}
+}
+@media(max-width:1080px){
+ .site-header{height:82px}
+ .operation-workspace{grid-template-columns:1fr}
+ .operation-directory{padding:20px}
+ .tool-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+ .tool-tab{min-height:80px;flex-direction:row;gap:12px;justify-content:flex-start;padding:14px;text-align:left}
+ .tool-tab-copy strong{font-size:25px}
+ .tool-icon{width:39px;height:41px}
+ .tool-tab:before{left:16%;right:16%}
+ .platform-rail{flex-direction:column;align-items:stretch;gap:22px;padding:26px}
+ .rail-intro{padding-bottom:19px;border-bottom:1px solid #496f8455}
+ .rail-intro h2{font-size:24px}.rail-intro h2 br{display:none}
+ .rail-mark{display:grid;width:42px;height:42px}
+ .rail-flow{max-width:none;gap:15px}.rail-item{font-size:18px}
+ .preview-description{font-size:18px}
+ .care-copy p{min-height:155px}
+ .section-heading{gap:25px}
+ .footer-upper{gap:22px}
+}
+@media(max-width:900px){
+ .hero-grid{display:flex;flex-direction:column;gap:0;min-height:0}
+ .hero-copy{width:100%;padding:32px 0 0}
+ .hero h1{font-size:clamp(38px,6.5vw,54px);letter-spacing:-1.6px}
+ .hero-description{font-size:20px;max-width:640px}
+ .hero-art{width:min(510px,100%);margin:-8px auto 0;align-self:center}
+ .section-heading{display:block}
+ .section-intro,.clinical .section-intro{max-width:650px;margin-top:20px;font-size:18px}
+ .care-journey{display:flex;flex-direction:column;gap:34px}
+ .care-stage{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:0 28px;padding:0}
+ .stage-label{grid-column:1/-1;min-height:34px;margin-left:0;margin-bottom:17px}
+ .stage-label h3{font-size:20px}.care-stage:before,.care-stage:not(:last-child) .stage-label:after{display:none}
+ .care-copy{padding-top:0;display:flex;flex-direction:column;align-items:stretch}
+ .care-copy h4{font-size:36px}.care-copy p{min-height:0;font-size:18px;line-height:1.75}
+ .care-link{margin-top:auto;padding-top:14px;font-size:16px}
+ .visual-panel{height:235px}
+ .clinical-visual{height:206px;max-width:300px}
+ .pos-visual{padding:18px 13px 0;max-width:285px}
+ .footer-copy>p:last-child{font-size:28px}
+ .footer-upper{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:640px){
+ .container{width:calc(100% - 40px)}
+ html{scroll-padding-top:98px}
+ .site-header{height:78px}.brand-word{font-size:29px}.brand-symbol{width:36px;height:36px}
+ .brand-tagline{font-size:9px;letter-spacing:1.5px}
+ .hero{padding-top:16px}.hero-copy{padding-top:20px}
+ .hero .eyebrow{font-size:12px;letter-spacing:.7px;gap:9px}
+ .hero h1{font-size:clamp(36px,7.3vw,46px);line-height:1.33;letter-spacing:-1.2px}
+ .hero h1 .hero-line{max-width:100%}
+ .hero-description{font-size:18px;line-height:1.75;margin-top:20px}
+ .hero-art{width:min(450px,calc(100% + 12px));margin:0 -6px 0}
+ .platform-rail{padding:22px 20px;gap:19px}
+ .rail-intro h2{font-size:22px;line-height:1.45}.rail-intro{gap:11px}
+ .rail-mark{width:36px;height:36px}
+ .rail-flow{gap:7px}.rail-item{font-size:15px;line-height:1.6;gap:9px}
+ .rail-arrow>.icon{width:13px;height:13px}
+ .rail-item>.icon{width:25px;height:25px}
+ .section-heading h2{font-size:36px;line-height:1.3;letter-spacing:-1.05px}
+ .section-number{font-size:12px}
+ .section-intro,.clinical .section-intro{font-size:18px;line-height:1.75}
+ .directory-heading{font-size:13px;padding-bottom:14px}
+ .operation-directory{padding:20px 15px}
+ .tool-tab{flex-direction:column;justify-content:center;text-align:center;gap:9px;padding:12px 6px;min-height:96px}
+ .tool-tab-copy strong{font-size:23px;letter-spacing:-1px}
+ .tool-icon{width:35px;height:35px}.tool-icon>.icon{width:22px;height:22px}
+ .preview-region{padding:25px 18px 20px}
+ .preview-intro{gap:12px;flex-wrap:wrap;align-items:flex-start}
+ .preview-intro>div{flex:1 1 220px}
+ .preview-intro h3{font-size:36px}
+ .preview-eyebrow{font-size:15px;max-width:none;line-height:1.6}
+ .text-button{font-size:15px;min-height:44px;padding:10px 12px}
+ .preview-description{font-size:18px;line-height:1.75;margin-top:17px}
+ .app-window{min-height:400px}
+ .app-title{font-size:16px}.app-badge{font-size:12px}
+ .app-head{padding:13px 14px}
+ .app-bottom{padding:12px 14px;font-size:14px}
+ .preview-footer{font-size:13px;flex-wrap:wrap;gap:8px}.preview-footer>span:last-child{font-size:13px;margin-left:auto}
+ .preview-footer>span:first-child{align-items:flex-start}
+ .preview-footer .icon{margin-top:3px}
+ .ocr-layout{padding:22px 15px;gap:25px;grid-template-columns:1fr;background:linear-gradient(180deg,#fbfaf4 43%,white 43%)}
+ .receipt{max-width:270px;width:100%;margin-inline:auto;min-height:302px;padding:19px 17px}
+ .receipt>b{font-size:14px}.receipt-table,.receipt-total{font-size:12px}
+ .extracted label{font-size:15px}.extracted input{font-size:17px}
+ .demo-action{font-size:16px}.demo-inline-status{font-size:14px}
+ .voice-recorder{padding:18px 14px}.voice-recorder strong{font-size:16px}.voice-recorder span{font-size:14px}
+ .voice-columns{grid-template-columns:1fr;padding:20px 16px;gap:24px}
+ .transcript p,.emr-fields strong{font-size:17px}.micro-label{font-size:14px}.emr-fields>div>span{font-size:14px}
+ .routing-top{padding:16px 14px;align-items:flex-start}.routing-top>span:first-child{font-size:16px}.routing-top .note-pill{font-size:12px;white-space:nowrap}
+ .routing-flow{padding:10px 18px 17px;flex-wrap:wrap;justify-content:center}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ .guide-question,.guide-answer p{font-size:17px}.guide-answer b{font-size:18px}
+ .guide-notice{font-size:14px;margin-left:0}.guide-suggestions button{font-size:15px}
+ .citation-chips>span{font-size:12px}
+ .care-stage{display:block;padding:0}
+ .stage-label{margin-left:0;margin-bottom:18px;min-height:35px}
+ .stage-label h3{font-size:18px}.stage-label>span{font-size:14px;width:30px;height:30px}
+ .visual-panel{height:242px}.clinical-visual{height:213px;max-width:320px}
+ .scan-film{width:128px;height:159px}.scan-film>svg{height:133px}.scan-film>span{font-size:10px}
+ .scan-report{width:145px;height:148px;padding:12px}.scan-report>b{font-size:13px}.report-ai,.report-ready{font-size:10px}
+ .pos-visual{height:215px;max-width:290px;padding:22px 12px 0}
+ .dx-node{font-size:12px}.dx-center{width:58px;height:58px}.dx-center .icon{width:30px;height:30px}
+ .dx-heart{left:35px;top:23px}.dx-brain{right:25px;top:34px}.dx-drop{left:73px;bottom:13px}
+ .dx-lines{width:174px;height:99px}.dx-node>.icon{width:36px;height:36px;padding:8px}
+ .monitor-top{font-size:12px}.monitor-top>b{font-size:13px}.monitor-alert{font-size:12px}
+ .care-copy{padding-top:20px}.care-copy h4{font-size:36px}.care-copy p{font-size:18px;min-height:0}
+ .care-link{font-size:16px;margin-top:20px}
+ .clinical-note{font-size:14px;align-items:flex-start;gap:9px}.clinical-note .icon{width:17px;height:17px;margin-top:4px}
+ .footer-copy .eyebrow{font-size:11px}.footer-copy>p:last-child{font-size:27px}
+ .footer-upper .contact-button{font-size:16px;min-height:48px}
+ .footer-bottom>p{font-size:13px}.footer-bottom .brand-word{font-size:26px}
+ .detail-dialog,.contact-dialog{width:calc(100% - 24px);max-height:calc(100dvh - 24px)}
+ .dialog-inner,.contact-inner{padding:25px 22px}
+ .detail-dialog h2,.contact-inner h2{font-size:30px;line-height:1.4}
+ .dialog-kicker{font-size:14px}.dialog-description,.contact-lead{font-size:17px}
+ .dialog-features li{font-size:16px}.dialog-disclaimer{font-size:14px}
+ .dialog-actions{flex-direction:column}.dialog-actions button,.dialog-actions a{font-size:16px}
+ .form-grid{grid-template-columns:1fr;gap:17px}
+ .form-field>span{font-size:16px}.form-field input,.form-field select,.form-field textarea{font-size:17px;min-height:48px}
+ .form-note{font-size:14px}.form-status{font-size:15px}.contact-submit{font-size:17px}
+}
+@media(max-width:520px){
+ .tool-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .tool-tab-copy strong{font-size:24px}
+ .rail-flow{gap:5px}.rail-item{font-size:14px}
+}
+@media(max-width:359px){
+ .container{width:calc(100% - 32px)}
+ .brand-word{font-size:27px}.brand-tagline{font-size:9px}
+ .hero h1{font-size:34px;line-height:1.33;letter-spacing:-1.1px}
+ .hero .eyebrow{font-size:11px}.hero-description{font-size:18px}
+ .rail-intro h2{font-size:21px}.rail-item{font-size:13px}
+ .rail-mark{display:none}
+ .section-heading h2{font-size:33px;letter-spacing:-1.1px}
+ .operation-directory{padding-inline:12px}.tool-tab-copy strong{font-size:22px}
+ .preview-region{padding-inline:15px}.preview-intro h3{font-size:34px}
+ .scan-film{width:116px;height:151px}.scan-film>svg{height:126px}
+ .scan-report{width:130px;height:141px;padding:10px}.scan-report>b{font-size:12px}
+ .report-ready{font-size:9px}.visual-panel{height:227px}
+ .dialog-inner,.contact-inner{padding:23px 18px}
+}
+@media print{body{font-size:14px}.container{width:100%}.hero h1{font-size:42px}.hero-description,.section-intro,.preview-description,.care-copy p{font-size:16px}}
+
+
+/* Keep the recording waveform inside the larger-type mobile preview. */
+@media(max-width:640px){
+ .waveform{flex:0 1 calc(100% - 49px);max-width:calc(100% - 49px);margin-left:49px;overflow:hidden}
+ .voice-recorder>div:not(.waveform){min-width:0;max-width:calc(100% - 52px)}
+ .voice-recorder strong,.voice-recorder>div>span{overflow-wrap:break-word}
+}
+</style>
+<link href="assets/melicare-v2.css" rel="stylesheet"/><link href="assets/melicare-auth.css" rel="stylesheet"/><script defer="" src="assets/melicare-auth.js"></script><script src="assets/melicare-routes.js"></script>
+<link href="assets/melicare-typography-v6.css" rel="stylesheet"/>
+
+<style id="melicare-home-refine-v8">
+/* Lighter, airier platform rail */
+.platform-rail{
+  background:linear-gradient(105deg,#ffffff 0%,#fbfdff 55%,#fffaf0 100%)!important;
+  color:#173f67!important;
+  border:1px solid #e1eaf1!important;
+  border-radius:18px!important;
+  padding:22px 26px!important;
+  box-shadow:0 8px 24px rgba(29,73,105,.045)!important;
+}
+.platform-rail:after{background:radial-gradient(ellipse at 92% 0,rgba(18,138,195,.07),transparent 55%)!important}
+.rail-mark{background:#fff6d9!important;border-color:#f3d681!important;color:#b78317!important;transform:none!important}
+.rail-mark>.icon{transform:none!important}
+.rail-intro h2{color:#173f67!important;font-size:22px!important;line-height:1.35!important;font-weight:700!important}
+.rail-intro h2 span{color:#b88416!important}
+.rail-item{color:#365f78!important;font-weight:650!important}
+.rail-item>.icon{color:#168fc8!important}
+.rail-item:hover{color:#0b7eb7!important;transform:translateY(-1px)}
+.rail-arrow{color:#a8bac7!important}
+@media(max-width:640px){.rail-intro{border-bottom-color:#e7edf2!important}}
+
+/* Home chatbot */
+.home-chat-launcher{
+ position:fixed;right:24px;bottom:24px;z-index:1200;width:58px;height:58px;border:0;border-radius:18px;
+ display:grid;place-items:center;background:linear-gradient(145deg,#128ac3,#0a6fa5);color:#fff;
+ box-shadow:0 14px 32px rgba(18,138,195,.28);cursor:pointer;transition:.18s ease;
+}
+.home-chat-launcher:hover{transform:translateY(-2px);box-shadow:0 17px 38px rgba(18,138,195,.33)}
+.home-chat-launcher .icon{width:27px;height:27px}
+.home-chat-launcher .chat-dot{position:absolute;right:8px;top:8px;width:9px;height:9px;border-radius:50%;background:#f5c54b;border:2px solid #fff}
+.home-chat-panel{
+ position:fixed;right:24px;bottom:94px;z-index:1201;width:min(390px,calc(100vw - 28px));height:min(540px,calc(100dvh - 120px));
+ background:#fff;border:1px solid #dce8ef;border-radius:20px;box-shadow:0 28px 80px rgba(20,52,86,.22);
+ display:none;flex-direction:column;overflow:hidden;
+}
+.home-chat-panel.open{display:flex}
+.home-chat-head{display:flex;align-items:center;gap:11px;padding:15px 16px;background:linear-gradient(110deg,#eef9fe,#fffaf0);border-bottom:1px solid #e6eef3}
+.home-chat-avatar{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#128ac3;color:#fff}.home-chat-avatar .icon{width:21px;height:21px}
+.home-chat-title{flex:1;min-width:0}.home-chat-title b{display:block;color:#173f67;font-size:16px}.home-chat-title span{display:block;color:#6b8191;font-size:13px;margin-top:2px}
+.home-chat-close{width:34px;height:34px;border:0;border-radius:10px;background:#fff;color:#5e7485;display:grid;place-items:center;cursor:pointer}.home-chat-close .icon{width:17px;height:17px}
+.home-chat-messages{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#fbfdff}
+.home-chat-msg{max-width:88%;padding:10px 12px;border-radius:13px 13px 13px 4px;background:#eef5f9;color:#34556a;font-size:14px;line-height:1.45}
+.home-chat-msg.user{align-self:flex-end;background:#e8f4fb;color:#1b5d82;border-radius:13px 13px 4px 13px}
+.home-chat-quick{display:flex;gap:6px;flex-wrap:wrap;padding:0 16px 10px;background:#fbfdff}
+.home-chat-quick button{border:1px solid #d8e6ef;background:#fff;color:#3f6a82;border-radius:999px;padding:7px 10px;font-size:12px;cursor:pointer}
+.home-chat-compose{display:flex;gap:8px;padding:12px;border-top:1px solid #e5edf2;background:#fff}
+.home-chat-compose input{flex:1;min-width:0;height:42px;border:1px solid #d7e3eb;border-radius:12px;padding:0 12px;font-size:14px;color:#294c61;outline:none}
+.home-chat-compose input:focus{border-color:#8cc8e3;box-shadow:0 0 0 3px rgba(18,138,195,.08)}
+.home-chat-send{width:42px;height:42px;border:0;border-radius:12px;background:#128ac3;color:#fff;display:grid;place-items:center;cursor:pointer}.home-chat-send .icon{width:18px;height:18px}
+@media(max-width:640px){.home-chat-launcher{right:15px;bottom:15px}.home-chat-panel{right:14px;bottom:82px}}
+</style>
+
+<style id="melicare-platform-rail-emphasis-v2">
+/* Emphasized but lightweight ecosystem bridge */
+.platform-rail{
+  position:relative!important;
+  padding:30px 32px!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  border-radius:22px!important;
+  background:
+    radial-gradient(circle at 12% 10%,rgba(245,197,75,.18),transparent 30%),
+    radial-gradient(circle at 92% 18%,rgba(76,201,240,.20),transparent 35%),
+    linear-gradient(118deg,#123b6d 0%,#116f9f 58%,#128ac3 100%)!important;
+  box-shadow:0 18px 42px rgba(18,59,109,.16),inset 0 1px 0 rgba(255,255,255,.12)!important;
+  isolation:isolate;
+}
+.platform-rail:before{
+  content:"";position:absolute;left:0;top:18px;bottom:18px;width:5px;border-radius:0 8px 8px 0;
+  background:linear-gradient(180deg,#f9dc82,#f5c54b);box-shadow:0 0 20px rgba(245,197,75,.30);z-index:1;
+}
+.platform-rail:after{
+  content:""!important;position:absolute!important;inset:0!important;pointer-events:none!important;
+  background:linear-gradient(90deg,rgba(255,255,255,.025),transparent 32%,rgba(255,255,255,.035))!important;
+}
+.rail-intro{gap:17px!important;position:relative;z-index:2}.rail-mark{width:50px!important;height:50px!important;border-radius:15px!important;border:1px solid rgba(255,224,137,.58)!important;background:rgba(255,222,123,.14)!important;color:#ffdf7b!important;box-shadow:0 8px 22px rgba(0,0,0,.08)!important;transform:none!important}.rail-mark>.icon{width:27px!important;height:27px!important;transform:none!important}.rail-intro h2{font-size:25px!important;line-height:1.28!important;font-weight:750!important;letter-spacing:-.55px!important;color:#fff!important}.rail-intro h2 span{color:#ffe08a!important}.rail-flow{position:relative;z-index:2;gap:18px!important}.rail-item{color:#f5fbff!important;font-weight:700!important;font-size:17px!important;line-height:1.4!important;transition:transform .18s ease,color .18s ease!important}.rail-item>.icon{width:27px!important;height:27px!important;color:#bdeaff!important;filter:drop-shadow(0 2px 5px rgba(0,0,0,.08))}.rail-item:hover{color:#ffe08a!important;transform:translateY(-2px)!important}.rail-arrow{color:rgba(255,255,255,.52)!important}.rail-arrow .icon{width:19px!important;height:19px!important}
+@media(max-width:820px){.platform-rail{padding:25px 22px!important}.rail-intro h2{font-size:21px!important}.rail-mark{width:42px!important;height:42px!important}.rail-mark>.icon{width:23px!important;height:23px!important}.rail-item{font-size:15px!important}.rail-item>.icon{width:23px!important;height:23px!important}}
+@media(max-width:640px){.platform-rail{padding:22px 18px 24px!important;border-radius:18px!important}.platform-rail:before{top:15px;bottom:15px;width:4px}.rail-intro{padding-bottom:16px!important;border-bottom:1px solid rgba(255,255,255,.16)!important}.rail-intro h2{font-size:20px!important}.rail-mark{width:38px!important;height:38px!important;border-radius:12px!important}.rail-flow{gap:7px!important}.rail-item{font-size:14px!important;gap:7px!important}.rail-item>.icon{width:22px!important;height:22px!important}}
+</style>
+
+<style id="melicare-home-refinement-v12">
+/* Hero typography: modern, warmer and more distinctive than the application UI. */
+.hero h1{font-family:"Plus Jakarta Sans",sans-serif;font-weight:700;letter-spacing:-2px}
+.hero-description{font-family:"Manrope","Plus Jakarta Sans",sans-serif;font-weight:600;line-height:1.52;max-width:610px;color:#405f72;letter-spacing:-.15px}
+.hero-description-line{display:block;margin-top:5px;color:#274f69;font-weight:650}
+
+/* Dynamic hero illustration without external image assets. */
+.hero-art{animation:mcHeroFloat 6.5s ease-in-out infinite;transform-origin:50% 55%}
+.hero-halo{animation:mcHaloPulse 5s ease-in-out infinite}
+.hero-svg .sculpture{animation:mcCoreFloat 4.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.hero-svg>circle{transform-box:fill-box;transform-origin:center;animation:mcNodePulse 3.4s ease-in-out infinite}
+.hero-svg>circle:nth-of-type(2){animation-delay:.7s}
+.hero-svg>circle:nth-of-type(3){animation-delay:1.3s}
+@keyframes mcHeroFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-9px,0)}}
+@keyframes mcHaloPulse{0%,100%{opacity:.7;transform:scale(.98)}50%{opacity:1;transform:scale(1.045)}}
+@keyframes mcCoreFloat{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes mcNodePulse{0%,100%{opacity:.72;scale:.92}50%{opacity:1;scale:1.16}}
+
+/* Elegant platform bridge: noticeable through contrast and spacing, not visual weight. */
+.platform-rail{background:linear-gradient(105deg,#ffffff 0%,#f5fbff 56%,#fff9e9 100%);color:var(--navy);border:1px solid #dceaf2;border-radius:20px;padding:22px 27px;box-shadow:0 14px 34px rgba(20,69,96,.07)}
+.platform-rail:before{content:"";position:absolute;left:0;top:20%;bottom:20%;width:4px;border-radius:0 5px 5px 0;background:linear-gradient(180deg,var(--blue),var(--yellow))}
+.platform-rail:after{background:radial-gradient(circle at 88% 20%,rgba(18,138,195,.10),transparent 35%),radial-gradient(circle at 8% 80%,rgba(245,197,75,.12),transparent 28%)}
+.rail-mark{width:44px;height:44px;border:1px solid #d8e9f2;background:#eaf7fd;color:var(--blue);box-shadow:0 6px 16px rgba(18,138,195,.08)}
+.rail-intro h2{color:var(--navy);font-size:22px}.rail-intro h2 span{color:#b78115}
+.rail-item{color:#365d73;font-weight:650}.rail-item>.icon{color:var(--blue)}
+.rail-item:hover{color:#0d78ad}.rail-arrow{color:#9bb5c4}
+
+/* Tool introduction dialogs: icon and product name form one clean identity row. */
+.detail-dialog .dialog-tool-heading{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.detail-dialog .dialog-tool-heading .dialog-icon{flex:0 0 49px}
+.detail-dialog .dialog-tool-heading h2{margin:0;min-width:0;line-height:1}
+.detail-dialog .dialog-tool-heading .tool-wordmark{font-family:"Manrope","Plus Jakarta Sans",sans-serif;font-size:31px;font-weight:800;letter-spacing:-1.15px;line-height:1.05}
+.detail-dialog .dialog-tool-heading .tool-wordmark .meli-prefix{font-family:inherit;font-weight:800;color:#173f5d}
+.detail-dialog .dialog-tool-heading .tool-wordmark .tool-suffix{font-family:inherit;font-weight:650;letter-spacing:-.8px;color:var(--accent,var(--blue))}
+.detail-dialog .dialog-tool-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:8px}
+.detail-dialog .dialog-tool-top .dialog-tool-heading{margin-bottom:0;flex:1}
+.detail-dialog .dialog-tool-top .dialog-close{flex:0 0 36px;margin-top:6px}
+@media(max-width:640px){.detail-dialog .dialog-tool-heading .tool-wordmark{font-size:27px}.detail-dialog .dialog-tool-heading{gap:11px}.detail-dialog .dialog-tool-heading .dialog-icon{width:44px;height:44px;flex-basis:44px}}
+
+/* Make clinical journey labels read as primary milestones. */
+.stage-label{padding:9px 11px;margin-bottom:15px;min-height:48px;border-radius:14px;background:#fff;border:1px solid #dce8ef;box-shadow:0 5px 16px rgba(21,65,88,.045)}
+.stage-label>span{width:30px;height:30px;background:var(--tint,#eef7fb);border-color:var(--edge,#d7e8f1);color:var(--accent,var(--blue));font-weight:750}
+.stage-label h3{font-family:var(--display);font-size:20px;font-weight:750;color:var(--navy);letter-spacing:-.25px}
+.care-stage:not(:last-child) .stage-label:after{color:var(--accent,var(--blue));opacity:.55}
+
+@media(max-width:760px){.hero-description{font-size:18px;line-height:1.5}.platform-rail{padding:20px}.stage-label h3{font-size:18px}}
+@media(prefers-reduced-motion:reduce){.hero-art,.hero-halo,.hero-svg .sculpture,.hero-svg>circle{animation:none!important}}
+</style>
+<link rel="stylesheet" href="assets/melicare-request-fixes.css"/>
+<link rel="stylesheet" href="assets/melicare-fonts-local.css"/>
+<link rel="stylesheet" href="assets/melicare-unified-final.css"/>
+<link rel="stylesheet" href="assets/melicare-page-fixes-v2.css"/>
+<link rel="stylesheet" href="assets/melicare-scroll-carousel.css"/>
+<link rel="icon" href="assets/icons/favicon.ico" sizes="any"/>
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="assets/icons/icon-32.png" type="image/png" sizes="32x32"/>
+<link rel="apple-touch-icon" href="assets/icons/icon-180.png" sizes="180x180"/>
+<script defer src="assets/melicare-scroll-repair.js"></script>
+<link rel="stylesheet" href="assets/melicare-final-upload-cardio.css"/>
+</head>
+<body id="mcTypography" class="mc-v2 mc-home" data-module="MELICARE" id="dau-trang">
+<svg aria-hidden="true" class="icon-sprite" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="i-arrow" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></symbol><symbol id="i-up-right" viewbox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"></path></symbol><symbol id="i-chevron" viewbox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></symbol><symbol id="i-chevron-down" viewbox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></symbol><symbol id="i-calendar" viewbox="0 0 24 24"><rect height="16" rx="3" width="17" x="3.5" y="5"></rect><path d="M7 3v4m10-4v4M4 10h16m-9 3v5m-2.5-2.5h5"></path></symbol><symbol id="i-invoice" viewbox="0 0 24 24"><path d="M6 3h12a1 1 0 0 1 1 1v17l-3-2-4 2-4-2-3 2V4a1 1 0 0 1 1-1Z"></path><path d="M8 7h8M8 11h6m-6 4h2m3 0h3"></path></symbol><symbol id="i-mic" viewbox="0 0 24 24"><rect height="12" rx="3" width="6" x="9" y="2.5"></rect><path d="M5.5 10.5v1a6.5 6.5 0 0 0 13 0v-1M12 18v3m-3 0h6"></path></symbol><symbol id="i-book" viewbox="0 0 24 24"><path d="M12 5c-3.5-2.5-6.5-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-2.5-1-5.5-1.5-9 1Zm0 0v15M6 8h3m-3 4h3m6-4h3m-3 4h3"></path></symbol><symbol id="i-scan" viewbox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3m8 0h3a2 2 0 0 0 2-2v-3M3 12h18"></path><path d="m8 8 4-2 4 2v8l-4 2-4-2Z"></path></symbol><symbol id="i-stethoscope" viewbox="0 0 24 24"><path d="M4 3v5a5 5 0 0 0 10 0V3M3 3h3m6 0h3M9 13v3a5 5 0 0 0 10 0v-2"></path><circle cx="19" cy="11.5" r="2.5"></circle></symbol><symbol id="i-heart" viewbox="0 0 24 24"><path d="M20.3 4.8a5.2 5.2 0 0 0-7.3 0l-1 1-1-1a5.2 5.2 0 0 0-7.3 7.4L12 21l8.3-8.8a5.2 5.2 0 0 0 0-7.4Z"></path><path d="M3 12h4l2-4 4 8 2-4h6"></path></symbol><symbol id="i-chip" viewbox="0 0 24 24"><rect height="12" rx="3" width="12" x="6" y="6"></rect><path d="M9 2v4m6-4v4M9 18v4m6-4v4M2 9h4m-4 6h4m12-6h4m-4 6h4"></path><rect height="5" rx="1" width="5" x="9.5" y="9.5"></rect></symbol><symbol id="i-hospital" viewbox="0 0 24 24"><path d="M7 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21V9h4m10 0h4v12M2 21h20M12 6v5m-2.5-2.5h5M10 21v-5h4v5"></path></symbol><symbol id="i-shield" viewbox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6Z"></path><path d="m8.5 12 2.5 2.5 4.5-5"></path></symbol><symbol id="i-check" viewbox="0 0 24 24"><path d="m5 12 4 4L19 6"></path></symbol><symbol id="i-close" viewbox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"></path></symbol><symbol id="i-menu" viewbox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></symbol><symbol id="i-users" viewbox="0 0 24 24"><circle cx="9" cy="7" r="3"></circle><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6m2 5a5 5 0 0 1 3 4v2"></path></symbol><symbol id="i-chart" viewbox="0 0 24 24"><path d="M3 3v18h18M7 16l4-5 4 2 5-7"></path></symbol><symbol id="i-file" viewbox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Zm0 0v6h6M8 13h8m-8 4h5"></path></symbol><symbol id="i-upload" viewbox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"></path></symbol><symbol id="i-sparkle" viewbox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5ZM20 2v4m-2-2h4"></path></symbol><symbol id="i-brain" viewbox="0 0 24 24"><path d="M12 4c-3-3-6 0-5 3-4-1-6 5-3 7-1 4 3 7 6 5l2 2 2-2c3 2 7-1 6-5 3-2 1-8-3-7 1-3-2-6-5-3Zm0 0v17M7 7l2 3m-5 4 4-1m9-6-2 3m5 4-4-1"></path></symbol><symbol id="i-drop" viewbox="0 0 24 24"><path d="M12 2c-2 4-7 8-7 13a7 7 0 0 0 14 0c0-5-5-9-7-13Z"></path><path d="M8 15a4 4 0 0 0 4 4"></path></symbol><symbol id="i-info" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6m0-10v.1"></path></symbol><symbol id="i-grid" viewbox="0 0 24 24"><rect height="7" rx="2" width="7" x="3" y="3"></rect><rect height="7" rx="2" width="7" x="14" y="3"></rect><rect height="7" rx="2" width="7" x="3" y="14"></rect><rect height="7" rx="2" width="7" x="14" y="14"></rect></symbol><symbol id="i-clock" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></symbol><symbol id="i-chat" viewbox="0 0 24 24"><path d="M21 11.3a8.3 8.3 0 0 1-8.6 8.1 10 10 0 0 1-3.6-.7L3 21l1.8-5.2A7.6 7.6 0 0 1 3 10.9 8.4 8.4 0 0 1 11.6 3h.8a8.3 8.3 0 0 1 8.6 8.3Z"></path><path d="M8 9h8M8 13h5"></path></symbol></defs></svg>
+<a class="skip-link" href="#noi-dung">Chuyển đến nội dung</a>
+<header class="site-header"><div class="container header-inner"><a aria-label="MELICARE — về đầu trang" class="brand" href="#dau-trang"><svg aria-hidden="true" class="brand-symbol" viewbox="0 0 40 40"><path d="M14 3h6a5 5 0 0 1 5 5v6h7a5 5 0 0 1 5 5v6H26a3 3 0 0 1-3-3V11a3 3 0 0 0-3-3h-6Z" fill="currentColor"></path><path d="M26 37h-6a5 5 0 0 1-5-5v-6H8a5 5 0 0 1-5-5v-6h11a3 3 0 0 1 3 3v11a3 3 0 0 0 3 3h6Z" fill="#f5c54b"></path></svg><span class="brand-type"><span class="brand-word">MELI<span class="brand-light">CARE</span></span><span class="brand-tagline">AI FOR HEALTHCARE</span></span></a>
+<nav aria-label="Điều hướng chính" class="desktop-nav"><a href="#van-hanh">Vận hành bệnh viện thông minh</a><a href="#kham-chua-benh">Khám chữa bệnh thông minh</a><button aria-haspopup="dialog" class="contact-button" data-contact="" type="button">Liên hệ <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></button></nav>
+<div class="mc-home-account"><button aria-label="Đăng nhập MELICARE" class="mc-account-button" data-mc-account="" type="button"><svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg><span>Đăng nhập</span></button></div><button aria-controls="mobile-nav" aria-expanded="false" aria-label="Mở menu" class="menu-toggle" type="button"><svg aria-hidden="true" class="icon"><use href="#i-menu"></use></svg></button></div>
+<nav aria-label="Điều hướng trên điện thoại" class="mobile-nav" hidden="" id="mobile-nav"><a href="#van-hanh">Vận hành bệnh viện thông minh <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a><a href="#kham-chua-benh">Khám chữa bệnh thông minh <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a><button aria-haspopup="dialog" data-contact="" type="button">Liên hệ <svg aria-hidden="true" class="icon"><use href="#i-up-right"></use></svg></button></nav></header>
+<main id="noi-dung">
+<section aria-labelledby="hero-title" class="hero"><div class="container"><div class="hero-grid"><div class="hero-copy"><p class="eyebrow"><span class="eyebrow-dot"></span>NỀN TẢNG AI TOÀN DIỆN CHO BỆNH VIỆN</p><h1 id="hero-title"><span class="hero-line">Vận hành tinh gọn.</span><span class="hero-line headline-accent">Chăm sóc <span class="headline-mark">thông minh.</span></span></h1><p class="hero-description">Kết nối sức mạnh AI với từng hoạt động bệnh viện<br/><span class="hero-description-line">từ tối ưu vận hành đến hỗ trợ bác sỹ chăm sóc người bệnh.</span></p></div><div aria-label="Minh họa lõi AI kết hợp biểu tượng y tế, kết nối vận hành và chăm sóc bệnh nhân." class="hero-art" role="img">
+<div class="hero-halo"></div>
+<svg aria-hidden="true" class="hero-svg" viewbox="0 0 620 470">
+<defs>
+<lineargradient id="glassFront" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffffff"></stop><stop offset=".30" stop-color="#fff9e5"></stop><stop offset=".61" stop-color="#f8d776"></stop><stop offset="1" stop-color="#edb744"></stop></lineargradient>
+<lineargradient id="glassSide" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffe8a9"></stop><stop offset=".55" stop-color="#e4ad35"></stop><stop offset="1" stop-color="#c49330"></stop></lineargradient>
+<lineargradient id="coreFace" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#41b7e8"></stop><stop offset=".52" stop-color="#187ba6"></stop><stop offset="1" stop-color="#185e88"></stop></lineargradient>
+<lineargradient id="coreEdge" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#beddeb"></stop><stop offset=".3" stop-color="#5a9fc4"></stop><stop offset="1" stop-color="#14446a"></stop></lineargradient>
+<lineargradient id="fadeLine"><stop stop-color="#c6e4f5" stop-opacity="0"></stop><stop offset=".38" stop-color="#73badd" stop-opacity=".8"></stop><stop offset=".73" stop-color="#73badd" stop-opacity=".65"></stop><stop offset="1" stop-color="#c6e4f5" stop-opacity="0"></stop></lineargradient>
+<lineargradient id="ecgGrad"><stop stop-color="#cee7f5" stop-opacity="0"></stop><stop offset=".28" stop-color="#63b4db"></stop><stop offset=".7" stop-color="#5fa8d0"></stop><stop offset="1" stop-color="#cee7f5" stop-opacity="0"></stop></lineargradient>
+<radialgradient id="aura"><stop stop-color="#abdff5" stop-opacity=".35"></stop><stop offset="1" stop-color="#e6f6ff" stop-opacity="0"></stop></radialgradient>
+<filter height="290%" id="artShadow" width="260%" x="-80%" y="-80%"><fegaussianblur stddeviation="15"></fegaussianblur></filter>
+<filter height="230%" id="crossShadow" width="220%" x="-50%" y="-50%"><fedropshadow dx="8" dy="18" flood-color="#497789" flood-opacity=".14" stddeviation="18"></fedropshadow></filter>
+<filter height="220%" id="coreShadow" width="220%" x="-50%" y="-50%"><fedropshadow dx="1" dy="11" flood-color="#244963" flood-opacity=".2" stddeviation="10"></fedropshadow></filter>
+</defs>
+<ellipse cx="322" cy="255" fill="url(#aura)" rx="278" ry="230"></ellipse>
+<ellipse cx="330" cy="392" fill="#4c95b6" filter="url(#artShadow)" opacity=".14" rx="125" ry="19"></ellipse>
+<g fill="none" stroke="url(#fadeLine)">
+<ellipse cx="326" cy="243" rx="239" ry="121" stroke-width="1" transform="rotate(-22 326 243)"></ellipse>
+<ellipse cx="326" cy="243" rx="251" ry="148" stroke-dasharray="3 7" stroke-width=".8" transform="rotate(26 326 243)"></ellipse>
+<ellipse cx="326" cy="243" opacity=".5" rx="170" ry="185" stroke-width=".8" transform="rotate(18 326 243)"></ellipse>
+</g>
+<path d="M24 279h67l15-14 16 28 19-54 20 72 18-32h39" fill="none" stroke="url(#ecgGrad)" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M413 261h28l15-17 11 25 16-42 17 55 14-21h80" fill="none" stroke="url(#ecgGrad)" stroke-linejoin="round" stroke-width="2"></path>
+<g class="sculpture" transform="translate(330 231) rotate(-10)">
+<path d="M-42-148h61q20 0 20 20v58h59q20 0 20 20v61q0 20-20 20H39v59q0 20-20 20h-61q-20 0-20-20V31h-58q-20 0-20-20v-61q0-20 20-20h58v-58q0-20 20-20Z" fill="url(#glassSide)" transform="translate(17 22)"></path>
+<path d="M-42-148h61q20 0 20 20v58h59q20 0 20 20v61q0 20-20 20H39v59q0 20-20 20h-61q-20 0-20-20V31h-58q-20 0-20-20v-61q0-20 20-20h58v-58q0-20 20-20Z" fill="url(#glassFront)" filter="url(#crossShadow)" stroke="#ffffff" stroke-opacity=".87" stroke-width="1.5"></path>
+<path d="M-48-133h62q12 0 12 12v67h67q10 0 10 11" fill="none" opacity=".8" stroke="#fff" stroke-width="2"></path>
+<path d="M-115 17h68v69" fill="none" opacity=".35" stroke="#fff" stroke-width="1"></path>
+<g fill="none" opacity=".62" stroke="#b28f37" stroke-width="1.2">
+<path d="M-13-132v50m-13-39v39m26-25v25M-13 47v48m-13-48v30m26-30v42M-115-18h48m-33-13h33m-41 26h41M45-18h50M45-31h35M45-5h43"></path>
+<circle cx="-13" cy="-134" r="2"></circle><circle cx="-26" cy="-123" r="2"></circle><circle cx="0" cy="-109" r="2"></circle><circle cx="-13" cy="98" r="2"></circle><circle cx="-26" cy="80" r="2"></circle><circle cx="0" cy="92" r="2"></circle>
+</g>
+<rect fill="url(#coreEdge)" height="111" rx="24" transform="translate(5 7)" width="111" x="-65" y="-72"></rect>
+<rect fill="url(#coreFace)" filter="url(#coreShadow)" height="111" rx="24" stroke="#80bfdc" stroke-width="1" width="111" x="-65" y="-72"></rect>
+<rect fill="none" height="97" rx="19" stroke="#d1eafd" stroke-opacity=".16" width="97" x="-58" y="-65"></rect>
+<g aria-label="AI chăm sóc sức khỏe" transform="translate(-9.5 -16.5)">
+<path d="M0 33 C-8 27 -37 8 -37 -12 C-37 -31 -14 -35 0 -18 C14 -35 37 -31 37 -12 C37 8 8 27 0 33Z" fill="#ffffff" fill-opacity=".025" stroke="#ffdf76" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="#fff" transform="translate(-20 15) scale(0.0402414 -0.0402414)"><path d="M497 133H219L173 0H26L277 699H440L691 0H543ZM459 245 358 537 257 245Z" transform="translate(0 0)"/><path d="M209 698V0H69V698Z" transform="translate(716 0)"/></g>
+</g>
+<circle cx="25" cy="-53" fill="#ffdf76" r="3"></circle>
+</g>
+<g transform="translate(124 121)"><circle fill="#fff" fill-opacity=".88" r="27"></circle><circle fill="none" r="26.5" stroke="#c3deec"></circle><g fill="none" stroke="#3c9ec6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(-12 -12)"><use height="24" href="#i-hospital" width="24"></use></g></g>
+<path d="m146 130 52 22" fill="none" stroke="#b8d9eb" stroke-dasharray="3 5" stroke-width="1"></path>
+<text fill="#618197" font-family="Inter,Arial,sans-serif" font-size="11" x="86" y="166">Vận hành</text>
+<g transform="translate(496 319)"><circle fill="#fff" fill-opacity=".90" r="29"></circle><circle fill="none" r="28.5" stroke="#c3deec"></circle><g fill="none" stroke="#3c9ec6" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="translate(-13 -13)"><use height="26" href="#i-heart" width="26"></use></g></g>
+<path d="m424 307 44 7" fill="none" stroke="#b8d9eb" stroke-dasharray="3 5" stroke-width="1"></path>
+<text fill="#618197" font-family="Inter,Arial,sans-serif" font-size="11" x="472" y="364">Chăm sóc</text>
+<circle cx="477" cy="133" fill="#edbe4c" r="4.5"></circle><circle cx="477" cy="133" fill="none" r="10" stroke="#f3dfa3" stroke-width="1"></circle>
+<circle cx="194" cy="363" fill="#6fbbde" r="3.5"></circle><circle cx="415" cy="70" fill="#bbd9ed" r="2.5"></circle>
+<text fill="#7b9bab" font-family="Inter,Arial,sans-serif" font-size="10" letter-spacing="3" text-anchor="middle" x="325" y="432">ARTIFICIAL INTELLIGENCE × HEALTHCARE</text>
+</svg></div></div>
+<section aria-labelledby="rail-title" class="platform-rail"><div class="rail-intro"><span class="rail-mark"><svg aria-hidden="true" class="icon"><use href="#i-grid"></use></svg></span><h2 id="rail-title">Một nền tảng,<br/> <span>kết nối toàn diện.</span></h2></div><div class="rail-flow"><a class="rail-item" href="#van-hanh"><svg aria-hidden="true" class="icon"><use href="#i-hospital"></use></svg><span>Vận hành<br/>bệnh viện</span></a><span aria-hidden="true" class="rail-arrow"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></span><a class="rail-item" href="#kham-chua-benh"><svg aria-hidden="true" class="icon"><use href="#i-stethoscope"></use></svg><span>Hỗ trợ<br/>chuyên môn</span></a><span aria-hidden="true" class="rail-arrow"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></span><a class="rail-item" href="#cham-soc-hau-dieu-tri"><svg aria-hidden="true" class="icon"><use href="#i-heart"></use></svg><span>Chăm sóc<br/>người bệnh</span></a></div></section></div></section>
+<section aria-labelledby="operations-title" class="operations container" id="van-hanh"><div class="section-heading"><div><p class="section-number"><span>01</span> SMART OPERATIONS</p><h2 id="operations-title">Vận hành bệnh viện<br/><span>thông minh.</span></h2></div><p class="section-intro">Giảm thao tác thủ công. Kết nối thông tin.<br/>Trợ lý AI đồng hành cùng công việc hằng ngày của bệnh viện.</p></div><div class="operation-workspace"><div class="operation-directory"><p class="directory-heading"><span>CHỌN CÔNG CỤ</span><span>04</span></p><div aria-label="Công cụ vận hành bệnh viện" class="tool-tabs" role="tablist"><button aria-controls="panel-melior" aria-label="MELIOR — Xếp lịch phòng mổ thông minh" aria-selected="true" class="tool-tab is-active tool-theme-melior" data-tab="melior" id="tab-melior" role="tab" tabindex="0" type="button"><span class="tool-icon"><svg aria-hidden="true" class="icon"><use href="#i-calendar"></use></svg></span><span class="tool-tab-copy"><strong class="tool-wordmark"><span class="meli-prefix">MELI</span><span class="tool-suffix">OR</span></strong><span class="tool-subtitle">Xếp lịch phòng mổ thông minh</span></span><span class="tool-tab-arrow"><svg aria-hidden="true" class="icon"><use href="#i-up-right"></use></svg></span></button><button aria-controls="panel-meliocr" aria-label="MELIOCR — Đọc hóa đơn, nhập dữ liệu" aria-selected="false" class="tool-tab tool-theme-meliocr" data-tab="meliocr" id="tab-meliocr" role="tab" tabindex="-1" type="button"><span class="tool-icon"><svg aria-hidden="true" class="icon"><use href="#i-invoice"></use></svg></span><span class="tool-tab-copy"><strong class="tool-wordmark"><span class="meli-prefix">MELI</span><span class="tool-suffix">OCR</span></strong><span class="tool-subtitle">Đọc hóa đơn, nhập dữ liệu</span></span><span class="tool-tab-arrow"><svg aria-hidden="true" class="icon"><use href="#i-up-right"></use></svg></span></button><button aria-controls="panel-melivoice" aria-label="MELIVoice — Giọng nói → Hồ sơ EMR" aria-selected="false" class="tool-tab tool-theme-melivoice" data-tab="melivoice" id="tab-melivoice" role="tab" tabindex="-1" type="button"><span class="tool-icon"><svg aria-hidden="true" class="icon"><use href="#i-mic"></use></svg></span><span class="tool-tab-copy"><strong class="tool-wordmark"><span class="meli-prefix">MELI</span><span class="tool-suffix">Voice</span></strong><span class="tool-subtitle">Giọng nói → Hồ sơ EMR</span></span><span class="tool-tab-arrow"><svg aria-hidden="true" class="icon"><use href="#i-up-right"></use></svg></span></button><button aria-controls="panel-meliguide" aria-label="MELIGuide — Hỏi đáp văn bản y tế, bảo hiểm" aria-selected="false" class="tool-tab tool-theme-meliguide" data-tab="meliguide" id="tab-meliguide" role="tab" tabindex="-1" type="button"><span class="tool-icon"><svg aria-hidden="true" class="icon"><use href="#i-book"></use></svg></span><span class="tool-tab-copy"><strong class="tool-wordmark"><span class="meli-prefix">MELI</span><span class="tool-suffix">Guide</span></strong><span class="tool-subtitle">Hỏi đáp văn bản y tế, bảo hiểm</span></span><span class="tool-tab-arrow"><svg aria-hidden="true" class="icon"><use href="#i-up-right"></use></svg></span></button></div><p class="directory-note"><svg aria-hidden="true" class="icon"><use href="#i-sparkle"></use></svg><span>Chọn một trợ lý AI để xem cách hoạt động.</span></p></div> <div class="preview-region"><div aria-labelledby="tab-melior" class="tool-panel tool-theme-melior" id="panel-melior" role="tabpanel" tabindex="0"><div class="preview-intro"><div><h3 class="tool-wordmark"><span class="meli-prefix">MELI</span><span class="tool-suffix">OR</span></h3><span class="preview-eyebrow">Xếp lịch phòng mổ thông minh</span></div><button class="text-button" data-detail="melior" type="button">Mở ứng dụng <svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></button></div><p class="preview-description">Điều phối phòng mổ, nhân sự và khung thời gian để hạn chế xung đột và theo dõi kế hoạch phẫu thuật tập trung.</p><div class="app-window or-app"><div class="app-head"><span class="app-title"><span aria-hidden="true" class="window-dots"><i></i><i></i><i></i></span>Lịch phòng mổ</span><span class="app-badge"><i></i>Lịch minh họa</span></div>
+<div class="or-toolbar"><div class="mini-tabs"><button aria-pressed="true" class="mini-tab is-active" data-schedule="day" type="button">Theo ngày</button><button aria-pressed="false" class="mini-tab" data-schedule="week" type="button">Theo tuần</button></div><span class="toolbar-note"><svg aria-hidden="true" class="icon"><use href="#i-calendar"></use></svg> Kế hoạch phẫu thuật</span></div>
+<div aria-label="Lịch phòng mổ minh họa. Có thể cuộn ngang khi màn hình hẹp." class="schedule-scroll" role="region" tabindex="0"><div class="schedule" data-schedule-view="day"><div class="time-axis"><span>Phòng mổ</span><div class="axis-hours"><span style="--tick:0%">08:00</span><span style="--tick:25%">09:00</span><span style="--tick:50%">10:00</span><span style="--tick:75%">11:00</span><span style="--tick:100%">12:00</span></div></div>
+<div class="schedule-row"><div class="room"><span class="room-dot"></span>PM 01<small>Ngoại tổng quát</small></div><div class="schedule-track"><button class="case case-a" data-case="Ngoại tổng quát|PM 01|08:00 – 10:15" style="--start:0%;--span:56.25%;" type="button"><strong>Ngoại tổng quát</strong><span>08:00 – 10:15</span><small><svg aria-hidden="true" class="icon"><use href="#i-users"></use></svg> Kíp phẫu thuật 01</small></button><span class="free-slot" style="left:65%">Còn trống</span></div></div>
+<div class="schedule-row"><div class="room"><span class="room-dot blue"></span>PM 02<small>Chấn thương</small></div><div class="schedule-track"><button class="case case-b" data-case="Chấn thương chỉnh hình|PM 02|08:45 – 11:30" style="--start:18.75%;--span:68.75%;" type="button"><strong>Chấn thương chỉnh hình</strong><span>08:45 – 11:30</span><small><svg aria-hidden="true" class="icon"><use href="#i-users"></use></svg> Kíp phẫu thuật 02</small></button></div></div>
+<div class="schedule-row"><div class="room"><span class="room-dot gold"></span>PM 03<small>Tiết niệu</small></div><div class="schedule-track"><button class="case case-c" data-case="Tiết niệu|PM 03|08:00 – 09:45" style="--start:0%;--span:43.75%;" type="button"><strong>Tiết niệu</strong><span>08:00 – 09:45</span><small><svg aria-hidden="true" class="icon"><use href="#i-users"></use></svg> Kíp phẫu thuật 03</small></button><div class="open-slot"><svg aria-hidden="true" class="icon"><use href="#i-check"></use></svg> Sẵn sàng</div></div></div></div>
+<div class="week-schedule" data-schedule-view="week" hidden=""><div class="week-heading"><span></span><b>Thứ 2</b><b>Thứ 3</b><b>Thứ 4</b><b>Thứ 5</b><b>Thứ 6</b></div><div class="week-row"><b>PM 01</b><div><span class="week-case a">Ngoại tổng quát</span><small>08:00</small></div><div><span class="week-case b">Chấn thương</span><small>09:30</small></div><div><span class="week-case c">Tiết niệu</span><small>10:00</small></div><div><span class="week-case a">Ngoại tổng quát</span><small>08:00</small></div><div><span class="week-case b">Chấn thương</span><small>09:30</small></div></div><div class="week-row"><b>PM 02</b><div><span class="week-case b">Chấn thương</span><small>09:30</small></div><div><span class="week-case c">Tiết niệu</span><small>10:00</small></div><div><span class="week-case a">Ngoại tổng quát</span><small>08:00</small></div><div><span class="week-case b">Chấn thương</span><small>09:30</small></div><div><span class="week-case c">Tiết niệu</span><small>10:00</small></div></div><div class="week-row"><b>PM 03</b><div><span class="week-case c">Tiết niệu</span><small>10:00</small></div><div><span class="week-case a">Ngoại tổng quát</span><small>08:00</small></div><div><span class="week-case b">Chấn thương</span><small>09:30</small></div><div><span class="week-case c">Tiết niệu</span><small>10:00</small></div><div><span class="week-case a">Ngoại tổng quát</span><small>08:00</small></div></div></div>
+</div><p class="schedule-scroll-hint">↔ Cuộn ngang để xem đầy đủ lịch</p>
+<div class="app-bottom"><span><svg aria-hidden="true" class="icon"><use href="#i-sparkle"></use></svg> Sắp xếp phòng mổ · Thời gian · Kíp phẫu thuật</span><span class="status-tag">AI hỗ trợ</span></div></div><div class="preview-footer"><span><svg aria-hidden="true" class="icon"><use href="#i-info"></use></svg>Giao diện mô phỏng · Dữ liệu minh họa</span><span>01 / 04</span></div></div><div aria-labelledby="tab-meliocr" class="tool-panel tool-theme-meliocr" hidden="" id="panel-meliocr" role="tabpanel" tabindex="0"><div class="preview-intro"><div><h3 class="tool-wordmark"><span class="meli-prefix">MELI</span><span class="tool-suffix">OCR</span></h3><span class="preview-eyebrow">Đọc hóa đơn, tự động nhập dữ liệu</span></div><button class="text-button" data-detail="meliocr" type="button">Mở ứng dụng <svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></button></div><p class="preview-description">Chuẩn hóa thông tin từ hóa đơn thành dữ liệu có cấu trúc để người dùng kiểm tra trước khi đưa vào hệ thống.</p><div class="app-window"><div class="app-head"><span class="app-title"><span aria-hidden="true" class="window-dots"><i></i><i></i><i></i></span>Đọc &amp; nhập hóa đơn</span><span class="app-badge"><i></i>Bản xem trước</span></div>
+<div class="ocr-layout"><div class="receipt"><div class="receipt-icon"><svg aria-hidden="true" class="icon"><use href="#i-invoice"></use></svg></div><b>HÓA ĐƠN ĐIỆN TỬ</b><span>Hóa đơn mẫu · HD-001</span><div class="receipt-divider"></div><div class="receipt-line long"></div><div class="receipt-line"></div><div class="receipt-line medium"></div><div class="receipt-table"><span>Tên hàng</span><span>SL</span><span>Thành tiền</span><span>Vật tư y tế A</span><span>10</span><span>1.000.000</span><span>Vật tư y tế B</span><span>20</span><span>2.000.000</span></div><div class="receipt-total">Tổng cộng <b>3.000.000</b></div><div class="scan-line"></div></div>
+<div class="extracted"><div class="extracted-label"><svg aria-hidden="true" class="icon"><use href="#i-sparkle"></use></svg> THÔNG TIN TRÍCH XUẤT</div><label>Nhà cung cấp<input autocomplete="off" spellcheck="false" value="Nhà cung cấp mẫu"/></label><div class="field-pair"><label>Số hóa đơn<input autocomplete="off" spellcheck="false" value="HD-001"/></label><label>Số dòng hàng<input autocomplete="off" spellcheck="false" value="02"/></label></div><label>Tổng tiền (VNĐ)<input autocomplete="off" spellcheck="false" value="3.000.000"/></label><button class="demo-action" data-demo-action="ocr" type="button"><svg aria-hidden="true" class="icon"><use href="#i-check"></use></svg> Kiểm tra thông tin</button><p aria-live="polite" class="demo-inline-status" data-demo-status="ocr" role="status">Dữ liệu mẫu có thể chỉnh sửa; không lưu vào hệ thống bệnh viện.</p></div></div></div><div class="preview-footer"><span><svg aria-hidden="true" class="icon"><use href="#i-info"></use></svg>Giao diện mô phỏng · Dữ liệu minh họa</span><span>02 / 04</span></div></div><div aria-labelledby="tab-melivoice" class="tool-panel tool-theme-melivoice" hidden="" id="panel-melivoice" role="tabpanel" tabindex="0"><div class="preview-intro"><div><h3 class="tool-wordmark"><span class="meli-prefix">MELI</span><span class="tool-suffix">Voice</span></h3><span class="preview-eyebrow">Từ giọng đọc bác sỹ đến hồ sơ EMR</span></div><button class="text-button" data-detail="melivoice" type="button">Mở ứng dụng <svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></button></div><p class="preview-description">Chuyển giọng đọc của bác sỹ thành văn bản, nhận diện thông tin và hỗ trợ nhập vào hồ sơ bệnh án điện tử.</p><div class="app-window"><div class="app-head"><span class="app-title"><span aria-hidden="true" class="window-dots"><i></i><i></i><i></i></span>Giọng nói → Hồ sơ bệnh án</span><span class="app-badge"><i></i>Bản xem trước</span></div>
+<div class="voice-recorder"><button aria-label="Phát mô phỏng ghi âm" class="record-button" data-demo-action="voice" type="button"><svg aria-hidden="true" class="icon"><use href="#i-mic"></use></svg></button><div><strong>Ghi chú của bác sỹ</strong><span>Đoạn ghi âm minh họa</span></div><div class="waveform"><i style="--h:9px;--d:0.0s"></i><i style="--h:17px;--d:0.045s"></i><i style="--h:26px;--d:0.09s"></i><i style="--h:12px;--d:0.135s"></i><i style="--h:32px;--d:0.18s"></i><i style="--h:21px;--d:0.22499999999999998s"></i><i style="--h:35px;--d:0.27s"></i><i style="--h:16px;--d:0.315s"></i><i style="--h:29px;--d:0.36s"></i><i style="--h:39px;--d:0.40499999999999997s"></i><i style="--h:23px;--d:0.44999999999999996s"></i><i style="--h:14px;--d:0.495s"></i><i style="--h:33px;--d:0.54s"></i><i style="--h:21px;--d:0.585s"></i><i style="--h:36px;--d:0.63s"></i><i style="--h:25px;--d:0.6749999999999999s"></i><i style="--h:12px;--d:0.72s"></i><i style="--h:29px;--d:0.765s"></i><i style="--h:19px;--d:0.8099999999999999s"></i><i style="--h:8px;--d:0.855s"></i></div><span class="record-time">00:12</span></div>
+<div class="voice-columns"><div class="transcript"><div class="micro-label">BẢN CHÉP LỜI</div><p>“Bệnh nhân đến tái khám, sức khỏe ổn định. Tiếp tục theo dõi các chỉ số và ghi nhận diễn biến trong hồ sơ bệnh án.”</p><span class="note-pill">Nội dung minh họa</span></div><div class="emr-fields"><div class="micro-label"><svg aria-hidden="true" class="icon"><use href="#i-sparkle"></use></svg> TRƯỜNG DỮ LIỆU EMR</div><div><span>Lý do khám</span><strong>Tái khám</strong></div><div><span>Tình trạng</span><strong>Sức khỏe ổn định</strong></div><div><span>Kế hoạch</span><strong>Tiếp tục theo dõi</strong></div></div></div><div class="app-bottom"><span aria-live="polite" data-demo-status="voice" role="status"><svg aria-hidden="true" class="icon"><use href="#i-check"></use></svg> Bác sỹ kiểm tra thông tin trước khi lưu.</span><span class="status-tag">EMR</span></div></div><div class="preview-footer"><span><svg aria-hidden="true" class="icon"><use href="#i-info"></use></svg>Giao diện mô phỏng · Dữ liệu minh họa</span><span>03 / 04</span></div></div><div aria-labelledby="tab-meliguide" class="tool-panel tool-theme-meliguide" hidden="" id="panel-meliguide" role="tabpanel" tabindex="0"><div class="preview-intro"><div><h3 class="tool-wordmark"><span class="meli-prefix">MELI</span><span class="tool-suffix">Guide</span></h3><span class="preview-eyebrow">Hỏi đáp văn bản y tế và bảo hiểm</span></div><a class="text-button" href="https://medibot.leira.com.vn/login" rel="noopener noreferrer" target="_blank">Mở ứng dụng <svg aria-hidden="true" class="icon"><use href="#i-up-right"></use></svg></a></div><p class="preview-description">Tổng hợp và truy xuất nội dung từ các nguồn văn bản liên quan, giúp người dùng nhanh chóng đối chiếu thông tin cần thiết.</p><div class="app-window"><div class="app-head"><span class="app-title"><span aria-hidden="true" class="window-dots"><i></i><i></i><i></i></span>Trợ lý văn bản y tế &amp; bảo hiểm</span><span class="app-badge"><i></i>Bản xem trước</span></div>
+<div class="guide-conversation"><div class="guide-question">Tôi có thể hỏi về những loại văn bản nào?</div><div class="guide-answer"><span class="assistant-mark"><svg aria-hidden="true" class="icon"><use href="#i-sparkle"></use></svg></span><div><b>MELIGuide</b><p>Tra cứu và hỏi đáp thông tin trong văn bản khám chữa bệnh và văn bản về bảo hiểm.</p><div class="citation-chips"><span><svg aria-hidden="true" class="icon"><use href="#i-book"></use></svg> Văn bản khám chữa bệnh</span><span><svg aria-hidden="true" class="icon"><use href="#i-shield"></use></svg> Văn bản bảo hiểm</span></div></div></div><div class="guide-notice">Ví dụ giao diện; câu trả lời thực tế cần được đối chiếu với văn bản nguồn còn hiệu lực.</div></div><div class="guide-suggestions"><button data-guide="clinical" type="button">Văn bản khám chữa bệnh <svg aria-hidden="true" class="icon"><use href="#i-up-right"></use></svg></button><button data-guide="insurance" type="button">Văn bản bảo hiểm <svg aria-hidden="true" class="icon"><use href="#i-up-right"></use></svg></button></div></div><div class="preview-footer"><span><svg aria-hidden="true" class="icon"><use href="#i-info"></use></svg>Giao diện mô phỏng · Dữ liệu minh họa</span><span>04 / 04</span></div></div></div></div></section>
+<div class="clinical-band"><section aria-labelledby="clinical-title" class="clinical container" id="kham-chua-benh"><div class="section-heading"><div><p class="section-number"><span>02</span> INTELLIGENT CARE</p><h2 id="clinical-title">Khám chữa bệnh<br/><span>thông minh.</span></h2></div><p class="section-intro">AI đồng hành cùng bác sỹ trong hành trình chăm sóc.</p></div><div class="care-journey"><article class="care-stage tool-theme-melivlm"><div class="stage-label"><span>01</span><h3>Khám bệnh thông minh</h3></div><div aria-hidden="true" class="visual-panel"><div aria-hidden="true" class="clinical-visual vlm-visual"><div class="scan-film"><svg viewbox="0 0 130 132"><defs><radialgradient id="scanGlow"><stop stop-color="#638b94" stop-opacity=".3"></stop><stop offset="1" stop-color="#0f3445" stop-opacity="0"></stop></radialgradient></defs><ellipse cx="65" cy="65" fill="url(#scanGlow)" rx="63" ry="63"></ellipse><path d="M62 22v43m5-43v43M61 48l-13 15m20-15 13 15" fill="none" stroke="#88acae" stroke-linecap="round" stroke-width="3"></path><path d="M56 40c-13-2-29 19-33 38-7 29 8 36 24 27 8-4 10-14 10-27Z" fill="#719d9f" fill-opacity=".22" stroke="#a3c1c0" stroke-opacity=".65"></path><path d="M73 40c13-2 29 19 33 38 7 29-8 36-24 27-8-4-10-14-10-27Z" fill="#719d9f" fill-opacity=".22" stroke="#a3c1c0" stroke-opacity=".65"></path><path d="M41 63 30 75m20-7L33 88m15-2-11 12m50-35 11 12M80 68l17 20M82 86l11 12" opacity=".45" stroke="#b1cfca" stroke-width="1"></path><path d="M9 10h12M9 10v12m112-12h-12m12 0v12M9 122h12m-12 0v-12m112 12h-12m12 0v-12" fill="none" stroke="#93bfbd" stroke-opacity=".5"></path><path d="M13 77h104" opacity=".6" stroke="#9edfd1" stroke-dasharray="3 3"></path></svg><span>ẢNH MINH HỌA</span></div><div class="scan-report"><span class="report-ai">✦ AI ASSIST</span><b>Báo cáo hình ảnh</b><i></i><i></i><i></i><span class="report-ready">✓ Bác sỹ kiểm tra</span></div></div></div><div class="care-copy"><h4 class="tool-wordmark"><span class="meli-prefix">MELI</span><span class="tool-suffix">VLM</span></h4><p>Hỏi đáp về ảnh y tế và hỗ trợ tự động tạo báo cáo y tế.</p><button class="care-link" data-detail="melivlm" data-intro="true" type="button">Tìm hiểu MELIVLM<svg aria-hidden="true" class="icon"><use href="#i-up-right"></use></svg></button></div></article><article class="care-stage tool-theme-melidx"><div class="stage-label"><span>02</span><h3>Điều trị thông minh</h3></div><div aria-hidden="true" class="visual-panel"><div aria-hidden="true" class="clinical-visual dx-visual"><div class="dx-center"><svg aria-hidden="true" class="icon"><use href="#i-stethoscope"></use></svg></div><div class="dx-lines"></div><div class="dx-node dx-heart"><svg aria-hidden="true" class="icon"><use href="#i-heart"></use></svg><span>Tim mạch</span></div><div class="dx-node dx-brain"><svg aria-hidden="true" class="icon"><use href="#i-brain"></use></svg><span>Thần kinh</span></div><div class="dx-node dx-drop"><svg aria-hidden="true" class="icon"><use href="#i-drop"></use></svg><span>Chuyển hóa</span></div></div></div><div class="care-copy"><h4 class="tool-wordmark"><span class="meli-prefix">MELI</span><span class="tool-suffix">DX</span></h4><p>Tập hợp các công cụ AI hỗ trợ chẩn đoán theo từng nhóm bệnh.</p><button class="care-link" data-detail="melidx" data-intro="true" type="button">Tìm hiểu MELIDX<svg aria-hidden="true" class="icon"><use href="#i-up-right"></use></svg></button></div></article><article class="care-stage tool-theme-melipos" id="cham-soc-hau-dieu-tri"><div class="stage-label"><span>03</span><h3>Chăm sóc hậu điều trị</h3></div><div aria-hidden="true" class="visual-panel"><div aria-hidden="true" class="clinical-visual pos-visual"><div class="monitor-top"><span><i></i>Theo dõi sau phẫu thuật</span><b>AI</b></div><svg viewbox="0 0 280 112"><defs><lineargradient id="trendFade" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#91d1ed" stop-opacity=".20"></stop><stop offset="1" stop-color="#91d1ed" stop-opacity="0"></stop></lineargradient></defs><path d="M10 28h260M10 57h260M10 87h260" fill="none" stroke="#8bb6d2" stroke-opacity=".1"></path><path d="M12 75C35 75 40 71 54 68S75 77 92 68s27-13 43-12 21 9 36 2 25-27 41-29 35 11 55-4L267 100H12Z" fill="url(#trendFade)"></path><path d="M12 75C35 75 40 71 54 68S75 77 92 68s27-13 43-12 21 9 36 2 25-27 41-29 35 11 55-4" fill="none" stroke="#8bcbed" stroke-width="2.2"></path><path d="M211 12v87" stroke="#94c9e7" stroke-dasharray="3 4" stroke-opacity=".4"></path><circle cx="211" cy="29" fill="#f8d477" r="4"></circle><circle cx="211" cy="29" fill="none" r="9" stroke="#f0d18a" stroke-opacity=".3"></circle><text fill="#84a5aa" font-family="Inter,Arial,sans-serif" font-size="9" x="12" y="110">Diễn biến theo thời gian</text><text fill="#84a5aa" font-family="Inter,Arial,sans-serif" font-size="9" text-anchor="end" x="266" y="110">Minh họa</text></svg><span class="monitor-alert">Tín hiệu cần chú ý <span>→</span></span></div></div><div class="care-copy"><h4 class="tool-wordmark"><span class="meli-prefix">MELI</span><span class="tool-suffix">Pos</span></h4><p>Dự đoán sớm nguy cơ sau phẫu thuật, hỗ trợ theo dõi người bệnh.</p><button class="care-link" data-detail="melipos" data-intro="true" type="button">Tìm hiểu MELIPos<svg aria-hidden="true" class="icon"><use href="#i-up-right"></use></svg></button></div></article></div> <p class="clinical-note"><svg aria-hidden="true" class="icon"><use href="#i-shield"></use></svg> Công cụ hỗ trợ chuyên môn, không thay thế quyết định của bác sỹ.</p></section></div>
+</main>
+<footer class="ecosystem-footer container" id="he-sinh-thai"><div class="footer-upper"><div class="footer-copy"><p class="eyebrow">MELICARE · HEALTH INTELLIGENCE</p><p>Một hệ sinh thái. <span>Trọn hành trình chăm sóc.</span></p></div><button aria-haspopup="dialog" class="contact-button" data-contact="" type="button">Trao đổi cùng MELICARE <svg aria-hidden="true" class="icon"><use href="#i-up-right"></use></svg></button></div><div class="footer-bottom"><a aria-label="MELICARE — về đầu trang" class="brand" href="#dau-trang"><svg aria-hidden="true" class="brand-symbol" viewbox="0 0 40 40"><path d="M14 3h6a5 5 0 0 1 5 5v6h7a5 5 0 0 1 5 5v6H26a3 3 0 0 1-3-3V11a3 3 0 0 0-3-3h-6Z" fill="currentColor"></path><path d="M26 37h-6a5 5 0 0 1-5-5v-6H8a5 5 0 0 1-5-5v-6h11a3 3 0 0 1 3 3v11a3 3 0 0 0 3 3h6Z" fill="#f5c54b"></path></svg><span class="brand-type"><span class="brand-word">MELI<span class="brand-light">CARE</span></span><span class="brand-tagline">AI FOR HEALTHCARE</span></span></a><p>AI cho vận hành và chăm sóc sức khỏe.</p><a aria-label="Về đầu trang" class="footer-back" href="#dau-trang"><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div></footer><div class="meli-copyright">© 2026 MELIQ. Bảo lưu mọi quyền.</div>
+<dialog aria-describedby="dialog-description" aria-labelledby="dialog-title" class="detail-dialog" id="detail-dialog"><div class="dialog-inner"></div></dialog>
+<dialog aria-describedby="contact-description" aria-labelledby="contact-title" class="contact-dialog" id="contact-dialog"><div class="contact-inner"><div class="dialog-top"><span class="dialog-icon"><svg aria-hidden="true" class="icon"><use href="#i-chat"></use></svg></span><button aria-label="Đóng form liên hệ" class="dialog-close" data-close-contact="" type="button"><svg aria-hidden="true" class="icon"><use href="#i-close"></use></svg></button></div><p class="dialog-kicker">KẾT NỐI VỚI MELICARE</p><h2 id="contact-title">Cùng xây dựng<br/><span>bệnh viện thông minh.</span></h2><p class="contact-lead" id="contact-description">Chia sẻ nhu cầu của đơn vị để chuẩn bị nội dung trao đổi về giải pháp phù hợp.</p>
+<form class="contact-form" id="contact-form"><div class="form-grid"><label class="form-field"><span>Họ và tên <b class="required">*</b></span><input autocomplete="name" maxlength="120" name="name" placeholder="Họ và tên của bạn" required=""/></label><label class="form-field"><span>Bệnh viện / Đơn vị <b class="required">*</b></span><input autocomplete="organization" maxlength="180" name="organization" placeholder="Tên đơn vị công tác" required=""/></label><label class="form-field"><span>Email <b class="required">*</b></span><input autocomplete="email" maxlength="160" name="email" placeholder="Email liên hệ" required="" type="email"/></label><label class="form-field"><span>Số điện thoại</span><input autocomplete="tel" maxlength="30" name="phone" placeholder="Số điện thoại liên hệ" type="tel"/></label><label class="form-field full-width"><span>Giải pháp quan tâm</span><select name="solution"><option value="">Chọn giải pháp quan tâm</option><option value="Tổng thể nền tảng MELICARE">Tổng thể nền tảng MELICARE</option><option value="MELIOR">MELIOR — Xếp lịch phòng mổ thông minh</option><option value="MELIOCR">MELIOCR — Đọc hóa đơn, nhập dữ liệu</option><option value="MELIVoice">MELIVoice — Giọng nói → Hồ sơ EMR</option><option value="MELIGuide">MELIGuide — Hỏi đáp văn bản y tế, bảo hiểm</option><option value="MELIVLM">MELIVLM — Khám bệnh thông minh</option><option value="MELIDX">MELIDX — Điều trị thông minh</option><option value="MELIPos">MELIPos — Chăm sóc hậu điều trị thông minh</option></select></label><label class="form-field full-width"><span>Nội dung trao đổi</span><textarea maxlength="3000" name="message" placeholder="Mô tả nhu cầu của đơn vị. Không nhập thông tin người bệnh."></textarea></label></div><p class="form-note"><svg aria-hidden="true" class="icon"><use href="#i-info"></use></svg><span id="contact-mode-note">Form chưa kết nối máy chủ nhận liên hệ. Nội dung sẽ được tải thành tệp trên máy của bạn, không gửi đi.</span></p><button class="contact-button contact-submit" type="submit"><span id="contact-submit-label">Tải nội dung yêu cầu</span><svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></button><p aria-live="polite" class="form-status" id="contact-status" role="status"></p></form></div></dialog>
+
+<button class="home-chat-launcher" id="home-chat-launcher" type="button" aria-label="Mở trợ lý MELICARE" aria-expanded="false">
+  <svg class="icon" aria-hidden="true"><use href="#i-chat"></use></svg><span class="chat-dot" aria-hidden="true"></span>
+</button>
+<section class="home-chat-panel" id="home-chat-panel" aria-label="Chatbot MELICARE" aria-hidden="true">
+  <div class="home-chat-head"><span class="home-chat-avatar"><svg class="icon" aria-hidden="true"><use href="#i-sparkle"></use></svg></span><div class="home-chat-title"><b>Trợ lý MELICARE</b><span>Hỏi nhanh về các ứng dụng trong hệ sinh thái</span></div><button class="home-chat-close" id="home-chat-close" type="button" aria-label="Đóng chatbot"><svg class="icon"><use href="#i-close"></use></svg></button></div>
+  <div class="home-chat-messages" id="home-chat-messages"><div class="home-chat-msg">Xin chào. Tôi có thể giúp bạn tìm công cụ phù hợp trong MELICARE hoặc giải thích nhanh chức năng của từng ứng dụng.</div></div>
+  <div class="home-chat-quick"><button type="button" data-chat-q="MELIVLM làm gì?">MELIVLM</button><button type="button" data-chat-q="MELIDx gồm những gì?">MELIDx</button><button type="button" data-chat-q="MELIPos dùng để làm gì?">MELIPos</button></div>
+  <form class="home-chat-compose" id="home-chat-form"><input id="home-chat-input" autocomplete="off" placeholder="Nhập câu hỏi..."/><button class="home-chat-send" type="submit" aria-label="Gửi"><svg class="icon"><use href="#i-arrow"></use></svg></button></form>
+</section>
+<noscript><div class="noscript-notice">Bật JavaScript để chuyển giữa các bản xem trước và mở cửa sổ liên hệ. Các tên công cụ và nội dung giới thiệu vẫn hiển thị trên trang.</div></noscript>
+<script>'use strict';
+/* DEPLOYMENT
+   Set only real, deployed URLs. Unconfigured products open an information dialog.
+   The app previews are synthetic, local UI samples, not connected medical AI.
+   CONTACT_ENDPOINT may be set to your own POST endpoint accepting JSON fields
+   {name,organization,email,phone,solution,message}; validate again server-side.
+   null keeps the form local and downloads a text file, without sending data.
+*/
+const APP_LINKS=window.MELICARE_SITE.byId;
+const CONTACT_ENDPOINT=null;
+const TOOLS={"melior": {"name": "MELIOR", "icon": "calendar", "group": "Vận hành bệnh viện thông minh", "desc": "Điều phối phòng mổ, nhân sự và khung thời gian để hạn chế xung đột và theo dõi kế hoạch phẫu thuật tập trung.", "features": ["Xem lịch phẫu thuật theo phòng mổ và khung thời gian.", "Theo dõi sự phân bổ phòng mổ và kíp phẫu thuật.", "Hỗ trợ sắp xếp lịch phẫu thuật trong một không gian làm việc."]}, "meliocr": {"name": "MELIOCR", "icon": "invoice", "group": "Vận hành bệnh viện thông minh", "desc": "Chuẩn hóa thông tin từ hóa đơn thành dữ liệu có cấu trúc để người dùng kiểm tra trước khi đưa vào hệ thống.", "features": ["Đọc thông tin từ hóa đơn được cung cấp.", "Trích xuất các trường dữ liệu trên hóa đơn.", "Kiểm tra và chỉnh sửa thông tin trước khi nhập vào hệ thống."]}, "melivoice": {"name": "MELIVoice", "icon": "mic", "group": "Vận hành bệnh viện thông minh", "desc": "Chuyển giọng đọc của bác sỹ thành văn bản, nhận diện thông tin và hỗ trợ nhập vào hồ sơ bệnh án điện tử.", "features": ["Chuyển giọng đọc của bác sỹ thành văn bản.", "Nhận diện thông tin tương ứng với các trường hồ sơ bệnh án.", "Hỗ trợ nhập dữ liệu vào EMR sau khi bác sỹ kiểm tra."]}, "meliguide": {"name": "MELIGuide", "icon": "book", "group": "Vận hành bệnh viện thông minh", "desc": "Tổng hợp và truy xuất nội dung từ các nguồn văn bản liên quan, giúp người dùng nhanh chóng đối chiếu thông tin cần thiết.", "features": ["Hỏi đáp về nội dung các văn bản khám chữa bệnh.", "Tra cứu nội dung các văn bản về bảo hiểm.", "Hỗ trợ tìm hiểu thông tin; cần kiểm tra văn bản nguồn và hiệu lực áp dụng."]}, "melivlm": {"name": "MELIVLM", "icon": "scan", "group": "Khám bệnh thông minh", "desc": "Hỏi đáp về ảnh y tế và hỗ trợ tự động tạo báo cáo y tế.", "features": ["Đặt câu hỏi về nội dung trên ảnh y tế.", "Hỗ trợ khai thác thông tin phục vụ báo cáo hình ảnh.", "Tạo bản dự thảo báo cáo để bác sỹ kiểm tra, chỉnh sửa và phê duyệt."]}, "melidx": {"name": "MELIDX", "icon": "stethoscope", "group": "Điều trị thông minh", "desc": "Tập hợp các công cụ AI hỗ trợ chẩn đoán theo từng loại bệnh.", "features": ["Truy cập các công cụ chẩn đoán theo nhóm bệnh.", "Hỗ trợ bác sỹ phân tích thông tin người bệnh bằng AI.", "Cung cấp thông tin hỗ trợ quá trình chẩn đoán; không thay thế quyết định chuyên môn."]}, "melipos": {"name": "MELIPos", "icon": "heart", "group": "Chăm sóc hậu điều trị thông minh", "desc": "Dự đoán sớm nguy cơ sau phẫu thuật để hỗ trợ theo dõi và chăm sóc người bệnh.", "features": ["Phân tích thông tin phục vụ đánh giá nguy cơ sau phẫu thuật.", "Nhận diện các tín hiệu nguy cơ cần được bác sỹ xem xét.", "Hỗ trợ ưu tiên theo dõi và chăm sóc sau phẫu thuật."]}};
+const $=(sel,root=document)=>root.querySelector(sel);
+const $$=(sel,root=document)=>Array.from(root.querySelectorAll(sel));
+const icon=name=>`<svg class="icon" aria-hidden="true"><use href="#i-${name}"></use></svg>`;
+const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const wordmark=name=>`<span class="tool-wordmark"><span class="meli-prefix">MELI</span><span class="tool-suffix">${escapeHTML(name.slice(4))}</span></span>`;
+const reduceMotion=window.matchMedia('(prefers-reduced-motion:reduce)');
+const behavior=()=>reduceMotion.matches?'auto':'smooth';
+const tabs=$$('[data-tab]');
+const panels=$$('.tool-panel');
+const tablist=$('.tool-tabs');
+const wide=window.matchMedia('(min-width:1081px)');
+let currentTab='melior';
+let voiceTimer=null;
+function stopVoice(message){
+  clearTimeout(voiceTimer); voiceTimer=null;
+  const panel=$('#panel-melivoice');
+  panel.classList.remove('voice-playing');
+  const button=$('[data-demo-action="voice"]',panel);
+  button.setAttribute('aria-pressed','false');
+  button.setAttribute('aria-label','Bắt đầu mô phỏng giọng nói');
+  if(message) $('[data-demo-status="voice"]',panel).innerHTML=icon('check')+escapeHTML(message);
+}
+function activateTab(id,focus=false){
+  if(!tabs.some(t=>t.dataset.tab===id))return;
+  if(currentTab==='melivoice'&&id!=='melivoice')stopVoice('Bác sỹ kiểm tra thông tin trước khi lưu.');
+  currentTab=id;
+  tabs.forEach(t=>{
+    const active=t.dataset.tab===id;
+    t.classList.toggle('is-active',active); t.setAttribute('aria-selected',String(active));
+    t.tabIndex=active?0:-1;
+    $('#panel-'+t.dataset.tab).hidden=!active;
+    if(active&&focus)t.focus({preventScroll:true});
+  });
+  if(id==='melior')updateCalendarHint();
+}
+function setOrientation(){tablist.setAttribute('aria-orientation',wide.matches?'vertical':'horizontal');}
+setOrientation();
+wide.addEventListener('change',setOrientation);
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>activateTab(tab.dataset.tab));
+  tab.addEventListener('keydown',event=>{
+    let next;const i=tabs.indexOf(tab);
+    if(['ArrowDown','ArrowRight'].includes(event.key))next=(i+1)%tabs.length;
+    if(['ArrowUp','ArrowLeft'].includes(event.key))next=(i-1+tabs.length)%tabs.length;
+    if(event.key==='Home')next=0;if(event.key==='End')next=tabs.length-1;
+    if(next!==undefined){event.preventDefault();activateTab(tabs[next].dataset.tab,true);}
+  });
+});
+const header=$('.site-header'),toggle=$('.menu-toggle'),mobileNav=$('#mobile-nav');
+function setMenu(open){
+  toggle.setAttribute('aria-expanded',String(open));
+  toggle.setAttribute('aria-label',open?'Đóng menu':'Mở menu');
+  toggle.innerHTML=icon(open?'close':'menu');mobileNav.hidden=!open;
+}
+toggle.addEventListener('click',()=>setMenu(mobileNav.hidden));
+$$('a',mobileNav).forEach(link=>link.addEventListener('click',()=>setMenu(false)));
+wide.addEventListener('change',()=>{if(wide.matches)setMenu(false);});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!mobileNav.hidden){setMenu(false);toggle.focus();}});
+document.addEventListener('click',event=>{if(!mobileNav.hidden&&!event.composedPath().includes(header))setMenu(false);});
+/* Keep navigation state synchronized with the actual section in view. */
+const navLinks=$$('.desktop-nav>a');
+let scrollPending=false;
+function updateNavigation(){
+  header.classList.toggle('is-scrolled',window.scrollY>12);
+  let id='';
+  ['van-hanh','kham-chua-benh'].forEach(name=>{if($('#'+name).getBoundingClientRect().top<220)id=name;});
+  navLinks.forEach(a=>{const active=a.hash==='#'+id;a.classList.toggle('is-current',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
+  scrollPending=false;
+}
+window.addEventListener('scroll',()=>{if(!scrollPending){scrollPending=true;requestAnimationFrame(updateNavigation);}},{passive:true});
+updateNavigation();
+/* Native dialogs: keyboard focus, Escape, outside click, and focus restoration. */
+const detail=$('#detail-dialog'),contact=$('#contact-dialog');
+let detailTrigger=null,contactTrigger=null,detailFocusOverride=null;
+function syncScrollLock(){document.body.style.overflow=(detail.open||contact.open)?'hidden':'';}
+function restoreFocus(element){
+  if(element&&document.contains(element)&&element.getClientRects().length)element.focus({preventScroll:true});
+  else if(!wide.matches)toggle.focus({preventScroll:true});
+}
+function closeOnBackdrop(dialog){
+  dialog.addEventListener('click',event=>{
+    const r=dialog.getBoundingClientRect();
+    if(event.target===dialog&&(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom))dialog.close();
+  });
+}
+closeOnBackdrop(detail);closeOnBackdrop(contact);
+function showDialog(title,description,content,options={}){
+  detailTrigger=document.activeElement;detailFocusOverride=null;
+  detail.className='detail-dialog'+(options.id?' tool-theme-'+options.id:'');
+  const heading=options.id
+    ? `<div class="dialog-tool-top"><div class="dialog-tool-heading"><span class="dialog-icon">${icon(options.icon||'info')}</span><h2 id="dialog-title">${wordmark(title)}</h2></div><button type="button" class="dialog-close" aria-label="Đóng cửa sổ">${icon('close')}</button></div>`
+    : `<div class="dialog-top"><span class="dialog-icon">${icon(options.icon||'info')}</span><button type="button" class="dialog-close" aria-label="Đóng cửa sổ">${icon('close')}</button></div><h2 id="dialog-title">${escapeHTML(title)}</h2>`;
+  $('.dialog-inner',detail).innerHTML=`${heading}<p class="dialog-kicker">${escapeHTML(options.group||'Giao diện minh họa')}</p><p class="dialog-description" id="dialog-description">${escapeHTML(description)}</p>${content}`;
+  $('.dialog-close',detail).addEventListener('click',()=>detail.close());
+  $$('[data-close-dialog]',detail).forEach(button=>button.addEventListener('click',()=>detail.close()));
+  $$('[data-view-preview]',detail).forEach(button=>button.addEventListener('click',()=>{
+    const id=button.dataset.viewPreview;activateTab(id);detailFocusOverride=$('#tab-'+id);detail.close();
+    $('#van-hanh').scrollIntoView({behavior:behavior(),block:'start'});
+  }));
+  detail.showModal();syncScrollLock();detail.scrollTop=0;
+}
+function openTool(id,forceInfo=false){
+  const destination=APP_LINKS[id];
+  if(destination&&!forceInfo){window.location.assign(destination);return;}
+  const tool=TOOLS[id];if(!tool)return;
+  const operational=tabs.some(t=>t.dataset.tab===id);
+  let actions=operational?`<button type="button" data-view-preview="${id}">Xem giao diện ${icon('arrow')}</button>`:'<button type="button" data-close-dialog>Đóng</button>';
+  if(destination)actions+=`<a class="subtle" href="${escapeHTML(destination)}">Mở ứng dụng ${icon('arrow')}</a>`;
+  const disclaimer=operational?'Các thao tác trong bản xem trước sử dụng dữ liệu minh họa, không kết nối hệ thống bệnh viện và không xử lý dữ liệu thực.':'AI hỗ trợ chuyên môn, không thay thế quyết định của bác sỹ. Minh họa trên trang không phải kết quả chẩn đoán hoặc dự đoán cho người bệnh thực tế.';
+  const content=`<ul class="dialog-features">${tool.features.map(f=>`<li>${icon('check')}<span>${escapeHTML(f)}</span></li>`).join('')}</ul><p class="dialog-disclaimer">${escapeHTML(disclaimer)}</p><div class="dialog-actions">${actions}</div>`;
+  showDialog(tool.name,tool.desc,content,{icon:tool.icon,group:tool.group,id});
+}
+$$('[data-detail]').forEach(button=>button.addEventListener('click',()=>openTool(button.dataset.detail,button.dataset.intro==='true')));
+detail.addEventListener('close',()=>{syncScrollLock();restoreFocus(detailFocusOverride||detailTrigger);});
+/* Original app preview interactions. */
+function updateCalendarHint(){
+  const scroll=$('.schedule-scroll'),hint=$('.schedule-scroll-hint');
+  if(!$('#panel-melior').hidden)requestAnimationFrame(()=>{hint.style.display=scroll.scrollWidth>scroll.clientWidth+2?'block':'none';});
+}
+$$('[data-schedule]').forEach(button=>button.addEventListener('click',()=>{
+  $$('[data-schedule]').forEach(b=>{b.classList.toggle('is-active',b===button);b.setAttribute('aria-pressed',String(b===button));});
+  $$('[data-schedule-view]').forEach(view=>view.hidden=view.dataset.scheduleView!==button.dataset.schedule);
+  updateCalendarHint();
+}));
+window.addEventListener('resize',updateCalendarHint);updateCalendarHint();
+$$('[data-case]').forEach(button=>button.addEventListener('click',()=>{
+  const [type,room,time]=button.dataset.case.split('|');
+  const content=`<ul class="dialog-features"><li>${icon('hospital')}<span>Phòng mổ: ${escapeHTML(room)}</span></li><li>${icon('clock')}<span>Khung giờ: ${escapeHTML(time)}</span></li><li>${icon('users')}<span>Kíp phẫu thuật được thể hiện trên lịch minh họa.</span></li></ul><p class="dialog-disclaimer">Đây là ca phẫu thuật giả lập, không phải thông tin hoặc chỉ định cho bệnh nhân thực.</p><div class="dialog-actions"><button type="button" data-close-dialog>Đóng</button></div>`;
+  showDialog(type,'Chi tiết lịch phẫu thuật minh họa của MELIOR.',content,{icon:'calendar',group:'MELIOR · LỊCH MINH HỌA'});
+}));
+const ocrButton=$('[data-demo-action="ocr"]');
+ocrButton.addEventListener('click',()=>{
+  const values=$$('input',$('#panel-meliocr'));
+  const blank=values.find(input=>!input.value.trim());
+  if(blank){$('[data-demo-status="ocr"]').textContent='Vui lòng điền đầy đủ các trường dữ liệu mẫu trước khi xác nhận.';blank.focus();return;}
+  $('[data-demo-status="ocr"]').textContent='Đã xác nhận kiểm tra dữ liệu mẫu. Không lưu vào hệ thống thực.';
+  ocrButton.innerHTML=icon('check')+'Đã kiểm tra dữ liệu mẫu';
+});
+$$('input',$('#panel-meliocr')).forEach(input=>input.addEventListener('input',()=>{
+  ocrButton.innerHTML=icon('check')+'Kiểm tra thông tin';
+  $('[data-demo-status="ocr"]').textContent='Bạn đã chỉnh sửa dữ liệu mẫu. Kiểm tra lại trước khi xác nhận.';
+}));
+const voiceButton=$('[data-demo-action="voice"]');
+voiceButton.setAttribute('aria-pressed','false');
+voiceButton.addEventListener('click',()=>{
+  const panel=$('#panel-melivoice');
+  if(panel.classList.contains('voice-playing')){stopVoice('Đã dừng mô phỏng. Không truy cập micro.');return;}
+  clearTimeout(voiceTimer);panel.classList.add('voice-playing');
+  voiceButton.setAttribute('aria-pressed','true');voiceButton.setAttribute('aria-label','Dừng mô phỏng giọng nói');
+  $('[data-demo-status="voice"]').innerHTML=icon('mic')+'Đang mô phỏng chuyển giọng nói thành trường EMR…';
+  voiceTimer=setTimeout(()=>stopVoice('Mô phỏng hoàn tất. Bác sỹ kiểm tra trước khi lưu.'),4200);
+});
+$$('[data-guide]').forEach(button=>button.addEventListener('click',()=>{
+  const insurance=button.dataset.guide==='insurance';
+  $('.guide-question').textContent=insurance?'MELIGuide hỗ trợ tra cứu nội dung bảo hiểm như thế nào?':'MELIGuide hỗ trợ hỏi đáp văn bản khám chữa bệnh như thế nào?';
+  $('.guide-answer p').textContent=insurance?'MELIGuide hỗ trợ tìm và hỏi đáp thông tin trong văn bản về bảo hiểm. Khi sử dụng thực tế, cần đối chiếu nội dung và hiệu lực của văn bản nguồn.':'MELIGuide hỗ trợ tra cứu thông tin và trả lời câu hỏi dựa trên nội dung văn bản khám chữa bệnh được cung cấp. Bác sỹ cần kiểm tra lại văn bản nguồn.';
+}));
+$('.guide-answer').setAttribute('aria-live','polite');
+/* Contact: no fabricated success or silent persistence of contact details. */
+const contactForm=$('#contact-form'),contactStatus=$('#contact-status');
+if(CONTACT_ENDPOINT){
+  $('#contact-submit-label').textContent='Gửi yêu cầu liên hệ';
+  $('#contact-mode-note').textContent='Thông tin sẽ được gửi đến hệ thống nhận liên hệ của MELICARE khi bạn bấm Gửi yêu cầu. Không nhập dữ liệu người bệnh.';
+}
+$$('[data-contact]').forEach(button=>button.addEventListener('click',()=>{
+  contactTrigger=button;setMenu(false);contactStatus.textContent='';contactStatus.classList.remove('is-error');
+  contact.showModal();syncScrollLock();contact.scrollTop=0;
+}));
+$('[data-close-contact]').addEventListener('click',()=>contact.close());
+contact.addEventListener('close',()=>{syncScrollLock();restoreFocus(contactTrigger);});
+contactForm.addEventListener('input',()=>{contactStatus.textContent='';contactStatus.classList.remove('is-error');});
+contactForm.addEventListener('submit',async event=>{
+  event.preventDefault();
+  if(!contactForm.reportValidity())return;
+  const data=Object.fromEntries(new FormData(contactForm));
+  for(const key of Object.keys(data))data[key]=String(data[key]).trim();
+  const invalid=['name','organization','email'].find(key=>!data[key]);
+  if(invalid){contactForm.elements[invalid].focus();contactStatus.textContent='Vui lòng hoàn thiện các trường bắt buộc.';return;}
+  const button=$('[type="submit"]',contactForm);button.disabled=true;contactStatus.classList.remove('is-error');
+  try{
+    if(CONTACT_ENDPOINT){
+      contactStatus.textContent='Đang gửi yêu cầu…';
+      const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
+      let response;
+      try{response=await fetch(CONTACT_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data),signal:controller.signal});}finally{clearTimeout(timer);}
+      if(!response.ok)throw new Error('server');
+      contactStatus.textContent='Máy chủ đã nhận yêu cầu liên hệ của bạn.';contactForm.reset();
+    }else{
+      const text=['MELICARE — NỘI DUNG YÊU CẦU LIÊN HỆ','',`Họ và tên: ${data.name}`,`Bệnh viện / Đơn vị: ${data.organization}`,`Email: ${data.email}`,`Số điện thoại: ${data.phone||'Chưa cung cấp'}`,`Giải pháp quan tâm: ${data.solution||'Chưa chọn'}`,'','Nội dung trao đổi:',data.message||'Chưa có nội dung.','','Tệp được tạo trên thiết bị của bạn. Nội dung chưa được gửi tới MELICARE.'].join('\r\n');
+      const blob=new Blob(['\uFEFF'+text],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+      a.href=url;a.download='MELICARE_yeu_cau_lien_he.txt';a.style.display='none';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);
+      contactStatus.textContent='Đã tạo tệp nội dung yêu cầu. Kiểm tra mục tải xuống của trình duyệt; thông tin chưa được gửi đi.';
+    }
+  }catch(error){
+    contactStatus.classList.add('is-error');contactStatus.textContent=CONTACT_ENDPOINT?'Chưa gửi được yêu cầu. Hãy kiểm tra kết nối rồi thử lại; nội dung của bạn vẫn còn trong form.':'Không tạo được tệp tải xuống. Nội dung của bạn vẫn còn trong form.';
+  }finally{button.disabled=false;}
+});
+
+</script>
+
+<script id="melicare-home-chat-v1">
+(()=>{
+ const launcher=document.getElementById('home-chat-launcher'),panel=document.getElementById('home-chat-panel'),close=document.getElementById('home-chat-close'),form=document.getElementById('home-chat-form'),input=document.getElementById('home-chat-input'),messages=document.getElementById('home-chat-messages');
+ if(!launcher||!panel)return;
+ const setOpen=open=>{panel.classList.toggle('open',open);panel.setAttribute('aria-hidden',String(!open));launcher.setAttribute('aria-expanded',String(open));if(open)setTimeout(()=>input.focus(),40)};
+ launcher.addEventListener('click',()=>setOpen(!panel.classList.contains('open')));close.addEventListener('click',()=>setOpen(false));
+ const add=(text,user=false)=>{const d=document.createElement('div');d.className='home-chat-msg'+(user?' user':'');d.textContent=text;messages.appendChild(d);messages.scrollTop=messages.scrollHeight};
+ const answer=q=>{const x=q.toLowerCase();if(x.includes('vlm'))return 'MELIVLM hỗ trợ hỏi đáp trên ảnh y tế và tạo bản dự thảo báo cáo để bác sỹ kiểm tra.';if(x.includes('dx'))return 'MELIDx là nhóm công cụ AI hỗ trợ phân tích theo từng chuyên khoa và nhóm bệnh, như thần kinh, tim mạch và chuyển hóa.';if(x.includes('pos'))return 'MELIPos hỗ trợ đánh giá sớm nguy cơ biến chứng sau phẫu thuật để ưu tiên theo dõi và chăm sóc.';if(x.includes('ocr'))return 'MELIOCR đọc hóa đơn, trích xuất trường dữ liệu và cho phép kiểm tra trước khi nhập hệ thống.';if(x.includes('voice'))return 'MELIVoice chuyển giọng đọc của bác sỹ thành văn bản và hỗ trợ điền các trường EMR.';if(x.includes('or'))return 'MELIOR hỗ trợ sắp xếp lịch phòng mổ, kíp phẫu thuật và theo dõi nguồn lực.';return 'Bạn có thể hỏi tôi về MELIOR, MELIOCR, MELIVoice, MELIGuide, MELIVLM, MELIDx hoặc MELIPos.'};
+ form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q)return;add(q,true);input.value='';setTimeout(()=>add(answer(q)),180)});
+ document.querySelectorAll('[data-chat-q]').forEach(b=>b.addEventListener('click',()=>{const q=b.dataset.chatQ;add(q,true);setTimeout(()=>add(answer(q)),150)}));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open'))setOpen(false)});
+})();
+</script>
+</body></html>

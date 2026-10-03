@@ -1,0 +1,2275 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>MELIStroke — Stroke Risk Intelligence</title>
+<style>
+:root{
+  --bg:#f6f9fc;--surface:#fff;--ink:#10233f;--muted:#677b90;--line:#dbe6ef;
+  --navy:#123b6d;--blue:#2f7ff7;--green:#2b9b72;--amber:#d79b32;--red:#c84b55;
+  --shadow:0 10px 30px rgba(20,52,86,.07)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif;font-size:18px}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+
+/* ===== Header ===== */
+.appHeader{
+  position:sticky;top:0;z-index:100;height:72px;
+  display:flex;align-items:center;gap:16px;padding:0 22px;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);box-shadow:0 4px 14px rgba(20,52,86,.04)
+}
+.brand{display:flex;align-items:center;gap:10px}
+.brandMark{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(145deg,var(--navy),var(--blue));color:#fff;font-size:15px;font-weight:900}
+.brandText{font-size:19px;font-weight:900;color:var(--navy);letter-spacing:-.3px}
+.brandText span{color:var(--blue)}
+.headerSpacer{flex:1}
+.headerActions{display:flex;align-items:center;gap:8px}
+.homeBtn,.switchBtn{
+  height:42px;border:1px solid #d6e2ec;border-radius:11px;background:#f8fafc;color:#315d77;
+  display:flex;align-items:center;justify-content:center;gap:7px;font-size:15px;font-weight:850
+}
+.homeBtn{width:42px}
+.homeBtn svg,.switchBtn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.switcher{position:relative}
+.switchBtn{padding:0 12px}
+.switchMenu{
+  position:absolute;right:0;top:50px;width:245px;padding:8px;background:#fff;border:1px solid #dbe6ee;
+  border-radius:14px;box-shadow:0 18px 45px rgba(20,55,85,.17);display:none
+}
+.switcher.open .switchMenu{display:block}
+.switchMenu a{display:block;padding:9px 10px;border-radius:9px;color:#526e80;font-size:15px;font-weight:800}
+.switchMenu a:hover{background:#f2f7fa}.switchMenu a.current{background:#eaf3fb;color:#17486d}
+
+/* diagnostic navigation */
+.dxNav{
+  position:sticky;top:72px;z-index:90;
+  display:flex;justify-content:center;gap:7px;padding:8px 14px;
+  background:#fff;border-bottom:1px solid #e2eaf1;box-shadow:0 3px 10px rgba(20,52,86,.03)
+}
+.dxNav a{height:38px;padding:0 12px;border-radius:9px;display:inline-flex;align-items:center;color:#61768b;font-size:15px;font-weight:850}
+.dxNav a:hover{background:#f5f8fb;color:#173f67}
+.dxNav a.active{background:#edf5ff;color:#173f67;border:1px solid #cfe1f5}
+
+/* ===== Main ===== */
+main{max-width:1180px;margin:0 auto;padding:24px 22px 44px}
+
+/* timeline */
+.timeline{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:0 50px;margin:2px 0 22px}
+.timelineLine{position:absolute;left:18%;right:18%;top:22px;height:4px;border-radius:99px;background:#dce6ee}
+.timelineLine i{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--navy),var(--blue));transition:width .35s ease}
+.timelineStep{position:relative;z-index:1;text-align:center}
+.timelineNode{width:46px;height:46px;margin:auto;border-radius:50%;display:grid;place-items:center;background:#e8eef4;color:#76899b;border:4px solid var(--bg);box-shadow:0 0 0 1px #ccd9e3;font-size:18px;font-weight:900}
+.timelineStep.active .timelineNode,.timelineStep.done .timelineNode{background:linear-gradient(145deg,var(--navy),var(--blue));color:#fff;box-shadow:0 0 0 1px #8ab1d6,0 8px 18px rgba(47,127,247,.16)}
+.timelineStep.done .timelineNode{background:#4d7598;font-size:0}
+.timelineStep.done .timelineNode:after{content:"✓";font-size:18px}
+.timelineStep b{display:block;margin-top:9px;font-size:17px;color:#536a7e}
+.timelineStep span{display:block;margin-top:3px;font-size:14px;color:#8998a6}
+.timelineStep.active b{color:var(--navy)}
+
+/* shared panel */
+.panel,.entryCard{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.panelHead,.sectionHead{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid #e6edf3;background:linear-gradient(180deg,#fbfdff,#f7fafc)}
+.panelHead h2,.sectionHead h2{margin:0;font-size:17px;color:#173b66}
+.panelHead p,.sectionHead p{margin:4px 0 0;color:#7b8ea0;font-size:14px}
+.eyebrow{display:block;margin-bottom:5px;color:#8394a5;font-size:13px;font-weight:900;letter-spacing:.1em}
+
+/* input */
+.entryGrid{display:grid;grid-template-columns:minmax(0,1fr) 205px;gap:14px;padding:15px 16px 12px}
+.inputGroups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.inputGroup{border:1px solid #e0e8ef;border-radius:14px;padding:12px;background:#fbfdff}
+.groupTitle{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.groupIcon{width:31px;height:31px;border-radius:9px;display:grid;place-items:center;background:#eaf3fb;color:#315e7d}
+.groupIcon svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.groupTitle b{font-size:15px;color:#31536a}
+.fieldGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.field label{display:block;margin-bottom:4px;color:#667d8f;font-size:13px;font-weight:800}
+.field input,.field select{width:100%;height:36px;border:1px solid #d5e1ea;border-radius:8px;background:#fff;padding:0 8px;color:#29475d;font-size:15px}
+.field input:focus,.field select:focus{outline:none;border-color:#86b5df;box-shadow:0 0 0 3px rgba(47,127,247,.08)}
+
+.uploadSide{display:flex;flex-direction:column;justify-content:center}
+.or{display:flex;align-items:center;gap:8px;margin-bottom:9px;color:#95a2ad;font-size:13px;font-weight:900}
+.or:before,.or:after{content:"";height:1px;background:#e0e7ed;flex:1}
+.uploadBox{min-height:170px;border:1.5px dashed #b5cbdc;border-radius:14px;background:#f8fbfd;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;color:#315f7c}
+.uploadBox:hover{background:#f1f7fb}
+.uploadIcon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#eaf3fb;margin-bottom:10px}
+.uploadIcon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.uploadBox b{font-size:15px}.uploadBox span{margin-top:4px;font-size:13px;color:#8192a0}
+.fileStatus{display:none;margin-top:8px;padding:8px;border-radius:8px;background:#edf5fb;color:#496b80;font-size:13px}
+.fileStatus.show{display:block}
+.analyzeBar{display:flex;justify-content:center;padding:4px 16px 17px}
+.analyzeBtn{min-width:220px;height:44px;border:0;border-radius:11px;background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;font-size:17px;font-weight:900;box-shadow:0 8px 18px rgba(47,127,247,.18)}
+
+/* results */
+.results{display:none;margin-top:15px}
+.results.show{display:block}
+.topGrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);gap:14px}
+.metricTabs{display:flex;gap:5px}
+.metricTabs button{height:32px;padding:0 10px;border:1px solid #dce5ed;border-radius:8px;background:#fff;color:#607689;font-size:13px;font-weight:850}
+.metricTabs button.active{background:#eaf3fb;color:#174b71;border-color:#c7dcec}
+
+.chartWrap{padding:12px 14px 14px}
+.trendChart{width:100%;height:285px;display:block;background:#fbfdff;border:1px solid #e7edf3;border-radius:12px}
+.chartLegend{display:flex;gap:14px;margin-top:8px;color:#75889a;font-size:13px}
+.legendDot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:4px;background:#2f7ff7}
+.legendBand{background:#cfe0ec}
+
+.attentionList{padding:11px 14px 14px;display:grid;gap:9px}
+.attentionCard{padding:10px;border:1px solid #e1e8ef;border-radius:11px;background:#fbfdff}
+.attentionTop{display:flex;justify-content:space-between;gap:10px}
+.attentionTop b{font-size:15px;color:#31536a}
+.attentionTop small{display:block;margin-top:2px;color:#8091a0;font-size:13px}
+.statusHigh{color:#a84e54}.statusWarn{color:#8e671f}.statusGood{color:#2d7f60}
+.rangeBar{position:relative;height:10px;margin:9px 0 5px;border-radius:99px;background:linear-gradient(90deg,#e6f4ed 0 45%,#fff0d9 45% 72%,#fde5e6 72% 100%)}
+.rangeMarker{position:absolute;top:-4px;width:4px;height:18px;border-radius:99px;background:#173f70;transform:translateX(-50%)}
+.thresholdMarker{position:absolute;top:-2px;width:2px;height:14px;background:#9faeb9}
+.rangeLabels{display:flex;justify-content:space-between;color:#8a99a6;font-size:12px}
+.deltaText{margin-top:4px;color:#6f8293;font-size:13px;line-height:1.35}
+
+/* risk */
+.riskGrid{display:grid;grid-template-columns:.82fr 1.18fr;gap:14px;margin-top:14px}
+.aiRiskBody{display:flex;align-items:center;gap:16px;padding:18px}
+.aiPie{flex:0 0 140px;width:140px;height:140px;border-radius:50%;display:grid;place-items:center;position:relative;background:conic-gradient(#d89b2d 0 var(--risk),#e8eef3 var(--risk) 100%)}
+.aiPie:after{content:"";position:absolute;inset:19px;border-radius:50%;background:#fff}
+.aiPieInner{position:relative;z-index:1;text-align:center}
+.aiPieInner b{display:block;font-size:31px;color:#173b66}.aiPieInner span{font-size:12px;color:#7d8d9c}
+.aiRiskText h3{margin:0;font-size:16px;color:#173b66}.aiRiskText p{margin:6px 0 0;font-size:14px;line-height:1.55;color:#657b8e}
+
+.scaleGrid{padding:12px 14px 14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.scaleCard{padding:11px;border:1px solid #e1e8ef;border-radius:11px;background:#fbfdff}
+.scaleCard b{display:block;font-size:15px;color:#31536a}
+.scaleValue{display:flex;align-items:end;gap:6px;margin:7px 0 4px}
+.scaleValue strong{font-size:24px;color:#173b66}.scaleValue span{font-size:13px;color:#7d8d9c;margin-bottom:3px}
+.scaleCard p{margin:0;font-size:13px;color:#718595;line-height:1.4}
+.scaleNote{grid-column:1/-1;padding:9px 10px;border-radius:9px;background:#fff8ec;border:1px solid #efdfc1;color:#80642d;font-size:13px;line-height:1.45}
+
+/* bottom */
+.bottomGrid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px;margin-top:14px}
+.reasonList{padding:11px 14px 14px;display:grid;gap:9px}
+.reasonCard{border:1px solid #e1e8ef;border-radius:11px;padding:10px;background:#fbfdff}
+.reasonHeader{display:flex;justify-content:space-between;gap:10px}
+.reasonHeader b{font-size:15px;color:#31536a}.reasonHeader span{font-size:13px;font-weight:850;color:#a25155}
+.compareTrack{position:relative;height:10px;margin-top:9px;border-radius:99px;background:#edf2f5}
+.safeZone{position:absolute;left:0;top:0;bottom:0;border-radius:99px 0 0 99px;background:#dff1e8}
+.patientMarker{position:absolute;top:-4px;width:5px;height:18px;background:#c84b54;border-radius:99px;transform:translateX(-50%)}
+.thresholdLine{position:absolute;top:-2px;width:2px;height:14px;background:#60788a}
+.reasonText{margin-top:6px;font-size:13px;color:#6f8293}
+
+.lifestyleList{padding:11px 14px 14px;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.lifeCard{display:grid;grid-template-columns:38px minmax(0,1fr);gap:9px;padding:10px;border:1px solid #e1e8ef;border-radius:11px;background:#fbfdff}
+.lifeIcon{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:#eaf3fb;color:#315d7a}
+.lifeIcon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.lifeCard b{display:block;font-size:14px;color:#294f67}.lifeCard span{display:block;margin-top:3px;font-size:13px;color:#718595;line-height:1.4}
+
+.disclaimer{margin-top:14px;padding:11px 13px;border-radius:11px;background:#fff8ec;border:1px solid #efdfc0;color:#81642c;font-size:13px;line-height:1.5}
+
+@media(max-width:980px){
+  .entryGrid,.topGrid,.riskGrid,.bottomGrid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  main{padding:18px 12px 32px}
+  .dxNav{overflow-x:auto;justify-content:flex-start}
+  .dxNav a{flex:0 0 auto}
+  .timeline{grid-template-columns:1fr;gap:18px;padding:0}
+  .timelineLine{left:22px;right:auto;top:22px;bottom:22px;width:4px;height:auto}
+  .timelineLine i{width:100%!important;height:0}
+  .timelineStep{display:grid;grid-template-columns:46px 1fr;gap:10px;text-align:left;align-items:center}
+  .timelineNode{margin:0}
+  .inputGroups,.fieldGrid,.scaleGrid,.lifestyleList{grid-template-columns:1fr}
+  .aiRiskBody{align-items:flex-start;flex-direction:column}
+}
+</style>
+<style id="melistroke-density-v21">
+/* ===== Larger typography ===== */
+body{font-size:16px!important}
+.brandText{font-size:21px!important}
+.dxNav a{font-size:17px!important}
+.timelineStep b{font-size:18px!important}
+.timelineStep span{font-size:16px!important}
+.sectionHead h2,.panelHead h2{font-size:19px!important}
+.sectionHead p,.panelHead p{font-size:16px!important}
+.eyebrow{font-size:14px!important}
+.groupTitle b{font-size:17px!important}
+.field label{font-size:15px!important}
+.field input,.field select{font-size:17px!important;height:40px!important}
+.uploadBox b{font-size:17px!important}
+.uploadBox span,.fileStatus{font-size:15px!important}
+.analyzeBtn{font-size:18px!important}
+
+.metricTabs button{font-size:15px!important}
+.chartLegend{font-size:15px!important}
+.attentionTop b{font-size:17px!important}
+.attentionTop small{font-size:15px!important}
+.attentionTop span{font-size:15px!important}
+.deltaText{font-size:15px!important}
+.rangeLabels{font-size:14px!important}
+
+.aiRiskText h3{font-size:18px!important}
+.aiRiskText p{font-size:16px!important}
+.aiPieInner b{font-size:34px!important}
+.aiPieInner span{font-size:14px!important}
+
+.scaleCard b{font-size:17px!important}
+.scaleValue strong{font-size:27px!important}
+.scaleValue span{font-size:14px!important}
+.scaleCard p,.scaleNote{font-size:15px!important}
+
+.reasonHeader b{font-size:16px!important}
+.reasonHeader span{font-size:15px!important}
+.reasonText{font-size:15px!important}
+
+.lifeCard b{font-size:16px!important}
+.lifeCard span{font-size:15px!important}
+.disclaimer{font-size:15px!important}
+
+/* ===== Remove wasted empty space ===== */
+main{max-width:1160px!important;padding-top:20px!important}
+.timeline{margin-bottom:18px!important}
+.entryGrid{align-items:start!important}
+.inputGroup{height:auto!important}
+.panel,.entryCard{height:auto!important;min-height:0!important}
+.panelHead,.sectionHead{min-height:0!important}
+.topGrid,.riskGrid,.bottomGrid{align-items:start!important}
+.chartWrap{padding-bottom:12px!important}
+.aiRiskBody{min-height:0!important}
+.scaleGrid,.reasonList,.lifestyleList,.attentionList{align-content:start!important}
+
+/* Equalize compact content without blank lower regions */
+.topGrid{
+  grid-template-columns:minmax(0,1.2fr) minmax(340px,.8fr)!important;
+}
+.riskGrid{
+  grid-template-columns:.9fr 1.1fr!important;
+}
+.bottomGrid{
+  grid-template-columns:1fr 1fr!important;
+}
+
+/* ===== Scroll only long content blocks ===== */
+.attentionList{
+  max-height:410px!important;
+  overflow-y:auto!important;
+  scrollbar-gutter:stable;
+}
+.reasonList{
+  max-height:390px!important;
+  overflow-y:auto!important;
+  scrollbar-gutter:stable;
+}
+.lifestyleList{
+  max-height:390px!important;
+  overflow-y:auto!important;
+  scrollbar-gutter:stable;
+}
+.scaleGrid{
+  max-height:330px!important;
+  overflow-y:auto!important;
+  scrollbar-gutter:stable;
+}
+
+/* compact scrollbar */
+.attentionList::-webkit-scrollbar,
+.reasonList::-webkit-scrollbar,
+.lifestyleList::-webkit-scrollbar,
+.scaleGrid::-webkit-scrollbar{width:7px}
+.attentionList::-webkit-scrollbar-thumb,
+.reasonList::-webkit-scrollbar-thumb,
+.lifestyleList::-webkit-scrollbar-thumb,
+.scaleGrid::-webkit-scrollbar-thumb{background:#c8d5e0;border-radius:99px}
+
+/* ===== Per-indicator color system ===== */
+.attentionCard[data-indicator="sbp"]{--indicator:#d9534f}
+.attentionCard[data-indicator="glucose"]{--indicator:#d9912f}
+.attentionCard[data-indicator="hba1c"]{--indicator:#8b6fd6}
+.attentionCard[data-indicator="ldl"]{--indicator:#c64f73}
+.attentionCard[data-indicator="hdl"]{--indicator:#2f83c9}
+.attentionCard[data-indicator="tg"]{--indicator:#d4a52e}
+.attentionCard[data-indicator="egfr"]{--indicator:#2c9b72}
+.attentionCard .rangeMarker{background:var(--indicator)!important}
+.attentionCard{box-shadow:inset 4px 0 var(--indicator)}
+
+.reasonCard[data-indicator="age"]{--reason:#6a7f95}
+.reasonCard[data-indicator="sbp"]{--reason:#d9534f}
+.reasonCard[data-indicator="afib"]{--reason:#7f5fc6}
+.reasonCard[data-indicator="priorStroke"]{--reason:#b4454d}
+.reasonCard[data-indicator="smoking"]{--reason:#8b735f}
+.reasonCard[data-indicator="hba1c"]{--reason:#d9912f}
+.reasonCard[data-indicator="ldl"]{--reason:#c64f73}
+.reasonCard[data-indicator="hdl"]{--reason:#2f83c9}
+.reasonCard[data-indicator="bmi"]{--reason:#4e9d8a}
+.reasonCard[data-indicator="egfr"]{--reason:#2c9b72}
+.reasonCard .patientMarker{background:var(--reason,#c84b54)!important}
+.reasonCard{box-shadow:inset 4px 0 var(--reason,#c84b54)}
+.reasonCard .safeZone{background:#e6f1eb!important}
+
+/* chart card uses more space efficiently */
+.trendChart{height:260px!important}
+
+/* lifestyle cards slightly more visual and dense */
+.lifeCard{padding:11px!important}
+.lifeIcon{width:40px!important;height:40px!important}
+.lifeIcon svg{width:22px!important;height:22px!important}
+
+@media(max-width:980px){
+  .topGrid,.riskGrid,.bottomGrid{grid-template-columns:1fr!important}
+  .attentionList,.reasonList,.lifestyleList,.scaleGrid{max-height:none!important;overflow:visible!important}
+}
+</style>
+<style id="melistroke-v22-equalize">
+/* ===== Equal heights inside each row ===== */
+.topGrid,.riskGrid,.bottomGrid{align-items:stretch!important}
+.topGrid>.panel,.riskGrid>.panel,.bottomGrid>.panel{
+  height:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  min-height:0!important;
+}
+.chartWrap,.aiRiskBody,.scaleGrid,.reasonList,.lifestyleList,.attentionList{
+  flex:1 1 auto;
+  min-height:0!important;
+}
+.attentionCard,.reasonCard,.scaleCard,.lifeCard{
+  min-height:118px;
+}
+.scaleGrid{
+  grid-auto-rows:minmax(128px,auto)!important;
+}
+.scaleNote{
+  min-height:0!important;
+}
+.aiRiskBody{
+  justify-content:center;
+}
+
+/* ===== Make chart area fill panel more evenly ===== */
+.chartWrap{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+.trendChart{
+  flex:1 1 auto;
+  min-height:285px!important;
+}
+
+/* ===== Metric color system ===== */
+:root{
+  --c-sbp:#d9534f;
+  --c-glucose:#d9912f;
+  --c-hba1c:#8b6fd6;
+  --c-ldl:#c64f73;
+  --c-hdl:#2f83c9;
+  --c-tg:#d4a52e;
+  --c-egfr:#2c9b72;
+}
+.metricTabs button[data-metric="sbp"].active{
+  background:rgba(217,83,79,.12)!important;
+  border-color:rgba(217,83,79,.25)!important;
+  color:var(--c-sbp)!important;
+}
+.metricTabs button[data-metric="glucose"].active{
+  background:rgba(217,145,47,.12)!important;
+  border-color:rgba(217,145,47,.25)!important;
+  color:var(--c-glucose)!important;
+}
+.metricTabs button[data-metric="ldl"].active{
+  background:rgba(198,79,115,.12)!important;
+  border-color:rgba(198,79,115,.25)!important;
+  color:var(--c-ldl)!important;
+}
+
+/* more consistent card left accents */
+.attentionCard[data-indicator="sbp"]{box-shadow:inset 5px 0 var(--c-sbp)!important}
+.attentionCard[data-indicator="glucose"]{box-shadow:inset 5px 0 var(--c-glucose)!important}
+.attentionCard[data-indicator="hba1c"]{box-shadow:inset 5px 0 var(--c-hba1c)!important}
+.attentionCard[data-indicator="ldl"]{box-shadow:inset 5px 0 var(--c-ldl)!important}
+.attentionCard[data-indicator="hdl"]{box-shadow:inset 5px 0 var(--c-hdl)!important}
+.attentionCard[data-indicator="tg"]{box-shadow:inset 5px 0 var(--c-tg)!important}
+.attentionCard[data-indicator="egfr"]{box-shadow:inset 5px 0 var(--c-egfr)!important}
+
+.reasonCard[data-indicator="age"]{box-shadow:inset 5px 0 #6a7f95!important}
+.reasonCard[data-indicator="sbp"]{box-shadow:inset 5px 0 var(--c-sbp)!important}
+.reasonCard[data-indicator="afib"]{box-shadow:inset 5px 0 #7f5fc6!important}
+.reasonCard[data-indicator="priorStroke"]{box-shadow:inset 5px 0 #b4454d!important}
+.reasonCard[data-indicator="smoking"]{box-shadow:inset 5px 0 #8b735f!important}
+.reasonCard[data-indicator="hba1c"]{box-shadow:inset 5px 0 var(--c-glucose)!important}
+.reasonCard[data-indicator="ldl"]{box-shadow:inset 5px 0 var(--c-ldl)!important}
+.reasonCard[data-indicator="hdl"]{box-shadow:inset 5px 0 var(--c-hdl)!important}
+.reasonCard[data-indicator="bmi"]{box-shadow:inset 5px 0 #4e9d8a!important}
+.reasonCard[data-indicator="egfr"]{box-shadow:inset 5px 0 var(--c-egfr)!important}
+
+/* slightly larger fixed scroll areas to align bottoms better */
+.attentionList{max-height:430px!important}
+.scaleGrid{max-height:430px!important}
+.reasonList{max-height:430px!important}
+.lifestyleList{max-height:430px!important}
+
+@media(max-width:980px){
+  .topGrid>.panel,.riskGrid>.panel,.bottomGrid>.panel{
+    height:auto!important;
+  }
+  .attentionCard,.reasonCard,.scaleCard,.lifeCard{
+    min-height:0!important;
+  }
+}
+</style>
+<style id="melistroke-compact-bars-v23">
+/* Compact attention cards */
+.attentionList{
+  gap:7px!important;
+  padding:9px 12px 12px!important;
+}
+.attentionCard{
+  min-height:0!important;
+  padding:9px 10px!important;
+  border-radius:10px!important;
+}
+.attentionTop{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  gap:10px!important;
+  align-items:center!important;
+}
+.attentionTop .indicatorLine{
+  display:flex!important;
+  align-items:baseline!important;
+  gap:8px!important;
+  min-width:0!important;
+}
+.attentionTop b{
+  font-size:16px!important;
+  white-space:nowrap!important;
+}
+.attentionTop small{
+  margin:0!important;
+  font-size:14px!important;
+  white-space:nowrap!important;
+}
+.attentionTop .statusAndDelta{
+  display:flex!important;
+  align-items:center!important;
+  gap:8px!important;
+  justify-content:flex-end!important;
+  white-space:nowrap!important;
+}
+.attentionTop .statusAndDelta .deltaInline{
+  color:#708493!important;
+  font-size:14px!important;
+  font-weight:700!important;
+}
+.rangeBar{
+  height:8px!important;
+  margin:7px 0 3px!important;
+}
+.rangeMarker{height:15px!important;top:-3px!important}
+.thresholdMarker{height:12px!important;top:-2px!important}
+.rangeLabels{
+  font-size:13px!important;
+  line-height:1!important;
+}
+.deltaText{display:none!important}
+
+/* Compact explanation cards */
+.reasonList{
+  gap:7px!important;
+  padding:9px 12px 12px!important;
+}
+.reasonCard{
+  min-height:0!important;
+  padding:9px 10px!important;
+  border-radius:10px!important;
+}
+.reasonHeader{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  gap:10px!important;
+  align-items:center!important;
+}
+.reasonHeader .reasonTitleLine{
+  display:flex!important;
+  align-items:baseline!important;
+  gap:8px!important;
+  min-width:0!important;
+}
+.reasonHeader b{
+  font-size:16px!important;
+  white-space:nowrap!important;
+}
+.reasonHeader .reasonDetailInline{
+  color:#708493!important;
+  font-size:14px!important;
+  font-weight:700!important;
+  white-space:nowrap!important;
+}
+.compareTrack{
+  height:8px!important;
+  margin-top:7px!important;
+}
+.patientMarker{height:15px!important;top:-3px!important}
+.thresholdLine{height:12px!important;top:-2px!important}
+.reasonText{display:none!important}
+
+@media(max-width:760px){
+  .attentionTop .indicatorLine,
+  .reasonHeader .reasonTitleLine{
+    flex-wrap:wrap!important;
+  }
+  .attentionTop .statusAndDelta{
+    flex-direction:column!important;
+    align-items:flex-end!important;
+    gap:2px!important;
+  }
+}
+</style>
+<style id="melistroke-multimethod-risk-v24">
+.riskGrid{
+  grid-template-columns:.72fr 1.28fr!important;
+}
+.scaleGrid{
+  max-height:470px!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-auto-rows:auto!important;
+  gap:9px!important;
+}
+.methodCard{
+  min-height:154px;
+  padding:12px;
+  border:1px solid #e1e8ef;
+  border-radius:12px;
+  background:#fbfdff;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.methodCard.ai{border-left:5px solid #2f7ff7}
+.methodCard.cha{border-left:5px solid #7d63c9}
+.methodCard.abcd{border-left:5px solid #d9912f}
+.methodCard.essen{border-left:5px solid #2c9b72}
+.methodCard.fram{border-left:5px solid #c64f73}
+.methodHead{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+}
+.methodHead b{
+  display:block;
+  font-size:16px;
+  color:#294e67;
+}
+.methodHead small{
+  display:block;
+  margin-top:3px;
+  color:#81919f;
+  font-size:13px;
+  line-height:1.35;
+}
+.methodScore{
+  text-align:right;
+  white-space:nowrap;
+}
+.methodScore strong{
+  display:block;
+  font-size:22px;
+  line-height:1;
+  color:#173b66;
+}
+.methodScore span{
+  display:block;
+  margin-top:3px;
+  color:#81919f;
+  font-size:12px;
+  font-weight:750;
+}
+.factorList{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:10px;
+}
+.factorChip{
+  padding:5px 7px;
+  border-radius:999px;
+  background:#f1f5f8;
+  border:1px solid #e1e8ef;
+  color:#607487;
+  font-size:12px;
+  font-weight:750;
+}
+.factorChip.hit{
+  background:#fff1df;
+  border-color:#f0d6aa;
+  color:#8b621f;
+}
+.factorChip.high{
+  background:#fde9e9;
+  border-color:#f0c9cc;
+  color:#9d4c53;
+}
+.factorChip.good{
+  background:#eaf6ef;
+  border-color:#cee8da;
+  color:#2f7b60;
+}
+.methodNote{
+  margin-top:9px;
+  padding-top:8px;
+  border-top:1px solid #e7edf2;
+  color:#6f8293;
+  font-size:13px;
+  line-height:1.4;
+}
+.methodStatus{
+  display:inline-flex;
+  width:max-content;
+  margin-top:8px;
+  padding:5px 7px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:850;
+}
+.methodStatus.applicable{background:#eaf6ef;color:#2d7e60}
+.methodStatus.conditional{background:#fff4e4;color:#8a6424}
+.methodStatus.na{background:#eef2f5;color:#70818f}
+
+@media(max-width:980px){
+  .riskGrid{grid-template-columns:1fr!important}
+  .scaleGrid{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:640px){
+  .scaleGrid{grid-template-columns:1fr!important}
+}
+</style>
+<style id="melistroke-result-layout-v25">
+/* Replace previous two-row composition with asymmetric two-column layout */
+.resultLowerGrid{
+  display:grid;
+  grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);
+  gap:14px;
+  margin-top:14px;
+  align-items:start;
+}
+.leftResultStack{
+  display:grid;
+  gap:14px;
+  min-width:0;
+}
+.leftResultStack>.panel{
+  height:auto!important;
+  min-height:0!important;
+}
+.combinedRiskPanel{
+  min-width:0;
+  height:auto!important;
+}
+.combinedRiskBody{
+  padding:14px;
+}
+.aiRiskSummaryBox{
+  display:grid;
+  grid-template-columns:150px minmax(0,1fr);
+  gap:18px;
+  align-items:center;
+  padding:14px;
+  border:1px solid #e0e8ef;
+  border-radius:14px;
+  background:
+    radial-gradient(circle at 90% 5%,rgba(47,127,247,.08),transparent 28%),
+    #fbfdff;
+}
+.aiRiskSummaryBox .aiPie{
+  width:132px!important;
+  height:132px!important;
+  flex-basis:132px!important;
+}
+.aiRiskSummaryBox .aiPieInner b{
+  font-size:30px!important;
+}
+.riskCaption{
+  display:block;
+  margin-bottom:5px;
+  color:#7f90a1;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.09em;
+}
+.aiRiskText h3{
+  margin:0!important;
+  font-size:19px!important;
+}
+.aiRiskText p{
+  margin-top:7px!important;
+  font-size:16px!important;
+}
+
+.riskMethodsHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:12px;
+  margin:14px 2px 9px;
+}
+.riskMethodsHeader b{
+  display:block;
+  font-size:17px;
+  color:#31536a;
+}
+.riskMethodsHeader span{
+  display:block;
+  margin-top:3px;
+  color:#8192a0;
+  font-size:14px;
+}
+
+/* make method cards denser inside the combined right panel */
+.combinedRiskPanel .scaleGrid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:9px!important;
+  max-height:500px!important;
+  overflow-y:auto!important;
+  padding:0 2px 2px!important;
+}
+.combinedRiskPanel .methodCard{
+  min-height:145px!important;
+}
+.combinedRiskPanel .methodNote{
+  font-size:13px!important;
+}
+
+/* left column blocks: no unnecessary blank space */
+.leftResultStack .reasonList,
+.leftResultStack .lifestyleList{
+  max-height:360px!important;
+  overflow-y:auto!important;
+  align-content:start!important;
+  flex:none!important;
+}
+.leftResultStack .reasonCard,
+.leftResultStack .lifeCard{
+  min-height:0!important;
+}
+
+/* Hide obsolete structures if old CSS is still present */
+.riskGrid,.bottomGrid{display:none!important}
+
+@media(max-width:980px){
+  .resultLowerGrid{grid-template-columns:1fr}
+  .combinedRiskPanel .scaleGrid{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:680px){
+  .aiRiskSummaryBox{grid-template-columns:1fr}
+  .combinedRiskPanel .scaleGrid{grid-template-columns:1fr!important}
+  .leftResultStack .reasonList,
+  .leftResultStack .lifestyleList,
+  .combinedRiskPanel .scaleGrid{
+    max-height:none!important;
+    overflow:visible!important;
+  }
+}
+</style>
+<style id="melistroke-explain-shorter-v30">
+/* Make "Vì sao có kết quả này?" visually shorter so the left stack aligns better */
+.leftResultStack > .panel:first-child{
+  height:auto!important;
+  max-height:330px!important;
+  min-height:0!important;
+}
+.leftResultStack > .panel:first-child .reasonList{
+  max-height:245px!important;
+  overflow-y:auto!important;
+  padding-bottom:10px!important;
+}
+.leftResultStack > .panel:first-child .panelHead{
+  padding-top:12px!important;
+  padding-bottom:11px!important;
+}
+
+/* Keep recommendation box directly under it without added blank space */
+.leftResultStack{
+  align-content:start!important;
+  grid-auto-rows:auto!important;
+}
+.leftResultStack > .panel:nth-child(2){
+  height:auto!important;
+  min-height:0!important;
+}
+</style>
+<style id="melistroke-bottom-align-v41">
+/* Align the bottom edge of the two lower columns */
+.resultLowerGrid{
+  align-items:start!important;
+}
+
+/* The right risk block was extending too far down.
+   Keep its long method list scrollable inside a shorter panel. */
+.combinedRiskPanel .scaleGrid{
+  max-height:405px!important;
+  overflow-y:auto!important;
+}
+
+/* Slightly tighten the right panel spacing */
+.combinedRiskPanel .combinedRiskBody{
+  padding-bottom:11px!important;
+}
+.combinedRiskPanel .riskMethodsHeader{
+  margin-top:11px!important;
+  margin-bottom:8px!important;
+}
+
+/* Keep left column compact with no artificial stretching */
+.leftResultStack{
+  align-content:start!important;
+}
+.leftResultStack > .panel{
+  height:auto!important;
+}
+</style>
+<style id="melistroke-bottom-equal-v42">
+/* Force both lower columns to end on the same baseline */
+.resultLowerGrid{
+  align-items:stretch!important;
+}
+
+.leftResultStack,
+.combinedRiskPanel{
+  height:100%!important;
+}
+
+.combinedRiskPanel{
+  display:flex!important;
+  flex-direction:column!important;
+}
+
+.combinedRiskPanel .combinedRiskBody{
+  flex:1 1 auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  min-height:0!important;
+}
+
+/* Let the method area occupy the remaining height instead of ending early */
+.combinedRiskPanel .scaleGrid{
+  flex:1 1 auto!important;
+  max-height:none!important;
+  overflow-y:auto!important;
+  align-content:start!important;
+  padding-bottom:10px!important;
+}
+
+/* keep left side compact but allow total column height to define the row */
+.leftResultStack{
+  display:grid!important;
+  grid-template-rows:auto auto!important;
+  align-content:start!important;
+}
+</style>
+<style id="melistroke-overlength-scroll-v44">
+/* Keep lower section compact. Long lists scroll internally. */
+.resultLowerGrid{
+  align-items:start!important;
+}
+
+.leftResultStack,
+.combinedRiskPanel{
+  height:auto!important;
+}
+
+.combinedRiskPanel{
+  max-height:600px!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+
+.combinedRiskPanel .combinedRiskBody{
+  min-height:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+
+.combinedRiskPanel .scaleGrid{
+  max-height:365px!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+  padding-right:5px!important;
+}
+
+.combinedRiskPanel .scaleGrid::-webkit-scrollbar,
+.leftResultStack .reasonList::-webkit-scrollbar,
+.leftResultStack .lifestyleList::-webkit-scrollbar{
+  width:7px;
+}
+.combinedRiskPanel .scaleGrid::-webkit-scrollbar-thumb,
+.leftResultStack .reasonList::-webkit-scrollbar-thumb,
+.leftResultStack .lifestyleList::-webkit-scrollbar-thumb{
+  background:#c7d4df;
+  border-radius:99px;
+}
+
+.leftResultStack .reasonList,
+.leftResultStack .lifestyleList{
+  max-height:285px!important;
+  overflow-y:auto!important;
+  scrollbar-gutter:stable;
+}
+
+.combinedRiskPanel .methodCard{
+  min-height:128px!important;
+  padding:10px!important;
+}
+.combinedRiskPanel .methodNote{
+  margin-top:7px!important;
+  padding-top:7px!important;
+}
+
+@media(max-width:980px){
+  .combinedRiskPanel{
+    max-height:none!important;
+  }
+  .combinedRiskPanel .scaleGrid,
+  .leftResultStack .reasonList,
+  .leftResultStack .lifestyleList{
+    max-height:none!important;
+    overflow:visible!important;
+  }
+}
+</style>
+<style id="melistroke-upload-center-v46">
+/* Center the upload block vertically and horizontally like the other MELI pages */
+.entryGrid{
+  grid-template-columns:minmax(0,1fr) 230px!important;
+  align-items:center!important;
+}
+.uploadSide{
+  align-self:center!important;
+  justify-self:center!important;
+  width:100%!important;
+  max-width:230px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+}
+.uploadBox{
+  width:100%!important;
+  min-height:170px!important;
+}
+</style>
+<style id="melistroke-equal-last-blocks-v47">
+/* Force the two final MELIStroke blocks to have exactly the same visible height */
+.resultLowerGrid{
+  display:grid!important;
+  grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)!important;
+  align-items:stretch!important;
+}
+
+/* Both sides fill the same row height */
+.leftResultStack,
+.combinedRiskPanel{
+  height:600px!important;
+  min-height:600px!important;
+  max-height:600px!important;
+}
+
+/* Left column: split its fixed height between Explanation and Lifestyle */
+.leftResultStack{
+  display:grid!important;
+  grid-template-rows:1fr 1fr!important;
+  gap:14px!important;
+  min-height:0!important;
+}
+.leftResultStack > .panel{
+  height:100%!important;
+  min-height:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.leftResultStack .reasonList,
+.leftResultStack .lifestyleList{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow-y:auto!important;
+  scrollbar-gutter:stable;
+}
+
+/* Right block fills the same 600px height */
+.combinedRiskPanel{
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+}
+.combinedRiskPanel .combinedRiskBody{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.combinedRiskPanel .scaleGrid{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow-y:auto!important;
+  scrollbar-gutter:stable;
+}
+
+/* unified scrollbars */
+.leftResultStack .reasonList::-webkit-scrollbar,
+.leftResultStack .lifestyleList::-webkit-scrollbar,
+.combinedRiskPanel .scaleGrid::-webkit-scrollbar{width:7px}
+
+.leftResultStack .reasonList::-webkit-scrollbar-thumb,
+.leftResultStack .lifestyleList::-webkit-scrollbar-thumb,
+.combinedRiskPanel .scaleGrid::-webkit-scrollbar-thumb{
+  background:#c7d4df;
+  border-radius:99px;
+}
+
+@media(max-width:980px){
+  .resultLowerGrid{
+    grid-template-columns:1fr!important;
+  }
+  .leftResultStack,
+  .combinedRiskPanel{
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+  }
+  .leftResultStack{
+    grid-template-rows:auto auto!important;
+  }
+  .leftResultStack .reasonList,
+  .leftResultStack .lifestyleList,
+  .combinedRiskPanel .scaleGrid{
+    max-height:none!important;
+    overflow:visible!important;
+  }
+}
+</style>
+<style id="melistroke-life-more-v54">
+/* Prevent recommendation cards from overflowing vertically */
+.lifestyleList{
+  overflow-y:auto!important;
+}
+
+.lifeCard{
+  position:relative!important;
+  min-height:112px!important;
+  height:auto!important;
+  align-items:start!important;
+  overflow:visible!important;
+}
+
+.lifeCard > div:last-child{
+  min-width:0!important;
+}
+
+.lifeCard b{
+  display:block!important;
+  margin-bottom:4px!important;
+}
+
+.lifeCard .lifeTextV54{
+  position:relative;
+  display:block!important;
+  color:#718595!important;
+  font-size:14px!important;
+  line-height:1.45!important;
+  max-width:100%!important;
+}
+
+/* collapsed preview */
+.lifeCard .lifePreviewV54{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  padding-right:2px;
+}
+
+/* [more] button */
+.lifeMoreBtnV54{
+  display:inline!important;
+  border:0!important;
+  background:transparent!important;
+  padding:0!important;
+  margin-left:4px!important;
+  color:#2f6f9d!important;
+  font-size:14px!important;
+  font-weight:850!important;
+  cursor:pointer!important;
+  text-decoration:none!important;
+}
+.lifeMoreBtnV54:hover{
+  text-decoration:underline!important;
+}
+
+/* Full content: when clicked or hovered */
+.lifeCard.expandedV54 .lifePreviewV54,
+.lifeCard:hover .lifePreviewV54{
+  -webkit-line-clamp:unset!important;
+  overflow:visible!important;
+}
+
+/* Give hovered/expanded card its own floating space so full text is readable
+   without pushing neighboring cards and breaking the grid. */
+.lifeCard:hover,
+.lifeCard.expandedV54{
+  z-index:20!important;
+}
+
+.lifeCard:hover .lifeTextV54,
+.lifeCard.expandedV54 .lifeTextV54{
+  background:#fff!important;
+  border:1px solid #dbe6ef!important;
+  box-shadow:0 12px 30px rgba(20,52,86,.14)!important;
+  border-radius:10px!important;
+  padding:8px 9px!important;
+  margin-left:-9px!important;
+  margin-right:-4px!important;
+}
+
+/* Keep grid cards visually tidy */
+.lifestyleList{
+  align-items:start!important;
+}
+</style>
+<style id="melistroke-less-cramped-v55">
+/* Give the left lower column more room */
+.resultLowerGrid{
+  grid-template-columns:1fr 1fr!important;
+  gap:16px!important;
+}
+
+/* Explanation cards: a little more breathing room */
+.leftResultStack > .panel:first-child .reasonList{
+  padding:12px 14px!important;
+  gap:9px!important;
+}
+.leftResultStack > .panel:first-child .reasonCard{
+  padding:10px 12px!important;
+  min-height:58px!important;
+}
+
+/* Recommendations: one item per row to avoid cramped 2-column cards */
+.leftResultStack > .panel:nth-child(2) .lifestyleList{
+  grid-template-columns:1fr!important;
+  gap:9px!important;
+  padding:12px 14px!important;
+}
+.leftResultStack > .panel:nth-child(2) .lifeCard{
+  min-height:84px!important;
+  padding:11px 12px!important;
+  grid-template-columns:46px minmax(0,1fr)!important;
+  align-items:center!important;
+}
+.leftResultStack > .panel:nth-child(2) .lifeIcon{
+  width:42px!important;
+  height:42px!important;
+}
+.leftResultStack > .panel:nth-child(2) .lifeCard b{
+  font-size:16px!important;
+}
+.leftResultStack > .panel:nth-child(2) .lifeTextV54{
+  font-size:14px!important;
+  line-height:1.45!important;
+}
+
+/* Keep internal scrolling so the two bottom columns remain aligned */
+.leftResultStack .reasonList,
+.leftResultStack .lifestyleList{
+  overflow-y:auto!important;
+  scrollbar-gutter:stable;
+}
+
+@media(max-width:980px){
+  .resultLowerGrid{
+    grid-template-columns:1fr!important;
+  }
+}
+</style>
+<style id="melistroke-title-clip-fix-v56">
+/* Fix clipped eyebrow/title text at the top of the lower cards */
+.leftResultStack > .panel{
+  overflow:hidden!important;
+}
+
+.leftResultStack > .panel .panelHead{
+  position:relative!important;
+  z-index:2!important;
+  overflow:visible!important;
+  min-height:92px!important;
+  padding-top:16px!important;
+  padding-bottom:14px!important;
+}
+
+.leftResultStack > .panel .panelHead .eyebrow{
+  display:block!important;
+  margin-top:0!important;
+  margin-bottom:6px!important;
+  line-height:1.2!important;
+  position:relative!important;
+  top:0!important;
+}
+
+.leftResultStack > .panel .panelHead h2{
+  line-height:1.15!important;
+  margin:0!important;
+}
+
+.leftResultStack > .panel .panelHead p{
+  line-height:1.35!important;
+  margin-top:6px!important;
+}
+
+/* Compensate the fixed 600px column height so content still fits cleanly */
+.leftResultStack{
+  grid-template-rows:1fr 1fr!important;
+}
+
+.leftResultStack .reasonList,
+.leftResultStack .lifestyleList{
+  min-height:0!important;
+}
+</style>
+<style id="melistroke-attention-room-v58">
+/* Make "Mức độ so với ngưỡng" less cramped */
+.attentionList{
+  gap:10px!important;
+  padding:12px 14px 14px!important;
+}
+
+.attentionCard{
+  min-height:88px!important;
+  padding:11px 12px!important;
+  border-radius:12px!important;
+}
+
+/* First row: indicator/value on left, status + delta on right */
+.attentionTop{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  gap:12px!important;
+  align-items:center!important;
+}
+
+.attentionTop .indicatorLine{
+  display:flex!important;
+  align-items:baseline!important;
+  gap:10px!important;
+  min-width:0!important;
+  flex-wrap:wrap!important;
+}
+
+.attentionTop .indicatorLine b{
+  font-size:17px!important;
+  line-height:1.2!important;
+}
+
+.attentionTop .indicatorLine small{
+  font-size:14px!important;
+  line-height:1.2!important;
+}
+
+.attentionTop .statusAndDelta{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:10px!important;
+  white-space:nowrap!important;
+}
+
+.attentionTop .statusAndDelta > span:first-child{
+  font-size:15px!important;
+  font-weight:800!important;
+}
+
+.attentionTop .deltaInline{
+  font-size:14px!important;
+  font-weight:700!important;
+  color:#708493!important;
+}
+
+/* Give the bar and labels more vertical breathing room */
+.rangeBar{
+  height:10px!important;
+  margin:10px 0 5px!important;
+}
+
+.rangeMarker{
+  height:18px!important;
+  top:-4px!important;
+}
+
+.thresholdMarker{
+  height:16px!important;
+  top:-3px!important;
+}
+
+.rangeLabels{
+  font-size:13px!important;
+  line-height:1.15!important;
+  padding:0 1px!important;
+}
+
+/* Slightly taller scroll viewport to avoid feeling compressed */
+.attentionList{
+  max-height:460px!important;
+  overflow-y:auto!important;
+  scrollbar-gutter:stable;
+}
+
+@media(max-width:760px){
+  .attentionTop{
+    grid-template-columns:1fr!important;
+  }
+  .attentionTop .statusAndDelta{
+    justify-content:flex-start!important;
+    flex-wrap:wrap!important;
+  }
+}
+</style>
+<style id="meli-dropdown-v62">
+/* One canonical app switcher, appended directly to body to avoid parent overflow/clipping */
+#meliAppNavV62{
+  position:fixed;
+  top:16px;
+  right:18px;
+  z-index:2147483000;
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+}
+#meliAppNavBtnV62{
+  height:42px;
+  padding:0 13px;
+  border:1px solid #d6e2ec;
+  border-radius:12px;
+  background:rgba(255,255,255,.98);
+  color:#315d77;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 5px 16px rgba(20,52,86,.08);
+  cursor:pointer;
+  font-size:15px;
+  font-weight:850;
+  transition:.18s ease;
+}
+#meliAppNavBtnV62:hover{
+  border-color:#bcd0df;
+  box-shadow:0 9px 24px rgba(20,52,86,.13);
+  transform:translateY(-1px);
+}
+#meliAppNavBtnV62 svg{
+  width:18px;height:18px;
+  fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+#meliAppNavChevronV62{
+  margin-left:2px;
+  color:#8193a1;
+  transition:transform .18s ease;
+}
+#meliAppNavV62.open #meliAppNavChevronV62{transform:rotate(180deg)}
+
+#meliAppNavMenuV62{
+  position:absolute;
+  top:50px;
+  right:0;
+  width:244px;
+  padding:8px;
+  border:1px solid #dce7ef;
+  border-radius:15px;
+  background:rgba(255,255,255,.99);
+  box-shadow:0 22px 52px rgba(20,52,86,.18);
+  backdrop-filter:blur(12px);
+  display:none;
+  overflow:hidden;
+}
+#meliAppNavV62.open #meliAppNavMenuV62{display:block}
+
+.meliAppNavTitleV62{
+  padding:7px 9px 6px;
+  color:#8a9baa;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+#meliAppNavMenuV62 a{
+  min-height:40px;
+  padding:9px 10px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#49677b;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:850;
+  transition:.14s ease;
+}
+#meliAppNavMenuV62 a:hover{
+  background:#eef5fa;
+  color:#17486d;
+  transform:translateX(2px);
+}
+.meliAppDotV62{
+  width:29px;height:29px;border-radius:9px;
+  display:grid;place-items:center;
+  background:#edf4f8;color:#466a82;
+  font-size:13px;font-weight:900;
+  flex:0 0 29px;
+}
+.meliAppExternalV62{
+  margin-left:auto;
+  color:#96a6b3;
+  font-size:15px;
+}
+@media(max-width:760px){
+  #meliAppNavV62{top:12px;right:12px}
+  #meliAppNavBtnV62{width:42px;padding:0;justify-content:center}
+  #meliAppNavBtnV62 span.labelV62,#meliAppNavChevronV62{display:none}
+  #meliAppNavMenuV62{width:224px}
+}
+</style><style id="meli-home-v63">
+#meliHomeV63{
+  position:fixed;
+  top:16px;
+  right:190px;
+  z-index:2147483001;
+  width:42px;
+  height:42px;
+  border:1px solid #d6e2ec;
+  border-radius:12px;
+  background:rgba(255,255,255,.98);
+  color:#315d77;
+  display:grid;
+  place-items:center;
+  box-shadow:0 5px 16px rgba(20,52,86,.08);
+  text-decoration:none;
+  transition:.18s ease;
+}
+#meliHomeV63:hover{
+  border-color:#bcd0df;
+  box-shadow:0 9px 24px rgba(20,52,86,.13);
+  transform:translateY(-1px);
+}
+#meliHomeV63 svg{
+  width:19px;height:19px;
+  fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+@media(max-width:760px){
+  #meliHomeV63{
+    top:12px;
+    right:62px;
+  }
+}
+</style><style id="meli-global-auth-v69">
+/* Global auth button to the left of the app dropdown */
+#meliAuthV69{
+  position:fixed;
+  top:16px;
+  right:202px;
+  z-index:2147483100;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+}
+#meliAuthBtnV69{
+  height:42px;
+  min-width:78px;
+  padding:0 12px;
+  border:1px solid #d6e2ec;
+  border-radius:12px;
+  background:rgba(255,255,255,.98);
+  color:#315d77;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  box-shadow:0 5px 16px rgba(20,52,86,.08);
+  cursor:pointer;
+  font-size:15px;
+  font-weight:850;
+  transition:.18s ease;
+}
+#meliAuthBtnV69:hover{
+  border-color:#bcd0df;
+  box-shadow:0 9px 24px rgba(20,52,86,.13);
+  transform:translateY(-1px);
+}
+#meliAuthBtnV69 svg{
+  width:18px;height:18px;
+  fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+#meliAuthBtnV69.loggedInV69{
+  width:42px;
+  min-width:42px;
+  padding:0;
+  border-radius:12px;
+  background:#eef5fb;
+  color:#17486d;
+}
+
+/* Popup */
+#meliLoginModalV69{
+  position:fixed;
+  inset:0;
+  z-index:2147483600;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(15,35,55,.34);
+  backdrop-filter:blur(8px);
+}
+#meliLoginModalV69.open{display:flex}
+.meliLoginDialogV69{
+  width:min(430px,100%);
+  border:1px solid #dbe6ee;
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 30px 80px rgba(20,52,86,.22);
+  overflow:hidden;
+}
+.meliLoginHeadV69{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  padding:22px 22px 16px;
+  border-bottom:1px solid #e7eef4;
+}
+.meliLoginHeadV69 h2{
+  margin:0;
+  font-size:22px;
+  color:#173b66;
+}
+.meliLoginHeadV69 p{
+  margin:5px 0 0;
+  color:#7b8ea0;
+  font-size:15px;
+}
+.meliLoginCloseV69{
+  width:36px;height:36px;
+  border:1px solid #dce5ec;
+  border-radius:10px;
+  background:#f8fafc;
+  color:#5d7488;
+  font-size:18px;
+  cursor:pointer;
+}
+.meliLoginBodyV69{padding:20px 22px 22px}
+.meliLoginFieldV69{margin-bottom:13px}
+.meliLoginFieldV69 label{
+  display:block;
+  margin-bottom:6px;
+  color:#61788b;
+  font-size:14px;
+  font-weight:850;
+}
+.meliLoginFieldV69 input{
+  width:100%;
+  height:44px;
+  border:1px solid #d6e1e9;
+  border-radius:10px;
+  background:#fbfdff;
+  padding:0 12px;
+  color:#29475d;
+  font-size:16px;
+}
+.meliLoginFieldV69 input:focus{
+  outline:none;
+  border-color:#8ab7df;
+  box-shadow:0 0 0 3px rgba(47,127,247,.08);
+}
+.meliLoginSubmitV69{
+  width:100%;
+  height:45px;
+  border:0;
+  border-radius:11px;
+  background:linear-gradient(135deg,#123b6d,#2f7ff7);
+  color:#fff;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+}
+.meliLoginErrorV69{
+  display:none;
+  margin-top:10px;
+  padding:9px 10px;
+  border-radius:8px;
+  background:#fff1f1;
+  border:1px solid #f0d0d3;
+  color:#a34e55;
+  font-size:14px;
+}
+.meliUserPopoverV69{
+  position:fixed;
+  top:66px;
+  right:202px;
+  z-index:2147483500;
+  width:220px;
+  padding:10px;
+  border:1px solid #dbe6ee;
+  border-radius:13px;
+  background:#fff;
+  box-shadow:0 18px 45px rgba(20,52,86,.16);
+  display:none;
+}
+.meliUserPopoverV69.open{display:block}
+.meliUserPopoverV69 b{display:block;font-size:15px;color:#294e67}
+.meliUserPopoverV69 span{display:block;margin-top:3px;font-size:13px;color:#7d8f9d}
+.meliLogoutBtnV69{
+  width:100%;
+  margin-top:9px;
+  height:34px;
+  border:1px solid #dbe5ed;
+  border-radius:8px;
+  background:#f8fafc;
+  color:#526c80;
+  font-size:14px;
+  font-weight:850;
+  cursor:pointer;
+}
+@media(max-width:760px){
+  #meliAuthV69{top:12px;right:114px}
+  #meliAuthBtnV69{min-width:42px;width:42px;padding:0}
+  #meliAuthBtnV69 .loginTextV69{display:none}
+  .meliUserPopoverV69{top:62px;right:62px}
+}
+</style><style id="meli-top-controls-v70">
+/* One shared fixed row for Home / Login(User) / App switcher.
+   This prevents independent fixed-position buttons from overlapping. */
+#meliTopControlsV70{
+  position:fixed;
+  top:14px;
+  right:18px;
+  z-index:2147483400;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:9px;
+  max-width:calc(100vw - 36px);
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+}
+
+/* All controls become normal flex children inside the shared row */
+#meliTopControlsV70 > #meliHomeV63,
+#meliTopControlsV70 > #meliAuthV69,
+#meliTopControlsV70 > #meliAppNavV62,
+#meliTopControlsV70 > .meliAuthAreaV67{
+  position:relative!important;
+  top:auto!important;
+  right:auto!important;
+  left:auto!important;
+  bottom:auto!important;
+  margin:0!important;
+  flex:0 0 auto!important;
+  z-index:auto!important;
+}
+
+/* Home */
+#meliTopControlsV70 #meliHomeV63{
+  width:42px!important;
+  height:42px!important;
+}
+
+/* Auth */
+#meliTopControlsV70 #meliAuthV69{
+  display:flex!important;
+}
+#meliTopControlsV70 #meliAuthBtnV69{
+  height:42px!important;
+}
+
+/* Landing-page auth */
+#meliTopControlsV70 .meliAuthAreaV67{
+  display:flex!important;
+  align-items:center!important;
+}
+#meliTopControlsV70 .meliLoginBtnV67,
+#meliTopControlsV70 .meliUserBtnV67{
+  height:42px!important;
+}
+
+/* Dropdown */
+#meliTopControlsV70 #meliAppNavV62{
+  display:block!important;
+}
+#meliTopControlsV70 #meliAppNavBtnV62{
+  height:42px!important;
+  min-width:170px!important;
+}
+#meliTopControlsV70 #meliAppNavMenuV62{
+  top:50px!important;
+  right:0!important;
+}
+
+/* User popover follows the grouped controls, never overlays the row */
+#meliUserPopoverV69{
+  top:64px!important;
+  right:18px!important;
+}
+
+/* Remove any stale page-specific fixed offsets that could overlap */
+#meliHomeV63,
+#meliAuthV69,
+#meliAppNavV62{
+  margin:0!important;
+}
+
+@media(max-width:900px){
+  #meliTopControlsV70{
+    top:12px;
+    right:12px;
+    gap:7px;
+    max-width:calc(100vw - 24px);
+  }
+
+  #meliTopControlsV70 #meliAppNavBtnV62{
+    min-width:42px!important;
+    width:42px!important;
+    padding:0!important;
+    justify-content:center!important;
+  }
+  #meliTopControlsV70 #meliAppNavBtnV62 .labelV62,
+  #meliTopControlsV70 #meliAppNavChevronV62{
+    display:none!important;
+  }
+
+  #meliTopControlsV70 #meliAuthBtnV69{
+    min-width:42px!important;
+    width:42px!important;
+    padding:0!important;
+  }
+  #meliTopControlsV70 #meliAuthBtnV69 .loginTextV69{
+    display:none!important;
+  }
+
+  #meliTopControlsV70 .meliLoginBtnV67,
+  #meliTopControlsV70 .meliUserBtnV67{
+    min-width:42px!important;
+    width:42px!important;
+    padding:0!important;
+    justify-content:center!important;
+  }
+  #meliTopControlsV70 .meliLoginBtnV67 span,
+  #meliTopControlsV70 .meliUserBtnV67 span{
+    display:none!important;
+  }
+
+  #meliUserPopoverV69{
+    top:62px!important;
+    right:62px!important;
+  }
+}
+</style><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="assets/melicare-base.css" rel="stylesheet"/><meta content="#f5c54b" name="theme-color"/><style>.suite-demo-note{max-width:900px;margin:27px auto 0;padding:0 8px;font:13px/1.65 var(--suite-body);color:#6b8190;text-align:center}.rightPanel .suite-demo-note{margin:18px 0;padding:0 18px 22px}.trendChart text{font-family:var(--suite-body)!important;font-size:16px!important}</style><link href="assets/melicare-components.css" rel="stylesheet"/><script src="assets/melicare-charts.js"></script><link href="assets/melicare-v2.css" rel="stylesheet"/><link href="assets/melicare-auth.css" rel="stylesheet"/><script defer="" src="assets/melicare-auth.js"></script><script defer="" src="assets/melicare-uploads.js"></script><link href="assets/melicare-layout-v3.css" rel="stylesheet"/><script defer="" src="assets/melicare-navigation.js"></script><script defer="" src="assets/melicare-clinical-rows.js"></script><script src="assets/melicare-routes.js"></script>
+<link rel="stylesheet" href="assets/melicare-readability.css">
+<link rel="stylesheet" href="assets/melicare-polish-v4.css">
+<link href="assets/melicare-typography-v6.css" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/melicare-request-fixes.css"/>
+<link rel="stylesheet" href="assets/melicare-fonts-local.css"/>
+<link rel="stylesheet" href="assets/melicare-unified-final.css"/>
+<link rel="stylesheet" href="assets/melicare-page-fixes-v2.css"/>
+<link rel="stylesheet" href="assets/melicare-scroll-carousel.css"/>
+<link rel="icon" href="assets/icons/favicon.ico" sizes="any"/>
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="assets/icons/icon-32.png" type="image/png" sizes="32x32"/>
+<link rel="apple-touch-icon" href="assets/icons/icon-180.png" sizes="180x180"/>
+<script defer src="assets/melicare-scroll-repair.js"></script>
+<link rel="stylesheet" href="assets/melicare-final-upload-cardio.css"/>
+</head>
+<body id="mcTypography" class="mc-dx-child suite-ui suite-stroke suite-clinical meli-refined mc-v2 mc-layout-v3 mc-readable" data-mc-page="melistroke" data-module="MELIStroke" style=";--suite-accent:#128ac3;--suite-tint:#e6f5fc;--suite-edge:#b9dfef">
+<header class="suite-header"><div class="suite-bar"><a aria-label="MELIStroke" class="suite-brand" href="MELIStroke.html"><span class="suite-brand-symbol"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><path d="M12 6a3 3 0 0 0-5.8-.9A4 4 0 0 0 4 12a4 4 0 0 0 3 6.8A3 3 0 0 0 12 21V6Zm0 0a3 3 0 0 1 5.8-.9A4 4 0 0 1 20 12a4 4 0 0 1-3 6.8A3 3 0 0 1 12 21"></path><path d="M7 9c2 0 3 1 3 3M6 16c1-2 2-2 4-2M17 9c-2 0-3 1-3 3M18 16c-1-2-2-2-4-2"></path></svg></span><span><span class="suite-word">MELI<em>Stroke</em></span><small>MELICARE · HEALTH INTELLIGENCE</small></span></a><span class="suite-context"><i></i>KHÁM CHỮA BỆNH</span><div id="meliTopControlsV70"><a aria-label="Về MELICARE" href="MELICARE.html" id="meliHomeV63" title="Về MELICARE">
+<svg viewbox="0 0 24 24">
+<path d="M3 10.8 12 3l9 7.8"></path>
+<path d="M5.5 9.5V21h13V9.5"></path>
+</svg>
+</a><div id="meliAuthV69">
+<button aria-label="Đăng nhập MELICARE" data-mc-account="" id="meliAuthBtnV69" type="button">
+<svg viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>
+<span class="loginTextV69">Login</span>
+</button>
+</div><div class="mc-switch" data-mc-switch=""><button aria-controls="mc-switch-panel" aria-expanded="false" aria-haspopup="true" aria-label="Chuyển ứng dụng MELICARE" class="mc-switch-button" type="button"><svg aria-hidden="true" class="mc-switch-grid" viewbox="0 0 24 24"><rect height="7" rx="2" width="7" x="3" y="3"></rect><rect height="7" rx="2" width="7" x="14" y="3"></rect><rect height="7" rx="2" width="7" x="3" y="14"></rect><rect height="7" rx="2" width="7" x="14" y="14"></rect></svg><span class="mc-switch-label">Ứng dụng</span><svg aria-hidden="true" class="mc-switch-chevron" viewbox="0 0 24 24"><path d="m7 10 5 5 5-5"></path></svg></button></div></div></div></header>
+<nav class="dxNav">
+<a href="MELIMind.html">MELI Mind</a>
+<a aria-current="page" class="active" href="MELIStroke.html">MELI Stroke</a>
+<a href="MELICardio.html">MELI Cardio</a>
+<a href="MELIAlz.html">MELI Alz</a>
+<a href="MELIDiabetes.html">MELI Diabetes</a>
+</nav>
+<main>
+<div class="timeline">
+<div class="timelineLine"><i id="timelineProgress"></i></div>
+<div class="timelineStep active" data-step="1"><div class="timelineNode">1</div><b>Nhập dữ liệu</b><span>Thông tin bệnh nhân</span></div>
+<div class="timelineStep" data-step="2"><div class="timelineNode">2</div><b>Phân tích dữ liệu</b><span>Trend &amp; bất thường</span></div>
+<div class="timelineStep" data-step="3"><div class="timelineNode">3</div><b>Kết quả</b><span>Risk &amp; khuyến nghị</span></div>
+</div>
+<section class="entryCard">
+<div class="sectionHead">
+<div><span class="eyebrow">THÔNG TIN BỆNH NHÂN</span><h2>Dữ liệu đầu vào</h2><p>Nhập trực tiếp hoặc tải file dữ liệu.</p></div>
+</div>
+<div class="entryGrid">
+<div class="inputGroups">
+<div class="inputGroup">
+<div class="groupTitle"><span class="groupIcon"><svg viewbox="0 0 24 24"><circle cx="12" cy="7" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg></span><b>Thông tin cá nhân</b></div>
+<div class="fieldGrid">
+<div class="field"><label for="name">Họ và tên</label><input id="name" value="Nguyễn Văn A"/></div>
+<div class="field"><label for="age">Tuổi</label><input id="age" type="number" value="67"/></div>
+<div class="field"><label for="sex">Giới tính</label><select id="sex"><option>Nam</option><option>Nữ</option></select></div>
+<div class="field"><label for="bmi">BMI</label><input id="bmi" step="0.1" type="number" value="27.8"/></div>
+</div>
+</div>
+<div class="inputGroup">
+<div class="groupTitle"><span class="groupIcon"><svg viewbox="0 0 24 24"><path d="M3 12h4l2-5 4 10 3-6h5"></path></svg></span><b>Huyết áp &amp; chuyển hóa</b></div>
+<div class="fieldGrid">
+<div class="field"><label for="sbp">SBP (mmHg)</label><input id="sbp" type="number" value="156"/></div>
+<div class="field"><label for="dbp">DBP (mmHg)</label><input id="dbp" type="number" value="94"/></div>
+<div class="field"><label for="glucose">Glucose (mg/dL)</label><input id="glucose" type="number" value="146"/></div>
+<div class="field"><label for="hba1c">HbA1c (%)</label><input id="hba1c" step="0.1" type="number" value="7.2"/></div>
+</div>
+</div>
+<div class="inputGroup">
+<div class="groupTitle"><span class="groupIcon"><svg viewbox="0 0 24 24"><path d="M4 18h16M6 15V9M12 15V5M18 15v-3"></path></svg></span><b>Lipid &amp; chức năng thận</b></div>
+<div class="fieldGrid">
+<div class="field"><label for="ldl">LDL-C</label><input id="ldl" type="number" value="142"/></div>
+<div class="field"><label for="hdl">HDL-C</label><input id="hdl" type="number" value="39"/></div>
+<div class="field"><label for="tg">Triglyceride</label><input id="tg" type="number" value="188"/></div>
+<div class="field"><label for="egfr">eGFR</label><input id="egfr" type="number" value="68"/></div>
+</div>
+</div>
+<div class="inputGroup">
+<div class="groupTitle"><span class="groupIcon"><svg viewbox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10Z"></path></svg></span><b>Yếu tố nguy cơ</b></div>
+<div class="fieldGrid">
+<div class="field"><label for="afib">Rung nhĩ</label><select id="afib"><option value="1">Có</option><option value="0">Không</option></select></div>
+<div class="field"><label for="smoking">Hút thuốc</label><select id="smoking"><option value="1">Có</option><option value="0">Không</option></select></div>
+<div class="field"><label for="diabetes">Đái tháo đường</label><select id="diabetes"><option value="1">Có</option><option value="0">Không</option></select></div>
+<div class="field"><label for="priorStroke">Tiền sử TIA/đột quỵ</label><select id="priorStroke"><option value="0">Không</option><option value="1">Có</option></select></div>
+</div>
+</div>
+</div>
+<div class="uploadSide">
+<div class="or"><span>HOẶC</span></div>
+<button class="uploadBox mc-upload-zone" data-mc-drop="" id="chooseFile" type="button"><span class="mc-upload-symbol"><svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><path d="M12 16V3m-4 4 4-4 4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg></span><b class="mc-upload-title">Tải dữ liệu lên</b><span class="mc-upload-hint">CSV, XLSX hoặc JSON</span><span class="mc-upload-cta">Chọn tệp từ máy tính <svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"></path></svg></span></button>
+<input accept=".csv,.xlsx,.xls,.json" hidden="" id="patientFile" type="file"/>
+<div class="fileStatus" id="fileStatus"></div>
+</div>
+</div>
+<div class="analyzeBar"><button class="analyzeBtn" data-ui-icon="spark" id="analyzeBtn" type="button">Phân tích dữ liệu</button></div>
+</section>
+<section class="results" id="analysisSection">
+<div class="topGrid">
+<section class="panel mc-trend-panel">
+<div class="panelHead">
+<div><span class="eyebrow">TREND ANALYSIS</span><h2>Xu hướng các chỉ số</h2><p>Diễn biến qua 6 mốc dữ liệu minh họa.</p></div>
+<div class="metricTabs">
+<button class="active" data-metric="sbp">Huyết áp</button>
+<button data-metric="glucose">Glucose</button>
+<button data-metric="ldl">LDL-C</button>
+</div>
+</div>
+<div class="chartWrap">
+<svg class="trendChart" id="trendChart" preserveaspectratio="none" viewbox="0 0 720 300"></svg>
+<div class="chartLegend"><span><i class="legendDot"></i>Giá trị bệnh nhân</span><span><i class="legendDot legendBand"></i>Vùng tham chiếu</span></div>
+</div>
+</section>
+<section class="panel">
+<div class="panelHead"><div><span class="eyebrow">ĐIỂM CẦN CHÚ Ý</span><h2>Mức độ so với ngưỡng</h2><p>Marker cho thấy bệnh nhân đang ở đâu so với vùng an toàn.</p></div></div>
+<div class="attentionList" id="attentionList"></div>
+</section>
+</div>
+<div class="resultLowerGrid">
+<div class="leftResultStack">
+<section class="panel">
+<div class="panelHead">
+<div>
+<span class="eyebrow">GIẢI THÍCH</span>
+<h2>Vì sao có kết quả này?</h2>
+<p>Trực quan mức vượt ngưỡng của từng yếu tố.</p>
+</div>
+</div>
+<div class="reasonList" id="reasonList"></div>
+</section>
+<section class="panel">
+<div class="panelHead">
+<div>
+<span class="eyebrow">LỐI SỐNG &amp; THEO DÕI</span>
+<h2>Khuyến nghị</h2>
+<p>Các hành động nên ưu tiên dựa trên nhóm yếu tố nguy cơ hiện tại.</p>
+</div>
+</div>
+<div class="lifestyleList" id="lifestyleList"></div>
+</section>
+</div>
+<section class="panel combinedRiskPanel">
+<div class="panelHead">
+<div>
+<span class="eyebrow">STROKE RISK ASSESSMENT</span>
+<h2>Khả năng đột quỵ &amp; các phương pháp đánh giá</h2>
+<p>AI prediction và các thang điểm/risk factor được đặt trong cùng một khối để dễ đối chiếu.</p>
+</div>
+</div>
+<div class="combinedRiskBody">
+<div class="aiRiskSummaryBox">
+<div class="aiPie" id="aiPie" style="--risk:0%">
+<div class="aiPieInner">
+<b id="aiRiskValue">—</b>
+<span>AI risk</span>
+</div>
+</div>
+<div class="aiRiskText">
+<span class="riskCaption">AI PREDICTION</span>
+<h3 id="aiRiskTitle">Chưa phân tích</h3>
+<p id="aiRiskSummary">Kết quả sẽ xuất hiện sau khi phân tích dữ liệu.</p>
+</div>
+</div>
+<div class="riskMethodsHeader">
+<div>
+<b>Risk factor theo nhiều phương pháp</b>
+<span>Mỗi phương pháp dùng nhóm yếu tố và quần thể mục tiêu khác nhau.</span>
+</div>
+</div>
+<div class="scaleGrid" id="scaleGrid"></div>
+</div>
+</section>
+</div>
+<div class="disclaimer">Các thang điểm và xác suất trong trang này chỉ dùng để minh họa giao diện prototype; không phải mô hình lâm sàng đã được thẩm định và không thay thế đánh giá, chẩn đoán hoặc điều trị của bác sĩ.</div>
+</section>
+<p class="suite-demo-note">Giao diện minh họa · Các chức năng AI và kết nối hệ thống giữ theo bản gốc, chưa tích hợp máy chủ.</p></main>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const $=id=>document.getElementById(id);
+  const ids=['name','age','sex','bmi','sbp','dbp','glucose','hba1c','ldl','hdl','tg','egfr','afib','smoking','diabetes','priorStroke'];
+  const get=()=>Object.fromEntries(ids.map(id=>[id,$(id).value]));
+  const num=v=>Number(v)||0;
+
+  const switcher=$('switcher'),switchBtn=$('switchBtn');
+  if(switcher&&switchBtn){
+    if(switchBtn) switchBtn.addEventListener('click',e=>{e.stopPropagation();switcher.classList.toggle('open')});
+    document.addEventListener('click',e=>{if(!switcher.contains(e.target))switcher.classList.remove('open')});
+  }
+
+  $('chooseFile').addEventListener('click',()=>$('patientFile').click());
+  $('patientFile').addEventListener('change',e=>{
+    const f=e.target.files[0]; if(!f)return;
+    $('fileStatus').classList.add('show');
+    $('fileStatus').textContent='Đã chọn: '+f.name;
+  });
+
+  function setTimeline(stage){
+    document.querySelectorAll('.timelineStep').forEach((el,i)=>{
+      el.classList.toggle('done',i<stage-1);
+      el.classList.toggle('active',i===stage-1);
+    });
+    $('timelineProgress').style.width=stage===1?'0%':stage===2?'50%':'100%';
+  }
+
+  const configs={
+    sbp:{safe:120,warn:130,high:140,delta:[-18,-14,-10,-7,-3,0]},
+    glucose:{safe:99,warn:100,high:126,delta:[-28,-22,-17,-12,-6,0]},
+    ldl:{safe:100,warn:100,high:130,delta:[-25,-20,-16,-12,-7,0]}
+  };
+
+  function drawTrend(metric,d){
+    const c=configs[metric];
+    window.MELICharts.renderTrend({svg:$('trendChart'),metric,values:c.delta.map(v=>Math.max(0,num(d[metric])+v)),reference:c.safe,color:c.color});
+  }
+
+  function stateFor(key,val){
+    if(key==='hdl') return val<40?['warn','Thấp',40-val,40]:['good','An toàn',0,40];
+    if(key==='egfr') return val<60?['warn','Thấp',60-val,60]:['good','An toàn',0,60];
+    const c={sbp:[130,140],glucose:[100,126],hba1c:[5.7,6.5],ldl:[100,130],tg:[150,200]}[key];
+    if(val>=c[1])return ['high','Cao',val-c[1],c[1]];
+    if(val>=c[0])return ['warn','Tăng',val-c[0],c[0]];
+    return ['good','An toàn',0,c[0]];
+  }
+
+  function renderAttention(d){
+    const items=[
+      ['sbp','Huyết áp tâm thu',num(d.sbp),'mmHg',190],
+      ['glucose','Glucose',num(d.glucose),'mg/dL',220],
+      ['hba1c','HbA1c',num(d.hba1c),'%',10],
+      ['ldl','LDL-C',num(d.ldl),'mg/dL',220],
+      ['hdl','HDL-C',num(d.hdl),'mg/dL',80],
+      ['tg','Triglyceride',num(d.tg),'mg/dL',300],
+      ['egfr','eGFR',num(d.egfr),'mL/min/1.73m²',120]
+    ];
+    $('attentionList').innerHTML=items.map(([k,label,v,unit,max])=>{
+      const s=stateFor(k,v),pos=Math.max(2,Math.min(98,v/max*100)),th=Math.max(2,Math.min(98,s[3]/max*100));
+      const cls=s[0]==='high'?'statusHigh':s[0]==='warn'?'statusWarn':'statusGood';
+      const delta=s[2]?`${s[0]==='high'?'Vượt':'Lệch'} ngưỡng ${Number(s[2].toFixed(1))} ${unit}`:'Trong vùng an toàn';
+      return `<div class="attentionCard" data-indicator="${k}">
+        <div class="attentionTop">
+          <div class="indicatorLine"><b>${label}</b><small>${v} ${unit}</small></div>
+          <div class="statusAndDelta"><span class="${cls}">${s[1]}</span><span class="deltaInline">${delta}</span></div>
+        </div>
+        <div class="rangeBar"><i class="thresholdMarker" style="left:${th}%"></i><i class="rangeMarker" style="left:${pos}%"></i></div>
+        <div class="rangeLabels"><span>thấp</span><span>ngưỡng</span><span>cao</span></div>
+      </div>`;
+    }).join('');
+  }
+
+  function calcAI(d){
+    let score=5,reasons=[];
+    const add=(label,pts,key,val,thr)=>{score+=pts;reasons.push({label,pts,key,val,thr})};
+    const age=num(d.age),sbp=num(d.sbp),hba=num(d.hba1c),ldl=num(d.ldl),hdl=num(d.hdl),bmi=num(d.bmi),egfr=num(d.egfr);
+    if(age>=75)add('Tuổi ≥75',18,'age',age,75); else if(age>=65)add('Tuổi 65–74',12,'age',age,65); else if(age>=55)add('Tuổi 55–64',6,'age',age,55);
+    if(sbp>=160)add('HATT ≥160',18,'sbp',sbp,160); else if(sbp>=140)add('HATT 140–159',13,'sbp',sbp,140); else if(sbp>=130)add('HATT 130–139',7,'sbp',sbp,130);
+    if(d.afib==='1')add('Rung nhĩ',15,'afib',1,0);
+    if(d.priorStroke==='1')add('Tiền sử TIA/đột quỵ',18,'priorStroke',1,0);
+    if(d.smoking==='1')add('Hút thuốc',8,'smoking',1,0);
+    if(d.diabetes==='1'||hba>=6.5)add('Đái tháo đường / HbA1c',9,'hba1c',hba,6.5);
+    if(ldl>=130)add('LDL-C tăng',7,'ldl',ldl,130);
+    if(hdl<40)add('HDL-C thấp',4,'hdl',hdl,40);
+    if(bmi>=30)add('BMI ≥30',4,'bmi',bmi,30); else if(bmi>=25)add('BMI thừa cân',2,'bmi',bmi,25);
+    if(egfr<60)add('eGFR giảm',5,'egfr',egfr,60);
+    return {score:Math.min(92,score),reasons:reasons.sort((a,b)=>b.pts-a.pts)};
+  }
+
+  function cha2ds2vasc(d){
+    let s=0,age=num(d.age);
+    if(age>=75)s+=2; else if(age>=65)s+=1;
+    if(d.diabetes==='1')s+=1;
+    if(d.priorStroke==='1')s+=2;
+    if(num(d.sbp)>=140)s+=1;
+    if(d.sex==='Nữ')s+=1;
+    return s;
+  }
+  function framinghamDemo(d){
+    let p=3,age=num(d.age),sbp=num(d.sbp);
+    p+=Math.max(0,(age-45)*0.45); p+=Math.max(0,(sbp-120)*0.18);
+    if(d.smoking==='1')p+=5; if(d.diabetes==='1')p+=5; if(d.afib==='1')p+=7;
+    return Math.max(2,Math.min(45,Math.round(p)));
+  }
+
+  function renderScales(d,ai){
+    const age=num(d.age),sbp=num(d.sbp),hba=num(d.hba1c);
+    const hypertension=sbp>=140;
+    const diabetes=(d.diabetes==='1'||hba>=6.5);
+    const prior=(d.priorStroke==='1');
+    const smoker=(d.smoking==='1');
+    const af=(d.afib==='1');
+    const female=(d.sex==='Nữ');
+
+    /* CHA2DS2-VASc: show a lower-bound from available variables only.
+       This page does not collect heart failure or vascular disease. */
+    let chaAvailable=0;
+    if(age>=75) chaAvailable+=2; else if(age>=65) chaAvailable+=1;
+    if(hypertension) chaAvailable+=1;
+    if(diabetes) chaAvailable+=1;
+    if(prior) chaAvailable+=2;
+    if(female) chaAvailable+=1;
+
+    /* Essen: lower-bound from variables available here.
+       Original score also uses prior MI, other CV disease and PAD. */
+    let essenAvailable=0;
+    if(age>=75) essenAvailable+=2; else if(age>=65) essenAvailable+=1;
+    if(hypertension) essenAvailable+=1;
+    if(diabetes) essenAvailable+=1;
+    if(smoker) essenAvailable+=1;
+    if(prior) essenAvailable+=1;
+
+    const chip=(text,state='')=>`<span class="factorChip ${state}">${text}</span>`;
+    const chipsAI=[
+      chip(`Tuổi ${age}`,age>=65?'hit':'good'),
+      chip(`SBP ${d.sbp}`,hypertension?'high':'good'),
+      chip('Rung nhĩ',af?'high':'good'),
+      chip('Đái tháo đường',diabetes?'hit':'good'),
+      chip('Hút thuốc',smoker?'hit':'good'),
+      chip(`LDL ${d.ldl}`,num(d.ldl)>=130?'hit':'good'),
+      chip(`HDL ${d.hdl}`,num(d.hdl)<40?'hit':'good')
+    ].join('');
+
+    const chaFactors=[
+      chip(`Tuổi ${age}`,age>=65?'hit':'good'),
+      chip('Tăng huyết áp',hypertension?'hit':'good'),
+      chip('Đái tháo đường',diabetes?'hit':'good'),
+      chip('TIA/Stroke trước đó',prior?'high':'good'),
+      chip(`Giới ${d.sex}`,female?'hit':'good')
+    ].join('');
+
+    const essenFactors=[
+      chip(`Tuổi ${age}`,age>=65?'hit':'good'),
+      chip('Tăng huyết áp',hypertension?'hit':'good'),
+      chip('Đái tháo đường',diabetes?'hit':'good'),
+      chip('Hút thuốc',smoker?'hit':'good'),
+      chip('TIA/Stroke trước đó',prior?'high':'good')
+    ].join('');
+
+    const abcdFactors=[
+      chip(`Tuổi ${age}`,age>=60?'hit':'good'),
+      chip(`BP ${d.sbp}/${d.dbp}`,hypertension?'hit':'good'),
+      chip('Đái tháo đường',diabetes?'hit':'good'),
+      chip('Triệu chứng thần kinh',''),
+      chip('Thời gian triệu chứng','')
+    ].join('');
+
+    
+
+    $('scaleGrid').innerHTML=`
+      <div class="methodCard ai">
+        <div>
+          <div class="methodHead"><div><b>AI model</b><small>Prototype đa biến của MELI Stroke</small></div><div class="methodScore"><strong>${ai.score}%</strong><span>risk estimate</span></div></div>
+          <div class="factorList">${chipsAI}</div>
+          <span class="methodStatus applicable">Áp dụng cho prototype hiện tại</span>
+        </div>
+        <div class="methodNote">Tổng hợp đồng thời tuổi, huyết áp, rung nhĩ, chuyển hóa, lipid và yếu tố hành vi.</div>
+      </div>
+
+      <div class="methodCard cha">
+        <div>
+          <div class="methodHead"><div><b>CHA₂DS₂-VASc</b><small>Nguy cơ huyết khối/đột quỵ ở bệnh nhân rung nhĩ</small></div><div class="methodScore"><strong>${af?'≥'+chaAvailable:'N/A'}</strong><span>${af?'điểm từ biến hiện có':'không có AF'}</span></div></div>
+          <div class="factorList">${chaFactors}</div>
+          <span class="methodStatus ${af?'conditional':'na'}">${af?'Cần bổ sung HF/vascular disease để đủ score':'Không áp dụng nếu không có rung nhĩ'}</span>
+        </div>
+        <div class="methodNote">Không nên diễn giải score này như nguy cơ stroke chung cho mọi bệnh nhân.</div>
+      </div>
+
+      <div class="methodCard abcd">
+        <div>
+          <div class="methodHead"><div><b>ABCD²</b><small>Nguy cơ stroke sớm sau một cơn TIA</small></div><div class="methodScore"><strong>N/A</strong><span>thiếu biến TIA cấp</span></div></div>
+          <div class="factorList">${abcdFactors}</div>
+          <span class="methodStatus na">Cần clinical features + symptom duration</span>
+        </div>
+        <div class="methodNote">Chỉ phù hợp khi đang đánh giá một cơn TIA gần đây; không phải score nguy cơ dài hạn.</div>
+      </div>
+
+      <div class="methodCard essen">
+        <div>
+          <div class="methodHead"><div><b>Essen Stroke Risk Score</b><small>Nguy cơ tái phát sau TIA/ischemic stroke</small></div><div class="methodScore"><strong>${prior?'≥'+essenAvailable:'N/A'}</strong><span>${prior?'điểm từ biến hiện có':'không có tiền sử'}</span></div></div>
+          <div class="factorList">${essenFactors}</div>
+          <span class="methodStatus ${prior?'conditional':'na'}">${prior?'Cần thêm MI/CVD/PAD để đủ score':'Dùng cho secondary prevention'}</span>
+        </div>
+        <div class="methodNote">Phù hợp hơn cho bệnh nhân đã từng TIA hoặc ischemic stroke, nhằm phân tầng nguy cơ tái phát.</div>
+      </div>
+
+      
+    `;
+  }
+
+  function renderReasons(ai){
+    $('reasonList').innerHTML=(ai.reasons.length?ai.reasons:[{label:'Không có yếu tố nổi bật',pts:1,key:'x',val:0,thr:1}]).slice(0,7).map(r=>{
+      let ratio=75,detail='';
+      if(r.key==='hdl'||r.key==='egfr'){
+        ratio=Math.max(5,Math.min(95,r.val/(r.thr*1.6)*100));
+        detail=`${r.val} / ngưỡng ${r.thr}`;
+      } else if(typeof r.val==='number'&&r.thr>0){
+        ratio=Math.max(5,Math.min(95,r.val/(r.thr*1.4)*100));
+        detail=`${r.val} / ngưỡng ${r.thr}`;
+      } else {
+        detail='yếu tố nguy cơ hiện diện';
+      }
+      return `<div class="reasonCard" data-indicator="${r.key}">
+        <div class="reasonHeader">
+          <div class="reasonTitleLine"><b>${r.label}</b><span class="reasonDetailInline">${detail}</span></div>
+          <span>+${r.pts} điểm</span>
+        </div>
+        <div class="compareTrack"><i class="safeZone" style="width:70%"></i><i class="thresholdLine" style="left:70%"></i><i class="patientMarker" style="left:${ratio}%"></i></div>
+      </div>`;
+    }).join('');
+  }
+
+  function renderLifestyle(){
+    const data=[
+      ['<svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 3-6h5"/></svg>','Kiểm soát huyết áp','Theo dõi huyết áp định kỳ và trao đổi với bác sĩ khi thường xuyên cao.'],
+      ['<svg viewBox="0 0 24 24"><path d="M5 20c3-8 6-11 14-16M7 7c3 0 5 1 7 3M10 14c3 0 5 1 7 3"/></svg>','Ăn uống lành mạnh','Giảm muối, ưu tiên rau, trái cây, ngũ cốc nguyên hạt và chất béo lành mạnh.'],
+      ['<svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M10 9l-2 5 4 2 2 5M12 10l4 3 3-1"/></svg>','Vận động thể lực','Duy trì hoạt động phù hợp với tình trạng sức khỏe và hướng dẫn của bác sĩ.'],
+      ['<svg viewBox="0 0 24 24"><path d="M6 18h11M8 14h8M10 10h6M5 5l14 14"/></svg>','Ngừng hút thuốc','Nếu đang hút thuốc, xây dựng kế hoạch cai thuốc và tìm hỗ trợ khi cần.'],
+      ['<svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10Z"/></svg>','Theo dõi rung nhĩ','Nếu có rung nhĩ, cần được đánh giá nguy cơ huyết khối và kế hoạch dự phòng phù hợp.'],
+      ['<svg viewBox="0 0 24 24"><path d="M4 12h4l2-4 4 8 2-4h4"/></svg>','Nhận biết FAST','Méo miệng, yếu tay/chân, nói khó hoặc triệu chứng thần kinh đột ngột → cấp cứu ngay.']
+    ];
+    $('lifestyleList').innerHTML=data.map((x,i)=>`
+      <div class="lifeCard" data-life-index="${i}">
+        <div class="lifeIcon">${x[0]}</div>
+        <div>
+          <b>${x[1]}</b>
+          <div class="lifeTextV54">
+            <span class="lifePreviewV54">${x[2]}</span>
+            <button class="lifeMoreBtnV54" type="button">[more]</button>
+          </div>
+        </div>
+      </div>`).join('');
+
+    document.querySelectorAll('.lifeMoreBtnV54').forEach(btn=>{
+      btn.addEventListener('click',e=>{
+        e.stopPropagation();
+        const card=btn.closest('.lifeCard');
+        const expanded=card.classList.toggle('expandedV54');
+        btn.textContent=expanded?'[less]':'[more]';
+      });
+    });
+  }
+
+  function analyze(){
+    const d=get();
+    setTimeline(2);
+    $('analysisSection').classList.add('show');
+    drawTrend('sbp',d);
+    renderAttention(d);
+    const ai=calcAI(d);
+    $('aiPie').style.setProperty('--risk',ai.score+'%');
+    $('aiRiskValue').textContent=ai.score+'%';
+    if(ai.score>=55){
+      $('aiRiskTitle').textContent='Nguy cơ cao';
+      $('aiRiskSummary').textContent='Nhiều yếu tố nguy cơ cùng xuất hiện và cần được đánh giá lâm sàng đầy đủ.';
+    }else if(ai.score>=30){
+      $('aiRiskTitle').textContent='Nguy cơ trung gian';
+      $('aiRiskSummary').textContent='Một số yếu tố nguy cơ đang ở vùng cần chú ý và nên được kiểm soát.';
+    }else{
+      $('aiRiskTitle').textContent='Nguy cơ thấp hơn';
+      $('aiRiskSummary').textContent='Ít yếu tố nguy cơ nổi bật hơn trong dữ liệu hiện tại.';
+    }
+    renderScales(d,ai);
+    renderReasons(ai);
+    renderLifestyle();
+    setTimeout(()=>setTimeline(3),350);
+    $('analysisSection').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  $('analyzeBtn').addEventListener('click',analyze);
+  document.querySelectorAll('[data-metric]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('[data-metric]').forEach(x=>x.classList.remove('active'));
+      btn.classList.add('active');
+      drawTrend(btn.dataset.metric,get());
+    });
+  });
+});
+</script>
+<script id="melicare-style-integration">
+/* Visual/accessibility integration only. Existing application logic remains intact. */
+document.addEventListener('DOMContentLoaded',()=>{
+ const $=id=>document.getElementById(id);
+ const auth=$('meliAuthBtnV69'),modal=$('meliLoginModalV69'),nav=$('meliAppNavV62');
+ if(auth){const label=()=>{const t=auth.querySelector('.loginTextV69');if(t&&t.textContent!=='Đăng nhập')t.textContent='Đăng nhập';};label();new MutationObserver(label).observe(auth,{childList:true,subtree:true});}
+ document.querySelectorAll('.suite-local-nav .nav').forEach(el=>{el.setAttribute('type','button');el.addEventListener('click',()=>{document.querySelectorAll('.suite-local-nav .nav').forEach(n=>n.setAttribute('aria-current',n.classList.contains('active')?'page':'false'));});});
+ // Keep the restored horizontal mobile timeline aligned to its existing progress.
+ const progress=$('timelineProgress');
+ if(progress){const sync=()=>progress.parentElement.style.setProperty('--suite-progress',progress.style.width||'0%');sync();new MutationObserver(sync).observe(progress,{attributes:true,attributeFilter:['style']});}
+ // The native login form is a local UI demo, not a server authentication flow.
+ if(modal){
+   modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-label','Đăng nhập MELICARE');
+   const observer=new MutationObserver(()=>{if(modal.classList.contains('open')){setTimeout(()=>modal.querySelector('input')?.focus(),40);if(nav){nav.classList.remove('open');$('meliAppNavBtnV62')?.setAttribute('aria-expanded','false');}}});
+   observer.observe(modal,{attributes:true,attributeFilter:['class']});
+   modal.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const f=[...modal.querySelectorAll('button,input,a,select,textarea')].filter(n=>n.offsetParent!==null&&!n.disabled);if(!f.length)return;const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
+ }
+ const openImages=document.querySelector('[data-suite-images]');
+ if(openImages)openImages.addEventListener('click',()=>document.querySelector('.rightPanel')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'}));
+ document.querySelector('[data-suite-history]')?.addEventListener('click',()=>$('openHistoryBtn')?.click());
+ document.querySelector('[data-suite-projects]')?.addEventListener('click',()=>$('openProjectsBtn')?.click());
+ // Mirror the compact local-demo label after dynamic UI updates.
+ if(nav)nav.setAttribute('aria-label','Chuyển ứng dụng MELICARE');
+});
+</script></body>
+</html>

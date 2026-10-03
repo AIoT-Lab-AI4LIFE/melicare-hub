@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>MEDIStroke — Stroke Risk Intelligence</title>
+<style>
+:root{
+ --bg:#f6f9fc;--surface:#fff;--ink:#10233f;--muted:#697d91;--line:#dbe6ef;
+ --navy:#123b6d;--blue:#2f7ff7;--blue2:#245d96;--green:#278563;--amber:#d69b32;
+ --red:#c84b54;--soft:#eef6ff;--shadow:0 10px 30px rgba(19,52,85,.07)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:
+ radial-gradient(circle at 10% 0%,rgba(76,201,240,.08),transparent 23%),
+ var(--bg);
+ color:var(--ink);font-family:"Plus Jakarta Sans",Inter,"Segoe UI",Arial,sans-serif;
+ font-size:14px
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+
+/* Header */
+header{
+ height:72px;display:flex;align-items:center;gap:16px;padding:0 22px;
+ position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);
+ backdrop-filter:blur(14px);border-bottom:1px solid var(--line);
+ box-shadow:0 4px 15px rgba(18,50,82,.04)
+}
+.brand{display:flex;align-items:center;gap:10px}
+.brandMark{
+ width:42px;height:42px;border-radius:13px;display:grid;place-items:center;
+ background:linear-gradient(145deg,#143d69,#2f7ff7);color:#fff;font-weight:900;font-size:12px
+}
+.brandText{font-size:19px;font-weight:900;color:#123b6d;letter-spacing:-.35px}
+.brandText span{color:#2f7ff7}
+.headerTitle{flex:1;text-align:center;color:#63788d;font-size:12px;font-weight:800}
+.navActions{display:flex;align-items:center;gap:8px}
+.homeBtn,.switchBtn{
+ height:42px;border:1px solid #d6e2ec;border-radius:11px;background:#f8fafc;color:#315d77;
+ display:flex;align-items:center;justify-content:center;gap:7px;font-size:11px;font-weight:850
+}
+.homeBtn{width:42px}
+.homeBtn svg,.switchBtn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8}
+.switcher{position:relative}
+.switchBtn{padding:0 11px}
+.switchMenu{
+ position:absolute;right:0;top:50px;width:245px;padding:8px;background:#fff;border:1px solid #dbe6ee;
+ border-radius:14px;box-shadow:0 18px 45px rgba(20,55,85,.17);display:none
+}
+.switcher.open .switchMenu{display:block}
+.switchMenu a{display:block;padding:10px 11px;border-radius:9px;color:#526e80;font-size:11px;font-weight:800}
+.switchMenu a:hover{background:#f3f7fa}.switchMenu a.current{background:#eaf3fb;color:#17486d}
+
+/* Main */
+main{max-width:1460px;margin:auto;padding:26px 26px 42px}
+.hero{
+ display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:16px
+}
+.hero h1{margin:0;font-size:32px;letter-spacing:-.045em;color:#102a56}
+.hero p{margin:7px 0 0;color:var(--muted);font-size:13px;max-width:800px;line-height:1.5}
+.safetyBadge{
+ padding:8px 11px;border-radius:999px;background:#fff4e5;border:1px solid #f0dfbf;
+ color:#8a641f;font-size:10px;font-weight:850;white-space:nowrap
+}
+
+.stepbar{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px
+}
+.step{
+ display:flex;align-items:center;gap:10px;padding:11px 13px;background:#fff;border:1px solid var(--line);
+ border-radius:13px;box-shadow:0 4px 13px rgba(20,52,82,.035)
+}
+.stepNo{
+ width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#eaf3fb;color:#315f7c;
+ font-weight:900
+}
+.step.active .stepNo{background:linear-gradient(145deg,#123b6d,#2f7ff7);color:#fff}
+.step b{display:block;font-size:11px}.step span{font-size:9px;color:#7d8d9b}
+
+.panel{
+ background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden
+}
+.panelHead{
+ display:flex;justify-content:space-between;align-items:center;gap:12px;
+ padding:14px 16px;border-bottom:1px solid #e7eef5;background:linear-gradient(180deg,#fbfdff,#f7fafc)
+}
+.panelHead h2{margin:0;font-size:16px;color:#173b66}
+.panelHead p{margin:4px 0 0;color:#7b8ea0;font-size:10px}
+
+.inputLayout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:14px;margin-bottom:14px}
+.uploadPane{padding:14px}
+.dropzone{
+ border:1.5px dashed #b7ccdc;border-radius:13px;padding:20px;background:#f8fbfd;text-align:center
+}
+.dropzone strong{display:block;font-size:12px;color:#315b75;margin:8px 0 4px}
+.dropzone span{display:block;font-size:9px;color:#8091a0;line-height:1.45}
+.secondary{
+ border:1px solid #d2dee8;border-radius:9px;background:#fff;color:#46657a;padding:9px 11px;font-weight:800
+}
+.fileStatus{margin-top:10px;padding:9px;border-radius:9px;background:#edf5fb;color:#45677d;font-size:9px;display:none}
+.fileStatus.show{display:block}
+
+.formWrap{padding:14px 16px 16px}
+.formSectionTitle{
+ margin:0 0 9px;color:#557083;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.05em
+}
+.formGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.field{min-width:0}
+.field label{display:block;margin-bottom:5px;color:#60788c;font-size:9px;font-weight:800}
+.field input,.field select{
+ width:100%;height:38px;border:1px solid #d4e0e9;border-radius:9px;background:#fbfdff;
+ padding:0 9px;color:#264259;font-size:11px
+}
+.field input:focus,.field select:focus{outline:0;border-color:#86b5df;box-shadow:0 0 0 3px rgba(47,127,247,.08)}
+
+.dataToolbar{
+ display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;
+ border-bottom:1px solid #e6edf3
+}
+.dataToolbar h3{margin:0;font-size:13px;color:#315970}
+.primary{
+ border:0;border-radius:10px;background:linear-gradient(135deg,#123b6d,#2f7ff7);color:#fff;
+ padding:10px 14px;font-weight:850;box-shadow:0 7px 16px rgba(47,127,247,.15)
+}
+.tableWrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:1000px}
+th{background:#f3f7fa;color:#6d8192;font-size:9px;text-align:left;padding:9px 10px;border-bottom:1px solid #dde7ee}
+td{padding:10px;font-size:10px;color:#344f63;border-bottom:1px solid #edf2f5}
+td strong{color:#1f4662}
+.valueTag{display:inline-flex;padding:4px 6px;border-radius:7px;background:#f1f5f8;color:#547082;font-weight:800}
+.valueTag.warn{background:#fff3df;color:#97691e}.valueTag.high{background:#fff0ef;color:#a54f4b}.valueTag.good{background:#eaf7f0;color:#2d7e60}
+
+.analysisSection{margin-top:14px;display:none}
+.analysisSection.show{display:block}
+.analysisGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin-bottom:14px}
+
+.chartArea{padding:14px 16px 16px}
+.chartTabs{display:flex;gap:6px;margin-bottom:12px}
+.chartTabs button{
+ border:1px solid #dbe5ed;border-radius:8px;background:#fff;color:#607689;padding:7px 9px;font-size:9px;font-weight:800
+}
+.chartTabs button.active{background:#eaf3fb;color:#174b71;border-color:#c4d9e8}
+.chartSvg{width:100%;height:250px;display:block;background:#fbfdff;border:1px solid #e6edf3;border-radius:11px}
+.chartLegend{display:flex;gap:14px;margin-top:8px;font-size:9px;color:#6f8292}
+.chartLegend i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:4px;background:#2f7ff7}.chartLegend i.norm{background:#9db6c9}
+
+.abnormalList{padding:12px 14px}
+.abnormalItem{
+ display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:9px;align-items:center;
+ padding:10px 0;border-bottom:1px solid #edf2f5
+}
+.abnormalItem:last-child{border-bottom:0}
+.dot{width:9px;height:9px;border-radius:50%;background:#d69b32}.dot.high{background:#c84b54}.dot.good{background:#2c9b73}
+.abnormalItem b{display:block;font-size:11px;color:#31536a}
+.abnormalItem span{font-size:9px;color:#7a8d9c}
+.abnormalItem strong{font-size:10px;color:#8b641d}.abnormalItem strong.red{color:#a64d4d}.abnormalItem strong.green{color:#2c7d5f}
+
+.riskCard{
+ padding:18px;background:
+ radial-gradient(circle at 90% 10%,rgba(47,127,247,.08),transparent 28%),
+ linear-gradient(135deg,#f7fbff,#fff)
+}
+.riskTop{display:grid;grid-template-columns:160px minmax(0,1fr);gap:18px;align-items:center}
+.riskGauge{
+ width:150px;height:150px;border-radius:50%;
+ background:conic-gradient(#d59a36 0 var(--risk-angle),#e9eff4 var(--risk-angle) 100%);
+ display:grid;place-items:center;position:relative
+}
+.riskGauge:after{content:"";position:absolute;inset:18px;border-radius:50%;background:#fff}
+.riskGaugeInner{position:relative;z-index:1;text-align:center}
+.riskGaugeInner b{display:block;font-size:32px;color:#173b66}.riskGaugeInner span{font-size:9px;color:#7b8d9d}
+.riskText h3{margin:0;font-size:18px;color:#173b66}.riskText p{margin:7px 0 0;color:#657b8e;font-size:11px;line-height:1.55}
+.riskLevel{
+ display:inline-flex;margin-top:9px;padding:6px 9px;border-radius:999px;background:#fff1dc;color:#93671d;
+ font-size:9px;font-weight:850
+}
+
+.explainGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.explainBody{padding:14px 16px 16px}
+.reasonRow{
+ display:grid;grid-template-columns:150px minmax(0,1fr) 80px;gap:10px;align-items:center;
+ padding:9px 0;border-bottom:1px solid #edf2f5
+}
+.reasonRow:last-child{border-bottom:0}
+.reasonRow b{font-size:10px;color:#31536a}
+.reasonBar{height:8px;border-radius:99px;background:#edf2f5;overflow:hidden}.reasonBar i{display:block;height:100%;background:#d59a36}.reasonRow.high .reasonBar i{background:#c84b54}.reasonRow.good .reasonBar i{background:#2c9b73}
+.reasonRow span{text-align:right;font-size:9px;font-weight:800;color:#7d8c98}
+
+.advice{display:grid;gap:8px}
+.adviceItem{
+ display:grid;grid-template-columns:31px minmax(0,1fr);gap:9px;padding:10px;border:1px solid #e0e9f0;border-radius:10px;background:#fbfdff
+}
+.adviceIcon{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:#eaf3fb;color:#315d7b;font-weight:900}
+.adviceItem b{display:block;font-size:10px;color:#294e67}.adviceItem span{display:block;margin-top:3px;font-size:9px;color:#708493;line-height:1.4}
+.disclaimer{
+ margin-top:14px;padding:11px 13px;border-radius:11px;background:#fff8ec;border:1px solid #efdfc0;
+ color:#81642c;font-size:9px;line-height:1.5
+}
+
+@media(max-width:1100px){
+ .formGrid{grid-template-columns:repeat(2,1fr)}
+ .inputLayout,.analysisGrid,.explainGrid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+ main{padding:18px 12px 30px}.formGrid{grid-template-columns:1fr}.stepbar{grid-template-columns:1fr}
+ .headerTitle,.switchBtn span{display:none}.riskTop{grid-template-columns:1fr;text-align:center}.riskGauge{margin:auto}
+}
+</style>
+<style id="medistroke-timeline-v12">
+.stepbar{display:none!important}
+
+.strokeTimeline{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;
+  margin:8px 8px 28px;
+  padding:0 34px;
+}
+
+.timelineTrack{
+  position:absolute;
+  left:calc(16.6667% + 34px);
+  right:calc(16.6667% + 34px);
+  top:22px;
+  height:4px;
+  border-radius:999px;
+  background:#dbe5ee;
+  overflow:hidden;
+  z-index:0;
+}
+.timelineTrack i{
+  display:block;
+  width:0%;
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg,#123b6d,#2f7ff7);
+  transition:width .35s ease;
+}
+
+.timelineStep{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-width:0;
+  text-align:center;
+}
+
+.timelineNode{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  border:4px solid #f6f9fc;
+  background:#e7edf3;
+  color:#728598;
+  font-size:15px;
+  font-weight:900;
+  box-shadow:0 0 0 1px #cbd9e4;
+  transition:.25s ease;
+}
+
+.timelineStep.active .timelineNode,
+.timelineStep.done .timelineNode{
+  background:linear-gradient(145deg,#123b6d,#2f7ff7);
+  color:#fff;
+  box-shadow:
+    0 0 0 1px #7eadd8,
+    0 7px 18px rgba(47,127,247,.18);
+}
+
+.timelineStep.done .timelineNode{
+  background:#456f96;
+}
+.timelineStep.done .timelineNode{
+  font-size:0;
+}
+.timelineStep.done .timelineNode::after{
+  content:"✓";
+  font-size:15px;
+}
+
+.timelineText{
+  margin-top:10px;
+  padding:0 12px;
+}
+.timelineText b{
+  display:block;
+  color:#536a7e;
+  font-size:13px;
+  line-height:1.2;
+  transition:.2s ease;
+}
+.timelineText span{
+  display:block;
+  margin-top:4px;
+  color:#8a99a7;
+  font-size:10px;
+  line-height:1.3;
+}
+.timelineStep.active .timelineText b{
+  color:#123b6d;
+  font-weight:900;
+}
+.timelineStep.done .timelineText b{
+  color:#456b8a;
+}
+
+@media(max-width:700px){
+  .strokeTimeline{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding:0;
+    margin:8px 0 24px;
+  }
+  .timelineTrack{
+    left:22px;
+    top:22px;
+    bottom:22px;
+    right:auto;
+    width:4px;
+    height:auto;
+  }
+  .timelineTrack i{
+    width:100%!important;
+    height:0%;
+  }
+  .timelineStep{
+    min-height:46px;
+    flex-direction:row;
+    align-items:center;
+    text-align:left;
+  }
+  .timelineNode{flex:0 0 46px}
+  .timelineText{margin:0 0 0 12px;padding:0}
+}
+</style>
+<style id="medistroke-analysis-layout-v13">
+/* ===== Compact analysis canvas ===== */
+main{
+  max-width:1260px!important;
+  padding-left:24px!important;
+  padding-right:24px!important;
+}
+
+/* General typography up */
+body{font-size:15px!important}
+.hero h1{font-size:34px!important}
+.hero p{font-size:14px!important}
+.panelHead h2{font-size:18px!important}
+.panelHead p{font-size:11px!important}
+.dataToolbar h3{font-size:15px!important}
+th{font-size:10px!important}
+td{font-size:11px!important}
+.field label{font-size:10px!important}
+.field input,.field select{font-size:12px!important}
+.timelineText b{font-size:14px!important}
+.timelineText span{font-size:11px!important}
+
+/* Analysis area reflow */
+.analysisGrid{
+  grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr)!important;
+  gap:12px!important;
+  margin-bottom:12px!important;
+}
+.chartArea{padding:12px 14px 14px!important}
+.chartSvg{height:220px!important}
+.chartTabs button{font-size:10px!important;padding:7px 10px!important}
+.chartLegend{font-size:10px!important}
+
+.abnormalList{padding:10px 13px!important}
+.abnormalItem{padding:9px 0!important}
+.abnormalItem b{font-size:12px!important}
+.abnormalItem span,.abnormalItem strong{font-size:10px!important}
+
+/* Put risk and explain/recommendation in a tighter 2-column matrix */
+.analysisMatrix{
+  display:grid;
+  grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);
+  gap:12px;
+  align-items:start;
+}
+.riskPanel{
+  grid-column:1;
+}
+.explainGrid{
+  grid-column:2;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:12px!important;
+  margin-top:0!important;
+}
+.riskCard{padding:16px!important}
+.riskTop{
+  grid-template-columns:125px minmax(0,1fr)!important;
+  gap:14px!important
+}
+.riskGauge{width:120px!important;height:120px!important}
+.riskGaugeInner b{font-size:28px!important}
+.riskGaugeInner span{font-size:10px!important}
+.riskText h3{font-size:18px!important}
+.riskText p{font-size:12px!important}
+.riskLevel{font-size:10px!important}
+
+/* Reasons/advice denser but more readable */
+.explainBody{padding:12px 14px 14px!important}
+.reasonRow{
+  grid-template-columns:150px minmax(0,1fr) 55px!important;
+  gap:9px!important;
+  padding:8px 0!important
+}
+.reasonRow b{font-size:11px!important}
+.reasonRow span{font-size:10px!important}
+.advice{gap:7px!important}
+.adviceItem{
+  grid-template-columns:34px minmax(0,1fr)!important;
+  padding:9px 10px!important
+}
+.adviceIcon{width:32px!important;height:32px!important}
+.adviceItem b{font-size:11px!important}
+.adviceItem span{font-size:10px!important}
+
+/* Reduce oversized vertical gaps */
+.analysisSection{margin-top:12px!important}
+.disclaimer{font-size:10px!important;margin-top:12px!important}
+
+/* Patient input area slightly narrower/denser */
+.inputLayout{
+  grid-template-columns:250px minmax(0,1fr)!important;
+  gap:12px!important;
+}
+.formWrap{padding:12px 14px 14px!important}
+.formGrid{gap:8px!important}
+
+/* table/card radii and paddings smaller */
+.panel{border-radius:15px!important}
+.panelHead{padding:12px 14px!important}
+.dataToolbar{padding:10px 12px!important}
+
+/* Responsive */
+@media(max-width:1000px){
+  main{max-width:100%!important}
+  .analysisGrid,.analysisMatrix{grid-template-columns:1fr!important}
+  .riskPanel,.explainGrid{grid-column:auto!important}
+  .inputLayout{grid-template-columns:1fr!important}
+}
+</style>
+<style id="meli-dropdown-v62">
+/* One canonical app switcher, appended directly to body to avoid parent overflow/clipping */
+#meliAppNavV62{
+  position:fixed;
+  top:16px;
+  right:18px;
+  z-index:2147483000;
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+}
+#meliAppNavBtnV62{
+  height:42px;
+  padding:0 13px;
+  border:1px solid #d6e2ec;
+  border-radius:12px;
+  background:rgba(255,255,255,.98);
+  color:#315d77;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 5px 16px rgba(20,52,86,.08);
+  cursor:pointer;
+  font-size:11px;
+  font-weight:850;
+  transition:.18s ease;
+}
+#meliAppNavBtnV62:hover{
+  border-color:#bcd0df;
+  box-shadow:0 9px 24px rgba(20,52,86,.13);
+  transform:translateY(-1px);
+}
+#meliAppNavBtnV62 svg{
+  width:18px;height:18px;
+  fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+#meliAppNavChevronV62{
+  margin-left:2px;
+  color:#8193a1;
+  transition:transform .18s ease;
+}
+#meliAppNavV62.open #meliAppNavChevronV62{transform:rotate(180deg)}
+
+#meliAppNavMenuV62{
+  position:absolute;
+  top:50px;
+  right:0;
+  width:244px;
+  padding:8px;
+  border:1px solid #dce7ef;
+  border-radius:15px;
+  background:rgba(255,255,255,.99);
+  box-shadow:0 22px 52px rgba(20,52,86,.18);
+  backdrop-filter:blur(12px);
+  display:none;
+  overflow:hidden;
+}
+#meliAppNavV62.open #meliAppNavMenuV62{display:block}
+
+.meliAppNavTitleV62{
+  padding:7px 9px 6px;
+  color:#8a9baa;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+#meliAppNavMenuV62 a{
+  min-height:40px;
+  padding:9px 10px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#49677b;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:850;
+  transition:.14s ease;
+}
+#meliAppNavMenuV62 a:hover{
+  background:#eef5fa;
+  color:#17486d;
+  transform:translateX(2px);
+}
+.meliAppDotV62{
+  width:29px;height:29px;border-radius:9px;
+  display:grid;place-items:center;
+  background:#edf4f8;color:#466a82;
+  font-size:9px;font-weight:900;
+  flex:0 0 29px;
+}
+.meliAppExternalV62{
+  margin-left:auto;
+  color:#96a6b3;
+  font-size:11px;
+}
+@media(max-width:760px){
+  #meliAppNavV62{top:12px;right:12px}
+  #meliAppNavBtnV62{width:42px;padding:0;justify-content:center}
+  #meliAppNavBtnV62 span.labelV62,#meliAppNavChevronV62{display:none}
+  #meliAppNavMenuV62{width:224px}
+}
+</style></head>
+<body>
+<header>
+<div class="brand"><div class="brandMark">MS</div><div class="brandText">MEDI<span>Stroke</span></div></div>
+<div class="headerTitle">Stroke Risk Intelligence · Clinical Decision Support Demo</div>
+<div class="meliUnifiedActions">
+<a class="meliUnifiedHome" href="MELICARE.html" title="Về MELICARE"><svg viewbox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8"></path><path d="M5.5 9.5V21h13V9.5"></path></svg></a>
+
+</div>
+</header>
+<main>
+<div class="hero">
+<div><h1>MEDIStroke</h1><p>Nhập dữ liệu bệnh nhân, theo dõi xu hướng các chỉ số liên quan tới nguy cơ đột quỵ và tạo một bản phân tích hỗ trợ bác sĩ.</p></div>
+<span class="safetyBadge">Prototype · Không dùng thay thế chẩn đoán</span>
+</div>
+<div class="strokeTimeline" id="strokeTimeline">
+<div class="timelineTrack"><i id="timelineProgress"></i></div>
+<div class="timelineStep active" data-step="1">
+<div class="timelineNode">1</div>
+<div class="timelineText">
+<b>Nhập dữ liệu</b>
+<span>File hoặc nhập trực tiếp</span>
+</div>
+</div>
+<div class="timelineStep" data-step="2">
+<div class="timelineNode">2</div>
+<div class="timelineText">
+<b>Phân tích xu hướng</b>
+<span>Trend + chỉ số bất thường</span>
+</div>
+</div>
+<div class="timelineStep" data-step="3">
+<div class="timelineNode">3</div>
+<div class="timelineText">
+<b>Dự báo &amp; diễn giải</b>
+<span>Risk + yếu tố đóng góp</span>
+</div>
+</div>
+</div>
+<section class="inputLayout">
+<div class="panel">
+<div class="panelHead"><div><h2>Upload dữ liệu</h2><p>CSV / XLSX / JSON của bệnh nhân.</p></div></div>
+<div class="uploadPane">
+<div class="dropzone">
+<div style="font-size:29px;color:#2f7ff7">＋</div>
+<strong>Tải file bệnh nhân</strong>
+<span>Có thể chứa nhiều lần đo để hiển thị trend.</span><br/><br/>
+<button class="secondary" id="chooseFile">Chọn file</button>
+<input accept=".csv,.xlsx,.xls,.json" hidden="" id="patientFile" type="file"/>
+</div>
+<div class="fileStatus" id="fileStatus"></div>
+</div>
+</div>
+<div class="panel">
+<div class="panelHead"><div><h2>Nhập thông tin bệnh nhân</h2><p>Các biến nguy cơ và xét nghiệm thường được dùng để đánh giá nguy cơ mạch máu não.</p></div></div>
+<div class="formWrap">
+<div class="formSectionTitle">Thông tin cá nhân &amp; yếu tố nguy cơ</div>
+<div class="formGrid">
+<div class="field"><label>Họ và tên</label><input id="name" value="Nguyễn Văn A"/></div>
+<div class="field"><label>Tuổi</label><input id="age" type="number" value="67"/></div>
+<div class="field"><label>Giới tính</label><select id="sex"><option>Nam</option><option>Nữ</option></select></div>
+<div class="field"><label>BMI (kg/m²)</label><input id="bmi" step="0.1" type="number" value="27.8"/></div>
+<div class="field"><label>Hút thuốc</label><select id="smoking"><option value="1">Có</option><option value="0">Không</option></select></div>
+<div class="field"><label>Tiền sử TIA/đột quỵ</label><select id="priorStroke"><option value="0">Không</option><option value="1">Có</option></select></div>
+<div class="field"><label>Rung nhĩ</label><select id="afib"><option value="1">Có</option><option value="0">Không</option></select></div>
+<div class="field"><label>Đái tháo đường</label><select id="diabetes"><option value="1">Có</option><option value="0">Không</option></select></div>
+</div>
+<div class="formSectionTitle" style="margin-top:14px">Huyết áp &amp; xét nghiệm</div>
+<div class="formGrid">
+<div class="field"><label>HATT / SBP (mmHg)</label><input id="sbp" type="number" value="156"/></div>
+<div class="field"><label>HATTr / DBP (mmHg)</label><input id="dbp" type="number" value="94"/></div>
+<div class="field"><label>Glucose (mg/dL)</label><input id="glucose" type="number" value="146"/></div>
+<div class="field"><label>HbA1c (%)</label><input id="hba1c" step="0.1" type="number" value="7.2"/></div>
+<div class="field"><label>LDL-C (mg/dL)</label><input id="ldl" type="number" value="142"/></div>
+<div class="field"><label>HDL-C (mg/dL)</label><input id="hdl" type="number" value="39"/></div>
+<div class="field"><label>Triglyceride (mg/dL)</label><input id="tg" type="number" value="188"/></div>
+<div class="field"><label>Creatinine (mg/dL)</label><input id="creatinine" step="0.1" type="number" value="1.1"/></div>
+<div class="field"><label>eGFR (mL/min/1.73m²)</label><input id="egfr" type="number" value="68"/></div>
+<div class="field"><label>Tiểu cầu (10³/µL)</label><input id="platelets" type="number" value="232"/></div>
+<div class="field"><label>INR</label><input id="inr" step="0.01" type="number" value="1.04"/></div>
+<div class="field"><label>Troponin (ng/L)</label><input id="troponin" step="0.1" type="number" value="8"/></div>
+</div>
+</div>
+</div>
+</section>
+<section class="panel">
+<div class="dataToolbar">
+<div><h3>Dữ liệu bệnh nhân</h3><div style="font-size:9px;color:#8192a0;margin-top:3px">Giá trị hiện tại dùng cho bản demo phân tích.</div></div>
+<button class="primary" id="analyzeBtn">Phân tích dữ liệu</button>
+</div>
+<div class="tableWrap">
+<table>
+<thead><tr><th>Bệnh nhân</th><th>Tuổi</th><th>SBP/DBP</th><th>Glucose</th><th>HbA1c</th><th>LDL</th><th>HDL</th><th>TG</th><th>AF</th><th>Hút thuốc</th><th>eGFR</th><th>INR</th></tr></thead>
+<tbody id="patientTable"></tbody>
+</table>
+</div>
+</section>
+<section class="analysisSection" id="analysisSection">
+<div class="analysisGrid">
+<section class="panel">
+<div class="panelHead"><div><h2>Xu hướng dữ liệu</h2><p>Mô phỏng chuỗi 6 lần đo gần nhất dựa trên dữ liệu hiện tại.</p></div></div>
+<div class="chartArea">
+<div class="chartTabs"><button class="active" data-metric="sbp">Huyết áp</button><button data-metric="glucose">Glucose</button><button data-metric="ldl">LDL-C</button></div>
+<svg class="chartSvg" id="trendChart" preserveaspectratio="none" viewbox="0 0 700 250"></svg>
+<div class="chartLegend"><span><i></i>Giá trị bệnh nhân</span><span><i class="norm"></i>Vùng tham chiếu minh họa</span></div>
+</div>
+</section>
+<section class="panel">
+<div class="panelHead"><div><h2>Chỉ số cần chú ý</h2><p>Đánh dấu theo ngưỡng minh họa trong prototype.</p></div></div>
+<div class="abnormalList" id="abnormalList"></div>
+</section>
+</div>
+<div class="analysisMatrix">
+<section class="panel riskPanel">
+<div class="riskCard">
+<div class="riskTop">
+<div class="riskGauge" id="riskGauge" style="--risk-angle:0%"><div class="riskGaugeInner"><b id="riskValue">—</b><span>risk index</span></div></div>
+<div class="riskText">
+<h3 id="riskTitle">Kết quả dự báo</h3>
+<p id="riskSummary">Nhấn “Phân tích dữ liệu” để tính risk index minh họa và xem các yếu tố đóng góp.</p>
+<span class="riskLevel" id="riskLevel">Chưa phân tích</span>
+</div>
+</div>
+</div>
+</section>
+<div class="explainGrid">
+<section class="panel">
+<div class="panelHead"><div><h2>Vì sao mô hình đưa ra kết quả này?</h2><p>Các yếu tố đóng góp chính trong prototype.</p></div></div>
+<div class="explainBody" id="reasonList"></div>
+</section>
+<section class="panel">
+<div class="panelHead"><div><h2>Khuyến nghị tiếp theo</h2><p>Các bước an toàn và thực tế nên cân nhắc.</p></div></div>
+<div class="explainBody"><div class="advice" id="adviceList"></div></div>
+</section>
+</div>
+</div>
+<div class="disclaimer">
+   MEDIStroke trong bundle này là prototype giao diện. Risk index được tính bằng công thức minh họa từ gánh nặng yếu tố nguy cơ, không phải mô hình lâm sàng đã được thẩm định và không được dùng để chẩn đoán, quyết định điều trị hay trì hoãn cấp cứu. Nếu có dấu hiệu FAST hoặc triệu chứng thần kinh cấp, cần đánh giá cấp cứu ngay.
+  </div>
+</section>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const $=id=>document.getElementById(id);
+ const ids=['name','age','sex','bmi','smoking','priorStroke','afib','diabetes','sbp','dbp','glucose','hba1c','ldl','hdl','tg','creatinine','egfr','platelets','inr','troponin'];
+ const get=()=>Object.fromEntries(ids.map(id=>[id,$(id).value]));
+ const num=(v)=>Number(v)||0;
+
+ const switcher=$('switcher'), switchBtn=$('switchBtn');
+ if(switcher && switchBtn){
+   if(switchBtn) switchBtn.onclick=e=>{e.stopPropagation();switcher.classList.toggle('open')};
+   document.addEventListener('click',e=>{if(!switcher.contains(e.target))switcher.classList.remove('open')});
+ }
+
+ function tag(v,type){
+  const cls=type||'';
+  return `<span class="valueTag ${cls}">${v}</span>`;
+ }
+ function renderTable(){
+  const d=get();
+  $('patientTable').innerHTML=`<tr>
+   <td><strong>${d.name}</strong></td><td>${d.age}</td>
+   <td>${tag(d.sbp+'/'+d.dbp, num(d.sbp)>=140?'high':'good')}</td>
+   <td>${tag(d.glucose, num(d.glucose)>=126?'warn':'good')}</td>
+   <td>${tag(d.hba1c, num(d.hba1c)>=6.5?'warn':'good')}</td>
+   <td>${tag(d.ldl, num(d.ldl)>=130?'high':num(d.ldl)>=100?'warn':'good')}</td>
+   <td>${tag(d.hdl, num(d.hdl)<40?'warn':'good')}</td>
+   <td>${tag(d.tg, num(d.tg)>=150?'warn':'good')}</td>
+   <td>${d.afib==='1'?'Có':'Không'}</td><td>${d.smoking==='1'?'Có':'Không'}</td>
+   <td>${tag(d.egfr, num(d.egfr)<60?'warn':'good')}</td><td>${d.inr}</td>
+  </tr>`;
+ }
+ ids.forEach(id=>$(id).addEventListener('input',renderTable));
+ renderTable();
+
+ $('chooseFile').onclick=()=>$('patientFile').click();
+ $('patientFile').onchange=e=>{
+  const f=e.target.files[0];if(!f)return;
+  $('fileStatus').classList.add('show');
+  $('fileStatus').textContent='Đã nạp: '+f.name+' · Prototype sẽ ánh xạ dữ liệu vào các trường tương ứng.';
+ };
+
+ const thresholds={
+  sbp:{label:'Huyết áp tâm thu',unit:'mmHg',warn:130,high:140,goodText:'Trong vùng mục tiêu minh họa'},
+  glucose:{label:'Glucose',unit:'mg/dL',warn:100,high:126,goodText:'Không tăng rõ'},
+  hba1c:{label:'HbA1c',unit:'%',warn:5.7,high:6.5,goodText:'Không tăng rõ'},
+  ldl:{label:'LDL-C',unit:'mg/dL',warn:100,high:130,goodText:'Không tăng rõ'},
+  hdl:{label:'HDL-C',unit:'mg/dL',lowWarn:40,goodText:'Không thấp'},
+  tg:{label:'Triglyceride',unit:'mg/dL',warn:150,high:200,goodText:'Không tăng rõ'},
+  egfr:{label:'eGFR',unit:'mL/min/1.73m²',lowWarn:60,goodText:'Chức năng thận chưa giảm rõ'}
+ };
+
+ function abnormalState(key,val){
+  const t=thresholds[key];
+  if(t.lowWarn!==undefined){
+   if(val<t.lowWarn)return ['warn','Thấp'];
+   return ['good','Ổn'];
+  }
+  if(val>=t.high)return ['high','Cao'];
+  if(val>=t.warn)return ['warn','Tăng'];
+  return ['good','Ổn'];
+ }
+
+ function renderAbnormal(d){
+  const keys=['sbp','glucose','hba1c','ldl','hdl','tg','egfr'];
+  $('abnormalList').innerHTML=keys.map(k=>{
+   const v=num(d[k]), t=thresholds[k], state=abnormalState(k,v);
+   const cls=state[0]==='high'?'high':state[0]==='good'?'good':'';
+   return `<div class="abnormalItem"><i class="dot ${cls}"></i><div><b>${t.label}</b><span>${v} ${t.unit}</span></div><strong class="${state[0]==='high'?'red':state[0]==='good'?'green':''}">${state[1]}</strong></div>`;
+  }).join('');
+ }
+
+ const trends={
+  sbp:{label:'SBP',normal:[120,120,120,120,120,120],delta:[-12,-9,-7,-5,-2,0]},
+  glucose:{label:'Glucose',normal:[99,99,99,99,99,99],delta:[-24,-20,-17,-11,-6,0]},
+  ldl:{label:'LDL-C',normal:[100,100,100,100,100,100],delta:[-22,-18,-15,-11,-7,0]}
+ };
+ function drawTrend(metric,d){
+  const W=700,H=250,pad=36;
+  const base=num(d[metric]);
+  const vals=trends[metric].delta.map(x=>Math.max(0,base+x));
+  const refs=trends[metric].normal;
+  const all=[...vals,...refs], ymin=Math.max(0,Math.min(...all)-20), ymax=Math.max(...all)+20;
+  const x=i=>pad+i*(W-2*pad)/(vals.length-1);
+  const y=v=>H-pad-(v-ymin)/(ymax-ymin)*(H-2*pad);
+  const path=vals.map((v,i)=>(i?'L':'M')+x(i)+','+y(v)).join(' ');
+  const refPath=refs.map((v,i)=>(i?'L':'M')+x(i)+','+y(v)).join(' ');
+  $('trendChart').innerHTML=`
+   ${[0,.25,.5,.75,1].map(t=>`<line x1="${pad}" y1="${pad+t*(H-2*pad)}" x2="${W-pad}" y2="${pad+t*(H-2*pad)}" stroke="#e8eef3"/>`).join('')}
+   <path d="${refPath}" fill="none" stroke="#9db6c9" stroke-width="2" stroke-dasharray="6 6"/>
+   <path d="${path}" fill="none" stroke="#2f7ff7" stroke-width="4" stroke-linecap="round"/>
+   ${vals.map((v,i)=>`<circle cx="${x(i)}" cy="${y(v)}" r="5" fill="#2f7ff7" stroke="#fff" stroke-width="2"/>`).join('')}
+   ${vals.map((v,i)=>`<text x="${x(i)}" y="${H-12}" text-anchor="middle" font-size="10" fill="#7a8d9d">T-${5-i}</text>`).join('')}
+  `;
+ }
+ document.querySelectorAll('[data-metric]').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('[data-metric]').forEach(x=>x.classList.remove('active'));b.classList.add('active');drawTrend(b.dataset.metric,get())
+ });
+
+ function riskIndex(d){
+  let score=4, reasons=[];
+  const add=(label,pts,state)=>{score+=pts;reasons.push({label,pts,state})};
+  const age=num(d.age),sbp=num(d.sbp),hba=num(d.hba1c),ldl=num(d.ldl),hdl=num(d.hdl),bmi=num(d.bmi),egfr=num(d.egfr);
+  if(age>=75)add('Tuổi ≥75',18,'high'); else if(age>=65)add('Tuổi 65–74',12,'warn'); else if(age>=55)add('Tuổi 55–64',6,'warn');
+  if(sbp>=160)add('HATT ≥160',18,'high'); else if(sbp>=140)add('HATT 140–159',13,'high'); else if(sbp>=130)add('HATT 130–139',7,'warn');
+  if(d.afib==='1')add('Rung nhĩ',15,'high');
+  if(d.priorStroke==='1')add('Tiền sử TIA/đột quỵ',18,'high');
+  if(d.smoking==='1')add('Hút thuốc',8,'warn');
+  if(d.diabetes==='1'||hba>=6.5)add('Đái tháo đường / HbA1c tăng',9,'warn');
+  if(ldl>=130)add('LDL-C tăng',7,'warn');
+  if(hdl<40)add('HDL-C thấp',4,'warn');
+  if(bmi>=30)add('BMI ≥30',4,'warn'); else if(bmi>=25)add('BMI thừa cân',2,'warn');
+  if(egfr<60)add('eGFR giảm',5,'warn');
+  score=Math.min(92,score);
+  return {score,reasons:reasons.sort((a,b)=>b.pts-a.pts)};
+ }
+
+ function renderReasons(result){
+  const max=Math.max(1,...result.reasons.map(x=>x.pts));
+  $('reasonList').innerHTML=(result.reasons.length?result.reasons:[{label:'Không có yếu tố nổi bật trong dữ liệu đã nhập',pts:1,state:'good'}]).slice(0,7).map(r=>`
+   <div class="reasonRow ${r.state}"><b>${r.label}</b><div class="reasonBar"><i style="width:${Math.round(r.pts/max*100)}%"></i></div><span>+${r.pts}</span></div>`).join('');
+ }
+
+ function renderAdvice(d,result){
+  const arr=[
+   ['BP','Kiểm soát huyết áp','Theo dõi huyết áp định kỳ và trao đổi với bác sĩ nếu các giá trị thường xuyên cao.'],
+   ['AF','Đánh giá rung nhĩ','Nếu có rung nhĩ, cần được bác sĩ đánh giá nguy cơ huyết khối và chiến lược dự phòng phù hợp.'],
+   ['LAB','Kiểm soát đường huyết & lipid','Trao đổi với bác sĩ về HbA1c, LDL-C và mục tiêu điều trị phù hợp với nguy cơ tim mạch tổng thể.'],
+   ['FAST','Nhận biết dấu hiệu cấp cứu','Nếu xuất hiện méo miệng, yếu tay/chân, nói khó hoặc triệu chứng thần kinh đột ngột, cần cấp cứu ngay.']
+  ];
+  $('adviceList').innerHTML=arr.map(x=>`<div class="adviceItem"><div class="adviceIcon">${x[0]}</div><div><b>${x[1]}</b><span>${x[2]}</span></div></div>`).join('');
+ }
+
+ $('analyzeBtn').onclick=()=>{
+  const timelineSteps=[...document.querySelectorAll('.timelineStep')];
+  timelineSteps.forEach((x,i)=>{
+    x.classList.toggle('done',i<2);
+    x.classList.toggle('active',i===2);
+  });
+  $('timelineProgress').style.width='100%';
+
+  const d=get();renderTable();renderAbnormal(d);drawTrend('sbp',d);
+  const result=riskIndex(d);
+  $('analysisSection').classList.add('show');
+  $('riskGauge').style.setProperty('--risk-angle',result.score+'%');
+  $('riskValue').textContent=result.score+'%';
+  let title,level,summary;
+  if(result.score>=55){title='Nguy cơ tương đối cao trong prototype';level='Cần đánh giá chuyên sâu';summary='Nhiều yếu tố nguy cơ đang cùng hiện diện. Risk index minh họa cho thấy cần được đánh giá lâm sàng đầy đủ và kiểm soát tích cực các yếu tố nguy cơ có thể thay đổi.'}
+  else if(result.score>=30){title='Nguy cơ trung gian trong prototype';level='Nên theo dõi và kiểm soát nguy cơ';summary='Một số yếu tố nguy cơ có thể làm tăng khả năng biến cố mạch máu não. Kết quả này chỉ nhằm minh họa giao diện phân tích.'}
+  else{title='Nguy cơ thấp hơn trong prototype';level='Tiếp tục dự phòng';summary='Dữ liệu hiện tại có ít yếu tố nguy cơ nổi bật hơn, nhưng không loại trừ đột quỵ và không thay thế đánh giá y tế.'}
+  $('riskTitle').textContent=title;$('riskLevel').textContent=level;$('riskSummary').textContent=summary;
+  renderReasons(result);renderAdvice(d,result);
+  $('analysisSection').scrollIntoView({behavior:'smooth',block:'start'});
+ };
+});
+</script>
+<div id="meliAppNavV62">
+<button aria-expanded="false" aria-haspopup="true" id="meliAppNavBtnV62" type="button">
+<svg viewbox="0 0 24 24"><rect height="7" rx="2" width="7" x="3" y="3"></rect><rect height="7" rx="2" width="7" x="14" y="3"></rect><rect height="7" rx="2" width="7" x="3" y="14"></rect><rect height="7" rx="2" width="7" x="14" y="14"></rect></svg>
+<span class="labelV62">Chuyển ứng dụng</span>
+<span id="meliAppNavChevronV62">⌄</span>
+</button>
+<div id="meliAppNavMenuV62">
+<div class="meliAppNavTitleV62">MELICARE Apps</div>
+<a href="MELI_OR.html"><span class="meliAppDotV62">OR</span><span>MELIOR</span></a><a href="MELI_OCR.html"><span class="meliAppDotV62">OCR</span><span>MELIOCR</span></a><a href="MELIVoice.html"><span class="meliAppDotV62">VO</span><span>MELIVoice</span></a><a href="https://medibot.leira.com.vn/login" rel="noopener noreferrer" target="_blank"><span class="meliAppDotV62">GD</span><span>MELIGuide</span><span class="meliAppExternalV62">↗</span></a><a href="MELI_VLM.html"><span class="meliAppDotV62">VLM</span><span>MELIVLM</span></a><a href="https://cdss.leira.com.vn" rel="noopener noreferrer" target="_blank"><span class="meliAppDotV62">CD</span><span>MELICDSS</span><span class="meliAppExternalV62">↗</span></a><a href="MELIDx.html"><span class="meliAppDotV62">DX</span><span>MELIDx</span></a><a href="MELIPostOp.html"><span class="meliAppDotV62">PO</span><span>MELIPostOp</span></a>
+</div>
+</div><script id="meli-dropdown-script-v62">
+document.addEventListener('DOMContentLoaded',()=>{
+  const nav=document.getElementById('meliAppNavV62');
+  const btn=document.getElementById('meliAppNavBtnV62');
+  if(!nav||!btn) return;
+
+  btn.addEventListener('click',e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
+  });
+
+  document.addEventListener('click',e=>{
+    if(!nav.contains(e.target)){
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+    }
+  });
+
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded','false');
+      btn.focus();
+    }
+  });
+});
+</script></body>
+</html>

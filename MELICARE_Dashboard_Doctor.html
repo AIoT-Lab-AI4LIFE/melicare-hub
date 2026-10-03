@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#159bdd" name="theme-color"/>
+<meta content="MELICARE — Dashboard bác sỹ: hoạt động cá nhân, việc cần xử lý và lịch khám. Dữ liệu hoàn toàn minh họa." name="description"/>
+<title>MELICARE · Không gian bác sỹ</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#f5f7fa;--surface:#fff;--ink:#20364d;--muted:#758393;--line:#e8edf2;--blue:#168ecd;--blue-deep:#0878b4;--blue-light:#ecf7fd;--gold:#eebd4e;--gold-light:#fff7e5;--green:#268b75;--red:#cc5860;--sidebar:258px;--radius:17px;--shadow:0 3px 14px rgba(31,59,82,.025);--font:'Be Vietnam Pro','Segoe UI',Tahoma,Arial,sans-serif;--display:'Be Vietnam Pro','Segoe UI',Tahoma,Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--font);font-weight:500;-webkit-font-smoothing:antialiased}button,input,select,textarea{font:inherit}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}button{cursor:pointer;color:inherit}button:disabled{cursor:not-allowed}a{color:inherit;text-decoration:none}button{border:0;background:none}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid #70bce9;outline-offset:3px}button,a{touch-action:manipulation}svg{display:block}.icon{width:20px;height:20px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}.hidden,[hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip-link{position:fixed;z-index:100;top:-100px;left:16px;background:white;border:1px solid var(--blue);padding:12px}.skip-link:focus{top:8px}h1,h2,h3,p{margin:0}h1,h2,h3{font-weight:600}.muted{color:var(--muted)}.number{font-variant-numeric:tabular-nums;letter-spacing:-.5px}.smallcaps{font-size:14px;font-weight:600;letter-spacing:1.35px;text-transform:uppercase}.icon-btn{height:36px;width:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;color:#64788c;flex-shrink:0;transition:background .15s}.icon-btn:hover{background:#edf3f8}.btn{height:37px;padding:0 13px;border:1px solid #dfe7ee;border-radius:9px;background:white;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:16px;font-weight:700;white-space:nowrap;transition:background .15s,border-color .15s}.btn .icon{width:16px;height:16px}.btn:hover{background:#f7fafc;border-color:#bed7e5}.btn.primary{background:var(--blue-deep);color:white;border-color:var(--blue-deep)}.btn.primary:hover{background:#056c9f}.btn.ghost{background:transparent;border-color:transparent;color:var(--blue-deep)}.btn.ghost:hover{background:var(--blue-light)}.btn:disabled{opacity:.45}.badge{font-size:14px;font-weight:600;line-height:1.3;padding:4px 7px;border-radius:5px;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.badge.red{color:#b7414d;background:#fcedef}.badge.amber{color:#a4731b;background:#fff4dc}.badge.green{color:#247965;background:#eaf6f0}.badge.blue{color:#167eb2;background:#eaf6fd}.brand-prefix{font-family:var(--display);font-weight:700;color:#17496b;letter-spacing:-.6px}.brand-suffix{font-family:var(--font);font-weight:700;letter-spacing:-.6px;color:var(--module,var(--blue))}
+/* Navigation */
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar);background:#fff;border-right:1px solid var(--line);z-index:40;display:flex;flex-direction:column;transition:transform .25s}.brand{height:77px;display:flex;align-items:center;padding:0 23px;gap:9px;flex-shrink:0}.brand-mark{width:29px;height:33px;color:#219fd8;position:relative;flex-shrink:0}.brand-mark svg{width:100%;height:100%}.brand-word{font-size:31px;display:flex;line-height:1}.brand-word .brand-suffix{color:#d2a030;letter-spacing:-1px}.brand-baseline{font-size:13px;font-weight:700;color:#9aa7b3;letter-spacing:1.65px;margin-top:6px}.workspace{display:flex;gap:10px;align-items:center;margin:9px 16px 20px;padding:12px 10px;background:#f7f9fb;border:1px solid var(--line);border-radius:11px}.workspace-icon{height:34px;width:34px;border-radius:8px;display:grid;place-items:center;background:white;border:1px solid var(--line);color:#5c8ca9}.workspace strong{display:block;font-size:16px}.workspace p{font-size:14px;margin-top:2px;color:var(--muted)}.nav-scroll{padding:0 12px 8px;overflow:auto;scrollbar-width:thin;flex:1;min-height:0}.nav-link{width:100%;height:44px;display:flex;align-items:center;gap:11px;padding:0 13px;border-radius:9px;text-align:left;position:relative;transition:background .15s}.nav-link .icon{width:18px;height:18px;color:#8090a0}.nav-link .brand-prefix,.nav-link .brand-suffix{font-size:17px}.nav-link .brand-suffix{font-weight:600}.nav-link:hover{background:#f5f8fb}.nav-link.active{background:#eaf5fc;color:#147daf;font-weight:700}.nav-link.active .icon{color:#1689c3}.nav-link.active:before{content:'';position:absolute;left:-12px;height:22px;top:11px;width:3px;border-radius:0 4px 4px 0;background:#2da8dc}.nav-link .count{margin-left:auto;font-size:14px;display:grid;place-items:center;min-width:19px;height:19px;border-radius:5px;background:#fff3d8;color:#ad7d25}.nav-heading{font-size:14px;letter-spacing:1.05px;font-weight:700;color:#9ba6b1;margin:23px 13px 8px}.side-footer{margin:12px 17px 15px;border-top:1px solid var(--line);padding-top:15px;display:flex;align-items:center;gap:9px;color:#8a98a5;font-size:14px;flex-shrink:0}.side-footer .icon{width:16px;height:16px}.side-footer strong{display:block;color:#748899;font-size:14px;font-weight:600}.side-close{display:none}.sidebar-scrim{position:fixed;inset:0;background:#162f4966;z-index:39;backdrop-filter:blur(2px)}
+/* Header and main structure */
+.shell{margin-left:var(--sidebar);min-height:100vh}.topbar{height:68px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 29px;position:sticky;top:0;z-index:25;gap:12px;backdrop-filter:blur(12px)}.topbar-left,.topbar-right{display:flex;align-items:center;gap:15px}.breadcrumbs{display:flex;align-items:center;gap:11px;font-size:15px;color:#8a96a3}.breadcrumbs .icon{width:15px;height:15px}.breadcrumbs strong{font-weight:600;color:#536778}.crumb-slash{color:#c5ccd4}.demo-chip{display:flex;align-items:center;gap:6px;border:1px solid #e5eaf0;background:#f9fbfd;border-radius:6px;font-size:14px;color:#778798;padding:4px 8px;white-space:nowrap}.demo-chip:before{content:'';width:5px;height:5px;background:#e8b445;border-radius:50%}.topbar-separator{width:1px;height:25px;background:var(--line);margin-left:2px}.notif-button{position:relative}.notif-button .unread{position:absolute;right:8px;top:6px;width:6px;height:6px;background:#eabb58;border:2px solid white;border-radius:50%;box-sizing:content-box}.profile{display:flex;align-items:center;gap:10px;text-align:left;padding:0}.avatar{height:34px;width:34px;border-radius:50%;display:grid;place-items:center;background:#e9f2f8;color:#477b9b;font-weight:700;font-size:15px;border:2px solid #fff;box-shadow:0 0 0 1px #e8eff4}.profile .name{display:block;font-size:15px;font-weight:600}.profile .role{display:block;font-size:14px;color:var(--muted)}.mobile-menu{display:none}.main{max-width:1730px;margin:auto;padding:26px 29px 24px}.page-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:19px}.page-heading h1{font-family:var(--display);font-size:31px;font-weight:600;letter-spacing:-1px;line-height:1.5}.page-heading p{font-size:15px;color:var(--muted);margin-top:4px}.heading-actions{display:flex;gap:9px;align-items:center}.select-wrap{position:relative}.select-wrap>.icon{position:absolute;left:11px;top:11px;height:15px;width:15px;color:#7d91a1;pointer-events:none}.select-wrap select{height:37px;border:1px solid #dfe7ee;border-radius:9px;background:#fff;color:#53687a;padding:0 29px 0 33px;font-size:15px;font-weight:600;max-width:200px;appearance:none;cursor:pointer}.select-wrap:after{content:'';position:absolute;right:12px;top:15px;width:5px;height:5px;border-right:1.5px solid #7f919f;border-bottom:1.5px solid #7f919f;transform:rotate(45deg);pointer-events:none}.insight-banner{display:flex;align-items:center;gap:12px;padding:13px 16px;border:1px solid #e9e9e2;border-radius:12px;background:linear-gradient(100deg,#fff9e8 0%,#fffdf7 36%,#f1f9fe 100%);margin-bottom:20px}.insight-icon{width:33px;height:33px;display:grid;place-items:center;background:#fff1cb;border:1px solid #f6e7bb;border-radius:9px;color:#b88720;flex-shrink:0}.insight-icon .icon{height:18px;width:18px}.insight-copy{flex:1;min-width:0;line-height:1.65}.insight-copy strong{font-size:15px;font-weight:700;margin-right:10px;color:#745d2d}.insight-copy span{font-size:15px;color:#7b7f7d}.insight-link{display:flex;align-items:center;gap:7px;color:#8b6d2f;font-size:15px;font-weight:600;white-space:nowrap;padding:5px}.insight-link .icon{height:14px;width:14px}.stat-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.stat-context{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.stat-context h2{font-size:16px;font-weight:700}.stat-context .period-label{font-size:14px;color:#8a99a7}.stat-context .dot{height:3px;width:3px;border-radius:50%;background:#b4c0c9}.segmented{display:flex;align-items:center;padding:3px;background:#eaf0f5;border:1px solid #e6ecf1;border-radius:9px;gap:2px;flex-shrink:0}.segmented button{min-height:28px;padding:4px 14px;font-size:14px;font-weight:700;border-radius:6px;color:#7a8c9b;white-space:nowrap}.segmented button.active{background:#fff;color:#167cae;box-shadow:0 2px 5px #163c6010}.kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:21px}.kpi{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:15px 16px 13px;position:relative;overflow:hidden;box-shadow:var(--shadow)}.kpi-top{display:flex;align-items:center;justify-content:space-between;gap:6px;color:#748694;font-size:15px;font-weight:600}.kpi-icon{width:26px;height:26px;border-radius:8px;background:var(--tone-bg);color:var(--tone);display:grid;place-items:center}.kpi-icon .icon{height:15px;width:15px}.kpi-value-row{display:flex;align-items:center;gap:5px;margin-top:5px}.kpi-value{font-family:var(--display);font-size:33px;line-height:1.35;font-weight:600;letter-spacing:-1.2px}.kpi-unit{font-size:14px;color:#97a2ae;margin-top:11px}.kpi-spark{margin-left:auto;width:73px;height:32px;opacity:.9}.kpi-bottom{display:flex;gap:5px;align-items:center;font-size:14px;margin-top:9px;color:#96a2ac}.change{font-weight:600;display:flex;align-items:center;gap:2px;color:var(--green)}.change .icon{width:10px;height:10px}.change.neutral{color:#74869a}.kpi-foot{font-size:14px;color:#a0acb7;margin-top:4px;white-space:nowrap}.content-grid{display:grid;grid-template-columns:minmax(0,1fr) 326px;gap:20px;align-items:start}.analytics-column{min-width:0;display:flex;flex-direction:column;gap:20px}.action-column{min-width:0;display:flex;flex-direction:column;gap:18px}.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);min-width:0}.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:19px 20px 0}.panel h2{font-size:16px;font-weight:700;line-height:1.5}.panel-sub{font-size:14px;color:#92a0ae;margin-top:4px}.panel-head .icon-btn{height:25px;width:25px;margin:-2px -5px 0 0}.panel-head .icon-btn .icon{height:16px;width:16px}.panel-title-row{display:flex;align-items:center;gap:7px}.chart-panel{min-height:296px}.chart-legend{display:flex;align-items:center;gap:15px;margin:16px 20px 2px;font-size:14px;color:#81909e}.legend-item{display:flex;align-items:center;gap:6px}.legend-line{width:14px;height:3px;background:#199dd7;border-radius:2px}.legend-line.previous{background:repeating-linear-gradient(to right,#b5c8d5 0 4px,transparent 4px 6px)}.chart-note{margin-left:auto;font-size:14px;color:#a0abb6}.chart-area{position:relative;height:205px;margin:0 16px 5px 13px}.chart-svg{width:100%;height:100%;overflow:visible}.chart-tooltip{position:absolute;pointer-events:none;z-index:3;padding:9px 11px;background:#203d55;color:white;border-radius:8px;font-size:14px;min-width:115px;box-shadow:0 4px 12px #152c4920;transform:translate(-50%,-100%)}.chart-tooltip strong{display:block;margin-bottom:3px;font-weight:700}.chart-tooltip span{color:#d6e6f0;font-size:14px;display:block}.chart-tooltip .tt-value{color:#fff;font-weight:700}.chart-data-link{font-size:14px;color:#2b8fbc;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:5px}.chart-data-link .icon{height:13px;width:13px}.small-charts{display:grid;grid-template-columns:1fr 1fr;gap:18px}.bed-panel,.department-panel{min-height:260px}.mini-tag{font-size:13px;border-radius:4px;color:#92a0ad;background:#f6f8fa;padding:3px 5px;white-space:nowrap}.bed-content{display:flex;align-items:center;gap:16px;padding:19px 19px 9px}.donut-wrap{position:relative;width:132px;height:132px;flex-shrink:0}.donut-wrap svg{width:100%;height:100%;transform:rotate(-90deg)}.donut-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}.donut-text strong{font-family:var(--display);font-size:31px;font-weight:600;letter-spacing:-.9px;line-height:1.2}.donut-text small{font-size:13px;color:#8e9dab;margin-top:5px}.bed-legend{display:flex;flex-direction:column;gap:11px;min-width:0}.bed-key{display:flex;align-items:center;gap:7px;font-size:14px;color:#8a98a6}.color-dot{height:6px;width:6px;border-radius:50%;background:var(--c);flex-shrink:0}.bed-key-value{font-size:19px;font-weight:700;color:#415c71;line-height:1.3;margin:3px 0 0 13px}.bed-key-value span{font-size:14px;color:#96a2ae;font-weight:500;margin-left:3px}.bed-panel-foot{margin:2px 18px 16px;padding-top:11px;border-top:1px solid #f0f3f6;display:flex;align-items:center;gap:5px;font-size:14px;color:#8b99a6}.bed-panel-foot .icon{width:12px;height:12px;color:#b48a33}.dept-bars{padding:19px 19px 13px;display:flex;flex-direction:column;gap:12px}.dept-bar-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:14px;margin-bottom:5px}.dept-bar-head span{color:#7c8d9b}.dept-bar-head strong{font-size:14px;font-weight:700;color:#587285}.bar-track{height:5px;background:#f0f4f7;border-radius:5px;overflow:hidden}.bar-fill{height:100%;border-radius:5px;background:var(--c,#87b8d5);transition:width .35s}.dept-foot{padding:0 19px 15px;font-size:13px;color:#9aa7b2;display:flex;gap:5px;align-items:center}.dept-foot .icon{height:11px;width:11px}.panel-foot{border-top:1px solid var(--line);padding:11px 19px;font-size:14px;color:#94a0ab}
+/* Tasks: distinguish future deadlines from reporting periods */
+.tasks-panel{scroll-margin-top:85px}.tasks-panel .panel-head{padding:18px 18px 0}.task-heading-icon{height:28px;width:28px;border-radius:8px;background:#fff6e2;color:#b88c34;display:grid;place-items:center}.task-heading-icon .icon{height:16px;width:16px}.task-heading{display:flex;align-items:center;gap:9px}.task-head-count{font-family:var(--display);font-size:27px;color:#314b62;font-weight:600;line-height:1.2}.task-tabs{margin:15px 17px 12px;background:#f4f6f9;border-color:#eff2f5}.task-tabs button{flex:1;display:flex;justify-content:center;gap:7px;align-items:center;padding:5px 10px;color:#8a98a5;min-height:29px}.tab-number{height:16px;min-width:16px;border-radius:4px;font-size:13px;background:#e5eaf0;display:grid;place-items:center;color:#81929f;padding:0 3px}.task-tabs button.active{color:#8c6a25}.task-tabs button.active .tab-number{background:#fff0ca;color:#a27b24}.task-period{font-size:14px;color:#9aa6b1;margin:0 19px 9px;display:flex;align-items:center;justify-content:space-between;gap:7px}.task-filter{display:flex;align-items:center;gap:5px;color:#1688b9;font-size:14px;background:#eff8fc;padding:4px 7px;border-radius:6px}.task-filter .icon{width:12px;height:12px}.task-list{padding:0 17px;max-height:502px;overflow:auto;scrollbar-width:thin}.task-row{padding:14px 1px;width:100%;text-align:left;display:block;border-bottom:1px solid #edf1f5;position:relative;transition:background .15s}.task-row:hover{background:#fafcfd}.task-row:last-child{border-bottom:0}.task-meta{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:7px}.task-time{font-size:14px;font-weight:600;color:#a2803f;display:flex;align-items:center;gap:4px}.task-time .icon{height:11px;width:11px}.task-title{font-size:15px;font-weight:700;color:#3e5366;display:flex;align-items:start;justify-content:space-between;gap:8px;line-height:1.65}.task-title .icon{height:13px;width:13px;color:#a0b3c1;margin-top:3px}.task-desc{font-size:14px;color:#929eaa;margin-top:3px;line-height:1.7}.task-byline{display:flex;align-items:center;gap:6px;font-size:13px;color:#96a2ad;margin-top:8px}.task-byline .brand-prefix,.task-byline .brand-suffix{font-size:14px;font-weight:700;letter-spacing:-.2px}.task-byline .bullet{width:2px;height:2px;background:#bdc7ce;border-radius:50%}.task-list .empty{padding:32px 15px;text-align:center;color:#8798a6;font-size:15px}.empty .icon{margin:0 auto 10px;width:30px;height:30px;color:#4eac93}.task-summary{margin:6px 17px 15px;display:flex;align-items:center;gap:7px;padding-top:11px;border-top:1px solid var(--line);font-size:14px;color:#94a2ac}.task-summary .icon{width:13px;height:13px;color:#2c9a80}.task-summary button{margin-left:auto;color:#277da5;font-size:14px;font-weight:700;padding:3px}.task-summary button:hover{text-decoration:underline}.schedule-panel .panel-head{padding:17px 18px 0}.schedule-list{padding:17px 18px 16px;display:flex;flex-direction:column;gap:16px}.schedule-item{display:flex;gap:12px}.schedule-time{font-size:14px;font-weight:700;color:#6c8295;min-width:32px;padding-top:2px}.schedule-detail{border-left:2px solid #d5eaf7;padding-left:11px}.schedule-item:nth-child(2) .schedule-detail{border-left-color:#efda9e}.schedule-detail strong{font-size:14px;font-weight:600;display:block}.schedule-detail span{font-size:14px;color:#929eaa;display:block;margin-top:3px}.source-note{padding:0 7px;display:flex;gap:7px;font-size:14px;color:#9aa8b4;line-height:1.8}.source-note .icon{height:14px;width:14px;margin-top:2px;color:#93a7b7;flex-shrink:0}
+/* Department table */
+.table-panel{margin-top:21px;overflow:hidden}.table-panel .panel-head{align-items:center;padding:17px 20px 13px}.table-actions{display:flex;align-items:center;gap:9px}.table-search{height:31px;border:1px solid var(--line);border-radius:7px;display:flex;align-items:center;gap:7px;padding:0 9px;max-width:182px}.table-search .icon{height:13px;width:13px;color:#97a9b8}.table-search input{width:100%;border:0;background:none;outline:none;font-size:14px;color:#566e81;min-width:0}.table-search input::placeholder{color:#a2afba}.table-scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px;text-align:left;white-space:nowrap}th{font-size:14px;font-weight:600;color:#8b9aaa;background:#fafbfd;padding:11px 20px;border-top:1px solid #eef2f5;border-bottom:1px solid #eef2f5}td{padding:13px 20px;border-bottom:1px solid #f0f3f6;color:#60778a}tr:last-child td{border-bottom:none}tbody tr:hover{background:#fbfdfe}.department-cell{display:flex;align-items:center;gap:9px;color:#4c657a;font-weight:600}.dept-initial{height:26px;width:26px;border-radius:7px;background:var(--dc-bg,#edf6fc);color:var(--dc,#6e9fbf);display:grid;place-items:center;font-size:13px;font-weight:700}.table-occupancy{display:flex;align-items:center;gap:8px;min-width:108px}.table-occupancy .bar-track{width:59px;height:4px}.table-occupancy strong{font-size:14px;font-weight:700;color:var(--c)}.table-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 20px;border-top:1px solid var(--line);font-size:14px;color:#9aa7b2}.legend-status{display:flex;align-items:center;gap:12px}.legend-status span{display:flex;gap:5px;align-items:center}.table-empty{text-align:center;padding:28px;color:#97a6b2}.page-footer{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:#a2adb7;padding:23px 1px 4px}.page-footer>span:last-child{margin-right:64px}
+/* Assistant */
+.chat-launcher{position:fixed;bottom:25px;right:27px;z-index:50;display:flex;align-items:center;gap:9px;padding:0 16px 0 8px;height:50px;border-radius:16px;background:#147eb4;color:#fff;box-shadow:0 7px 22px #167da537;border:1px solid #ffffff8c;transition:transform .2s,box-shadow .2s}.chat-launcher:hover{transform:translateY(-3px);box-shadow:0 9px 26px #167da548}.chat-launcher-icon{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:#ffffff17}.chat-launcher .icon{height:21px;width:21px}.chat-launcher strong{font-size:15px;font-weight:700}.chat-launcher .spark-dot{position:absolute;left:37px;top:8px;width:6px;height:6px;background:#f6d16a;border-radius:50%;border:1px solid #147eb4}.chat-panel{position:fixed;bottom:88px;right:27px;width:385px;max-width:calc(100vw - 24px);height:537px;max-height:calc(100dvh - 112px);background:white;z-index:55;border:1px solid #dde8f1;border-radius:19px;box-shadow:0 18px 75px #2549652c;display:flex;flex-direction:column;overflow:hidden;animation:slideIn .2s ease}.chat-head{padding:17px 17px 15px;display:flex;align-items:center;gap:10px;background:linear-gradient(110deg,#edf7fc,#f9fcfe);border-bottom:1px solid #e7f0f7}.chat-avatar{height:36px;width:36px;display:grid;place-items:center;color:#198ac0;background:#fff;border:1px solid #dfeefa;border-radius:11px}.chat-title{flex:1}.chat-title strong{font-size:16px;font-weight:700}.chat-title span{display:block;color:#84a0b3;font-size:14px;margin-top:2px}.chat-head .icon-btn{width:28px;height:28px}.chat-head .icon-btn .icon{width:17px;height:17px}.chat-messages{flex:1;overflow:auto;padding:17px;display:flex;flex-direction:column;gap:13px;scrollbar-width:thin;scroll-behavior:smooth}.chat-day{font-size:13px;color:#9fafbc;text-align:center;letter-spacing:.3px}.chat-message{max-width:93%;border:1px solid #eaf0f6;border-radius:12px 12px 12px 3px;background:#f6f9fc;padding:12px 13px;font-size:15px;line-height:1.85;align-self:flex-start;color:#506b80;white-space:pre-wrap;overflow-wrap:anywhere}.chat-message.user{align-self:flex-end;background:#eaf5fc;border-color:#e2eff9;border-radius:12px 12px 3px 12px;color:#2e6d95}.chat-message .message-label{font-size:14px;font-weight:700;color:#2088b8;margin-bottom:4px}.chat-suggestions{display:flex;flex-wrap:wrap;gap:6px}.chat-suggestions button{border:1px solid #dceaf4;border-radius:7px;background:white;padding:7px 9px;font-size:14px;color:#5086a7;text-align:left}.chat-suggestions button:hover{background:#f0f8fd}.chat-input-area{padding:12px 14px 10px;border-top:1px solid #edf1f5;background:#fff}.chat-input-row{border:1px solid #dfe9f1;background:#fafcfe;border-radius:11px;display:flex;align-items:flex-end;padding:6px;gap:6px}.chat-input-row:focus-within{border-color:#9fcee7;box-shadow:0 0 0 3px #edf7fc}.chat-input-row textarea{border:0;background:none;padding:5px 6px;resize:none;flex:1;min-width:0;font-size:15px;outline:none!important;line-height:1.7;max-height:84px;height:31px}.chat-input-row textarea::placeholder{color:#97a9b7}.chat-send{height:30px;width:30px;border-radius:7px;background:#198fc4;color:#fff;display:grid;place-items:center;flex-shrink:0}.chat-send .icon{width:15px;height:15px}.chat-send:disabled{opacity:.5}.chat-disclaimer{font-size:13px;color:#a1afba;text-align:center;margin-top:7px}.typing{display:flex;gap:4px;align-items:center;padding:7px 0}.typing i{height:4px;width:4px;background:#8fbbd5;border-radius:50%;animation:pulse 1s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+
+.chat-launcher{width:54px;height:54px;padding:0;justify-content:center;border-radius:17px;right:21px;bottom:21px}
+.chat-launcher-icon{width:37px;height:37px;background:transparent}
+.chat-launcher .icon{width:25px;height:25px}.chat-launcher .spark-dot{left:auto;right:10px;top:10px}
+.chat-launcher strong{position:absolute;right:64px;white-space:nowrap;background:#254e67;color:white;padding:7px 11px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .15s}
+.chat-launcher:hover strong,.chat-launcher:focus-visible strong{opacity:1}
+/* Dialogs, detail sheets, notifications */
+dialog{border:1px solid #e0e9f0;border-radius:20px;padding:0;color:var(--ink);max-width:calc(100vw - 28px);box-shadow:0 25px 100px #17355228;background:#fff}dialog::backdrop{background:#203a5350;backdrop-filter:blur(3px)}.detail-dialog{width:496px}.dialog-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:21px 23px 15px;border-bottom:1px solid var(--line)}.dialog-top h2{font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-.4px}.dialog-top .icon-btn{margin:-6px -7px -6px 0}.dialog-body{padding:22px 23px;max-height:65dvh;overflow:auto}.dialog-body p{font-size:16px;color:#7b8c9b;line-height:1.9;margin-top:10px}.detail-title{font-size:24px;line-height:1.6;font-weight:700;letter-spacing:-.35px;margin:11px 0 8px}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin:22px 0}.detail-grid dt{font-size:14px;color:#94a2af;margin-bottom:5px}.detail-grid dd{margin:0;font-size:16px;font-weight:600;color:#567085}.detail-callout{padding:14px;border-radius:10px;background:#f5f9fc;border:1px solid #e5eef5;font-size:15px;color:#6b8194;line-height:1.9}.detail-callout strong{color:#4f7189;display:block;font-size:14px;margin-bottom:4px}.dialog-actions{border-top:1px solid var(--line);padding:16px 23px;display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}.dialog-actions .btn{font-size:15px}.dialog-demo-note{margin-top:15px;font-size:14px;color:#9dabb7;display:flex;align-items:center;gap:6px}.dialog-demo-note .icon{height:13px;width:13px}.module-hero{display:flex;align-items:center;gap:13px;margin-bottom:18px}.module-icon{width:52px;height:52px;border-radius:13px;display:grid;place-items:center;background:var(--mod-bg);color:var(--module)}.module-icon .icon{height:25px;width:25px}.module-hero .module-brand{font-size:36px}.module-hero small{font-size:14px;color:#8a9caa}.module-feature{font-size:16px;color:#5e798f;padding:10px 0;display:flex;gap:9px;border-top:1px solid var(--line)}.module-feature .icon{width:14px;height:14px;color:var(--module);margin-top:3px}.data-dialog{width:760px}.data-dialog .dialog-body{padding:0;max-height:67vh}.data-dialog .panel-sub{padding:13px 22px}.account-line{display:flex;gap:12px;align-items:center;margin-bottom:18px}.account-line .avatar{height:47px;width:47px;font-size:19px}.account-line strong{font-size:18px}.account-line span{display:block;font-size:15px;color:#9aa8b4}.notices{position:fixed;right:74px;top:60px;width:336px;max-width:calc(100vw - 24px);z-index:60;border:1px solid #e0e8f0;border-radius:13px;background:#fff;box-shadow:0 12px 40px #233e591f;overflow:hidden}.notice-head{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.notice-head strong{font-size:16px}.notice-head .icon-btn{width:24px;height:24px}.notice-head .icon{width:15px;height:15px}.notice-body{padding:5px 16px}.notice-item{display:block;text-align:left;width:100%;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.7}.notice-item:last-child{border:0}.notice-item strong{font-weight:600;display:block;color:#587287}.notice-item small{font-size:14px;color:#95a5b2;display:block;margin-top:3px}.notice-footer{padding:10px 16px;font-size:14px;color:#a2aeb9;background:#fafbfd}.toast{position:fixed;left:calc(50% + var(--sidebar)/2);bottom:24px;transform:translateX(-50%);max-width:calc(100vw - 28px);padding:12px 17px;border-radius:10px;background:#26465c;color:white;font-size:15px;z-index:100;box-shadow:0 7px 25px #17375324;display:flex;align-items:center;gap:8px}.toast .icon{height:16px;width:16px;color:#a7d7c6}.stagger{animation:fadeUp .35s ease both}.kpi:nth-child(2){animation-delay:.04s}.kpi:nth-child(3){animation-delay:.08s}.kpi:nth-child(4){animation-delay:.12s}@keyframes fadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}@keyframes slideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%,80%,100%{opacity:.35}40%{opacity:1}}
+
+/* Readability pass: clear numbers and task titles, restrained secondary text. */
+.kpi-top{font-size:16px}.kpi-value{font-size:36px}.kpi-bottom{font-size:14px}.kpi-foot{font-size:14px}
+.panel h2{font-size:17px}.panel-sub{font-size:14px;color:#7e91a1}.nav-link .brand-prefix,.nav-link .brand-suffix{font-size:18px}
+.task-title{font-size:16px}.task-desc{font-size:14px;color:#8293a1}.task-time{font-size:14px}.task-byline{font-size:14px}
+.task-list{max-height:495px}.task-period{font-size:14px}.task-summary{font-size:14px}
+.chart-area{height:244px}.chart-panel{min-height:335px}.chart-legend{font-size:14px;color:#7b8e9d}
+.dept-bar-head{font-size:14px}.dept-bar-head strong{font-size:15px}.dept-foot{font-size:14px}
+.bed-key{font-size:14px}.bed-key-value{font-size:20px}.bed-panel-foot{font-size:14px}.bed-content{padding-top:21px;padding-bottom:16px}
+.kpi-foot{color:#8496a4}.kpi-bottom{color:#8396a4}.stat-context .period-label{color:#7e92a2}
+.task-byline{color:#7e92a2}.task-byline .brand-prefix,.task-byline .brand-suffix{font-size:14px}
+.table-panel table{font-size:15px}.table-panel thead th{font-size:14px}.table-panel .department-cell{font-size:15px}
+.table-footer{color:#8699a8}.page-heading p{font-size:16px}.insight-copy strong{font-size:16px}.insight-copy span{font-size:16px}
+.insight-link{font-size:15px}.task-desc{line-height:1.6}.chart-data-link{font-size:15px}
+
+/* Responsive: wide desktop, compact laptop, tablet, phone */
+@media(min-width:1650px){:root{--sidebar:270px}.main{padding:31px 36px}.topbar{padding:0 36px}.content-grid{grid-template-columns:minmax(0,1fr) 365px;gap:24px}.panel h2{font-size:18px}.kpi-value{font-size:40px}.kpi-top{font-size:16px}.kpi{padding:18px 20px}.kpi-bottom{font-size:14px}.chart-area{height:220px}.chart-panel{min-height:314px}.task-title{font-size:16px}.task-desc{font-size:14px}.task-byline{font-size:14px}.task-list{max-height:550px}.task-row{padding:16px 1px}.bed-content{justify-content:center;gap:27px}.dept-bars{gap:15px}.dept-bar-head{font-size:14px}table{font-size:15px}.nav-link{height:46px}.nav-link .brand-prefix,.nav-link .brand-suffix{font-size:18px}}
+@media(max-width:1260px) and (min-width:1031px){:root{--sidebar:248px}.brand{padding:0 18px}.brand-word{font-size:28px}.workspace{margin-left:12px;margin-right:12px}.main{padding:22px}.topbar{padding:0 22px}.content-grid{grid-template-columns:minmax(0,1fr) 295px;gap:17px}.kpi-grid{gap:10px}.kpi{padding:13px 12px}.kpi-value{font-size:31px}.kpi-spark{width:50px}.kpi-bottom{font-size:13px}.small-charts{gap:14px}.panel-head{padding:17px 16px 0}.panel h2{font-size:15px}.bed-content{padding:15px 12px 12px;gap:10px}.donut-wrap{width:110px;height:110px}.donut-text strong{font-size:27px}.bed-key{font-size:13px}.bed-key-value{font-size:17px}.bed-panel-foot{font-size:13px;margin-left:13px;margin-right:13px}.dept-bars{padding-left:15px;padding-right:15px}.dept-foot{padding-left:15px;padding-right:15px}.task-list{padding:0 14px}.task-title{font-size:14px}.task-desc{font-size:14px}.task-heading{gap:7px}.task-head-count{font-size:24px}.task-heading-icon{width:26px}.insight-copy span{font-size:14px}.page-heading h1{font-size:29px}.select-wrap select{max-width:167px;font-size:14px}.bed-panel,.department-panel{min-height:245px}.nav-heading{font-size:13px;letter-spacing:.8px}th,td{padding-left:16px;padding-right:16px}}
+@media(max-width:1030px){:root{--sidebar:0px}.sidebar{width:228px;transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}.side-close{display:flex;position:absolute;right:5px;top:8px;width:26px;height:26px}.side-close .icon{width:14px}.mobile-menu{display:flex}.topbar-left{gap:10px}.shell{margin:0}.topbar{padding:0 22px}.main{padding:24px}.content-grid{grid-template-columns:minmax(0,1fr) 306px;gap:18px}.kpi-spark{width:60px}.kpi{padding:14px}.small-charts{gap:15px}.bed-content{padding:17px 14px 12px;gap:11px}.donut-wrap{width:111px;height:111px}.donut-text strong{font-size:27px}.bed-panel-foot{font-size:13px}.profile .profile-text{display:none}.panel h2{font-size:15px}.panel-head{padding-left:16px;padding-right:16px}.bed-key{font-size:13px}.bed-key-value{font-size:17px}}
+@media(max-width:820px){.main{padding:20px}.content-grid{grid-template-columns:1fr}.action-column{display:grid;grid-template-columns:1.3fr 1fr;align-items:start;gap:17px;grid-row:1}.tasks-panel{grid-row:span 2}.task-list{max-height:306px}.schedule-panel{grid-column:2}.source-note{grid-column:2}.analytics-column{grid-row:2}.kpi-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.kpi-spark{display:none}.kpi-value{font-size:32px}.kpi-top{font-size:14px}.kpi-bottom{font-size:13px}.kpi-unit{font-size:14px}.heading-actions .export-text{display:none}.heading-actions .btn{padding:0;width:37px}.page-heading h1{font-size:29px}.select-wrap select{max-width:167px;font-size:14px}.insight-copy strong{display:block;margin-bottom:1px}.insight-copy span{font-size:14px}.insight-banner{padding:11px 13px}.insight-link{font-size:14px}.chart-area{height:224px}.chart-panel{min-height:310px}.bed-content{justify-content:center;gap:25px}.donut-wrap{width:134px;height:134px}.bed-panel,.department-panel{min-height:264px}.donut-text strong{font-size:33px}.bed-key{font-size:14px}.bed-key-value{font-size:20px}.panel h2{font-size:16px}.topbar-right{gap:9px}.chart-note{font-size:13px}}
+@media(max-width:580px){.topbar{height:58px;padding:0 13px;gap:7px}.topbar-left,.topbar-right{gap:7px}.breadcrumbs{gap:7px;font-size:14px}.breadcrumbs>.icon,.breadcrumbs .crumb-brand,.breadcrumbs .crumb-slash{display:none}.demo-chip{font-size:13px;padding:4px 6px;gap:4px}.topbar-separator{display:none}.profile .avatar{height:30px;width:30px;font-size:14px}.topbar-right>.icon-btn{height:30px;width:30px}.main{padding:20px 14px}.page-heading{display:block;margin-bottom:15px}.page-heading h1{font-size:28px;letter-spacing:-.7px}.page-heading p{font-size:14px;margin-top:5px}.heading-actions{margin-top:14px;justify-content:space-between;gap:8px}.heading-actions .btn{width:auto;padding:0 11px;height:34px}.heading-actions .export-text{display:inline}.select-wrap select{height:34px;max-width:220px}.select-wrap>.icon{top:9px}.select-wrap:after{top:12px}.insight-banner{align-items:flex-start;gap:10px;position:relative;padding:13px 12px 13px;margin-bottom:18px}.insight-copy{padding-right:0}.insight-copy strong{font-size:14px;margin-right:0}.insight-copy span{font-size:14px}.insight-icon{width:28px;height:28px}.insight-icon .icon{width:15px;height:15px}.insight-link{font-size:0;gap:0;position:absolute;right:12px;top:12px}.insight-link .icon{width:13px;height:13px}.stat-toolbar{align-items:flex-start;gap:9px;flex-wrap:wrap;margin-bottom:11px}.stat-context{gap:6px;flex:1;min-width:125px;padding-top:1px}.stat-context h2{font-size:15px;width:100%}.stat-context .dot{display:none}.stat-context .period-label{font-size:14px}.segmented button{font-size:14px;padding:5px 10px;min-height:27px}.segmented{border-radius:8px}.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:18px}.kpi{padding:13px 13px 12px;border-radius:13px}.kpi-top{font-size:14px}.kpi-icon{height:24px;width:24px}.kpi-value{font-size:32px}.kpi-spark{display:block;width:49px;height:27px}.kpi-bottom{font-size:13px;gap:4px}.kpi-foot{font-size:13px}.action-column{display:flex;gap:16px}.tasks-panel{order:0}.schedule-panel{order:1;display:none}.source-note{display:none}.task-list{max-height:none}.task-list.compact-list .task-row:nth-child(n+4){display:none}.task-list.compact-list.show-all .task-row:nth-child(n+4){display:block}.task-title{font-size:16px}.task-desc{font-size:14px}.task-row{padding:14px 0}.task-meta{margin-bottom:5px}.task-byline{font-size:14px}.task-heading h2{font-size:17px}.tasks-panel .panel-head{padding:17px 18px 0}.task-head-count{font-size:31px}.task-period{font-size:14px}.mobile-more{display:flex;justify-content:center;width:100%;font-size:14px;color:#2a87b4;font-weight:600;padding:9px}.content-grid{gap:18px}.analytics-column{gap:17px}.small-charts{grid-template-columns:1fr;gap:17px}.chart-area{height:204px;margin-left:9px;margin-right:12px}.chart-panel{min-height:289px}.chart-legend{font-size:13px;gap:13px;margin-left:17px;margin-right:16px}.chart-note{display:none}.chart-data-link{font-size:14px}.panel-head{padding-top:17px}.panel h2{font-size:16px}.bed-panel,.department-panel{min-height:0}.bed-content{gap:42px;padding-bottom:14px}.donut-wrap{width:142px;height:142px}.bed-panel-foot{font-size:14px;padding:12px 2px 0;margin-bottom:14px}.dept-bars{gap:15px;padding:18px 19px}.dept-bar-head{font-size:15px}.dept-bar-head strong{font-size:16px}.bar-track{height:6px}.dept-foot{font-size:14px}.table-panel{margin-top:18px}.table-panel .panel-head{flex-wrap:wrap;padding:16px}.table-actions{width:100%}.table-search{max-width:100%;width:100%}.table-footer{font-size:13px;align-items:flex-start;flex-direction:column;gap:7px;padding:11px 16px}.table-footer .legend-status{gap:14px}.page-footer{padding-bottom:71px;display:block;line-height:2}.page-footer>span{display:block}.chat-launcher{right:16px;bottom:17px;height:49px;border-radius:15px}.chat-panel{right:12px;bottom:79px;height:535px;max-height:calc(100dvh - 93px);width:calc(100vw - 24px)}.toast{bottom:80px;width:max-content;font-size:14px;left:50%}.notices{top:55px;right:12px}.dialog-top{padding:18px}.dialog-body{padding:19px;max-height:63dvh}.dialog-actions{padding:15px 18px}.detail-title{font-size:22px}.detail-grid{gap:14px}.detail-grid dd{font-size:15px}.brand{padding-left:23px}.chart-tooltip{font-size:14px}.table-panel td,.table-panel th{padding-left:16px;padding-right:16px}}
+@media(min-width:581px){.mobile-more{display:none!important}}
+
+@media(max-width:820px){.action-column{display:block}.tasks-panel{width:100%}.task-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;max-height:340px}.task-row{min-width:0}.task-list .empty{grid-column:1/-1}}
+@media(max-width:580px){.task-list{display:block;max-height:none}.kpi-foot{white-space:normal}.kpi-bottom{flex-wrap:wrap;row-gap:0}.page-footer .brand-prefix,.page-footer .brand-suffix{display:inline}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{.sidebar,.topbar,.heading-actions,.chat-launcher,.chat-panel,.page-footer,.icon-btn,.task-summary button,.notices,.toast,.chart-data-link{display:none!important}.shell{margin:0}.main{max-width:none;padding:0}.content-grid{grid-template-columns:minmax(0,1fr) 280px}.panel,.kpi{break-inside:avoid;box-shadow:none}.table-panel{break-inside:avoid}.task-list{max-height:none}.task-list .task-row{display:block!important}body{font-size:14px;background:white;-webkit-print-color-adjust:exact;print-color-adjust:exact}.page-heading p:after{content:' — DỮ LIỆU MINH HỌA, KHÔNG PHẢI BÁO CÁO THỰC TẾ.'}.kpi-spark{display:block}.action-column{display:flex}.stat-toolbar .segmented,.task-tabs{display:none}.main{zoom:.78}}
+
+/* Larger type edition: retain the dashboard and its interactions, while
+   letting rows and cards expand instead of scaling/cropping the whole page. */
+:root{--muted:#6b7e8f}
+html{scroll-padding-top:104px}
+body{font-size:16px;line-height:1.6}
+.smallcaps{font-size:14px;letter-spacing:.9px}
+.btn{height:auto;min-height:44px;padding:9px 15px;font-size:15px;line-height:1.45}
+.btn .icon{width:18px;height:18px}
+.icon-btn{width:40px;height:40px}
+.badge{font-size:13px;padding:5px 8px;line-height:1.45}
+.brand{height:84px;padding-left:21px;padding-right:21px;gap:10px}
+.brand-word{font-size:29px}.brand-mark{width:32px;height:36px}
+.brand-baseline{font-size:11px;letter-spacing:1.25px}
+.workspace{margin:8px 15px 16px;padding:12px 10px;gap:9px}
+.workspace-icon{width:36px;height:36px;flex-shrink:0}
+.workspace strong{font-size:15px}.workspace p{font-size:13px}
+.nav-heading{font-size:13px;letter-spacing:.8px;margin:20px 13px 8px}
+.nav-link{font-size:17px;height:49px;gap:12px}
+.nav-link .icon{width:21px;height:21px}
+.nav-link .brand-prefix,.nav-link .brand-suffix{font-size:18px}
+.nav-link.active:before{height:27px;top:11px}
+.nav-link .count{font-size:13px;min-width:23px;height:23px}
+.side-footer{font-size:12px;line-height:1.7;align-items:flex-start;margin:10px 17px 14px;padding-top:12px}
+.side-footer strong{font-size:13px}.side-footer .icon{margin-top:3px}
+.topbar{height:78px}.breadcrumbs{font-size:14px;gap:10px}
+.demo-chip{font-size:13px;line-height:1.4;padding:6px 9px}
+.avatar{width:40px;height:40px;font-size:14px}
+.profile .name{font-size:14px}.profile .role{font-size:12px}
+.main{padding-top:28px;padding-bottom:28px}
+.page-heading{gap:18px;flex-wrap:wrap;margin-bottom:22px}
+.page-heading>div:first-child{min-width:0}
+.page-heading h1{font-size:30px;line-height:1.4;letter-spacing:-.9px}
+.page-heading p{font-size:14px;line-height:1.75}
+.heading-actions{flex-wrap:wrap;gap:10px}
+.select-wrap select{height:44px;font-size:15px;max-width:225px;padding-left:37px;padding-right:31px}
+.select-wrap>.icon{top:50%;transform:translateY(-50%);width:18px;height:18px}
+.select-wrap:after{top:18px}
+.insight-banner{padding:15px 18px;gap:14px}
+.insight-icon{width:38px;height:38px}
+.insight-copy strong,.insight-copy span{font-size:15px;line-height:1.75}
+.insight-link{font-size:14px;line-height:1.55}
+.stat-toolbar{flex-wrap:wrap;margin-bottom:14px;gap:12px}
+.stat-context h2{font-size:17px}.stat-context .period-label{font-size:14px}
+.segmented button{font-size:14px;min-height:36px;padding:6px 16px}
+.kpi-grid{gap:15px;margin-bottom:24px}
+.kpi{padding:18px 17px 16px;min-width:0}
+.kpi-top{font-size:16px;line-height:1.55;gap:8px;align-items:flex-start}
+.kpi-icon{width:30px;height:30px;flex-shrink:0}.kpi-icon .icon{width:18px;height:18px}
+.kpi-value-row{margin-top:9px;gap:7px;min-width:0}
+.kpi-value{font-size:36px;line-height:1.3;letter-spacing:-1.2px}
+.kpi-unit{font-size:14px;margin-top:12px}
+.kpi-spark{width:60px;max-width:30%;height:35px;min-width:28px;flex-shrink:1}
+.kpi-bottom{font-size:14px;line-height:1.6;flex-wrap:wrap;gap:2px 6px;margin-top:11px}
+.change{white-space:nowrap}.change .icon{width:13px;height:13px}
+.kpi-foot{font-size:13px;line-height:1.65;white-space:normal;margin-top:5px}
+.content-grid{grid-template-columns:minmax(0,1fr) 358px;gap:20px}
+.panel-head{padding:21px 20px 0;gap:12px}
+.panel h2{font-size:18px;line-height:1.5}
+.panel-sub{font-size:14px;line-height:1.65;margin-top:4px}
+.panel-head .icon-btn{width:34px;height:34px}
+.chart-data-link{font-size:14px;min-height:30px;flex-shrink:0}
+.chart-panel{min-height:358px}
+.chart-legend{font-size:14px;flex-wrap:wrap;gap:8px 16px;margin:17px 20px 5px}
+.chart-note{font-size:13px;line-height:1.5}
+.chart-area{height:252px;margin:0 18px 10px 14px}
+.chart-tooltip{font-size:14px;min-width:158px;max-width:240px;line-height:1.65}
+.chart-tooltip span{font-size:13px}
+.small-charts{gap:18px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.mini-tag{font-size:12px;padding:4px 6px;line-height:1.5;flex-shrink:0}
+.bed-content{padding:20px 17px 16px;gap:14px;justify-content:center;flex-wrap:wrap}
+.donut-wrap{width:142px;height:142px}
+.donut-text strong{font-size:29px;letter-spacing:-1px}
+.donut-text small{font-size:12px;line-height:1.45;max-width:86px;text-align:center}
+.bed-legend{gap:13px}.bed-key{font-size:14px;line-height:1.6;gap:6px}
+.bed-key-value{font-size:21px;margin-left:12px}.bed-key-value span{font-size:13px}
+.bed-panel-foot{font-size:13px;line-height:1.7;align-items:flex-start;margin:4px 18px 18px;padding-top:12px}
+.bed-panel-foot .icon{width:15px;height:15px;margin-top:3px}
+.dept-bars{padding:22px 19px 17px;gap:17px}
+.dept-bar-head{font-size:14px;line-height:1.65;margin-bottom:7px}
+.dept-bar-head strong{font-size:15px}.bar-track{height:7px}
+.dept-foot{font-size:13px;line-height:1.7;align-items:flex-start;padding-bottom:18px}
+.dept-foot .icon{width:14px;height:14px;margin-top:3px}
+.tasks-panel{scroll-margin-top:96px}
+.tasks-panel .panel-head{padding:20px 18px 0}
+.task-heading{align-items:center;gap:10px;min-width:0}
+.task-heading-icon{width:33px;height:33px;flex-shrink:0}
+.task-heading-icon .icon{width:19px;height:19px}
+.task-head-count{font-size:29px;flex-shrink:0}
+.task-tabs{margin:17px 17px 14px}.task-tabs button{font-size:15px;min-height:38px;padding:7px 10px;gap:8px}
+.tab-number{height:22px;min-width:22px;font-size:13px}
+.task-period{font-size:13px;line-height:1.65;flex-wrap:wrap;margin-bottom:9px;gap:5px 8px}
+.task-filter{font-size:13px;max-width:100%}
+.task-list{max-height:626px;scrollbar-gutter:stable}
+.task-row{padding:17px 1px;min-width:0}
+.task-meta{margin-bottom:9px;flex-wrap:wrap}
+.task-time{font-size:14px;line-height:1.5}.task-time .icon{width:14px;height:14px}
+.task-title{font-size:16px;line-height:1.65}
+.task-title .icon{width:16px;height:16px;margin-top:5px}
+.task-desc{font-size:14px;line-height:1.75;margin-top:5px;color:#728596}
+.task-byline{font-size:12px;line-height:1.7;gap:5px;flex-wrap:wrap;margin-top:9px}
+.task-byline .brand-prefix,.task-byline .brand-suffix{font-size:13px}
+.task-summary{font-size:13px;line-height:1.65;flex-wrap:wrap;margin-top:8px;padding-top:13px}
+.task-summary button{font-size:13px;min-height:30px}
+.task-summary .icon{width:16px;height:16px}
+.schedule-detail strong{font-size:15px}.schedule-detail span,.schedule-time{font-size:14px}
+.source-note{font-size:13px}.panel-foot{font-size:14px}
+.table-panel{margin-top:24px}.table-panel .panel-head{padding:20px;flex-wrap:wrap}
+.table-search{height:42px;max-width:225px;padding:0 12px;gap:8px}
+.table-search input{font-size:15px}.table-search .icon{width:17px;height:17px}
+.table-panel table,table{font-size:16px}
+.table-panel .department-cell{font-size:16px}
+.table-panel thead th,th{font-size:14px;line-height:1.6}
+.table-panel th,.table-panel td,th,td{padding:15px 19px}
+.dept-initial{width:33px;height:33px;font-size:12px;flex-shrink:0}
+.table-occupancy strong{font-size:14px}.table-occupancy .bar-track{width:60px;height:6px}
+.table-footer{font-size:13px;line-height:1.65;flex-wrap:wrap;padding:14px 20px}
+.legend-status{gap:8px 14px;flex-wrap:wrap}
+.page-footer{font-size:13px;line-height:1.8;gap:12px;flex-wrap:wrap;padding-top:24px}
+.page-footer>span:last-child{margin-right:70px}
+.chat-launcher{width:60px;height:60px}.chat-launcher .icon{width:29px;height:29px}
+.chat-launcher strong{font-size:15px;right:72px}
+.chat-panel{width:435px;height:625px;bottom:95px;max-height:calc(100dvh - 115px)}
+.chat-title strong{font-size:17px}.chat-title span{font-size:13px;line-height:1.6}
+.chat-head{padding:17px;flex-shrink:0}.chat-avatar{height:42px;width:42px;flex-shrink:0}
+.chat-head .icon-btn{height:36px;width:36px}
+.chat-messages{min-height:0;gap:16px;padding:18px}
+.chat-day{font-size:12px}.chat-message{font-size:16px;line-height:1.8;padding:13px 15px}
+.chat-message .message-label{font-size:13px}
+.chat-suggestions button{font-size:14px;line-height:1.6;padding:9px 11px}
+.chat-input-area{flex-shrink:0}.chat-input-row textarea{font-size:16px;line-height:1.7;height:40px;min-height:40px;max-height:120px}
+.chat-send{width:40px;height:40px}.chat-send .icon{width:19px;height:19px}
+.chat-disclaimer{font-size:12px;line-height:1.65}
+.detail-dialog{width:570px}.dialog-top h2{font-size:21px;line-height:1.5}
+.dialog-body p{font-size:16px;line-height:1.8}
+.detail-title{font-size:25px;line-height:1.6}
+.detail-grid dt{font-size:14px}.detail-grid dd{font-size:16px;line-height:1.7}
+.detail-callout{font-size:16px;line-height:1.8}.detail-callout strong{font-size:14px}
+.dialog-actions .btn{font-size:15px}
+.dialog-demo-note{font-size:13px;line-height:1.7;align-items:flex-start}
+.dialog-demo-note .icon{margin-top:4px}
+.module-hero .module-brand{font-size:35px}.module-hero small{font-size:14px;line-height:1.7}
+.module-feature{font-size:16px;line-height:1.75}.module-feature .icon{width:18px;height:18px;margin-top:5px}
+.data-dialog{width:900px}.account-line strong{font-size:18px}.account-line span{font-size:14px}
+.notices{width:380px;top:72px}.notice-head strong{font-size:16px}
+.notice-item{font-size:15px}.notice-item small{font-size:13px}.notice-footer{font-size:13px}
+.toast{font-size:15px;line-height:1.7}
+@media(min-width:1650px){
+  .content-grid{grid-template-columns:minmax(0,1fr) 400px;gap:24px}
+  .main{padding-top:32px}.kpi{padding:20px}.kpi-value{font-size:40px}
+  .nav-link{height:51px}.task-list{max-height:664px}
+  .bed-content{gap:23px}.donut-wrap{width:154px;height:154px}
+}
+@media(min-width:1031px) and (max-width:1260px){
+  .content-grid{grid-template-columns:minmax(0,1fr) 330px;gap:18px}
+  .main{padding:23px 20px}.topbar{padding:0 20px}
+  .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .small-charts{grid-template-columns:1fr}
+  .bed-content{justify-content:flex-start;gap:25px;padding-left:20px}
+  .profile .profile-text{display:none}
+  .breadcrumbs{font-size:14px}.topbar-left,.topbar-right{gap:10px}
+  .brand{padding-left:18px;padding-right:18px;font-size:28px}
+}
+@media(max-width:1030px){
+  .sidebar{width:270px}.shell{margin-left:0}
+  .side-close{top:8px;right:5px;width:28px;height:28px}
+  .content-grid{grid-template-columns:minmax(0,1fr) 335px;gap:18px}
+  .small-charts{grid-template-columns:1fr}
+  .bed-content{justify-content:flex-start;gap:25px;padding-left:21px}
+  .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .heading-actions .export-text{display:inline}.heading-actions .btn{width:auto;padding:9px 14px}
+}
+@media(max-width:820px){
+  .topbar{padding:0 20px}.main{padding:22px 20px}
+  .content-grid{grid-template-columns:1fr}
+  .action-column{display:block}.analytics-column{grid-row:2}
+  .task-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px;max-height:500px}
+  .task-row{min-width:0}
+  .small-charts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bed-content{justify-content:center;gap:18px;padding:20px 16px 15px}
+  .kpi-spark{display:block}
+  .insight-copy strong{display:block}
+  .insight-link{white-space:normal;max-width:114px;flex-shrink:0}
+  .page-heading h1{font-size:29px}
+}
+@media(max-width:580px){
+  .topbar{height:70px;padding:0 12px;gap:6px}.topbar-left,.topbar-right{gap:6px}
+  .breadcrumbs{font-size:13px;gap:6px}.breadcrumbs strong{max-width:130px;line-height:1.4}
+  .demo-chip{font-size:11px;padding:5px 7px;gap:5px}
+  .profile .avatar{height:34px;width:34px;font-size:13px}
+  .topbar-right>.icon-btn{height:34px;width:34px}
+  .main{padding:23px 14px}
+  .page-heading{margin-bottom:18px}.page-heading h1{font-size:27px}
+  .page-heading p{font-size:14px;margin-top:7px;line-height:1.75}
+  .heading-actions{margin-top:17px;gap:9px;flex-wrap:wrap;justify-content:flex-start}
+  .heading-actions .btn{min-height:44px;height:auto;font-size:14px;padding:9px 12px}
+  .select-wrap select{max-width:210px;height:44px;font-size:15px}
+  .select-wrap:after{top:18px}
+  .insight-banner{display:grid;grid-template-columns:33px minmax(0,1fr);padding:14px;gap:8px 11px;align-items:start}
+  .insight-icon{height:33px;width:33px}
+  .insight-copy{flex:1;min-width:0}
+  .insight-copy strong,.insight-copy span{font-size:14px;line-height:1.75}
+  .insight-link{grid-column:2;position:static;font-size:14px;margin-left:0;padding:0;max-width:none;gap:7px;white-space:normal;justify-self:start}
+  .stat-context{min-width:160px;flex-basis:100%}.stat-context h2{font-size:17px;width:auto}
+  .stat-context .period-label{font-size:14px}.stat-toolbar .segmented{margin-top:1px}
+  .segmented button{min-height:36px;font-size:14px;padding:6px 15px}
+  .kpi-grid{gap:11px;margin-bottom:20px}
+  .kpi{padding:14px 12px;border-radius:14px}
+  .kpi-top{font-size:15px;line-height:1.55;gap:5px;min-height:46px}
+  .kpi-icon{height:26px;width:26px}.kpi-icon .icon{height:16px;width:16px}
+  .kpi-value{font-size:32px;letter-spacing:-1.1px}.kpi-value-row{gap:5px;margin-top:8px}
+  .kpi-unit{font-size:13px;margin-top:10px}.kpi-spark{display:none}
+  .kpi-bottom{font-size:13px;line-height:1.65;row-gap:0;margin-top:9px}
+  .kpi-foot{font-size:12px;line-height:1.7}
+  .task-list{display:block;max-height:none;scrollbar-gutter:auto}
+  .task-row{padding:17px 0}.task-title{font-size:16px}
+  .task-heading h2{font-size:18px}.task-period{font-size:13px}
+  .mobile-more{font-size:15px;min-height:44px;gap:6px;align-items:center}
+  .panel h2{font-size:18px}.panel-sub{font-size:14px}
+  .small-charts{grid-template-columns:1fr;gap:18px}
+  .panel-head{padding-left:17px;padding-right:17px}
+  .chart-data-link{font-size:14px}.chart-legend{font-size:13px;gap:8px 14px;margin:16px 17px 7px}
+  .chart-note{display:none}.chart-area{height:244px;margin:0 14px 10px 9px}
+  .chart-panel{min-height:354px}
+  .bed-content{gap:26px;justify-content:center;padding-top:22px}
+  .donut-wrap{width:150px;height:150px}
+  .bed-panel-foot{font-size:13px}.dept-bar-head{font-size:15px}.dept-bar-head strong{font-size:16px}
+  .dept-foot{font-size:13px}
+  .table-panel .panel-head{padding:18px 16px;gap:15px}
+  .table-search{width:100%;max-width:100%;height:43px}
+  .table-panel th,.table-panel td{padding:14px 16px}
+  .table-footer{font-size:13px;gap:10px;padding:14px 16px}
+  .table-footer .legend-status{gap:8px 13px}
+  .page-footer{font-size:12px;padding-bottom:76px}
+  .chat-launcher{width:57px;height:57px;right:17px;bottom:17px}
+  .chat-panel{right:12px;bottom:86px;width:calc(100vw - 24px);height:625px;max-height:calc(100dvh - 101px)}
+  .chat-messages{padding:15px}.chat-message{font-size:16px}
+  .notices{top:66px;right:12px}.toast{font-size:14px;bottom:84px}
+  .dialog-top{padding:18px}.dialog-top h2{font-size:20px}
+  .dialog-body{padding:19px;max-height:62dvh}.detail-title{font-size:23px}
+  .detail-grid dd{font-size:16px}.dialog-actions .btn{white-space:normal}
+  .dialog-actions{padding:15px 18px}
+}
+@media(max-width:370px){
+  .demo-chip{display:none}.kpi-value{font-size:30px}
+  .kpi-top{font-size:14px}.kpi-icon{width:23px;height:23px}
+  .page-heading h1{font-size:25px}.bed-content{gap:20px}
+  .dialog-actions{justify-content:stretch}.dialog-actions .btn{flex:1}
+}
+@media print{
+  .content-grid{grid-template-columns:minmax(0,1fr) 310px}
+  .main{zoom:.7}.task-list{max-height:none}.kpi-value{font-size:32px}
+}
+
+
+/* Be Vietnam Pro edition — coherent Vietnamese typography, large sizes retained. */
+body{font-weight:400;font-kerning:normal;letter-spacing:0;line-height:1.7}
+button,input,select,textarea{font-family:var(--font)}
+h1,h2,h3{font-family:var(--font)}
+.page-heading h1{font-weight:600;letter-spacing:-.75px;line-height:1.5}
+.panel h2,.stat-context h2{font-weight:600;letter-spacing:-.25px;line-height:1.6}
+.task-title{font-weight:600;letter-spacing:-.1px;line-height:1.75}
+.btn,.segmented button,.insight-link,.chart-data-link{font-weight:500;letter-spacing:0}
+.nav-link.active{font-weight:600}
+.nav-link .brand-prefix{font-weight:600;letter-spacing:-.4px}
+.nav-link .brand-suffix{font-weight:500;letter-spacing:-.35px}
+.brand-word .brand-prefix{font-weight:700;letter-spacing:-1px}
+.brand-word .brand-suffix{font-weight:500;letter-spacing:-.9px}
+.brand-baseline,.nav-heading{font-weight:500}
+.nav-heading{letter-spacing:.6px}
+.kpi-top{font-weight:400;letter-spacing:0}
+.kpi-value,.donut-text strong,.task-head-count{font-weight:500;letter-spacing:-1px;font-variant-numeric:tabular-nums;line-height:1.4}
+.number{font-variant-numeric:tabular-nums;letter-spacing:-.2px}
+.kpi-value.number{letter-spacing:-1px}
+.insight-copy strong,.change,.department-cell,.bed-key-value,.dept-bar-head strong{font-weight:600}
+.badge,.table-panel .department-cell{font-weight:500}
+.profile .name,.workspace strong,.schedule-detail strong,.notice-item strong{font-weight:600}
+.task-desc,.panel-sub,.kpi-foot,.page-heading p,.chat-message{font-weight:400;letter-spacing:0;line-height:1.8}
+.task-byline,.bed-key,.kpi-bottom,.chart-legend,.table-footer{font-weight:400}
+.chat-title strong,.chat-message .message-label{font-weight:600}
+.detail-title{font-weight:600;letter-spacing:-.35px;line-height:1.7}
+.dialog-top h2{font-weight:600;letter-spacing:-.3px}
+.chart-svg text{font-family:var(--font);font-weight:400;letter-spacing:0}
+/* Give Vietnamese accents space; do not shrink text to fit the new face. */
+.panel-head>div{min-width:0}
+.workspace>div:last-child{min-width:0}
+.kpi-value{flex-shrink:0}
+@media(max-width:580px){
+  .page-heading h1{letter-spacing:-.65px}
+  .task-title{line-height:1.75}
+}
+
+/* Doctor workspace: personal activity rather than hospital-wide reporting. */
+:root{--muted:#718495;--radius:17px}
+body{font-size:16px}
+.page-heading h1{font-size:30px;letter-spacing:-.65px}
+.page-heading p{color:#718495}
+.topbar-right{gap:12px}.profile .avatar{background:#e7f5fb;color:#197ea9}
+.doctor-kicker{color:#2687b1;font-size:13px;font-weight:500;letter-spacing:.6px;margin-bottom:3px}
+.page-heading{align-items:center;margin-bottom:22px}
+.heading-actions{flex-shrink:0}.heading-actions .btn{font-size:15px}
+.insight-banner{background:linear-gradient(105deg,#fff7e4 0%,#fffdf8 52%,#eff8fe 100%);border-color:#efe5cd}
+.insight-copy strong{color:#805f23}.insight-copy span{color:#6d767a}
+.insight-icon{background:#fff0c8}
+.stat-controls{display:flex;align-items:center;gap:10px}
+.export-report{height:44px;width:44px;border:1px solid #dfe7ee;background:#fff;border-radius:10px}
+.kpi{border-color:#e3ebf1}.kpi-top{color:#5f7689;font-size:16px}
+.kpi-value-row{min-height:53px;align-items:baseline;gap:5px}
+.kpi-value{font-size:36px;font-weight:500}.kpi-denominator{font-size:19px;letter-spacing:-.4px;color:#8b9ca8}
+.kpi-unit{margin:0 0 0 1px;font-size:13px;color:#788e9e}
+.kpi-bottom{font-size:13px;color:#6d8293}.kpi-foot{font-size:13px;color:#738798}
+.kpi-icon{border-radius:9px}.kpi-spark{align-self:center;flex-shrink:1;max-width:27%}
+.stat-context .period-label{color:#748897}.panel-sub{color:#708495}
+.content-grid{grid-template-columns:minmax(0,1fr) 374px;gap:20px}
+.panel-head .chart-data-link{margin-top:2px}.panel h2{font-size:18px}
+.chart-panel{min-height:360px}.chart-area{height:246px}
+.chart-insight{display:flex;align-items:center;gap:8px;padding:12px 20px 14px;border-top:1px solid #edf2f6;color:#6c8191;font-size:13px;line-height:1.75}
+.chart-insight .icon{width:17px;height:17px;color:#2588b7}
+.chart-insight strong{font-weight:500;color:#37738d}
+.chart-legend{font-size:13px}.chart-note{font-size:12px}
+.small-charts{align-items:stretch;gap:18px}
+.visit-mix .panel-head,.progress-panel .panel-head{padding:18px 18px 0}
+.visit-mix .panel-head{display:block}
+.mix-content{padding:21px 16px 15px;display:flex;align-items:center;justify-content:center;gap:19px;flex-wrap:wrap}
+.mix-content .donut-wrap{width:136px;height:136px}
+.mix-content .donut-text strong{font-size:31px;color:#294c66}
+.mix-content .donut-text small{font-size:12px;color:#718899;max-width:100px}
+.mix-legend{display:flex;flex-direction:column;gap:14px;min-width:105px}
+.mix-label{font-size:14px;color:#6e8292;display:flex;align-items:center;gap:7px}
+.mix-number{font-size:21px;font-weight:500;margin-left:13px;line-height:1.55;color:#345b72}
+.mix-number small{font-size:13px;color:#8095a3;font-weight:400;margin-left:5px}
+.mini-foot{border-top:1px solid #eff3f6;margin:0 18px;padding:11px 0 14px;color:#778c9b;font-size:12px;line-height:1.75}
+.progress-panel .panel-head{display:block}.progress-rows{padding:21px 18px 15px;display:flex;flex-direction:column;gap:24px}
+.progress-label{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;color:#526f82;line-height:1.7;margin-bottom:8px}
+.progress-label strong{font-weight:500;white-space:nowrap;font-size:15px}.progress-label strong span{color:#8ea0ae;font-weight:400}
+.progress-panel .bar-track{height:8px}
+.progress-caption{display:flex;justify-content:space-between;gap:6px;margin-top:8px;font-size:12px;line-height:1.7;color:#7b8d9c}
+.progress-caption .remaining{color:#aa7f30}
+.task-heading h2{font-size:18px}.task-head-count{font-size:30px;color:#a97f2b}
+.tasks-panel{border-top:3px solid #e6bd5c}
+.tasks-panel .panel-head{padding-top:18px}.task-title{font-size:16px;color:#2e4c63}
+.task-list{max-height:612px;scrollbar-width:thin}
+.task-desc{font-size:14px;color:#738797;line-height:1.8}
+.task-row{padding:15px 1px}.task-byline{font-size:12px;color:#778c9c}
+.task-period{color:#778b9a;margin-top:3px}
+.task-summary{color:#718694}.task-filter-toggle{border:1px solid #e7ebef;padding:5px 8px;font-size:12px;border-radius:6px;color:#788a96;display:flex;align-items:center;gap:5px}
+.task-filter-toggle .icon{width:13px;height:13px}.task-filter-toggle.active{background:#fcf0f1;border-color:#f3dadc;color:#b34f57}
+.task-row:focus-visible{outline-offset:-3px}.task-period-tools{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.quick-strip{margin-top:23px;display:flex;align-items:center;justify-content:space-between;gap:10px 16px;padding:15px 19px;background:#eef6fb;border:1px solid #dfedf6;border-radius:13px}
+.quick-strip-title{font-size:14px;color:#497189;display:flex;align-items:center;gap:9px;font-weight:500}.quick-strip-title .icon{color:#268bc0}
+.quick-strip-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.quick-strip button{font-size:14px;display:flex;align-items:center;gap:7px;border-radius:8px;padding:8px 11px;border:1px solid #dceaf3;background:#ffffffbf;color:#4e7188;min-height:39px}
+.quick-strip button:hover{background:white;border-color:#9bc8e3}.quick-strip button .icon{width:17px;height:17px}
+.schedule-panel{margin-top:24px;overflow:hidden}.schedule-panel>.panel-head{padding:21px 21px 0;align-items:center;flex-wrap:wrap}
+.schedule-panel .panel-head h2{font-size:20px}
+.schedule-actions{display:flex;align-items:center;gap:8px}.schedule-actions .btn{font-size:14px}
+.agenda-ribbon{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:19px 21px 20px;gap:0;border:1px solid #e6edf3;background:#fbfdfe;border-radius:11px;overflow:hidden}
+.agenda-slot{padding:14px 16px;border-right:1px solid #e6edf3;position:relative;text-align:left;transition:background .15s;line-height:1.7}
+.agenda-slot:last-child{border:0}.agenda-slot:hover{background:#f0f8fc}.agenda-slot.current{background:#edf7fd}
+.agenda-slot time{font-size:13px;color:#5f8ca6;display:flex;align-items:center;gap:7px;margin-bottom:4px;font-weight:500}
+.agenda-slot time .icon{width:14px;height:14px}.agenda-slot strong{font-size:15px;color:#36586e;font-weight:500;display:block}
+.agenda-slot small{font-size:12px;color:#7e93a1;display:block;margin-top:3px}
+.agenda-slot.consult time{color:#b58a38}.agenda-slot.consult{background:#fffaf0}
+.agenda-slot:focus-visible{outline-offset:-3px}
+.appointment-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:0 21px 18px}
+.queue-tabs{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.queue-tabs button{position:relative;padding:8px 0;color:#8093a1;font-size:14px;display:flex;gap:7px;align-items:center;border-bottom:2px solid transparent}
+.queue-tabs button.active{color:#147fb6;border-bottom-color:#238fc4;font-weight:500}.queue-tabs button span{background:#f0f4f7;color:#8297a6;border-radius:5px;padding:1px 5px;font-size:12px}
+.queue-tabs button.active span{color:#248bbb;background:#eaf5fc}
+.table-search{max-width:265px;width:265px}
+.table-search input{font-size:14px}
+.patient-table{font-size:15px;white-space:nowrap;min-width:890px}
+.patient-table th{font-size:13px;color:#7a8f9f;background:#f9fbfd;border-top:1px solid #eaf0f5;font-weight:400;padding:12px 21px}
+.patient-table td{padding:16px 21px;font-size:14px;color:#607c90}
+.patient-table .patient-time{font-size:16px;font-weight:500;color:#3a6079}
+.patient-info{display:flex;gap:10px;align-items:center}.patient-avatar{width:38px;height:38px;display:grid;place-items:center;background:#edf5fc;color:#6295b3;border-radius:11px;font-size:12px;flex-shrink:0;font-weight:500}
+.patient-name{font-size:15px;font-weight:500;color:#375970;display:block}.patient-info small{display:block;color:#8b9fac;font-size:12px;line-height:1.8}
+.patient-reason strong{display:block;font-weight:400;font-size:14px}.patient-reason small{display:block;font-size:12px;line-height:1.8;color:#899ca9}
+.table-row-link{display:inline-flex;align-items:center;justify-content:center;gap:4px;font-size:14px;color:#2685b3;padding:7px 9px;border:1px solid #e0edf5;border-radius:7px;min-height:37px;white-space:nowrap}
+.table-row-link:hover{background:#edf8fd}.table-row-link .icon{width:15px;height:15px}
+.queue-footer{display:flex;align-items:center;justify-content:space-between;padding:13px 21px;border-top:1px solid #eaf0f4;gap:10px;font-size:13px;color:#7c909f;flex-wrap:wrap}
+.pagination{display:flex;align-items:center;gap:8px}.pagination .icon-btn{width:33px;height:33px;border:1px solid #e5ecf2;border-radius:7px}.pagination .icon-btn:disabled{opacity:.4}
+.previous-icon{transform:rotate(180deg)}
+.patient-banner{display:flex;align-items:center;gap:14px;margin-bottom:20px}.patient-banner .patient-avatar{width:52px;height:52px;font-size:16px;border-radius:13px}.patient-banner strong{font-size:22px;display:block;font-weight:500}.patient-banner small{font-size:14px;color:#7e939f}
+.detail-callout+.detail-callout{margin-top:13px}.detail-callout.warning{background:#fffbf1;border-color:#f1e5c9}
+.detail-callout .record-list{padding:0;margin:7px 0 0;list-style:none}.record-list li{font-size:14px;padding:7px 0;border-bottom:1px solid #e8eef3}.record-list li:last-child{border:0}
+.record-meta{color:#8599a8;font-size:12px;display:block;line-height:1.65}
+.calendar-dialog{width:740px}.week-summary{font-size:15px;margin-bottom:17px;color:#6e8495;line-height:1.8}
+.week-schedule{display:flex;flex-direction:column;gap:10px}.week-day{display:flex;align-items:center;gap:18px;padding:14px 16px;border:1px solid #e7eef4;border-radius:10px}.week-day.current{background:#eef8fd;border-color:#c7e3f3}
+.week-date{width:84px;flex-shrink:0;font-size:13px;color:#7c919f}.week-date strong{font-size:20px;display:block;font-weight:500;color:#386984;line-height:1.7}.week-activity{flex:1;font-size:15px;color:#4f7086}.week-activity small{font-size:13px;display:block;color:#8a9da9;margin-top:2px}.week-count{font-size:13px;color:#7596ab;white-space:nowrap}
+.notice-body{max-height:65vh;overflow:auto}.notifications{line-height:1.6}
+.no-results{padding:30px!important;text-align:center;color:#8498a7}
+.page-footer{font-size:12px}.page-footer>span:last-child{margin-right:0}
+@media(min-width:1650px){.content-grid{grid-template-columns:minmax(0,1fr) 400px;gap:24px}.chart-area{height:265px}.mix-content{padding-top:26px;padding-bottom:25px;gap:24px}.mix-content .donut-wrap{width:157px;height:157px}.kpi-value{font-size:40px}.task-list{max-height:630px}}
+@media(min-width:1031px) and (max-width:1260px){.content-grid{grid-template-columns:minmax(0,1fr) 348px}.small-charts{grid-template-columns:1fr}.mix-content{flex-wrap:nowrap}.quick-strip{flex-wrap:wrap}.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.agenda-ribbon{grid-template-columns:repeat(2,minmax(0,1fr))}.agenda-slot:nth-child(2){border-right:0}.agenda-slot:nth-child(-n+2){border-bottom:1px solid #e6edf3}.page-heading h1{font-size:29px}}
+@media(max-width:1030px){.content-grid{grid-template-columns:minmax(0,1fr) 355px}.quick-strip{flex-wrap:wrap}.small-charts{grid-template-columns:1fr}.agenda-ribbon{grid-template-columns:repeat(2,minmax(0,1fr))}.agenda-slot:nth-child(2){border-right:0}.agenda-slot:nth-child(-n+2){border-bottom:1px solid #e6edf3}.heading-actions .btn{font-size:14px}}
+@media(max-width:850px){.content-grid{grid-template-columns:1fr}.action-column{grid-row:1;display:block}.analytics-column{grid-row:2}.task-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;max-height:none}.task-list .empty{grid-column:1/-1}.small-charts{grid-template-columns:repeat(2,minmax(0,1fr))}.quick-strip{margin-top:20px}.tasks-panel{width:100%}.task-list.compact-list .task-row:nth-child(n+4){display:block}}
+@media(max-width:580px){
+ .page-heading h1{font-size:27px;letter-spacing:-.6px}.doctor-kicker{font-size:12px;margin-bottom:5px}.page-heading p{font-size:14px;line-height:1.9}
+ .heading-actions{display:flex;gap:8px;margin-top:17px}.heading-actions .btn{font-size:14px;padding:10px 13px;flex:1}
+ .topbar .breadcrumbs strong{max-width:138px}.topbar-right{gap:6px}
+ .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.kpi-top{font-size:15px}.kpi-value{font-size:33px}.kpi-denominator{font-size:17px}.kpi-unit{font-size:12px}.kpi-value-row{min-height:48px;gap:3px;flex-wrap:wrap}
+ .kpi-top{min-height:46px}.kpi-bottom{font-size:13px}.kpi-foot{font-size:12px}.kpi{padding:15px 12px}
+ .stat-toolbar{align-items:center}.stat-context{flex-basis:100%}.stat-context h2{width:100%}.stat-controls{width:100%;justify-content:space-between}
+ .task-list{display:block;max-height:none}.task-list.compact-list .task-row:nth-child(n+4){display:none}.task-list.compact-list.show-all .task-row:nth-child(n+4){display:block}
+ .task-title{font-size:16px}.task-desc{font-size:14px}.task-list{padding:0 17px}.task-row{padding:17px 0}
+ .tasks-panel .panel-head{padding:18px 17px 0}.task-heading{gap:9px}.task-head-count{font-size:29px}
+ .small-charts{grid-template-columns:1fr}.mix-content{gap:30px}.mix-content .donut-wrap{width:156px;height:156px}
+ .chart-area{height:242px}.chart-insight{padding:12px 17px;font-size:13px}.chart-legend{font-size:13px}
+ .panel-head .chart-data-link{font-size:13px}.panel h2{font-size:18px}
+ .quick-strip{padding:15px;gap:12px}.quick-strip-title{font-size:14px}.quick-strip-actions{gap:7px}.quick-strip button{font-size:13px;padding:8px 10px;min-height:40px}
+ .schedule-panel{display:block!important;margin-top:20px}.schedule-panel>.panel-head{padding:20px 17px 0;gap:13px}.schedule-panel .panel-head h2{font-size:19px}.schedule-actions{width:100%}
+ .schedule-actions .btn{font-size:14px;width:100%}.agenda-ribbon{margin:17px;grid-template-columns:repeat(2,minmax(0,1fr))}.agenda-slot{padding:13px 11px}.agenda-slot time{font-size:12px;gap:4px}.agenda-slot strong{font-size:14px;line-height:1.8}.agenda-slot small{font-size:12px}.agenda-slot time .icon{width:12px;height:12px}
+ .appointment-toolbar{padding:0 17px 17px;gap:13px}.queue-tabs{gap:15px}.queue-tabs button{font-size:14px}.table-search{max-width:none;width:100%;height:44px}
+ .table-search input{font-size:16px}.patient-table th,.patient-table td{padding-left:17px;padding-right:17px}.queue-footer{padding:12px 17px}.queue-footer>span{font-size:12px}
+ .week-day{gap:12px;padding:12px}.week-date{width:62px}.week-date strong{font-size:18px}.week-activity{font-size:14px}.week-activity small{font-size:12px}.week-count{display:none}
+ .detail-grid{grid-template-columns:1fr 1fr;gap:14px}.detail-grid dd{font-size:15px}.patient-banner strong{font-size:21px}.dialog-actions .btn{flex:1}
+ .page-footer{display:block;line-height:2.2}.page-footer>span{display:block}
+}
+@media(max-width:370px){.kpi-value{font-size:30px}.kpi-denominator{font-size:16px}.page-heading h1{font-size:25px}.task-heading h2{font-size:17px}.task-heading-icon{width:30px;height:30px}.task-heading .panel-sub{font-size:13px}.profile .avatar{width:33px;height:33px}.queue-tabs{gap:11px}.quick-strip button{font-size:12px}}
+@media print{.quick-strip,.chat-launcher,.stat-controls,.schedule-actions,.appointment-toolbar,.table-row-link,.pagination{display:none!important}.content-grid{grid-template-columns:minmax(0,1fr) 310px}.action-column{display:block}.analytics-column{grid-row:auto}.task-list{display:block;max-height:none}.schedule-panel{display:block!important}.patient-table{min-width:0}.page-heading h1{font-size:27px}.main{zoom:.7}.kpi-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* Keep absolutely positioned accessible labels inside the table scroller. */
+.table-scroll{position:relative;max-width:100%}
+
+</style>
+<style data-version="1.0" id="melicare-shared-ui">
+/* MELICARE shared UI, v1.0 — identical in the doctor and manager dashboards.
+   Typography and tool identities only: role-specific data/layout/events remain local. */
+:root {
+  --font:'Be Vietnam Pro','Segoe UI',Tahoma,Arial,sans-serif;
+  --display:var(--font);
+  --ui-font-body:16px;
+  --ui-font-title:30px;
+  --ui-font-section:18px;
+  --ui-font-control:15px;
+  --ui-font-nav:18px;
+  --ui-font-caption:14px;
+  --ui-font-small:13px;
+  --ui-font-micro:12px;
+  --ui-font-kpi:36px;
+  --ui-font-donut:29px;
+  --ui-font-count:29px;
+  --ui-font-brand:29px;
+  --ui-font-module:35px;
+  --ui-icon-stroke:1.8;
+  --ui-icon-nav:22px;
+  --ui-icon-action:20px;
+  --ui-icon-detail:28px;
+  --ui-leading:1.7;
+  --ui-brand-ink:#17496b;
+}
+body.meli-unified {
+  font-family:var(--font);font-size:var(--ui-font-body);font-weight:400;
+  line-height:var(--ui-leading);letter-spacing:0;font-kerning:normal;
+  -webkit-font-smoothing:antialiased;
+}
+.meli-unified button,.meli-unified input,.meli-unified select,.meli-unified textarea,
+.meli-unified h1,.meli-unified h2,.meli-unified h3,
+.meli-unified .chart-svg text {font-family:var(--font)}
+.meli-unified .page-heading h1 {font-size:var(--ui-font-title);font-weight:600;line-height:1.5;letter-spacing:-.65px}
+.meli-unified .panel h2,.meli-unified .panel .panel-head h2,.meli-unified .stat-context h2 {
+  font-size:var(--ui-font-section);font-weight:600;line-height:1.6;letter-spacing:-.25px;
+}
+.meli-unified .page-heading p,.meli-unified .panel-sub,
+.meli-unified .task-desc {font-size:var(--ui-font-caption);font-weight:400;line-height:1.8;letter-spacing:0}
+.meli-unified .stat-context .period-label {font-size:var(--ui-font-caption);font-weight:400;line-height:1.7}
+.meli-unified .smallcaps,.meli-unified .doctor-kicker {font-size:var(--ui-font-small);font-weight:500;line-height:1.7;letter-spacing:.6px}
+.meli-unified .btn,.meli-unified .heading-actions .btn,.meli-unified .dialog-actions .btn,
+.meli-unified .schedule-actions .btn {
+  font-size:var(--ui-font-control);font-weight:500;line-height:1.5;letter-spacing:0;
+  min-height:44px;height:auto;padding:9px 14px;
+}
+.meli-unified .segmented button,.meli-unified .task-tabs button {
+  font-size:var(--ui-font-control);font-weight:500;line-height:1.5;letter-spacing:0;
+  min-height:38px;padding:7px 14px;
+}
+.meli-unified .insight-copy strong,.meli-unified .insight-copy span {font-size:var(--ui-font-control);line-height:1.8;letter-spacing:0}
+.meli-unified .insight-copy strong {font-weight:600}
+.meli-unified .insight-copy span {font-weight:400}
+.meli-unified .insight-link,.meli-unified .chart-data-link,.meli-unified .panel-head .chart-data-link {
+  font-size:var(--ui-font-caption);font-weight:500;line-height:1.6;letter-spacing:0;
+}
+.meli-unified .select-wrap select {font-size:var(--ui-font-control);font-weight:500;line-height:1.5;height:44px}
+.meli-unified .select-wrap:after {top:18px}
+.meli-unified .table-search input {font-size:var(--ui-font-body);font-weight:400;line-height:1.6}
+.meli-unified .table-search {height:44px}
+.meli-unified .badge {font-size:var(--ui-font-small);font-weight:500;line-height:1.45;padding:5px 8px}
+.meli-unified .mini-tag {font-size:var(--ui-font-micro);font-weight:400;line-height:1.5}
+/* Shared navigation: identical names, lettering, tool artwork, colors and spacing. */
+.meli-unified .brand {height:84px;gap:10px;padding:0 21px}
+.meli-unified .brand-word {font-size:var(--ui-font-brand);line-height:1}
+.meli-unified .brand-word .brand-prefix {font-weight:700;letter-spacing:-1px}
+.meli-unified .brand-word .brand-suffix {font-weight:500;letter-spacing:-.9px}
+.meli-unified .brand-baseline {font-size:11px;font-weight:500;line-height:1.5;letter-spacing:1.25px}
+.meli-unified .brand-mark {width:32px;height:36px}
+.meli-unified .workspace {min-height:78px;gap:9px;padding:12px 10px;margin:8px 15px 16px}
+.meli-unified .workspace strong {font-size:15px;font-weight:600;line-height:1.6;letter-spacing:0}
+.meli-unified .workspace p {font-size:13px;font-weight:400;line-height:1.7;letter-spacing:0}
+.meli-unified .nav-heading {font-size:13px;font-weight:500;letter-spacing:.6px;line-height:1.7;margin:20px 13px 8px}
+.meli-unified .nav-link {font-size:17px;font-weight:400;line-height:1.6;letter-spacing:0;height:50px;gap:12px;padding:0 13px}
+.meli-unified .nav-link.active {font-weight:600}
+.meli-unified .nav-link.active:before {top:12px;height:26px}
+.meli-unified .nav-link .brand-prefix,.meli-unified .nav-link .brand-suffix {font-size:var(--ui-font-nav);line-height:1.6}
+.meli-unified .brand-prefix {font-family:var(--font);font-weight:600;color:var(--ui-brand-ink);letter-spacing:-.4px}
+.meli-unified .brand-suffix {font-family:var(--font);font-weight:500;letter-spacing:-.35px}
+.meli-unified .tool-wordmark {display:inline-flex;align-items:baseline;white-space:nowrap}
+.meli-unified .nav-link .count,.meli-unified .tab-number {font-size:var(--ui-font-small);font-weight:500;line-height:1.4;min-width:23px;height:23px}
+.meli-unified .side-footer {font-size:var(--ui-font-micro);font-weight:400;line-height:1.7}
+.meli-unified .side-footer strong {font-size:var(--ui-font-small);font-weight:600;line-height:1.7}
+.meli-unified .breadcrumbs {font-size:14px;font-weight:400;line-height:1.6;letter-spacing:0}
+.meli-unified .breadcrumbs strong {font-weight:600}
+.meli-unified .demo-chip {font-size:13px;font-weight:400;line-height:1.4}
+.meli-unified .avatar,.meli-unified .profile .avatar {font-size:14px;font-weight:600;line-height:1.4;width:40px;height:40px}
+.meli-unified .profile .name {font-size:14px;font-weight:600;line-height:1.6}
+.meli-unified .profile .role {font-size:12px;font-weight:400;line-height:1.7}
+/* Statistics, chart labels and tables use the same type scale in both roles. */
+.meli-unified .kpi-top {font-size:16px;font-weight:400;line-height:1.55;letter-spacing:0}
+.meli-unified .kpi-value,.meli-unified .kpi-value.number {font-size:var(--ui-font-kpi);font-family:var(--font);font-weight:500;line-height:1.4;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+.meli-unified .kpi-value-row {align-items:center;min-height:0;gap:7px}
+.meli-unified .kpi-unit {font-size:14px;font-weight:400;line-height:1.6;margin:10px 0 0}
+.meli-unified .kpi-denominator {font-size:19px;font-weight:400;line-height:1.4;letter-spacing:-.4px;margin-top:8px}
+.meli-unified .kpi-bottom {font-size:14px;font-weight:400;line-height:1.6;letter-spacing:0}
+.meli-unified .kpi-foot {font-size:13px;font-weight:400;line-height:1.8;letter-spacing:0}
+.meli-unified .change {font-size:inherit;font-weight:600}
+.meli-unified .number {font-variant-numeric:tabular-nums;letter-spacing:-.2px}
+.meli-unified .chart-legend,.meli-unified .bed-key,.meli-unified .mix-label {font-size:14px;font-weight:400;line-height:1.7;letter-spacing:0}
+.meli-unified .chart-note {font-size:13px;font-weight:400;line-height:1.5}
+.meli-unified .chart-svg text {font-size:14px;font-weight:400;letter-spacing:0}
+.meli-unified .chart-tooltip {font-size:14px;font-weight:400;line-height:1.65}
+.meli-unified .chart-tooltip strong {font-weight:600}
+.meli-unified .chart-tooltip span {font-size:13px;font-weight:400;line-height:1.65}
+.meli-unified .chart-tooltip .tt-value {font-weight:500}
+.meli-unified .donut-text strong,.meli-unified .mix-content .donut-text strong {
+  font-size:var(--ui-font-donut);font-family:var(--font);font-weight:500;line-height:1.4;letter-spacing:-1px;font-variant-numeric:tabular-nums;
+}
+.meli-unified .donut-text small,.meli-unified .mix-content .donut-text small {font-size:12px;font-weight:400;line-height:1.5;letter-spacing:0}
+.meli-unified .bed-key-value,.meli-unified .mix-number {font-size:21px;font-weight:500;line-height:1.55;letter-spacing:-.2px;font-variant-numeric:tabular-nums}
+.meli-unified .bed-key-value span,.meli-unified .mix-number small {font-size:13px;font-weight:400;line-height:1.7;letter-spacing:0}
+.meli-unified .dept-bar-head,.meli-unified .progress-label {font-size:14px;font-weight:400;line-height:1.7;letter-spacing:0}
+.meli-unified .dept-bar-head strong,.meli-unified .progress-label strong {font-size:15px;font-weight:600;line-height:1.7;letter-spacing:-.2px}
+.meli-unified .bed-panel-foot,.meli-unified .dept-foot,.meli-unified .mini-foot,
+.meli-unified .progress-caption,.meli-unified .chart-insight {font-size:13px;font-weight:400;line-height:1.75;letter-spacing:0}
+.meli-unified .chart-insight strong {font-weight:500}
+.meli-unified .panel-foot {font-size:14px;font-weight:400;line-height:1.7}
+.meli-unified table,.meli-unified .table-panel table,.meli-unified .patient-table {font-family:var(--font);font-size:16px;font-weight:400;line-height:1.7;letter-spacing:0}
+.meli-unified th,.meli-unified .table-panel thead th,.meli-unified .patient-table th {font-size:14px;font-weight:500;line-height:1.6;letter-spacing:0}
+.meli-unified td,.meli-unified .patient-table td {font-size:16px;font-weight:400;line-height:1.7;letter-spacing:0}
+.meli-unified .table-panel .department-cell,.meli-unified .patient-name,.meli-unified .patient-table .patient-time {font-size:16px;font-weight:500;line-height:1.7;letter-spacing:0}
+.meli-unified .patient-reason strong {font-size:16px;font-weight:400;line-height:1.7;letter-spacing:0}
+.meli-unified .patient-info small,.meli-unified .patient-reason small {font-size:13px;font-weight:400;line-height:1.8;letter-spacing:0}
+.meli-unified td.number,.meli-unified .patient-table td.number {font-size:16px;font-weight:400;line-height:1.7;letter-spacing:-.2px;font-variant-numeric:tabular-nums}
+.meli-unified .table-occupancy strong {font-size:14px;font-weight:500;line-height:1.7;letter-spacing:0}
+.meli-unified .table-footer,.meli-unified .queue-footer,.meli-unified .queue-footer>span {font-size:13px;font-weight:400;line-height:1.7;letter-spacing:0}
+.meli-unified .table-row-link {font-size:15px;font-weight:500;line-height:1.5;min-height:40px}
+.meli-unified .patient-avatar,.meli-unified .dept-initial {font-size:12px;font-weight:500;line-height:1.5;letter-spacing:0}
+/* Work items and doctor-only schedule: matched heading/body/caption hierarchy. */
+.meli-unified .task-head-count {font-size:var(--ui-font-count);font-family:var(--font);font-weight:500;line-height:1.4;letter-spacing:-1px;font-variant-numeric:tabular-nums}
+.meli-unified .task-title {font-size:16px;font-weight:600;line-height:1.75;letter-spacing:-.1px}
+.meli-unified .task-time {font-size:14px;font-weight:500;line-height:1.5;letter-spacing:0}
+.meli-unified .task-byline {font-size:12px;font-weight:400;line-height:1.7;letter-spacing:0}
+.meli-unified .task-byline .brand-prefix,.meli-unified .task-byline .brand-suffix {font-size:13px;line-height:1.7}
+.meli-unified .task-period,.meli-unified .task-filter,.meli-unified .task-filter-toggle,
+.meli-unified .task-summary,.meli-unified .task-summary button {font-size:13px;font-weight:400;line-height:1.65;letter-spacing:0}
+.meli-unified .task-summary button {font-weight:500}
+.meli-unified .task-list .empty {font-size:16px;font-weight:400;line-height:1.7}
+.meli-unified .mobile-more {font-size:15px;font-weight:500;line-height:1.6}
+.meli-unified .quick-strip-title {font-size:15px;font-weight:500;line-height:1.6}
+.meli-unified .quick-strip button {font-size:15px;font-weight:500;line-height:1.5;min-height:44px}
+.meli-unified .queue-tabs button {font-size:15px;font-weight:400;line-height:1.6}
+.meli-unified .queue-tabs button.active {font-weight:500}
+.meli-unified .queue-tabs button span {font-size:13px;font-weight:500;line-height:1.5}
+.meli-unified .agenda-slot time,.meli-unified .schedule-time {font-size:14px;font-weight:500;line-height:1.6}
+.meli-unified .agenda-slot strong,.meli-unified .schedule-detail strong {font-size:16px;font-weight:500;line-height:1.7}
+.meli-unified .agenda-slot small,.meli-unified .schedule-detail span {font-size:13px;font-weight:400;line-height:1.7}
+.meli-unified .source-note,.meli-unified .page-footer {font-size:13px;font-weight:400;line-height:1.8;letter-spacing:0}
+/* Dialogs and assistant are shared interface components, not role-specific themes. */
+.meli-unified .dialog-top h2 {font-size:21px;font-weight:600;line-height:1.5;letter-spacing:-.3px}
+.meli-unified .dialog-body p,.meli-unified .detail-callout {font-size:16px;font-weight:400;line-height:1.8;letter-spacing:0}
+.meli-unified .detail-title {font-size:25px;font-weight:600;line-height:1.7;letter-spacing:-.35px}
+.meli-unified .detail-grid dt {font-size:14px;font-weight:400;line-height:1.7}
+.meli-unified .detail-grid dd {font-size:16px;font-weight:500;line-height:1.7}
+.meli-unified .detail-callout strong {font-size:14px;font-weight:600;line-height:1.7}
+.meli-unified .dialog-demo-note,.meli-unified .record-meta {font-size:13px;font-weight:400;line-height:1.7}
+.meli-unified .module-hero .module-brand {font-size:var(--ui-font-module);line-height:1.4}
+.meli-unified .module-hero small {font-size:14px;font-weight:400;line-height:1.7}
+.meli-unified .module-feature {font-size:16px;font-weight:400;line-height:1.75;letter-spacing:0}
+.meli-unified .module-hero {min-width:0}
+.meli-unified .module-hero>div:last-child {min-width:0}
+.meli-unified .account-line strong {font-size:18px;font-weight:600;line-height:1.6}
+.meli-unified .account-line span {font-size:14px;font-weight:400;line-height:1.7}
+.meli-unified .patient-banner strong {font-size:23px;font-weight:600;line-height:1.6}
+.meli-unified .patient-banner small,.meli-unified .record-list li {font-size:14px;font-weight:400;line-height:1.7}
+.meli-unified .week-summary,.meli-unified .week-activity {font-size:16px;font-weight:400;line-height:1.8}
+.meli-unified .week-date,.meli-unified .week-activity small,.meli-unified .week-count {font-size:13px;font-weight:400;line-height:1.7}
+.meli-unified .week-date strong {font-size:20px;font-weight:500;line-height:1.7}
+.meli-unified .notice-head strong {font-size:16px;font-weight:600;line-height:1.6}
+.meli-unified .notice-item {font-size:15px;font-weight:400;line-height:1.7}
+.meli-unified .notice-item strong {font-weight:600}
+.meli-unified .notice-item small,.meli-unified .notice-footer {font-size:13px;font-weight:400;line-height:1.7}
+.meli-unified .toast {font-size:15px;font-weight:400;line-height:1.7}
+.meli-unified .chat-title strong {font-size:17px;font-weight:600;line-height:1.6}
+.meli-unified .chat-title span {font-size:13px;font-weight:400;line-height:1.6}
+.meli-unified .chat-message {font-size:16px;font-weight:400;line-height:1.8;letter-spacing:0}
+.meli-unified .chat-message .message-label {font-size:13px;font-weight:600;line-height:1.7}
+.meli-unified .chat-suggestions button {font-size:14px;font-weight:400;line-height:1.6}
+.meli-unified .chat-input-row textarea {font-size:16px;font-weight:400;line-height:1.7}
+.meli-unified .chat-disclaimer,.meli-unified .chat-day {font-size:12px;font-weight:400;line-height:1.65}
+.meli-unified .chat-launcher strong {font-size:15px;font-weight:500;line-height:1.6}
+/* A single SVG system. Tool artwork is embedded, not loaded from an icon CDN. */
+.meli-unified .icon {stroke-width:var(--ui-icon-stroke);stroke-linecap:round;stroke-linejoin:round;fill:none;flex-shrink:0}
+.meli-unified .tool-icon {width:var(--ui-icon-action);height:var(--ui-icon-action);color:var(--module);stroke:currentColor}
+.meli-unified .nav-link .icon {width:var(--ui-icon-nav);height:var(--ui-icon-nav)}
+.meli-unified .nav-link .tool-icon {color:var(--module)}
+.meli-unified .btn .icon,.meli-unified .quick-strip button .icon {width:var(--ui-icon-action);height:var(--ui-icon-action)}
+.meli-unified .btn.primary .tool-icon {color:inherit}
+.meli-unified .module-icon {height:54px;width:54px;flex:0 0 54px;border-radius:13px;background:var(--mod-bg);color:var(--module)}
+.meli-unified .module-icon .icon {width:var(--ui-icon-detail);height:var(--ui-icon-detail)}
+.meli-unified .kpi-icon {width:30px;height:30px;border-radius:9px}
+.meli-unified .kpi-icon .icon {width:18px;height:18px}
+.meli-unified .task-heading-icon {height:33px;width:33px}
+.meli-unified .task-heading-icon .icon {height:20px;width:20px}
+.meli-unified .task-time .icon {height:14px;width:14px}
+.meli-unified .task-title .icon {height:16px;width:16px}
+.meli-unified .module-feature .icon {width:18px;height:18px;margin-top:5px}
+.meli-unified .table-scroll {position:relative;max-width:100%}
+.meli-unified .quick-strip {flex-wrap:wrap}
+/* Typography breakpoints are intentionally shared, independent of role layouts. */
+@media(min-width:1650px) { :root {--ui-font-kpi:40px} }
+@media(max-width:580px) {
+  :root {--ui-font-title:27px;--ui-font-kpi:32px;--ui-font-module:30px}
+  .meli-unified .breadcrumbs {font-size:13px}
+  .meli-unified .demo-chip {font-size:11px}
+  .meli-unified .profile .avatar {width:34px;height:34px;font-size:13px}
+  .meli-unified .kpi-top {font-size:15px}
+  .meli-unified .kpi-unit,.meli-unified .kpi-bottom {font-size:13px}
+  .meli-unified .kpi-unit {margin-top:8px}
+  .meli-unified .kpi-foot {font-size:12px}
+  .meli-unified .kpi-value-row {gap:5px}
+  .meli-unified .kpi-denominator {font-size:17px}
+  .meli-unified .chart-svg text {font-size:13px}
+  .meli-unified .chart-legend {font-size:13px}
+  .meli-unified .insight-copy strong,.meli-unified .insight-copy span {font-size:14px}
+  .meli-unified .page-footer {font-size:12px}
+  .meli-unified .dialog-top h2 {font-size:20px}
+  .meli-unified .detail-title {font-size:23px}
+  .meli-unified .agenda-slot time {font-size:13px}
+  .meli-unified .agenda-slot strong {font-size:15px}
+  .meli-unified .agenda-slot small {font-size:13px}
+  .meli-unified .quick-strip-actions {gap:8px}
+  .meli-unified .quick-strip button {padding:8px 10px}
+  .meli-unified .patient-table {min-width:970px}
+}
+@media(max-width:370px) { :root {--ui-font-title:25px;--ui-font-kpi:30px} }
+
+</style>
+<link href="assets/melicare-v2.css" rel="stylesheet"/><link href="assets/melicare-auth.css" rel="stylesheet"/><script defer="" src="assets/melicare-auth.js"></script><script src="assets/melicare-routes.js"></script>
+<link rel="stylesheet" href="assets/melicare-readability.css">
+<link href="assets/melicare-typography-v6.css" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/melicare-request-fixes.css"/>
+<link rel="stylesheet" href="assets/melicare-fonts-local.css"/>
+<link rel="stylesheet" href="assets/melicare-unified-final.css"/>
+<link rel="stylesheet" href="assets/melicare-page-fixes-v2.css"/>
+<link rel="stylesheet" href="assets/melicare-scroll-carousel.css"/>
+<link rel="icon" href="assets/icons/favicon.ico" sizes="any"/>
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="assets/icons/icon-32.png" type="image/png" sizes="32x32"/>
+<link rel="apple-touch-icon" href="assets/icons/icon-180.png" sizes="180x180"/>
+<script defer src="assets/melicare-scroll-repair.js"></script>
+<link rel="stylesheet" href="assets/melicare-final-upload-cardio.css"/>
+</head>
+<body id="mcTypography" class="meli-unified mc-v2 mc-readable" data-dashboard-role="Bac_sy" data-mc-dashboard="doctor" data-module="MELICARE_Dashboard_Doctor">
+<!-- Shared tool icons: identical across roles. -->
+<svg aria-hidden="true" focusable="false" height="0" id="melicare-tool-sprite" style="position:absolute;overflow:hidden;pointer-events:none" width="0" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="meli-tool-MELIOR" viewbox="0 0 24 24"><path d="M4 3h16v17H4zM4 8h16M8 2v3M16 2v3M9 14h6m-3-3v6"></path></symbol>
+<symbol id="meli-tool-MELIOCR" viewbox="0 0 24 24"><path d="M7 3H3v4m14-4h4v4M3 17v4h4m14-4v4h-4M7 7h10M7 11h7M7 15h10M7 18h6"></path></symbol>
+<symbol id="meli-tool-MELIVoice" viewbox="0 0 24 24"><rect height="12" rx="3" width="6" x="9" y="3"></rect><path d="M6 11v1a6 6 0 0 0 12 0v-1M12 18v3M9 21h6"></path></symbol>
+<symbol id="meli-tool-MELIGuide" viewbox="0 0 24 24"><path d="M12 5C8 2 4 3 3 4v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-1-9 1Zm0 0v15M6 7h3M6 11h3M15 7h3M15 11h3"></path></symbol>
+
+<symbol id="meli-tool-MELIVLM" viewbox="0 0 24 24"><rect height="18" rx="3" width="18" x="3" y="3"></rect><path d="M3 15h4l2-5 4 8 2-5h6M16 7h2"></path></symbol>
+<symbol id="meli-tool-MELICDSS" viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><circle cx="5" cy="5" r="2"></circle><circle cx="19" cy="5" r="2"></circle><circle cx="5" cy="19" r="2"></circle><circle cx="19" cy="19" r="2"></circle><path d="m6.5 6.5 3.4 3.4m4.2 4.2 3.4 3.4m-11 0 3.4-3.4m4.2-4.2 3.4-3.4"></path></symbol>
+<symbol id="meli-tool-MELIDx" viewbox="0 0 24 24"><path d="M6 3H4v5a5 5 0 0 0 10 0V3h-2M9 13v3a5 5 0 0 0 10 0v-2"></path><circle cx="19" cy="11" r="3"></circle><path d="M6 2v3m6-3v3"></path></symbol>
+<symbol id="meli-tool-MELIPos" viewbox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"></path><path d="M5 11h3l2-3 3 6 2-3h4"></path></symbol>
+</defs></svg>
+<a class="skip-link" href="#main">Đi tới nội dung chính</a>
+<!-- Self-contained vector icons: no icon library, image files, or chart CDN required. -->
+<svg aria-hidden="true" class="sr-only" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="i-grid" viewbox="0 0 24 24"><rect height="6" rx="1.4" width="6" x="3.5" y="3.5"></rect><rect height="6" rx="1.4" width="6" x="14.5" y="3.5"></rect><rect height="6" rx="1.4" width="6" x="3.5" y="14.5"></rect><rect height="6" rx="1.4" width="6" x="14.5" y="14.5"></rect></symbol>
+<symbol id="i-hospital" viewbox="0 0 24 24"><path d="M8 21V3h8v18M3 21V9h5m8 0h5v12M2 21h20M10 7h4m-2-2v4M11 21v-5h2v5M5 12h.01M5 16h.01M19 12h.01M19 16h.01"></path></symbol>
+<symbol id="i-or" viewbox="0 0 24 24"><path d="M4 3h16v17H4zM4 8h16M8 2v3M16 2v3M9 14h6m-3-3v6"></path></symbol>
+<symbol id="i-scan" viewbox="0 0 24 24"><path d="M7 3H3v4m14-4h4v4M3 17v4h4m14-4v4h-4M7 7h10M7 11h7M7 15h10M7 18h6"></path></symbol>
+<symbol id="i-mic" viewbox="0 0 24 24"><rect height="12" rx="3" width="6" x="9" y="3"></rect><path d="M6 11v1a6 6 0 0 0 12 0v-1M12 18v3M9 21h6"></path></symbol>
+<symbol id="i-book" viewbox="0 0 24 24"><path d="M12 5C8 2 4 3 3 4v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-1-9 1Zm0 0v15M6 7h3M6 11h3M15 7h3M15 11h3"></path></symbol>
+<symbol id="i-route" viewbox="0 0 24 24"><circle cx="5" cy="6" r="2.5"></circle><circle cx="19" cy="18" r="2.5"></circle><path d="M7.5 6H16a4 4 0 0 1 0 8H8a4 4 0 0 0 0 8M8 18H5m0 0 3-3m-3 3 3 3"></path></symbol>
+<symbol id="i-image" viewbox="0 0 24 24"><rect height="18" rx="3" width="18" x="3" y="3"></rect><path d="M3 15h4l2-5 4 8 2-5h6M16 7h2"></path></symbol>
+<symbol id="i-network" viewbox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><circle cx="5" cy="5" r="2"></circle><circle cx="19" cy="5" r="2"></circle><circle cx="5" cy="19" r="2"></circle><circle cx="19" cy="19" r="2"></circle><path d="m6.5 6.5 3.4 3.4m4.2 4.2 3.4 3.4m-11 0 3.4-3.4m4.2-4.2 3.4-3.4"></path></symbol>
+<symbol id="i-steth" viewbox="0 0 24 24"><path d="M6 3H4v5a5 5 0 0 0 10 0V3h-2M9 13v3a5 5 0 0 0 10 0v-2"></path><circle cx="19" cy="11" r="3"></circle><path d="M6 2v3m6-3v3"></path></symbol>
+<symbol id="i-heart" viewbox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"></path><path d="M5 11h3l2-3 3 6 2-3h4"></path></symbol>
+<symbol id="i-home" viewbox="0 0 24 24"><path d="m3 10 9-7 9 7M5 8v13h14V8M10 21v-8h4v8"></path></symbol>
+<symbol id="i-bell" viewbox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path></symbol>
+<symbol id="i-down" viewbox="0 0 24 24"><path d="m7 10 5 5 5-5"></path></symbol>
+<symbol id="i-arrow" viewbox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"></path></symbol>
+<symbol id="i-chevron" viewbox="0 0 24 24"><path d="m9 5 7 7-7 7"></path></symbol>
+<symbol id="i-close" viewbox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"></path></symbol>
+<symbol id="i-menu" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></symbol>
+<symbol id="i-download" viewbox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M4 15v6h16v-6"></path></symbol>
+<symbol id="i-search" viewbox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 5 5"></path></symbol>
+<symbol id="i-spark" viewbox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3ZM20 2v4m-2-2h4"></path></symbol>
+<symbol id="i-clock" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></symbol>
+<symbol id="i-users" viewbox="0 0 24 24"><circle cx="9" cy="7" r="3"></circle><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6m3 11v-3a6 6 0 0 0-2-4"></path></symbol>
+<symbol id="i-bed" viewbox="0 0 24 24"><path d="M3 5v16M21 12v9M3 17h18M3 9h5v8m0-7h9a4 4 0 0 1 4 4v3M3 20h18"></path></symbol>
+<symbol id="i-pulse" viewbox="0 0 24 24"><path d="M2 12h4l3-8 5 16 3-8h5"></path></symbol>
+<symbol id="i-up" viewbox="0 0 24 24"><path d="m6 14 6-6 6 6M12 8v12"></path></symbol>
+<symbol id="i-dots" viewbox="0 0 24 24"><circle cx="5" cy="12" r="1"></circle><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle></symbol>
+<symbol id="i-info" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v6m0-10v.01"></path></symbol>
+<symbol id="i-alert" viewbox="0 0 24 24"><path d="m12 3 10 18H2L12 3ZM12 9v5m0 3v.1"></path></symbol>
+<symbol id="i-check" viewbox="0 0 24 24"><path d="m5 12 4 4L19 6"></path></symbol>
+<symbol id="i-checkcircle" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m7 12 3 3 7-7"></path></symbol>
+<symbol id="i-list" viewbox="0 0 24 24"><path d="M10 6h11M10 12h11M10 18h11M3 6l1 1 2-3M3 12l1 1 2-3M3 18l1 1 2-3"></path></symbol>
+<symbol id="i-shield" viewbox="0 0 24 24"><path d="m12 2 9 4v6c0 5-9 10-9 10S3 17 3 12V6l9-4Z"></path><path d="m8 12 3 3 5-6"></path></symbol>
+<symbol id="i-chat" viewbox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-3 2 2-6.5A8.5 8.5 0 1 1 21 11.5Z"></path><path d="m12 6 1.4 3.6L17 11l-3.6 1.4L12 16l-1.4-3.6L7 11l3.6-1.4L12 6Z"></path></symbol>
+<symbol id="i-send" viewbox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4L22 2ZM11 13 22 2"></path></symbol>
+<symbol id="i-external" viewbox="0 0 24 24"><path d="M14 3h7v7m0-7L10 14M10 3H3v18h18v-7"></path></symbol>
+<symbol id="i-undo" viewbox="0 0 24 24"><path d="M3 10h11a7 7 0 0 1 0 14M3 10l5-5m-5 5 5 5"></path></symbol>
+<symbol id="i-database" viewbox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v7c0 4 16 4 16 0V5M4 12v7c0 4 16 4 16 0v-7"></path></symbol>
+</defs></svg>
+<div class="sidebar-scrim" hidden="" id="sidebarScrim"></div>
+<aside aria-label="Điều hướng MELICARE" class="sidebar" id="sidebar">
+<a aria-label="MELICARE — Tổng quan" class="brand" href="MELICARE.html" id="brandHome">
+<div class="brand-mark"><svg aria-hidden="true" viewbox="0 0 32 36"><path d="M5 25V10c0-3 3-4 5-1l6 9 6-9c2-3 5-2 5 1v15" fill="none" stroke="#219acf" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.5"></path><path d="M12 28h8m-4-4v8" stroke="#e4b647" stroke-linecap="round" stroke-width="3.4"></path></svg></div>
+<div><div class="brand-word"><span class="brand-prefix">MELI</span><span class="brand-suffix">CARE</span></div><div class="brand-baseline">INTELLIGENCE FOR CARE</div></div>
+</a>
+<button aria-label="Đóng thanh điều hướng" class="icon-btn side-close" id="closeSidebar"><svg class="icon"><use href="#i-close"></use></svg></button>
+<div class="workspace"><div class="workspace-icon"><svg class="icon"><use href="#i-steth"></use></svg></div><div><strong>Không gian bác sỹ</strong><p>Khoa Nội tổng hợp</p></div></div>
+<nav aria-label="Ứng dụng" class="nav-scroll">
+<button aria-current="page" class="nav-link active" id="overviewNav"><svg class="icon"><use href="#i-grid"></use></svg><span>Tổng quan của tôi</span></button>
+<p class="nav-heading">VẬN HÀNH BỆNH VIỆN</p>
+<div id="operationsNav"></div>
+<p class="nav-heading">KHÁM CHỮA BỆNH</p>
+<div id="clinicalNav"></div>
+</nav>
+<div class="side-footer"><svg class="icon"><use href="#i-database"></use></svg><div><strong>Bản mẫu tương tác</strong>Dữ liệu mô phỏng · Không phải dữ liệu thật</div></div>
+</aside>
+<div class="shell">
+<header class="topbar">
+<div class="topbar-left"><button aria-controls="sidebar" aria-expanded="false" aria-label="Mở thanh điều hướng" class="icon-btn mobile-menu" id="openSidebar"><svg class="icon"><use href="#i-menu"></use></svg></button><div class="breadcrumbs"><svg class="icon"><use href="#i-home"></use></svg><span class="crumb-brand">MELICARE</span><span class="crumb-slash">/</span><strong>Không gian bác sỹ</strong></div></div>
+<div class="topbar-right"><span class="demo-chip">Dữ liệu minh họa</span><button aria-controls="notifications" aria-expanded="false" aria-label="Thông báo công việc mẫu" class="icon-btn notif-button" id="notificationButton"><svg class="icon"><use href="#i-bell"></use></svg><span class="unread" id="notificationDot"></span></button><span class="topbar-separator"></span><button aria-label="Tài khoản bác sỹ minh họa" class="profile" id="profileButton"><span class="avatar">MA</span><span class="profile-text"><span class="name">BS. Minh Anh</span><span class="role">Nội tổng hợp · Tài khoản mẫu</span></span></button><a aria-label="Trang chủ MELICARE" class="mc-dashboard-home" href="MELICARE.html" title="Trang chủ MELICARE"><svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-7h6v7"></path></svg></a></div>
+</header>
+<main class="main" id="main" tabindex="-1">
+<section aria-label="Tiêu đề trang" class="page-heading"><div><div class="doctor-kicker">KHÔNG GIAN LÀM VIỆC CÁ NHÂN</div><h1>Chào bác sỹ Minh Anh</h1><p>Thứ Sáu, 02 tháng 10, 2026 <span aria-hidden="true">  ·  </span> Khoa Nội tổng hợp</p></div><div class="heading-actions"><button class="btn" id="goSchedule"><svg class="icon"><use href="#i-or"></use></svg>Lịch của tôi</button><button class="btn primary" data-module="MELIVoice"><svg class="icon"><use href="#i-mic"></use></svg>Tạo bệnh án</button></div></section>
+<section aria-label="Ưu tiên đầu ngày" class="insight-banner"><div class="insight-icon"><svg class="icon"><use href="#i-spark"></use></svg></div><div class="insight-copy"><strong>Ngày làm việc của bạn</strong><span id="insightText">12 lịch hẹn hôm nay · 2 việc khẩn cần xem trước 09:00.</span></div><button class="insight-link" id="focusTasks">Xem việc ưu tiên <svg class="icon"><use href="#i-arrow"></use></svg></button></section>
+<section aria-label="Thống kê hoạt động cá nhân">
+<div class="stat-toolbar"><div class="stat-context"><h2>Hoạt động của tôi</h2><span class="dot"></span><span class="period-label" id="periodLabel">01/10/2026 · Hôm qua</span></div><div class="stat-controls"><div aria-label="Kỳ thống kê hoạt động" class="segmented" role="group"><button aria-pressed="true" class="active" data-period="day">Hôm qua</button><button aria-pressed="false" data-period="week">Tuần qua</button></div><button aria-label="Xuất thống kê cá nhân dạng CSV" class="icon-btn export-report" id="exportButton" title="Xuất thống kê cá nhân dạng CSV"><svg class="icon"><use href="#i-download"></use></svg></button></div></div>
+<div aria-live="polite" class="kpi-grid" id="kpiGrid"></div>
+</section>
+<div class="content-grid">
+<div class="analytics-column">
+<section class="panel chart-panel"><header class="panel-head"><div><h2>Lượt khám của tôi</h2><p class="panel-sub" id="visitChartSubtitle">Theo khung giờ tiếp nhận ngày 01/10</p></div><button class="chart-data-link" id="chartDataButton">Chi tiết <svg class="icon"><use href="#i-arrow"></use></svg></button></header><div class="chart-legend"><span class="legend-item"><i class="legend-line"></i><span id="currentLegend">01/10 · Hôm qua</span></span><span class="legend-item"><i class="legend-line previous"></i><span id="previousLegend">30/09 · Ngày trước đó</span></span><span class="chart-note">Đơn vị: lượt</span></div><div class="chart-area" id="visitChart"><svg aria-label="Biểu đồ lượt khám của bác sỹ" class="chart-svg" id="visitSvg" role="img"></svg><div class="chart-tooltip" hidden="" id="chartTooltip"></div></div><div class="chart-insight"><svg class="icon"><use href="#i-info"></use></svg><span id="chartInsight"></span></div></section>
+<div class="small-charts">
+<section class="panel visit-mix"><header class="panel-head"><h2>Cơ cấu lượt khám</h2><p class="panel-sub">Khám mới và tái khám</p></header><div class="mix-content"><div class="donut-wrap"><svg aria-label="Tỷ lệ khám mới và tái khám" id="mixDonut" role="img" viewbox="0 0 140 140"><circle cx="70" cy="70" fill="none" r="55" stroke="#eaf1f6" stroke-width="13"></circle><circle cx="70" cy="70" fill="none" id="mixReturn" r="55" stroke="#9bc9e5" stroke-width="13"></circle><circle cx="70" cy="70" fill="none" id="mixNew" r="55" stroke="#269bd1" stroke-width="13"></circle></svg><div class="donut-text"><strong class="number" id="mixTotal">28</strong><small>lượt khám</small></div></div><div class="mix-legend"><div><div class="mix-label"><i class="color-dot" style="--c:#269bd1"></i>Khám mới</div><div class="mix-number" id="newCount"></div></div><div><div class="mix-label"><i class="color-dot" style="--c:#9bc9e5"></i>Tái khám</div><div class="mix-number" id="returnCount"></div></div></div></div><footer class="mini-foot" id="mixFoot">Phạm vi: người bệnh do bạn trực tiếp khám.</footer></section>
+<section class="panel progress-panel"><header class="panel-head"><h2>Hồ sơ &amp; kết quả</h2><p class="panel-sub" id="progressSubtitle">Trạng thái cuối ngày 01/10</p></header><div class="progress-rows" id="progressRows"></div><footer class="mini-foot">Số liệu chốt cuối kỳ, không phải trạng thái trực tiếp.</footer></section>
+</div>
+</div>
+<aside aria-label="Công việc cá nhân" class="action-column">
+<section class="panel tasks-panel" id="tasksPanel"><header class="panel-head"><div class="task-heading"><div class="task-heading-icon"><svg class="icon"><use href="#i-list"></use></svg></div><div><h2>Cần bạn xử lý</h2><p class="panel-sub">Việc được giao cho bạn</p></div></div><span class="task-head-count number" id="taskCount">04</span></header><div aria-label="Thời hạn công việc" class="segmented task-tabs" role="group"><button aria-pressed="true" class="active" data-task-period="today">Hôm nay <span class="tab-number" id="todayTaskCount">4</span></button><button aria-pressed="false" data-task-period="week">Tuần này <span class="tab-number" id="weekTaskCount">6</span></button></div><div class="task-period"><span id="taskPeriodLabel">Thứ Sáu · 02/10/2026</span><div class="task-period-tools"><button aria-pressed="false" class="task-filter-toggle" id="urgentFilter"><svg class="icon"><use href="#i-alert"></use></svg>Chỉ việc khẩn</button><button class="task-filter" hidden="" id="clearTaskFilter"><span id="taskFilterName"></span><svg class="icon"><use href="#i-close"></use></svg></button></div></div><div class="task-list compact-list" id="taskList"></div><button class="mobile-more" id="mobileMore">Xem tất cả công việc</button><div class="task-summary"><svg class="icon"><use href="#i-checkcircle"></use></svg><span id="taskDoneLabel">0 việc đã xử lý trong bản demo</span><button hidden="" id="resetTasksButton" title="Khôi phục các công việc mẫu">Đặt lại</button></div></section>
+</aside>
+</div>
+<section aria-label="Lối tắt công cụ bác sỹ" class="quick-strip"><div class="quick-strip-title"><svg class="icon"><use href="#i-spark"></use></svg>Công cụ hỗ trợ buổi khám</div><div class="quick-strip-actions"><button data-module="MELIVoice"><svg class="icon"><use href="#i-mic"></use></svg>Nhập bệnh án</button><button data-module="MELIVLM"><svg class="icon"><use href="#i-image"></use></svg>Đọc ảnh y tế</button><button data-module="MELICDSS"><svg class="icon"><use href="#i-network"></use></svg>Hỗ trợ lâm sàng</button></div></section>
+<section aria-labelledby="scheduleTitle" class="panel schedule-panel" id="scheduleSection"><header class="panel-head"><div><h2 id="scheduleTitle">Lịch khám &amp; làm việc hôm nay</h2><p class="panel-sub">02/10/2026 · 12 lịch hẹn ngoại trú và 1 buổi hội chẩn</p></div><div class="schedule-actions"><button class="btn" id="weekScheduleButton"><svg class="icon"><use href="#i-or"></use></svg>Xem lịch tuần</button></div></header>
+<div aria-label="Các khung giờ làm việc" class="agenda-ribbon"><button class="agenda-slot current" data-agenda="morning"><time><svg class="icon"><use href="#i-clock"></use></svg>08:00 – 11:00</time><strong>Khám buổi sáng</strong><small>08 lịch hẹn · Phòng 302</small></button><button class="agenda-slot" data-agenda="early"><time><svg class="icon"><use href="#i-clock"></use></svg>13:00 – 14:00</time><strong>Khám buổi chiều</strong><small>02 lịch hẹn · Phòng 302</small></button><button class="agenda-slot consult" data-task="d4"><time><svg class="icon"><use href="#i-users"></use></svg>14:00 – 14:30</time><strong>Hội chẩn liên khoa</strong><small>NB-26009 · Phòng hội chẩn</small></button><button class="agenda-slot" data-agenda="late"><time><svg class="icon"><use href="#i-clock"></use></svg>14:45 – 15:30</time><strong>Khám cuối buổi</strong><small>02 lịch hẹn · Phòng 302</small></button></div>
+<div class="appointment-toolbar"><div aria-label="Lọc lịch hẹn" class="queue-tabs" role="group"><button aria-pressed="true" class="active" data-queue="all">Tất cả <span>12</span></button><button aria-pressed="false" data-queue="new">Khám mới <span>5</span></button><button aria-pressed="false" data-queue="return">Tái khám <span>7</span></button></div><label class="table-search"><svg class="icon"><use href="#i-search"></use></svg><input aria-label="Tìm lịch hẹn theo mã hoặc tên người bệnh" id="patientSearch" placeholder="Tìm mã, tên người bệnh…" type="search"/></label></div>
+<div aria-label="Danh sách lịch hẹn; cuộn ngang để xem đủ cột" class="table-scroll" role="region" tabindex="0"><table class="patient-table"><caption class="sr-only">Lịch hẹn của bác sỹ ngày 02/10/2026. Tất cả người bệnh và hồ sơ đều là dữ liệu minh họa.</caption><thead><tr><th scope="col">Giờ hẹn</th><th scope="col">Người bệnh</th><th scope="col">Nội dung khám</th><th scope="col">Phòng</th><th scope="col">Trạng thái</th><th scope="col"><span class="sr-only">Thao tác</span></th></tr></thead><tbody id="patientTableBody"></tbody></table></div><footer class="queue-footer"><span id="patientRowCount">Hiển thị 1–6 / 12 lịch hẹn</span><div class="pagination"><button aria-label="Trang lịch hẹn trước" class="icon-btn" id="previousPage"><svg class="icon previous-icon"><use href="#i-chevron"></use></svg></button><span id="pageIndicator">1 / 2</span><button aria-label="Trang lịch hẹn sau" class="icon-btn" id="nextPage"><svg class="icon"><use href="#i-chevron"></use></svg></button></div></footer>
+</section>
+<footer class="page-footer"><span><span class="brand-prefix">MELI</span><span class="brand-suffix" style="--module:#ad9249">CARE</span>   ·   Đồng hành cùng bác sỹ, kết nối chăm sóc.</span><span>Phiên mẫu 07:15 · 02/10/2026 · Không có dữ liệu người bệnh thật</span></footer>
+</main>
+</div>
+<section aria-label="Thông báo mẫu" class="notices" hidden="" id="notifications"><header class="notice-head"><strong>Việc cần ưu tiên</strong><button aria-label="Đóng thông báo" class="icon-btn" id="closeNotifications"><svg class="icon"><use href="#i-close"></use></svg></button></header><div class="notice-body" id="noticeBody"></div><div class="notice-footer">Thông báo cá nhân từ dữ liệu minh họa.</div></section>
+<button aria-controls="chatPanel" aria-expanded="false" aria-label="Mở trợ lý MELI" class="chat-launcher" id="chatLauncher"><span class="chat-launcher-icon"><svg class="icon"><use href="#i-chat"></use></svg></span><i class="spark-dot"></i><strong>Hỏi MELI</strong></button>
+<section aria-label="Trợ lý MELI dành cho bác sỹ" class="chat-panel" hidden="" id="chatPanel" role="dialog">
+<header class="chat-head"><span class="chat-avatar"><svg class="icon"><use href="#i-spark"></use></svg></span><div class="chat-title"><strong>Trợ lý MELI</strong><span>Đồng hành cùng bác sỹ · Bản demo</span></div><button aria-label="Đóng trò chuyện" class="icon-btn" id="closeChat"><svg class="icon"><use href="#i-close"></use></svg></button></header>
+<div aria-label="Nội dung trò chuyện" aria-live="polite" aria-relevant="additions" class="chat-messages" id="chatMessages" role="log"><div class="chat-day">PHIÊN MINH HỌA · 02/10/2026</div><div class="chat-message"><div class="message-label">MELI</div>Chào bác sỹ Minh Anh! Tôi có thể tóm tắt hoạt động của bạn, tra cứu lịch khám và tìm việc cần xử lý trong dữ liệu minh họa.</div><div class="chat-suggestions" id="chatSuggestions"><button data-question="Tóm tắt hoạt động của tôi hôm qua">Tóm tắt hôm qua</button><button data-question="Việc nào cần ưu tiên hôm nay?">Việc cần ưu tiên</button><button data-question="Lịch khám của tôi hôm nay">Lịch khám hôm nay</button><button data-question="Những hồ sơ nào chưa hoàn tất?">Hồ sơ chưa hoàn tất</button></div></div>
+<form class="chat-input-area" id="chatForm"><div class="chat-input-row"><label class="sr-only" for="chatInput">Câu hỏi cho trợ lý MELI</label><textarea id="chatInput" maxlength="1000" placeholder="Hỏi về lịch khám, hồ sơ, công việc…" rows="1"></textarea><button aria-label="Gửi câu hỏi" class="chat-send" id="chatSend" type="submit"><svg class="icon"><use href="#i-send"></use></svg></button></div><p class="chat-disclaimer">Phản hồi theo kịch bản mẫu · Không dùng để ra quyết định điều trị</p></form>
+</section>
+<dialog aria-labelledby="taskDialogHeading" class="detail-dialog" id="taskDialog"><header class="dialog-top"><h2 id="taskDialogHeading">Chi tiết công việc</h2><button aria-label="Đóng chi tiết công việc" class="icon-btn" data-close-dialog=""><svg class="icon"><use href="#i-close"></use></svg></button></header><div class="dialog-body" id="taskDialogBody"></div><footer class="dialog-actions"><button class="btn" id="taskModuleButton">Xem ứng dụng</button><button class="btn primary" id="completeTaskButton"><svg class="icon"><use href="#i-check"></use></svg>Đánh dấu đã xử lý</button></footer></dialog>
+<dialog aria-labelledby="moduleDialogHeading" class="detail-dialog" id="moduleDialog"><header class="dialog-top"><h2 id="moduleDialogHeading">Ứng dụng MELICARE</h2><button aria-label="Đóng ứng dụng" class="icon-btn" data-close-dialog=""><svg class="icon"><use href="#i-close"></use></svg></button></header><div class="dialog-body" id="moduleDialogBody"></div><footer class="dialog-actions" id="moduleDialogActions"></footer></dialog>
+<dialog aria-labelledby="dataDialogHeading" class="data-dialog" id="dataDialog"><header class="dialog-top"><h2 id="dataDialogHeading">Chi tiết hoạt động của tôi</h2><button aria-label="Đóng bảng dữ liệu" class="icon-btn" data-close-dialog=""><svg class="icon"><use href="#i-close"></use></svg></button></header><div class="dialog-body" id="dataDialogBody"></div><footer class="dialog-actions"><button class="btn" data-close-dialog="">Đóng</button><button class="btn primary" id="dataExportButton"><svg class="icon"><use href="#i-download"></use></svg>Xuất dữ liệu CSV</button></footer></dialog>
+<dialog aria-labelledby="patientDialogHeading" class="detail-dialog" id="patientDialog"><header class="dialog-top"><h2 id="patientDialogHeading">Hồ sơ người bệnh</h2><button aria-label="Đóng hồ sơ người bệnh" class="icon-btn" data-close-dialog=""><svg class="icon"><use href="#i-close"></use></svg></button></header><div class="dialog-body" id="patientDialogBody"></div><footer class="dialog-actions"><button class="btn" data-close-dialog="">Đóng</button><button class="btn primary" id="patientVoice"><svg class="icon"><use href="#i-mic"></use></svg>Nhập bệnh án với MELIVoice</button></footer></dialog>
+<dialog aria-labelledby="calendarDialogHeading" class="calendar-dialog" id="calendarDialog"><header class="dialog-top"><h2 id="calendarDialogHeading">Lịch làm việc của tôi</h2><button aria-label="Đóng lịch tuần" class="icon-btn" data-close-dialog=""><svg class="icon"><use href="#i-close"></use></svg></button></header><div class="dialog-body" id="calendarDialogBody"></div><footer class="dialog-actions"><button class="btn" data-close-dialog="">Đóng</button><button class="btn primary" id="calendarExport"><svg class="icon"><use href="#i-download"></use></svg>Xuất lịch mẫu CSV</button></footer></dialog>
+<dialog aria-labelledby="accountDialogHeading" class="detail-dialog" id="accountDialog"><header class="dialog-top"><h2 id="accountDialogHeading">Không gian bác sỹ</h2><button aria-label="Đóng tài khoản" class="icon-btn" data-close-dialog=""><svg class="icon"><use href="#i-close"></use></svg></button></header><div class="dialog-body"><div class="account-line"><div class="avatar">MA</div><div><strong>BS. Minh Anh</strong><span>Khoa Nội tổng hợp · Tài khoản minh họa</span></div></div><div class="detail-callout"><strong>Phạm vi giao diện</strong>Hoạt động khám chữa bệnh của cá nhân, lịch làm việc, người bệnh phụ trách và công việc được giao.</div><p>Phiên đăng nhập trong bundle chỉ là mô phỏng trên trình duyệt; không kết nối hồ sơ bệnh án thật. Khi tích hợp, quyền xem dữ liệu, xác thực và nhật ký truy cập phải được kiểm soát tại máy chủ.</p></div><footer class="dialog-actions"><button class="btn primary" data-close-dialog="">Đóng</button><button class="btn" data-mc-logout="" type="button">Đăng xuất</button></footer></dialog>
+<div class="toast" hidden="" id="toast" role="status"><svg class="icon"><use href="#i-checkcircle"></use></svg><span id="toastText"></span></div>
+<noscript><div style="padding:24px;margin:20px;background:#fff4dd;color:#72531e">Bản mẫu cần JavaScript để hiển thị số liệu, công việc và lịch khám. Hãy mở tệp bằng trình duyệt đã bật JavaScript.</div></noscript>
+<script>
+'use strict';
+/*
+ * MELICARE doctor dashboard — standalone, synthetic-data UI prototype.
+ * Fixed demo clock: 02 Oct 2026, 07:15, UTC+07:00. NOT live hospital data.
+ * Yesterday: 01 Oct vs 30 Sep. Last 7 days: 25 Sep–01 Oct vs 18–24 Sep.
+ * Task / appointment week: 28 Sep–04 Oct 2026. These ranges are independent.
+ * Only completed demo task IDs are persisted locally; no medical data is stored.
+ * No authentication, AI inference, clinical decision engine or backend exists here.
+ * Replace adapters and enforce authorization, audit and validation server-side.
+ */
+const MELICARE_CONFIG = {
+ demoDate:'2026-10-02',
+ storageKey:'melicare.doctor.synthetic.completed.20261002.v1',
+ // Empty routes open an honest preview instead of broken navigation.
+ // Populate only with verified HTTPS or application-relative URLs at integration.
+ moduleUrls:window.MELICARE_SITE.modules
+};
+const $=(q,r=document)=>r.querySelector(q), $$=(q,r=document)=>[...r.querySelectorAll(q)];
+const nfmt=n=>new Intl.NumberFormat('vi-VN').format(n);
+const pct=n=>new Intl.NumberFormat('vi-VN',{maximumFractionDigits:1}).format(n);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const icon=(name,extra='')=>`<svg class="icon ${extra}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+const normalized=s=>String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d');
+const sum=a=>a.reduce((s,x)=>s+x,0);
+const MODULES = [
+ {id:'MELIOR',suffix:'OR',group:'ops',icon:'or',color:'#2195be',bg:'#eaf7fb',name:'Xếp lịch phòng mổ thông minh',description:'Xem lịch phòng mổ, lịch trực và các phân công liên quan đến bác sỹ.',features:['Lịch phòng mổ theo ngày và tuần','Phân công bác sĩ, kíp mổ và phòng mổ','Theo dõi yêu cầu thay đổi lịch']},
+ {id:'MELIOCR',suffix:'OCR',group:'ops',icon:'scan',color:'#ba9845',bg:'#fcf7e9',name:'Số hóa hóa đơn y tế',description:'Đọc hóa đơn và hỗ trợ xác nhận thông tin trước khi nhập vào hệ thống quản lý.',features:['Tải lên và nhận dạng hóa đơn','Kiểm tra, hiệu chỉnh thông tin trích xuất','Theo dõi các hóa đơn chờ xử lý']},
+ {id:'MELIVoice',suffix:'Voice',group:'ops',icon:'mic',color:'#7c80bc',bg:'#f3f2fb',name:'Giọng nói thành bệnh án',description:'Chuyển lời đọc của bác sĩ thành văn bản và hỗ trợ điền các trường thông tin EMR.',features:['Ghi âm hoặc tải lên tệp âm thanh','Chuyển giọng nói thành văn bản','Kiểm tra các trường bệnh án trước khi lưu']},
+ {id:'MELIGuide',suffix:'Guide',group:'ops',icon:'book',color:'#399484',bg:'#eaf7f3',name:'Hỏi đáp văn bản và hướng dẫn',description:'Tra cứu văn bản khám chữa bệnh và bảo hiểm bằng ngôn ngữ tự nhiên.',features:['Hỏi đáp văn bản và tài liệu chuyên môn','Truy xuất đoạn nguồn để kiểm chứng','Tìm kiếm hướng dẫn và thông tin bảo hiểm']},
+ {id:'MELIVLM',suffix:'VLM',group:'clinical',icon:'image',color:'#548fcc',bg:'#edf4fc',name:'Trợ lý hình ảnh y tế',description:'Hỏi đáp trên hình ảnh y tế và hỗ trợ bác sĩ xây dựng báo cáo để kiểm tra, hoàn thiện.',features:['Tải lên và xem hình ảnh y tế','Hỏi đáp nội dung hình ảnh','Hỗ trợ soạn thảo báo cáo y tế']},
+ {id:'MELICDSS',suffix:'CDSS',group:'clinical',icon:'network',color:'#8880b3',bg:'#f3f1f9',name:'Hỗ trợ quyết định lâm sàng',description:'Tổng hợp thông tin hỗ trợ bác sĩ xem xét quyết định lâm sàng; không thay thế đánh giá chuyên môn.',features:['Xem xét thông tin và bối cảnh lâm sàng','Tra cứu căn cứ hỗ trợ quyết định','Bác sĩ kiểm tra và quyết định cuối cùng']},
+ {id:'MELIDx',suffix:'Dx',group:'clinical',icon:'steth',color:'#369d92',bg:'#edf8f5',name:'Hỗ trợ chẩn đoán thông minh',description:'Không gian truy cập các công cụ hỗ trợ phân tích, đánh giá nguy cơ và chẩn đoán theo nhóm bệnh.',features:['Truy cập các công cụ theo chuyên khoa','Xem kết quả phân tích và giải thích','Hỗ trợ tổng hợp thông tin cho bác sĩ']},
+ {id:'MELIPos',suffix:'Pos',group:'clinical',icon:'heart',color:'#c4858d',bg:'#fbf0f2',name:'Chăm sóc sau điều trị',description:'Hỗ trợ theo dõi người bệnh sau điều trị và quản lý các yêu cầu cần xem xét.',features:['Theo dõi kế hoạch sau điều trị','Tổng hợp thông tin theo dõi người bệnh','Quản lý lịch hẹn và việc cần xử lý']}
+];
+
+/* Shared visual registry only. Does not change permissions, routes or role data. */
+const MELICARE_TOOL_UI = Object.freeze({"MELIOR":{"suffix":"OR","group":"ops","icon":"or","color":"#2195be","bg":"#eaf7fb"},"MELIOCR":{"suffix":"OCR","group":"ops","icon":"scan","color":"#ba9845","bg":"#fcf7e9"},"MELIVoice":{"suffix":"Voice","group":"ops","icon":"mic","color":"#7c80bc","bg":"#f3f2fb"},"MELIGuide":{"suffix":"Guide","group":"ops","icon":"book","color":"#399484","bg":"#eaf7f3"},"MELIVLM":{"suffix":"VLM","group":"clinical","icon":"image","color":"#548fcc","bg":"#edf4fc"},"MELICDSS":{"suffix":"CDSS","group":"clinical","icon":"network","color":"#8880b3","bg":"#f3f1f9"},"MELIDx":{"suffix":"Dx","group":"clinical","icon":"steth","color":"#369d92","bg":"#edf8f5"},"MELIPos":{"suffix":"Pos","group":"clinical","icon":"heart","color":"#c4858d","bg":"#fbf0f2"}});
+function toolIcon(id) {
+  const visual=MELICARE_TOOL_UI[id];
+  if(!visual)return '';
+  return `<svg class="icon tool-icon" data-tool-icon="${id}" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="--module:${visual.color};--mod-bg:${visual.bg}"><use href="#meli-tool-${id}"/></svg>`;
+}
+MODULES.forEach(m=>{const v=MELICARE_TOOL_UI[m.id];if(v)Object.assign(m,v);});
+function syncStaticToolIcons() {
+  document.querySelectorAll('[data-module]').forEach(el=>{
+    const id=el.dataset.module;
+    const image=el.querySelector('svg.icon');
+    if(MELICARE_TOOL_UI[id]&&image&&!image.classList.contains('tool-icon'))image.outerHTML=toolIcon(id);
+  });
+  const voice=document.querySelector('#patientVoice svg.icon');
+  if(voice)voice.outerHTML=toolIcon('MELIVoice');
+}
+
+const brand = id => {const m=MODULES.find(m=>m.id===id);return `<span class="tool-wordmark" style="--module:${m?.color||'#168ecd'}"><span class="brand-prefix">MELI</span><span class="brand-suffix">${esc(m?.suffix||'CARE')}</span></span>`;};
+const DAILY={
+ labels:['07h','08h','09h','10h','11h','13h','14h','15h'],
+ fullLabels:['07:00–08:00','08:00–09:00','09:00–10:00','10:00–11:00','11:00–12:00','13:00–14:00','14:00–15:00','15:00–16:00'],
+ a:[2,4,5,4,2,3,5,3],b:[1,4,4,4,1,3,4,3]
+};
+const WEEKLY={
+ labels:['25/09','26/09','27/09','28/09','29/09','30/09','01/10'],
+ fullLabels:['25/09/2026','26/09/2026','27/09/2026','28/09/2026','29/09/2026','30/09/2026','01/10/2026'],
+ a:[24,16,0,30,27,24,28],b:[22,14,0,28,24,23,26]
+};
+const METRICS={
+ day:{visits:sum(DAILY.a),prev:sum(DAILY.b),inpatient:16,prevInpatient:15,newVisits:11,returnVisits:17,results:18,resultTotal:21,records:24,recordTotal:28},
+ week:{visits:sum(WEEKLY.a),prev:sum(WEEKLY.b),inpatient:16,prevInpatient:13,newVisits:57,returnVisits:92,results:97,resultTotal:105,records:135,recordTotal:149}
+};
+const TASKS=[
+ {id:'d1',title:'Xem kết quả được ưu tiên',desc:'NB-26001 · Kết quả mới chờ bạn xác nhận đã xem.',level:'urgent',due:'2026-10-02',time:'08:30',owner:'Phòng xét nghiệm',module:'MELICDSS',patient:'NB-26001',detail:'Phòng xét nghiệm đã đánh dấu một kết quả cần bác sỹ phụ trách xem sớm. Thứ tự ưu tiên trong bản mẫu do người giao việc thiết lập, không phải kết luận của mô hình AI.',request:'Mở hồ sơ liên quan, xem kết quả gốc và phối hợp với đơn vị gửi yêu cầu. Không có giá trị xét nghiệm thật trong bản mẫu.'},
+ {id:'d2',title:'Rà soát người bệnh sau điều trị',desc:'NB-26004 · Điều dưỡng gửi yêu cầu đánh giá.',level:'urgent',due:'2026-10-02',time:'08:45',owner:'Điều dưỡng phụ trách',module:'MELIPos',patient:'NB-26004',detail:'Điều dưỡng gửi một yêu cầu bác sỹ rà soát cập nhật theo dõi sau điều trị của người bệnh mẫu NB-26004. Yêu cầu chưa được bác sỹ xác nhận đã xử lý.',request:'Đọc thông tin bàn giao và trao đổi với điều dưỡng phụ trách. Nội dung này minh họa luồng công việc, không cung cấp nhận định hoặc chỉ định điều trị.'},
+ {id:'d3',title:'Hoàn thiện 4 bệnh án điện tử',desc:'Hồ sơ ngày 01/10 đang chờ kiểm tra nội dung.',level:'high',due:'2026-10-02',time:'11:30',owner:'Hồ sơ cá nhân',module:'MELIVoice',detail:'Cuối ngày 01/10, 24 trong 28 hồ sơ đã hoàn tất. Bốn hồ sơ còn lại là HS-260101, HS-260108, HS-260116 và HS-260124. Chưa có thao tác ký duyệt trên hệ thống thật.',request:'Mở MELIVoice, kiểm tra văn bản nhập từ giọng nói và hoàn thiện nội dung còn thiếu. Đánh dấu công việc trên dashboard chỉ cập nhật danh sách mẫu, không ký hoặc thay đổi bệnh án.'},
+ {id:'d4',title:'Chuẩn bị hội chẩn liên khoa',desc:'NB-26009 · Buổi hội chẩn bắt đầu lúc 14:00.',level:'high',due:'2026-10-02',time:'13:30',owner:'Khoa Nội tổng hợp',module:'MELIVLM',patient:'NB-26009',detail:'Hội chẩn mẫu diễn ra từ 14:00 đến 14:30 ngày 02/10/2026 tại phòng hội chẩn. Bác sỹ được phân công chuẩn bị thông tin hồ sơ và hình ảnh liên quan.',request:'Rà soát tài liệu cho buổi hội chẩn. Hình ảnh và báo cáo phải được kiểm tra tại hệ thống chuyên môn; bản mẫu này không chứa ảnh y tế thật.'},
+ {id:'d5',title:'Rà soát lịch tái khám',desc:'Kiểm tra 6 lịch hẹn ngày thứ Bảy.',level:'normal',due:'2026-10-03',time:'07:45',owner:'Bộ phận tiếp đón',module:'MELIPos',detail:'Có 6 lịch tái khám mẫu vào sáng thứ Bảy 03/10, từ 08:00 đến 11:00. Danh sách đang chờ bác sỹ rà soát trước ca khám.',request:'Kiểm tra lịch tái khám và nội dung bàn giao. Bản mẫu không gửi xác nhận hoặc thông báo đến người bệnh.'},
+ {id:'d6',title:'Xác nhận lịch làm việc tuần tới',desc:'Rà soát phân công và đề xuất đổi lịch nếu cần.',level:'normal',due:'2026-10-04',time:'16:00',owner:'Điều phối khoa',module:'MELIOR',detail:'Bác sỹ cần rà soát dự thảo phân công làm việc tuần 05–11/10/2026 với điều phối khoa. Đây là thông báo mô phỏng.',request:'Xem ứng dụng lịch để đối chiếu phân công. Chỉ ghi nhận trạng thái công việc mẫu, không thay đổi lịch thực tế.'}
+];
+const TIMES=['08:00','08:20','08:40','09:00','09:20','09:40','10:00','10:20','13:00','13:20','14:45','15:05'];
+const newIds=new Set([1,3,6,9,11]);
+const APPOINTMENTS=TIMES.map((time,i)=>({
+ id:`NB-${26001+i}`,name:`Người bệnh ${String(i+1).padStart(2,'0')}`,initial:String(i+1).padStart(2,'0'),time,
+ type:newIds.has(i+1)?'new':'return',room:'P.302',status:'Đã xác nhận',
+ reason:newIds.has(i+1)?'Khám nội tổng hợp':'Tái khám theo hẹn',
+ session:i<8?'morning':i<10?'early':'late',
+ note:i===0?'Có kết quả cần xem':i===3?'Có yêu cầu từ điều dưỡng':i===8?'Hội chẩn lúc 14:00':'Hồ sơ đã được tiếp đón chuẩn bị'
+}));
+const WEEK_SCHEDULE=[
+ {date:'28/09',weekday:'Thứ Hai',activity:'Khám ngoại trú',detail:'Hoạt động đã hoàn tất trong dữ liệu mẫu',count:30,past:true},
+ {date:'29/09',weekday:'Thứ Ba',activity:'Khám ngoại trú',detail:'Hoạt động đã hoàn tất trong dữ liệu mẫu',count:27,past:true},
+ {date:'30/09',weekday:'Thứ Tư',activity:'Khám ngoại trú',detail:'Hoạt động đã hoàn tất trong dữ liệu mẫu',count:24,past:true},
+ {date:'01/10',weekday:'Thứ Năm',activity:'Khám ngoại trú',detail:'Hoạt động đã hoàn tất trong dữ liệu mẫu',count:28,past:true},
+ {date:'02/10',weekday:'Thứ Sáu',activity:'Khám ngoại trú & hội chẩn',detail:'08:00–15:30 · Hội chẩn 14:00–14:30',count:12,current:true},
+ {date:'03/10',weekday:'Thứ Bảy',activity:'Khám tái khám buổi sáng',detail:'08:00–11:00 · Phòng 302',count:6},
+ {date:'04/10',weekday:'Chủ Nhật',activity:'Không có ca khám',detail:'Rà soát lịch tuần tới trước 16:00',count:0}
+];
+let completed=new Set();
+try{const saved=JSON.parse(localStorage.getItem(MELICARE_CONFIG.storageKey)||'[]');if(Array.isArray(saved))completed=new Set(saved.filter(id=>TASKS.some(t=>t.id===id)));}catch(_){/* Local previews may deny storage. */}
+const state={period:'day',taskPeriod:'today',urgentOnly:false,taskModule:null,selectedTask:null,page:1,queue:'all',agenda:null,chatBusy:false};
+const remainingTasks=()=>TASKS.filter(t=>!completed.has(t.id));
+const selectedTasks=()=>remainingTasks().filter(t=>(state.taskPeriod==='week'||t.due===MELICARE_CONFIG.demoDate)&&(!state.urgentOnly||t.level==='urgent')&&(!state.taskModule||t.module===state.taskModule));
+const taskDeadline=t=>t.due===MELICARE_CONFIG.demoDate?t.time:`${t.due.slice(8,10)}/${t.due.slice(5,7)} · ${t.time}`;
+const periodDescription=p=>p==='week'?'25/09–01/10/2026':'01/10/2026';
+const levelBadge=t=>t.level==='urgent'?'<span class="badge red">Khẩn</span>':t.level==='high'?'<span class="badge amber">Ưu tiên</span>':'<span class="badge blue">Trong tuần</span>';
+function persist(){try{localStorage.setItem(MELICARE_CONFIG.storageKey,JSON.stringify([...completed]));return true;}catch(_){return false;}}
+let toastTimer;
+function toast(text){clearTimeout(toastTimer);$('#toastText').textContent=text;$('#toast').hidden=false;toastTimer=setTimeout(()=>$('#toast').hidden=true,3600);}
+function closeDialog(id){const d=$('#'+id);if(d.open)d.close();}
+function openDialog(id){setSidebar(false);toggleNotifications(false);const d=$('#'+id);if(!d.open)d.showModal();}
+function renderNav(){
+ for(const group of ['ops','clinical']){
+  $(group==='ops'?'#operationsNav':'#clinicalNav').innerHTML=MODULES.filter(m=>m.group===group).map(m=>`<button class="nav-link" data-module="${m.id}" title="${esc(m.name)}" aria-label="${m.id} — ${esc(m.name)}">${toolIcon(m.id)}${brand(m.id)}</button>`).join('');
+ }
+}
+function spark(values,color){const max=Math.max(...values,1),min=Math.min(...values),range=max-min||1;return `<svg class="kpi-spark" viewBox="0 0 68 34" aria-hidden="true"><polyline points="${values.map((v,i)=>`${3+i*62/(values.length-1)},${29-(v-min)/range*22}`).join(' ')}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
+function renderKPIs(){
+ const m=METRICS[state.period],week=state.period==='week',delta=m.visits-m.prev;
+ const cards=[
+  {title:'Lượt khám',value:nfmt(m.visits),unit:'lượt',icon:'steth',color:'#268fc3',bg:'#ecf7fd',foot:`${delta>=0?'+':''}${delta} lượt so với ${week?'7 ngày trước':'ngày 30/09'}`,note:'Người bệnh do bạn trực tiếp khám',spark:(week?WEEKLY:DAILY).a},
+  {title:'Nội trú phụ trách',value:m.inpatient,unit:'người',icon:'bed',color:'#887cbd',bg:'#f2effa',foot:`${m.inpatient-m.prevInpatient>=0?'+':''}${m.inpatient-m.prevInpatient} người so với cuối kỳ trước`,note:'Tại cuối ngày 01/10 · Không cộng dồn'},
+  {title:'Kết quả đã xem',value:m.results,denominator:m.resultTotal,unit:'',icon:'scan',color:'#2a9c88',bg:'#eaf7f2',foot:`${m.resultTotal-m.results} kết quả chưa xác nhận đã xem`,note:'Các kết quả được giao trong kỳ'},
+  {title:'Bệnh án hoàn tất',value:m.records,denominator:m.recordTotal,unit:'',icon:'list',color:'#b48e3c',bg:'#fff6e3',foot:`Đạt ${pct(m.records/m.recordTotal*100)}% · Còn ${m.recordTotal-m.records} hồ sơ`,note:'Các bệnh án được tạo trong kỳ'}
+ ];
+ $('#kpiGrid').innerHTML=cards.map((c,i)=>`<article class="kpi stagger"><div class="kpi-top"><span>${c.title}</span><span class="kpi-icon" style="--tone:${c.color};--tone-bg:${c.bg}">${icon(c.icon)}</span></div><div class="kpi-value-row"><strong class="kpi-value number">${c.value}</strong>${c.denominator?`<span class="kpi-denominator">/ ${c.denominator}</span>`:`<span class="kpi-unit">${c.unit}</span>`}${c.spark?spark(c.spark,c.color):''}</div><div class="kpi-bottom">${i===0?`<span class="change" style="color:#4b8ca9">${icon('up')}</span>`:''}${esc(c.foot)}</div><div class="kpi-foot">${c.note}</div></article>`).join('');
+}
+function renderMix(){
+ const m=METRICS[state.period],c=2*Math.PI*55,newArc=m.newVisits/m.visits*c,retArc=m.returnVisits/m.visits*c;
+ $('#mixNew').setAttribute('stroke-dasharray',`${newArc-3} ${c-newArc+3}`);
+ $('#mixReturn').setAttribute('stroke-dasharray',`${retArc-3} ${c-retArc+3}`);$('#mixReturn').setAttribute('stroke-dashoffset',-newArc);
+ $('#mixTotal').textContent=m.visits;
+ $('#newCount').innerHTML=`${m.newVisits}<small>${pct(m.newVisits/m.visits*100)}%</small>`;
+ $('#returnCount').innerHTML=`${m.returnVisits}<small>${pct(m.returnVisits/m.visits*100)}%</small>`;
+ $('#mixDonut').setAttribute('aria-label',`${m.newVisits} lượt khám mới và ${m.returnVisits} lượt tái khám; tổng ${m.visits} lượt trong ${periodDescription(state.period)}.`);
+ const rows=[{title:'Bệnh án hoàn tất',done:m.records,total:m.recordTotal,color:'#74b49f',remain:'hồ sơ'},{title:'Kết quả đã xem',done:m.results,total:m.resultTotal,color:'#8ebad8',remain:'kết quả'}];
+ $('#progressRows').innerHTML=rows.map(r=>`<div><div class="progress-label"><span>${r.title}</span><strong>${r.done}<span> / ${r.total}</span></strong></div><div class="bar-track" role="img" aria-label="${r.title}: ${r.done}/${r.total}"><div class="bar-fill" style="width:${r.done/r.total*100}%;--c:${r.color}"></div></div><div class="progress-caption"><span>${pct(r.done/r.total*100)}% hoàn thành</span><span class="remaining">Còn ${r.total-r.done} ${r.remain}</span></div></div>`).join('');
+}
+function smoothPath(points){
+ if(points.length<2)return'';const ds=points.slice(1).map((p,i)=>(p[1]-points[i][1])/(p[0]-points[i][0]));
+ const tangents=points.map((p,i)=>i===0?ds[0]:i===points.length-1?ds.at(-1):ds[i-1]*ds[i]<=0?0:2/(1/ds[i-1]+1/ds[i]));
+ let path=`M${points[0][0]},${points[0][1]}`;for(let i=0;i<points.length-1;i++){const p=points[i],q=points[i+1],h=(q[0]-p[0])/3;path+=` C${p[0]+h},${p[1]+h*tangents[i]} ${q[0]-h},${q[1]-h*tangents[i+1]} ${q[0]},${q[1]}`;}return path;
+}
+function renderVisitChart(){
+ const series=state.period==='week'?WEEKLY:DAILY,el=$('#visitSvg'),host=$('#visitChart');
+ if(!host)return;const w=Math.max(host.clientWidth,240),h=host.clientHeight,l=38,r=28,t=27,b=41,pw=w-l-r,ph=h-t-b;
+ const maxValue=Math.max(...series.a,...series.b,1),step=Math.max(1,Math.ceil(maxValue/4)),max=step*4,n=series.a.length;
+ const x=i=>l+i*pw/(n-1),y=v=>t+ph-v/max*ph;
+ el.setAttribute('viewBox',`0 0 ${w} ${h}`);
+ const points=series.a.map((v,i)=>[x(i),y(v)]),prev=series.b.map((v,i)=>[x(i),y(v)]),path=smoothPath(points);
+ let html='<defs><linearGradient id="visitGradient" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#269bd1" stop-opacity=".19"/><stop offset="1" stop-color="#269bd1" stop-opacity=".015"/></linearGradient></defs>';
+ for(let j=0;j<=4;j++)html+=`<line x1="${l}" x2="${w-r}" y1="${y(j*step)}" y2="${y(j*step)}" stroke="#e7eef4" stroke-dasharray="3 4"/><text x="${l-10}" y="${y(j*step)+4}" text-anchor="end" fill="#7b8e9c" font-size="13">${j*step}</text>`;
+ html+=`<path d="${path} L${x(n-1)},${y(0)} L${x(0)},${y(0)} Z" fill="url(#visitGradient)"/><path d="${smoothPath(prev)}" fill="none" stroke="#aec7d7" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round"/><path d="${path}" fill="none" stroke="#269bd1" stroke-width="2.8" stroke-linecap="round"/>`;
+ points.forEach((p,i)=>{const showLabel=w>420||i%2===0||i===n-1;html+=`<text x="${x(i)}" y="${h-12}" text-anchor="middle" fill="#748d9f" font-size="${w<400?12:13}">${showLabel?series.labels[i]:''}</text><circle cx="${p[0]}" cy="${p[1]}" r="3.5" fill="#fff" stroke="#269bd1" stroke-width="2"/><g tabindex="0" class="chart-point" role="button" aria-label="${esc(series.fullLabels[i])}: ${series.a[i]} lượt, kỳ trước ${series.b[i]} lượt" data-point="${i}"><rect x="${p[0]-Math.min(pw/(n*2),28)}" y="${t}" width="${Math.min(pw/n,56)}" height="${ph}" fill="transparent"/></g>`;});
+ el.innerHTML=html;el.setAttribute('aria-label',`Lượt khám của bác sỹ, ${periodDescription(state.period)}: ${sum(series.a)} lượt. Dùng nút Chi tiết để xem bảng dữ liệu.`);
+ const tooltip=$('#chartTooltip');tooltip.hidden=true;
+ const show=i=>{tooltip.innerHTML=`<strong>${series.fullLabels[i]}</strong><span class="tt-value">${series.a[i]} lượt khám</span><span>Kỳ trước: ${series.b[i]} lượt</span>`;tooltip.hidden=false;tooltip.style.left=`${Math.max(tooltip.offsetWidth/2+3,Math.min(w-tooltip.offsetWidth/2-3,points[i][0]))}px`;tooltip.style.top=`${Math.max(tooltip.offsetHeight+4,points[i][1]-8)}px`;};
+ $$('.chart-point',el).forEach(g=>{const i=+g.dataset.point;g.addEventListener('mouseenter',()=>show(i));g.addEventListener('mouseleave',()=>tooltip.hidden=true);g.addEventListener('focus',()=>show(i));g.addEventListener('blur',()=>tooltip.hidden=true);g.addEventListener('click',()=>show(i));g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(i);}if(e.key==='Escape')tooltip.hidden=true;});});host.onmouseleave=()=>tooltip.hidden=true;
+}
+function renderDashboard(){
+ const week=state.period==='week';
+ $('#periodLabel').textContent=week?'25/09–01/10/2026 · 7 ngày gần nhất':'01/10/2026 · Hôm qua';
+ $('#visitChartSubtitle').textContent=week?'Theo ngày trong 7 ngày gần nhất':'Theo khung giờ tiếp nhận ngày 01/10';
+ $('#currentLegend').textContent=week?'25/09–01/10':'01/10 · Hôm qua';$('#previousLegend').textContent=week?'18/09–24/09':'30/09 · Ngày trước đó';
+ $('#chartInsight').innerHTML=week?'<strong>Thứ Hai, 28/09</strong> có nhiều lượt khám nhất: 30 lượt.':'<strong>09h và 14h</strong> có nhiều lượt khám nhất: 5 lượt / khung giờ.';
+ $('#mixFoot').textContent=`${periodDescription(state.period)} · Người bệnh do bạn trực tiếp khám.`;
+ $('#progressSubtitle').textContent=week?'Hồ sơ trong 7 ngày · Chốt 01/10':'Trạng thái cuối ngày 01/10';
+ $$('[data-period]').forEach(b=>{const active=b.dataset.period===state.period;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
+ renderKPIs();renderMix();renderVisitChart();
+}
+function renderTasks(){
+ const list=selectedTasks(),remaining=remainingTasks(),today=remaining.filter(t=>t.due===MELICARE_CONFIG.demoDate),urgent=today.filter(t=>t.level==='urgent');
+ $('#taskCount').textContent=String(list.length).padStart(2,'0');$('#todayTaskCount').textContent=today.length;$('#weekTaskCount').textContent=remaining.length;
+ $('#taskPeriodLabel').textContent=state.taskPeriod==='week'?'Tuần 28/09–04/10/2026':'Thứ Sáu · 02/10/2026';
+ $$('[data-task-period]').forEach(b=>{const active=b.dataset.taskPeriod===state.taskPeriod;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
+ $('#taskList').innerHTML=list.length?list.map(t=>`<button class="task-row" data-task="${t.id}" aria-label="${esc(t.title)}, hạn ${taskDeadline(t)}"><div class="task-meta">${levelBadge(t)}<span class="task-time">${icon('clock')}${taskDeadline(t)}</span></div><div class="task-title"><span>${esc(t.title)}</span>${icon('chevron')}</div><p class="task-desc">${esc(t.desc)}</p><div class="task-byline">${brand(t.module)}<i class="bullet"></i><span>${esc(t.owner)}</span></div></button>`).join(''):`<div class="empty">${icon('checkcircle')}Không còn việc phù hợp với bộ lọc hiện tại.</div>`;
+ $('#urgentFilter').classList.toggle('active',state.urgentOnly);$('#urgentFilter').setAttribute('aria-pressed',String(state.urgentOnly));
+ $('#clearTaskFilter').hidden=!state.taskModule;$('#taskFilterName').textContent=state.taskModule||'';
+ $('#taskDoneLabel').textContent=`${completed.size} việc đã xử lý trong bản demo`;$('#resetTasksButton').hidden=!completed.size;
+ $('#mobileMore').hidden=list.length<=3;$('#mobileMore').innerHTML=($('#taskList').classList.contains('show-all')?'Thu gọn danh sách':`Xem tất cả ${list.length} công việc`)+icon('down');
+ $('#insightText').textContent=urgent.length?`12 lịch hẹn hôm nay · ${urgent.length} việc khẩn cần xem trước 09:00.`:`12 lịch hẹn hôm nay · ${today.length?`Còn ${today.length} công việc cần xử lý.`:'Đã xử lý các công việc hôm nay trong bản demo.'}`;
+ $('#notificationDot').hidden=urgent.length===0;$('#notificationButton').setAttribute('aria-label',`Thông báo mẫu: ${urgent.length} việc khẩn`);
+ $('#noticeBody').innerHTML=urgent.length?urgent.map(t=>`<button class="notice-item" data-task="${t.id}"><strong>${esc(t.title)}</strong><span>${esc(t.desc)}</span><small>Hạn ${t.time} · 02/10/2026</small></button>`).join(''):'<div class="notice-item">Không còn thông báo khẩn trong dữ liệu mẫu.</div>';
+}
+function showTask(id){
+ const t=TASKS.find(t=>t.id===id);if(!t)return;state.selectedTask=id;
+ $('#taskDialogBody').innerHTML=`${levelBadge(t)}<h3 class="detail-title">${esc(t.title)}</h3><p>${esc(t.detail)}</p><dl class="detail-grid"><div><dt>Thời hạn</dt><dd>${t.due.slice(8,10)}/${t.due.slice(5,7)}/2026 · ${t.time}</dd></div><div><dt>Đơn vị gửi</dt><dd>${esc(t.owner)}</dd></div><div><dt>Người phụ trách</dt><dd>BS. Minh Anh</dd></div><div><dt>Ứng dụng liên quan</dt><dd>${brand(t.module)}</dd></div></dl><div class="detail-callout"><strong>Nội dung cần xem xét</strong>${esc(t.request)}</div>${t.patient?`<p><button class="table-row-link" data-patient="${t.patient}">Xem hồ sơ ${t.patient} ${icon('arrow')}</button></p>`:''}<div class="dialog-demo-note">${icon('info')}Đánh dấu chỉ thay đổi công việc mẫu trên trình duyệt; không phải ký duyệt hồ sơ hoặc chỉ định điều trị.</div>`;
+ $('#completeTaskButton').disabled=completed.has(id);$('#completeTaskButton').innerHTML=icon('check')+(completed.has(id)?'Đã xử lý trong bản demo':'Đánh dấu đã xử lý');openDialog('taskDialog');
+}
+function showModule(id){
+ const destination=MELICARE_CONFIG.moduleUrls[id];if(destination){window.location.assign(destination);return;}
+ const m=MODULES.find(m=>m.id===id);if(!m)return;
+ closeDialog('taskDialog');closeDialog('patientDialog');
+ const count=remainingTasks().filter(t=>t.module===id).length;
+ $('#moduleDialogBody').innerHTML=`<div class="module-hero" style="--module:${m.color};--mod-bg:${m.bg}"><div class="module-icon">${toolIcon(m.id)}</div><div><div class="module-brand">${brand(id)}</div><small>${esc(m.name)}</small></div></div><p>${esc(m.description)}</p><div style="margin-top:18px;--module:${m.color}">${m.features.map(f=>`<div class="module-feature">${icon('checkcircle')}<span>${esc(f)}</span></div>`).join('')}</div><div class="detail-callout" style="margin-top:16px"><strong>Bản xem trước ứng dụng</strong>Ứng dụng chưa được kết nối trong tệp HTML này. Quyền truy cập và phạm vi người bệnh cần được xác thực khi tích hợp vào MELICARE.</div>`;
+ const route=MELICARE_CONFIG.moduleUrls[id],valid=route&&!/^\s*(javascript|data|file):/i.test(route);
+ $('#moduleDialogActions').innerHTML=`<button class="btn" data-close-dialog>Đóng</button>${count?`<button class="btn primary" data-related="${id}">Xem ${count} công việc liên quan</button>`:''}${valid?`<a class="btn primary" href="${esc(route)}" target="_blank" rel="noopener noreferrer">Mở ứng dụng ${icon('arrow')}</a>`:''}`;
+ openDialog('moduleDialog');
+}
+function filteredAppointments(){
+ const q=normalized($('#patientSearch').value||'');
+ return APPOINTMENTS.filter(p=>(state.queue==='all'||p.type===state.queue)&&(!state.agenda||p.session===state.agenda)&&normalized(`${p.id} ${p.name} ${p.reason} ${p.time}`).includes(q));
+}
+function renderAppointments(){
+ const list=filteredAppointments(),pages=Math.max(1,Math.ceil(list.length/6));state.page=Math.max(1,Math.min(state.page,pages));
+ const offset=(state.page-1)*6,shown=list.slice(offset,offset+6);
+ $('#patientTableBody').innerHTML=shown.length?shown.map(p=>`<tr><td class="patient-time number">${p.time}</td><td><div class="patient-info"><span class="patient-avatar">${p.initial}</span><span><span class="patient-name">${p.name}</span><small>${p.id} · Dữ liệu mẫu</small></span></div></td><td><div class="patient-reason"><strong>${p.reason}</strong><small>${p.note}</small></div></td><td>${p.room}</td><td><span class="badge ${p.type==='new'?'blue':'green'}">${p.status}</span></td><td><button class="table-row-link" data-patient="${p.id}" aria-label="Xem hồ sơ mẫu ${p.id}">Hồ sơ ${icon('chevron')}</button></td></tr>`).join(''):'<tr><td class="no-results" colspan="6">Không tìm thấy lịch hẹn phù hợp. Thử mã NB-26001 hoặc chọn Tất cả.</td></tr>';
+ $('#patientRowCount').textContent=list.length?`Hiển thị ${offset+1}–${Math.min(offset+6,list.length)} / ${list.length} lịch hẹn${state.agenda?' · Đang lọc khung giờ':''}`:'0 lịch hẹn phù hợp';
+ $('#pageIndicator').textContent=`${state.page} / ${pages}`;$('#previousPage').disabled=state.page===1;$('#nextPage').disabled=state.page===pages;
+ $$('[data-queue]').forEach(b=>{const active=b.dataset.queue===state.queue;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
+ $$('[data-agenda]').forEach(b=>b.classList.toggle('current',b.dataset.agenda===state.agenda||(!state.agenda&&b.dataset.agenda==='morning')));
+}
+function showPatient(id){
+ const p=APPOINTMENTS.find(p=>p.id===id);if(!p)return;closeDialog('taskDialog');
+ const tasks=TASKS.filter(t=>t.patient===id);
+ $('#patientDialogBody').innerHTML=`<div class="patient-banner"><span class="patient-avatar">${p.initial}</span><div><strong>${p.name}</strong><small>${p.id} · Hồ sơ minh họa</small></div></div><dl class="detail-grid"><div><dt>Giờ hẹn</dt><dd>02/10/2026 · ${p.time}</dd></div><div><dt>Phòng khám</dt><dd>${p.room} · Nội tổng hợp</dd></div><div><dt>Nội dung</dt><dd>${p.reason}</dd></div><div><dt>Trạng thái lịch hẹn</dt><dd>${p.status}</dd></div></dl><div class="detail-callout"><strong>Chuẩn bị trước buổi khám</strong>${esc(p.note)}.<ul class="record-list"><li>Thông tin tiếp đón<span class="record-meta">Đã chuẩn bị trong dữ liệu mẫu.</span></li><li>Bệnh án buổi khám hôm nay<span class="record-meta">Chưa bắt đầu · Không có dữ liệu lâm sàng thật.</span></li></ul></div>${tasks.length?`<div class="detail-callout warning"><strong>Công việc liên quan</strong>${tasks.map(t=>`<div style="margin:7px 0"><button class="table-row-link" data-task="${t.id}">${esc(t.title)} ${icon('chevron')}</button><span class="record-meta">${completed.has(t.id)?'Đã đánh dấu xử lý':'Chưa xử lý'} · Hạn ${taskDeadline(t)}</span></div>`).join('')}</div>`:''}<div class="dialog-demo-note">${icon('info')}Tên, mã người bệnh, lịch hẹn và hồ sơ đều được tạo để minh họa giao diện.</div>`;
+ openDialog('patientDialog');
+}
+function showCalendar(){
+ $('#calendarDialogBody').innerHTML=`<div class="week-summary">Tuần <strong>28/09–04/10/2026</strong> · Góc nhìn của BS. Minh Anh. Ngày đã qua hiển thị lượt khám hoàn tất; ngày sắp tới hiển thị lịch hẹn.</div><div class="week-schedule">${WEEK_SCHEDULE.map(d=>`<div class="week-day ${d.current?'current':''}"><div class="week-date">${d.weekday}<strong>${d.date}</strong></div><div class="week-activity">${d.activity}<small>${d.detail}</small></div><span class="week-count">${d.count} ${d.past?'lượt khám':'lịch hẹn'}</span></div>`).join('')}</div><div class="dialog-demo-note">${icon('info')}Lịch mẫu chưa kết nối với hệ thống lịch, không tạo hoặc gửi lời mời.</div>`;
+ openDialog('calendarDialog');
+}
+function showData(){
+ const s=state.period==='week'?WEEKLY:DAILY,m=METRICS[state.period];
+ $('#dataDialogBody').innerHTML=`<p class="panel-sub" style="padding:16px 22px">${periodDescription(state.period)} · BS. Minh Anh · Dữ liệu minh họa</p><div class="table-scroll"><table><thead><tr><th>${state.period==='week'?'Ngày':'Khung giờ'}</th><th>Kỳ hiện tại</th><th>Kỳ trước</th><th>Chênh lệch</th></tr></thead><tbody>${s.a.map((v,i)=>`<tr><td>${s.fullLabels[i]}</td><td>${v}</td><td>${s.b[i]}</td><td>${v-s.b[i]>=0?'+':''}${v-s.b[i]}</td></tr>`).join('')}<tr style="font-weight:600"><td>Tổng lượt khám</td><td>${m.visits}</td><td>${m.prev}</td><td>+${m.visits-m.prev}</td></tr></tbody></table></div>`;openDialog('dataDialog');
+}
+function downloadCSV(rows,name){
+ const csv='\uFEFF'+rows.map(row=>row.map(cell=>{let text=String(cell??'');if(/^[=+@]/.test(text))text="'"+text;return '"'+text.replace(/"/g,'""')+'"';}).join(',')).join('\r\n');
+ const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'})),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ toast('Đã xuất tệp CSV chứa dữ liệu minh họa.');
+}
+function exportReport(){
+ const m=METRICS[state.period],s=state.period==='week'?WEEKLY:DAILY;
+ downloadCSV([['MELICARE — THỐNG KÊ BÁC SỸ — DỮ LIỆU MINH HỌA'],['Bác sỹ','Minh Anh'],['Kỳ thống kê',periodDescription(state.period)],['Chỉ số','Giá trị','Ghi chú'],['Lượt khám',m.visits,'Tổng trong kỳ'],['Lượt khám kỳ trước',m.prev],['Nội trú phụ trách',m.inpatient,'Tại cuối 01/10/2026; không cộng dồn'],['Khám mới',m.newVisits],['Tái khám',m.returnVisits],['Kết quả đã xem',m.results,`Trong ${m.resultTotal} kết quả được giao`],['Bệnh án hoàn tất',m.records,`Trong ${m.recordTotal} bệnh án`],[],['Khung thời gian','Lượt khám','Kỳ trước'],...s.a.map((v,i)=>[s.fullLabels[i],v,s.b[i]])],`MELICARE_Bac_sy_${state.period==='week'?'7_ngay':'01-10-2026'}_minh_hoa.csv`);
+}
+function toggleNotifications(force){const visible=typeof force==='boolean'?force:$('#notifications').hidden;$('#notifications').hidden=!visible;$('#notificationButton').setAttribute('aria-expanded',String(visible));}
+function setSidebar(open){$('#sidebar').classList.toggle('open',open);$('#sidebarScrim').hidden=!open;$('#openSidebar').setAttribute('aria-expanded',String(open));document.body.style.overflow=open?'hidden':'';if(open)$('#closeSidebar').focus();}
+function toggleChat(force){const open=typeof force==='boolean'?force:$('#chatPanel').hidden;$('#chatPanel').hidden=!open;$('#chatLauncher').setAttribute('aria-expanded',String(open));if(open){toggleNotifications(false);$('#chatInput').focus();}else $('#chatLauncher').focus();}
+function chatAnswer(text){
+ const q=normalized(text),week=q.includes('tuan qua')||q.includes('7 ngay'),period=week?'week':'day',m=METRICS[period];
+ const patientId=q.match(/nb[-\s]?(260\d{2})/);
+ if(patientId){const id='NB-'+patientId[1],p=APPOINTMENTS.find(p=>p.id===id);if(!p)return `Không có ${id} trong danh sách lịch hẹn minh họa. Tôi không truy cập được hồ sơ bệnh án thật.`;return `${p.id} — ${p.name}\nLịch hẹn: ${p.time}, ngày 02/10/2026, ${p.room}.\nNội dung: ${p.reason}.\nGhi chú chuẩn bị: ${p.note}.\n\nBạn có thể mở hồ sơ ở bảng lịch khám. Nguồn: lịch hẹn minh họa của BS. Minh Anh.`;}
+ if(q.includes('dieu tri')||q.includes('chan doan')||q.includes('thuoc')||q.includes('lieu dung'))return 'Bản mẫu chưa kết nối hồ sơ lâm sàng hoặc mô hình AI và không đưa ra chẩn đoán hay chỉ định điều trị. Tôi chỉ có thể tra cứu lịch hẹn, hoạt động và công việc minh họa. Dùng hồ sơ gốc và hệ thống chuyên môn đã được xác thực cho quyết định điều trị.';
+ if(q.includes('lich')||q.includes('hen')||q.includes('hoi chan')){
+  if(q.includes('tuan nay')||q.includes('lich tuan'))return 'Lịch tuần 28/09–04/10/2026:\n28/09: 30 lượt khám đã hoàn tất.\n29/09: 27 lượt khám đã hoàn tất.\n30/09: 24 lượt khám đã hoàn tất.\n01/10: 28 lượt khám đã hoàn tất.\n02/10: 12 lịch hẹn; hội chẩn 14:00–14:30.\n03/10: 6 lịch tái khám buổi sáng.\n04/10: không có ca khám.\n\nNguồn: lịch làm việc mẫu. Số ngày đã qua là lượt khám, ngày sắp tới là lịch hẹn.';
+  return 'Hôm nay 02/10/2026, bạn có 12 lịch hẹn tại Phòng 302:\n\n08:00–11:00: 8 lịch hẹn.\n13:00–14:00: 2 lịch hẹn.\n14:00–14:30: hội chẩn liên khoa, NB-26009.\n14:45–15:30: 2 lịch hẹn.\n\nLịch đầu tiên: 08:00, NB-26001. Nguồn: lịch hẹn minh họa; chưa kết nối hệ thống lịch thật.';
+ }
+ if(q.includes('uu tien')||q.includes('cong viec')||q.includes('can xu ly')||q.includes('khan')||q.includes('viec')){
+  const tasks=remainingTasks().filter(t=>q.includes('tuan nay')||t.due===MELICARE_CONFIG.demoDate),urgent=tasks.filter(t=>t.level==='urgent');
+  return tasks.length?`Còn ${tasks.length} công việc ${q.includes('tuan nay')?'trong tuần này':'hôm nay'}, trong đó ${urgent.length} việc khẩn.\n\n`+tasks.map(t=>`${t.level==='urgent'?'[Khẩn] ':''}${t.title} — ${taskDeadline(t)} · ${t.module}`).join('\n')+'\n\nNguồn: danh sách công việc mẫu và trạng thái xử lý trên trình duyệt.':'Các công việc trong phạm vi này đã được đánh dấu xử lý trong bản demo. Thao tác không thay đổi hồ sơ hoặc hệ thống bệnh viện thật.';
+ }
+ if(q.includes('ho so')||q.includes('benh an')||q.includes('emr'))return `${periodDescription(period)}: ${m.records}/${m.recordTotal} bệnh án đã hoàn tất, còn ${m.recordTotal-m.records} hồ sơ tại thời điểm chốt cuối ngày 01/10.\n\n${week?'Trong đó, 4 hồ sơ thuộc ngày 01/10 đang có công việc theo dõi hôm nay.':'4 hồ sơ ngày 01/10: HS-260101, HS-260108, HS-260116, HS-260124.'}\n\n${completed.has('d3')?'Bạn đã đánh dấu công việc hoàn thiện 4 bệnh án là đã xử lý trong bản demo. Số liệu lịch sử cuối ngày 01/10 không thay đổi.':'Bạn có thể mở công việc “Hoàn thiện 4 bệnh án điện tử”.'}\nNguồn: dữ liệu minh họa, không phải trạng thái EMR trực tiếp.`;
+ if(q.includes('ket qua')||q.includes('xet nghiem'))return `${periodDescription(period)}: ${m.results}/${m.resultTotal} kết quả được giao đã xác nhận xem, còn ${m.resultTotal-m.results} kết quả tại thời điểm cuối 01/10.\n\nNB-26001 có một công việc cần bác sỹ xem kết quả trước 08:30 ngày 02/10. ${completed.has('d1')?'Công việc này đã được đánh dấu xử lý trong bản demo.':'Công việc này chưa được đánh dấu xử lý.'}\n\nKhông có giá trị xét nghiệm thật trong bản mẫu; trợ lý không diễn giải lâm sàng.`;
+ if(q.includes('noi tru'))return `Tại cuối ngày 01/10/2026, bạn phụ trách 16 người bệnh nội trú trong dữ liệu mẫu. Đây là số tại một thời điểm, không cộng dồn khi chuyển sang Tuần qua. Nguồn: thống kê cá nhân minh họa.`;
+ if(q.includes('hom qua')||q.includes('tuan qua')||q.includes('hoat dong')||q.includes('tom tat')||q.includes('luot kham')||q.includes('so sanh'))return `Hoạt động của BS. Minh Anh — ${periodDescription(period)}:\n\n• ${m.visits} lượt khám (${m.newVisits} khám mới, ${m.returnVisits} tái khám).\n• ${m.inpatient} người bệnh nội trú phụ trách tại cuối kỳ.\n• ${m.results}/${m.resultTotal} kết quả đã xem.\n• ${m.records}/${m.recordTotal} bệnh án hoàn tất.\n\nLượt khám tăng ${m.visits-m.prev} so với ${week?'7 ngày trước':'ngày 30/09'}. Đây chỉ là số lượng hoạt động, không phản ánh chất lượng điều trị. Nguồn: dữ liệu minh họa.`;
+ return 'Tôi đang phản hồi theo kịch bản mẫu, chưa kết nối mô hình AI hay dữ liệu bệnh viện. Hãy thử “Tóm tắt hôm qua”, “Lịch khám hôm nay”, “Việc cần ưu tiên”, “Hồ sơ chưa hoàn tất” hoặc mã NB-26001.';
+}
+function addMessage(text,role){const node=document.createElement('div');node.className='chat-message'+(role==='user'?' user':'');if(role!=='user'){const label=document.createElement('div');label.className='message-label';label.textContent='MELI';node.append(label);}node.append(document.createTextNode(text));$('#chatMessages').append(node);$('#chatMessages').scrollTop=$('#chatMessages').scrollHeight;}
+function submitChat(text){text=text.trim();if(!text||state.chatBusy)return;state.chatBusy=true;$('#chatSend').disabled=true;$('#chatSuggestions')?.remove();addMessage(text,'user');$('#chatInput').value='';$('#chatInput').style.height='40px';const typing=document.createElement('div');typing.className='chat-message';typing.setAttribute('aria-label','Đang hiển thị phản hồi mẫu');typing.innerHTML='<div class="typing"><i></i><i></i><i></i></div>';$('#chatMessages').append(typing);$('#chatMessages').scrollTop=$('#chatMessages').scrollHeight;setTimeout(()=>{typing.remove();addMessage(chatAnswer(text),'assistant');state.chatBusy=false;$('#chatSend').disabled=false;},350);}
+function goSchedule(){setSidebar(false);$('#scheduleSection').scrollIntoView({behavior:'smooth',block:'start'});}
+function focusTasks(urgent=false){state.taskPeriod='today';state.taskModule=null;state.urgentOnly=urgent;renderTasks();$('#tasksPanel').scrollIntoView({behavior:'smooth',block:'start'});$('#taskList .task-row')?.focus({preventScroll:true});}
+/* Event handlers: all markup and data are local. No fetch, credentials, or records are sent. */
+document.addEventListener('click',e=>{
+ const mb=e.target.closest('[data-module]');if(mb)showModule(mb.dataset.module);
+ const task=e.target.closest('[data-task]');if(task){closeDialog('patientDialog');showTask(task.dataset.task);}
+ const patient=e.target.closest('[data-patient]');if(patient)showPatient(patient.dataset.patient);
+ const close=e.target.closest('[data-close-dialog]');if(close)close.closest('dialog').close();
+ const p=e.target.closest('[data-period]');if(p&&p.dataset.period!==state.period){state.period=p.dataset.period;renderDashboard();}
+ const tp=e.target.closest('[data-task-period]');if(tp){state.taskPeriod=tp.dataset.taskPeriod;renderTasks();}
+ const related=e.target.closest('[data-related]');if(related){closeDialog('moduleDialog');state.taskModule=related.dataset.related;state.taskPeriod='week';state.urgentOnly=false;renderTasks();$('#tasksPanel').scrollIntoView({behavior:'smooth',block:'start'});}
+ const queue=e.target.closest('[data-queue]');if(queue){state.queue=queue.dataset.queue;state.agenda=null;state.page=1;renderAppointments();}
+ const agenda=e.target.closest('[data-agenda]');if(agenda){state.agenda=state.agenda===agenda.dataset.agenda?null:agenda.dataset.agenda;state.queue='all';state.page=1;$('#patientSearch').value='';renderAppointments();toast(state.agenda?'Đã lọc lịch hẹn theo khung giờ. Bấm lại để bỏ lọc.':'Đã hiển thị toàn bộ lịch hẹn.');}
+ const question=e.target.closest('[data-question]');if(question)submitChat(question.dataset.question);
+ if(!e.target.closest('#notifications,#notificationButton'))toggleNotifications(false);
+});
+$('#exportButton').addEventListener('click',exportReport);$('#dataExportButton').addEventListener('click',exportReport);$('#chartDataButton').addEventListener('click',showData);
+$('#focusTasks').addEventListener('click',()=>focusTasks(true));$('#goSchedule').addEventListener('click',goSchedule);
+$('#urgentFilter').addEventListener('click',()=>{state.urgentOnly=!state.urgentOnly;renderTasks();});
+$('#clearTaskFilter').addEventListener('click',()=>{state.taskModule=null;renderTasks();});
+$('#completeTaskButton').addEventListener('click',()=>{if(!state.selectedTask)return;completed.add(state.selectedTask);const saved=persist();closeDialog('taskDialog');renderTasks();toast(saved?'Đã đánh dấu xử lý công việc mẫu. Không thay đổi hồ sơ thật.':'Đã xử lý trong phiên này; trình duyệt không cho phép lưu trạng thái.');});
+$('#resetTasksButton').addEventListener('click',()=>{completed.clear();persist();renderTasks();toast('Đã khôi phục danh sách công việc mẫu.');});
+$('#taskModuleButton').addEventListener('click',()=>{const t=TASKS.find(t=>t.id===state.selectedTask);if(t)showModule(t.module);});
+$('#mobileMore').addEventListener('click',()=>{$('#taskList').classList.toggle('show-all');renderTasks();});
+$('#patientSearch').addEventListener('input',()=>{state.page=1;renderAppointments();});
+$('#previousPage').addEventListener('click',()=>{state.page--;renderAppointments();});$('#nextPage').addEventListener('click',()=>{state.page++;renderAppointments();});
+$('#patientVoice').addEventListener('click',()=>showModule('MELIVoice'));
+$('#weekScheduleButton').addEventListener('click',showCalendar);
+$('#calendarExport').addEventListener('click',()=>downloadCSV([['MELICARE — LỊCH BÁC SỸ — DỮ LIỆU MINH HỌA'],['Tuần','28/09–04/10/2026'],['Ngày','Hoạt động','Chi tiết','Số lượng','Loại số lượng'],...WEEK_SCHEDULE.map(d=>[d.date+'/2026',d.activity,d.detail,d.count,d.past?'Lượt khám hoàn tất':'Lịch hẹn'])],'MELICARE_Lich_Bac_sy_28-09_04-10_minh_hoa.csv'));
+$('#notificationButton').addEventListener('click',()=>toggleNotifications());$('#closeNotifications').addEventListener('click',()=>{toggleNotifications(false);$('#notificationButton').focus();});$('#profileButton').addEventListener('click',()=>openDialog('accountDialog'));
+$('#openSidebar').addEventListener('click',()=>setSidebar(true));$('#closeSidebar').addEventListener('click',()=>{setSidebar(false);$('#openSidebar').focus();});$('#sidebarScrim').addEventListener('click',()=>setSidebar(false));
+function goHome(){setSidebar(false);state.period='day';state.taskPeriod='today';state.urgentOnly=false;state.taskModule=null;state.queue='all';state.agenda=null;state.page=1;$('#patientSearch').value='';renderDashboard();renderTasks();renderAppointments();window.scrollTo({top:0,behavior:'smooth'});}
+$('#overviewNav').addEventListener('click',goHome);$('#brandHome').addEventListener('click',e=>{e.preventDefault();goHome();});
+$('#chatLauncher').addEventListener('click',()=>toggleChat());$('#closeChat').addEventListener('click',()=>toggleChat(false));
+$('#chatForm').addEventListener('submit',e=>{e.preventDefault();submitChat($('#chatInput').value);});
+$('#chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();submitChat(e.target.value);}});
+$('#chatInput').addEventListener('input',e=>{e.target.style.height='40px';e.target.style.height=Math.min(120,e.target.scrollHeight)+'px';});
+$$('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}}));
+document.addEventListener('keydown',e=>{
+ if(e.key==='Escape'){if(document.querySelector('dialog[open]'))return;if(!$('#chatPanel').hidden)toggleChat(false);else if(!$('#notifications').hidden){toggleNotifications(false);$('#notificationButton').focus();}else if($('#sidebar').classList.contains('open')){setSidebar(false);$('#openSidebar').focus();}}
+ if(e.key==='Tab'&&$('#sidebar').classList.contains('open')&&window.innerWidth<=1030){const focusables=$$('a,button',$('#sidebar')).filter(el=>el.getClientRects().length),first=focusables[0],last=focusables.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}
+});
+if('ResizeObserver'in window)new ResizeObserver(renderVisitChart).observe($('#visitChart'));else window.addEventListener('resize',renderVisitChart);
+window.addEventListener('resize',()=>{if(window.innerWidth>1030&&$('#sidebar').classList.contains('open'))setSidebar(false);});
+renderNav();renderDashboard();renderTasks();renderAppointments();
+if(document.fonts)document.fonts.ready.then(renderVisitChart);
+
+
+syncStaticToolIcons();
+</script>
+</body>
+</html>

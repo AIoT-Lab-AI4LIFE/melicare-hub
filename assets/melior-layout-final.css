@@ -1,0 +1,26 @@
+body#mcTypography.mc-or .efficiencyPanel{height:auto!important;min-height:360px!important;overflow:hidden!important;position:relative!important}
+body#mcTypography.mc-or .effInteractive{height:240px!important;min-height:0!important;grid-template-columns:45px minmax(0,1fr)!important;overflow:hidden!important}
+body#mcTypography.mc-or .effPlot{min-width:0!important;min-height:0!important;grid-template-rows:minmax(0,1fr) 32px!important;overflow:hidden!important}
+body#mcTypography.mc-or #effSvg{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;min-width:0!important;min-height:0!important;overflow:hidden!important}
+body#mcTypography.mc-or .effX{display:flex!important;justify-content:space-between!important;gap:4px!important;overflow:hidden!important;min-width:0!important}
+body#mcTypography.mc-or .effX span{font-size:12px!important;min-width:0!important;white-space:nowrap!important}
+body#mcTypography.mc-or .efficiencyPanel .blockhead{flex-wrap:wrap!important;gap:12px!important}
+body#mcTypography.mc-or #duration{max-height:200px!important;overflow-y:auto!important;min-height:0!important}
+body#mcTypography.mc-or .duration{height:auto!important;min-height:0!important}
+body#mcTypography.mc-or :is(.caseLayout,.eqLayout){align-items:start!important;min-width:0!important}
+body#mcTypography.mc-or :is(.caseDetail,.eqDetail){height:auto!important;min-height:0!important;max-height:none!important;position:static!important;overflow:visible!important}
+body#mcTypography.mc-or :is(.caseListPane,.eqBoard){min-height:0!important;overflow:auto!important;box-sizing:border-box!important}
+body#mcTypography.mc-or .caseListPane .integratedBoard{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}
+body#mcTypography.mc-or .eqBoard .eqList{max-height:none!important;height:auto!important;overflow:visible!important}
+body#mcTypography.mc-or #duration{display:block!important}
+body#mcTypography.mc-or #duration .drow{min-height:48px!important;flex-shrink:0!important}
+/* Overview pairs share the row height; content fills the cards naturally. */
+body#mcTypography.mc-or #dashboardPage>.grid{align-items:stretch!important}
+body#mcTypography.mc-or #dashboardPage :is(.efficiencyPanel,.events,.duration,.mix){height:auto!important;display:flex!important;flex-direction:column!important;min-height:0!important;align-self:stretch!important}
+body#mcTypography.mc-or #dashboardPage :is(.efficiencyPanel,.events,.duration,.mix)>.blockhead{flex:0 0 auto!important}
+body#mcTypography.mc-or #dashboardPage .events .emergencyList{flex:1 1 auto!important;display:grid!important;grid-auto-rows:minmax(66px,auto)!important;gap:8px!important;align-content:start!important}
+body#mcTypography.mc-or #dashboardPage .events .emergencyItem{height:auto!important;min-height:66px!important;box-sizing:border-box!important;padding-top:12px!important;padding-bottom:12px!important}
+body#mcTypography.mc-or #dashboardPage .efficiencyPanel .effInteractive{flex:1 1 auto!important;min-height:240px!important}
+body#mcTypography.mc-or #dashboardPage .mix .mixbody{flex:1 1 auto!important;height:auto!important;min-height:240px!important;display:grid!important;align-items:center!important;gap:18px!important}
+body#mcTypography.mc-or #dashboardPage .mix .mixrow{min-height:38px!important;align-items:center!important}
+@media(max-width:1100px){body#mcTypography.mc-or #dashboardPage :is(.events,.mix){height:auto!important}}

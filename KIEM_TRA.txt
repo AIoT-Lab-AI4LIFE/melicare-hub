@@ -1,0 +1,53 @@
+MELICARE typography / layout QA — 03/10/2026
+
+Pages checked individually:
+- MELICARE.html
+- MELICARE_Login.html
+- MELICARE_Dashboard_Admin.html
+- MELICARE_Dashboard_Doctor.html
+- MELI_OR.html
+- MELI_OCR.html
+- MELI_Voice.html
+- MELI_VLM.html
+- MELIDx.html
+- MELIMind.html
+- MELIStroke.html
+- MELICardio.html
+- MELIAlz.html
+- MELIDiabetes.html
+- MELIPostOp.html
+- DANH_SACH_TRANG.html
+
+Typography system:
+- UI/body: Nunito Sans, fallback Avenir Next / Segoe UI / Arial.
+- Display / MELI product names: Plus Jakarta Sans.
+- Body baseline: 16 px.
+- Controls: 15 px.
+- Labels: 14 px.
+- Section titles: 21 px.
+- Page titles: 31 px.
+- Clinical microcopy raised from older 9–11 px rules to 12–14 px where appropriate.
+
+MELIOR correction:
+- Operating-room cards increased to 290 px (292–294 px at narrower breakpoints) so larger typography no longer clips the progress area / next-case content.
+- Carousel viewport keeps horizontal clipping only for sliding, with extra bottom padding.
+
+Static verification:
+- Exactly one melicare-typography-v6.css reference in every HTML page.
+- No local href/src references point to missing files.
+- Old melicare-typography-v5.css removed from bundle.
+
+Cập nhật 2026-10-03 — OCR/VLM/vertical rhythm
+- MELIOCR: nút Chọn hóa đơn mở popup; sau khi chọn file và bắt đầu OCR, luôn đi qua màn hình progress rồi mới hiển thị kết quả.
+- MELIOCR: thao tác kéo-thả vào vùng tải chính cũng đi qua progress trước kết quả.
+- MELIVLM: 4 câu hỏi ví dụ giảm còn khoảng 50px/ô trên desktop, thu hẹp max-width và khoảng cách.
+- Typography: giảm line-height chung để text bớt thưa, không giảm font-size.
+- Static JavaScript syntax check: MELI_OCR.html và MELI_VLM.html không có lỗi cú pháp inline script.
+
+
+Cập nhật MELIDx interaction/chart:
+- 5 trang MELIStroke, MELIAlz, MELICardio, MELIDiabetes, MELIMind dùng chung melicare-clinical-rows.js và melicare-charts.js.
+- Row Mức độ so với ngưỡng / Vì sao có kết quả này có role=button, keyboard Enter/Space và popup giải thích.
+- Trend chart dùng đường cong, dot hai lớp, tooltip; không thay đổi dữ liệu đầu vào hay phép tính nguy cơ.
+- node --check: PASS cho hai JS dùng chung.
+- Audit href/src local: 4 missing.
