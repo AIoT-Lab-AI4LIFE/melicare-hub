@@ -3,7 +3,8 @@ body#mcTypography.suite-vlm .imageViewer{width:calc(100% - 24px)!important;aspec
 body#mcTypography.suite-vlm .imageViewer img{width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;position:absolute!important;inset:0!important}
 /* Lists get a finite viewport and scroll only when they overflow. */
 body#mcTypography :is(.attentionList,.reasonList,.lifestyleList,.factorList,.task-list,.record-list,.progress-rows,.emergencyList,.assignCaseList,.deviceList,.roomSurgeryList,.statusStageList,.historyMini,.paneBody,#historyRows,#historyList){max-height:560px!important;min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-gutter:stable;}
-body#mcTypography :is(.table-scroll,.od-table-scroll,.caseListPane,.eqList,.caseList){max-height:600px!important;min-height:0!important;overflow:auto!important;overscroll-behavior:contain!important;scrollbar-gutter:stable;}
+body#mcTypography :is(.table-scroll,.od-table-scroll,.eqList,.caseList){max-height:600px!important;min-height:0!important;overflow:auto!important;overscroll-behavior:contain!important;scrollbar-gutter:stable;}
+body#mcTypography.mc-or #casesPage .caseList{max-height:none!important;}
 body#mcTypography :is(.table-scroll,.od-table-scroll) thead{position:sticky;top:0;z-index:2;background:#f4f9fc}
 body#mcTypography :is(.caseListHead,.eqHead){position:sticky!important;top:0!important;z-index:2!important;background:#f4f9fc!important}
 body#mcTypography.mc-or #odTodayDoctors{display:flex!important;flex-wrap:nowrap!important;gap:14px!important;overflow-x:auto!important;overflow-y:hidden!important;min-width:0!important;scroll-snap-type:x proximity;padding-bottom:14px!important}

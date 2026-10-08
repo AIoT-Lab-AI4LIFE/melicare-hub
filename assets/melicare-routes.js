@@ -55,7 +55,7 @@
     "module": "MELICDSS",
     "name": "MELICDSS",
     "icon": "cdss",
-    "href": "https://cdss.leira.com.vn",
+    "href": "https://cdss.leira.com.vn/login",
     "group": "care",
     "tone": "#418b88"
   },

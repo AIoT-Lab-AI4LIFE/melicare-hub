@@ -7,11 +7,17 @@ body#mcTypography.mc-or .effX span{font-size:12px!important;min-width:0!importan
 body#mcTypography.mc-or .efficiencyPanel .blockhead{flex-wrap:wrap!important;gap:12px!important}
 body#mcTypography.mc-or #duration{max-height:200px!important;overflow-y:auto!important;min-height:0!important}
 body#mcTypography.mc-or .duration{height:auto!important;min-height:0!important}
-body#mcTypography.mc-or :is(.caseLayout,.eqLayout){align-items:start!important;min-width:0!important}
-body#mcTypography.mc-or :is(.caseDetail,.eqDetail){height:auto!important;min-height:0!important;max-height:none!important;position:static!important;overflow:visible!important}
-body#mcTypography.mc-or :is(.caseListPane,.eqBoard){min-height:0!important;overflow:auto!important;box-sizing:border-box!important}
-body#mcTypography.mc-or .caseListPane .integratedBoard{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}
-body#mcTypography.mc-or .eqBoard .eqList{max-height:none!important;height:auto!important;overflow:visible!important}
+body#mcTypography.mc-or :is(.caseLayout,.eqLayout){align-items:stretch!important;min-width:0!important}
+body#mcTypography.mc-or :is(.caseDetail,.eqDetail){height:100%!important;min-height:0!important;max-height:none!important;position:static!important;overflow:hidden!important;align-self:stretch!important;display:flex!important;flex-direction:column!important;box-sizing:border-box!important}
+body#mcTypography.mc-or :is(.caseListPane,.eqBoard){min-height:0!important;max-height:none!important;height:100%!important;overflow:hidden!important;align-self:stretch!important;display:flex!important;flex-direction:column!important;box-sizing:border-box!important}
+body#mcTypography.mc-or .caseListPane .integratedBoard{flex:1 1 auto!important;height:100%!important;min-height:0!important;max-height:none!important;overflow:hidden!important;display:flex!important;flex-direction:column!important}
+body#mcTypography.mc-or .caseListPane :is(.boardDateHead,.weekMini,.boardFilterRow,.caseListHead){flex:0 0 auto!important}
+body#mcTypography.mc-or .caseListPane .caseList{flex:1 1 auto!important;min-height:0!important;max-height:none!important;overflow:hidden!important;display:flex!important;flex-direction:column!important}
+body#mcTypography.mc-or .caseListPane #caseRows{flex:1 1 auto!important;min-height:0!important;display:flex!important;flex-direction:column!important;overflow:auto!important}
+body#mcTypography.mc-or .caseListPane #caseRows .surgeryRow{flex:1 1 0!important;min-height:68px!important;align-content:center!important}
+body#mcTypography.mc-or .caseListPane #caseRows :is(.noCases,.boardEmpty){flex:1 1 auto!important;display:grid!important;place-items:center!important}
+body#mcTypography.mc-or .caseDetail .detailButtons{margin-top:auto!important}
+body#mcTypography.mc-or .eqBoard .eqList{flex:1 1 auto!important;max-height:none!important;height:auto!important;min-height:0!important;overflow:auto!important}
 body#mcTypography.mc-or #duration{display:block!important}
 body#mcTypography.mc-or #duration .drow{min-height:48px!important;flex-shrink:0!important}
 /* Overview pairs share the row height; content fills the cards naturally. */

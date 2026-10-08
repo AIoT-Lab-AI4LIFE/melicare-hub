@@ -580,7 +580,7 @@ body.meli-unified {
 @media(max-width:370px) { :root {--ui-font-title:25px;--ui-font-kpi:30px} }
 
 </style>
-<link href="assets/melicare-v2.css" rel="stylesheet"/><link href="assets/melicare-auth.css" rel="stylesheet"/><script defer="" src="assets/melicare-auth.js"></script><script src="assets/melicare-routes.js"></script>
+<link href="assets/melicare-v2.css" rel="stylesheet"/><link href="assets/melicare-auth.css" rel="stylesheet"/><script src="assets/melicare-routes.js"></script><script src="assets/meli-auth.js"></script><script defer="" src="assets/melicare-auth.js"></script>
 <link rel="stylesheet" href="assets/melicare-readability.css">
 <link href="assets/melicare-typography-v6.css" rel="stylesheet"/>
 <link rel="stylesheet" href="assets/melicare-request-fixes.css"/>
@@ -893,7 +893,7 @@ function showTask(id){
 }
 function validRoute(raw){try{if(!raw)return null;const u=new URL(raw,location.href);return ['http:','https:','file:'].includes(u.protocol)?u.href:null;}catch(_){return null;}}
 function showModule(id){
- const destination=MELICARE_CONFIG.moduleUrls[id];if(destination){window.location.assign(destination);return;}
+ const destination=MELICARE_CONFIG.moduleUrls[id];if(destination){if(window.MELI_AUTH?.openUrl){window.MELI_AUTH.openUrl(destination);return;}window.location.assign(destination);return;}
  const m=MODULES.find(m=>m.id===id);if(!m)return;setSidebar(false);const related=baseTasks().filter(t=>t.module===id).length,url=validRoute(MELICARE_CONFIG.moduleUrls[id]);
  $('#moduleDialogBody').innerHTML=`<div style="--module:${m.color};--mod-bg:${m.bg}"><div class="module-hero"><div class="module-icon">${toolIcon(m.id)}</div><div><div class="module-brand">${brand(id)}</div><small>${esc(m.name)}</small></div></div><p style="margin-bottom:17px">${esc(m.description)}</p>${m.features.map(f=>`<div class="module-feature">${icon('checkcircle')}${esc(f)}</div>`).join('')}<div class="detail-callout" style="margin-top:18px"><strong>${url?'Ứng dụng đã được cấu hình liên kết':'Bản xem trước ứng dụng'}</strong>${url?'Nút bên dưới mở địa chỉ ứng dụng đã được cấu hình trong bản HTML.':'Dashboard này chưa kết nối ứng dụng thật. Có thể gán địa chỉ triển khai của bệnh viện tại assets/melicare-routes.js.'}</div></div>`;
  $('#moduleDialogActions').innerHTML=`<button class="btn" data-close-dialog>Đóng</button>${related?`<button class="btn ${url?'':'primary'}" id="moduleRelatedButton" data-related="${id}">Xem ${related} công việc</button>`:''}${url?`<a class="btn primary" href="${esc(url)}" target="_blank" rel="noopener noreferrer">Mở ${esc(id)} ${icon('external')}</a>`:''}`;

@@ -3776,6 +3776,108 @@ body{
 <link rel="stylesheet" href="assets/melior-layout-final.css"/>
 <script defer src="assets/melior-layout-final.js"></script>
 <link rel="stylesheet" href="assets/melicare-final-upload-cardio.css"/>
+<style id="emergency-popup-fit">
+html body.mc-or #opsModal.eventMode{
+  width:min(560px,calc(100vw - 32px))!important;
+  height:auto!important;
+  max-height:calc(100dvh - 32px)!important;
+}
+html body.mc-or #opsModal.eventMode .opsModalHead{
+  padding:18px 20px 15px!important;
+}
+html body.mc-or #opsModal.eventMode .opsModalHead h3{
+  font-size:21px!important;
+  line-height:1.3!important;
+}
+html body.mc-or #opsModal.eventMode .opsModalHead p{
+  font-size:14px!important;
+  line-height:1.4!important;
+  margin-top:4px!important;
+}
+html body.mc-or #opsModal.eventMode #opsBody{
+  flex:0 0 auto!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:12px 20px 4px!important;
+  overflow:visible!important;
+}
+html body.mc-or #opsModal.eventMode .opsRow{
+  grid-template-columns:120px minmax(0,1fr)!important;
+  padding:10px 0!important;
+  gap:10px!important;
+}
+html body.mc-or #opsModal.eventMode .opsRow>span:first-child,
+html body.mc-or #opsModal.eventMode .opsRow strong{
+  font-size:15px!important;
+  line-height:1.4!important;
+}
+html body.mc-or #opsModal.eventMode .opsActions{
+  margin:8px 0 0!important;
+  padding:12px 20px 14px!important;
+}
+html body.mc-or #opsModal.eventMode .opsBtn{
+  font-size:14px!important;
+  padding:9px 16px!important;
+  min-width:88px!important;
+}
+</style>
+<style id="case-pane-equal-height">
+body#mcTypography.mc-or #casesPage .caseLayout{align-items:stretch!important}
+body#mcTypography.mc-or #casesPage .caseListPane,
+body#mcTypography.mc-or #casesPage .caseDetail{
+  align-self:stretch!important;
+  display:flex!important;
+  flex-direction:column!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+}
+body#mcTypography.mc-or #casesPage .caseListPane>.integratedBoard{
+  flex:1 1 auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:hidden!important;
+}
+body#mcTypography.mc-or #casesPage .caseListPane .boardDateHead,
+body#mcTypography.mc-or #casesPage .caseListPane .weekMini,
+body#mcTypography.mc-or #casesPage .caseListPane .boardFilterRow,
+body#mcTypography.mc-or #casesPage .caseListHead{
+  flex:0 0 auto!important;
+}
+body#mcTypography.mc-or #casesPage .caseListPane .caseList{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+body#mcTypography.mc-or #casesPage #caseRows{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:auto!important;
+}
+body#mcTypography.mc-or #casesPage #caseRows .surgeryRow{
+  flex:1 1 0!important;
+  min-height:68px!important;
+  align-content:center!important;
+}
+body#mcTypography.mc-or #casesPage #caseRows .noCases,
+body#mcTypography.mc-or #casesPage #caseRows .boardEmpty{
+  flex:1 1 auto!important;
+  display:grid!important;
+  place-items:center!important;
+}
+body#mcTypography.mc-or #casesPage .caseDetail{position:static!important;top:auto!important}
+body#mcTypography.mc-or #casesPage .caseDetail .detailButtons{margin-top:auto!important}
+</style>
 </head><body id="mcTypography" class="mc-v2 mc-or mc-layout-v3 mc-readable" data-mc-page="melior" data-module="MELI_OR">
 <div class="app"><aside aria-label="Điều hướng MELIOR" class="mc-or-header"><a aria-label="MELIOR" class="mc-or-brand suite-brand" href="MELI_OR.html" title="MELIOR — Điều phối phòng mổ"><span class="suite-brand-symbol"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><rect height="16" rx="3" width="18" x="3" y="5"></rect><path d="M7 3v4m10-4v4M3 10h18m-9 3v5m-2.5-2.5h5"></path></svg></span><span><span class="suite-word">MELI<em>OR</em></span><small>MELICARE · HEALTH INTELLIGENCE</small></span></a><div aria-label="Chức năng MELIOR" class="menu mc-or-local-nav" role="navigation"><button class="active" data-page="dashboard" type="button">Tổng quan</button><button data-page="rooms" type="button">Phòng mổ</button><button data-page="cases" type="button">Ca mổ</button><button data-page="equipment" type="button">Quản lý thiết bị</button><button data-page="duty" type="button">Lịch trực</button></div><div class="mc-or-controls"><a aria-label="Trang chủ" class="mc-account-button mc-icon-button" href="MELICARE.html"><svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-7h6v7"></path></svg></a><button class="mc-account-button" data-mc-account="" type="button"><svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg><span>Đăng nhập</span></button><div class="mc-switch" data-mc-switch=""><button aria-controls="mc-switch-panel" aria-expanded="false" aria-haspopup="true" aria-label="Chuyển ứng dụng MELICARE" class="mc-switch-button" type="button"><svg aria-hidden="true" class="mc-switch-grid" viewbox="0 0 24 24"><rect height="7" rx="2" width="7" x="3" y="3"></rect><rect height="7" rx="2" width="7" x="14" y="3"></rect><rect height="7" rx="2" width="7" x="3" y="14"></rect><rect height="7" rx="2" width="7" x="14" y="14"></rect></svg><span class="mc-switch-label">Ứng dụng</span><svg aria-hidden="true" class="mc-switch-chevron" viewbox="0 0 24 24"><path d="m7 10 5 5 5-5"></path></svg></button></div></div></aside>
 <div class="workspace"><div class="topbar mc-or-topbar"><b>Dashboard điều phối</b><span class="mc-or-original-meta">Chủ nhật, 28/09/2026 · <b>10:42</b>   🔔 3</span></div><main id="dashboardPage">
@@ -4271,4 +4373,15 @@ function openOps(title,body){document.querySelector('.opsPageModal').classList.r
   });
 })();
 </script>
-<script src="assets/melicare-or-duty.js"></script></body></html>
+<script src="assets/melicare-or-duty.js"></script>
+<script id="case-pane-equal-height-js">
+(()=>{const targets=['.caseListPane','#caseDetail','.caseList','#caseRows','.integratedBoard','.eqBoard','#eqDetail','.eqList'];
+function clear(){for(const sel of targets){const el=document.querySelector(sel);if(!el)continue;el.style.removeProperty('height');el.style.removeProperty('max-height');el.style.removeProperty('min-height');el.style.removeProperty('overflow');}}
+clear();
+const obs=new MutationObserver(()=>clear());
+targets.forEach(sel=>{const el=document.querySelector(sel);if(el)obs.observe(el,{attributes:true,attributeFilter:['style']});});
+document.querySelectorAll('[data-page]').forEach(btn=>btn.addEventListener('click',()=>requestAnimationFrame(clear)));
+window.addEventListener('resize',()=>requestAnimationFrame(clear),{passive:true});
+})();
+</script>
+</body></html>

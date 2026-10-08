@@ -164,11 +164,23 @@
   }).join('');
  }
  let dialog=null,dialogTrigger=null,previousOverflow='';
+ function fitDialog(){
+  const set=(el,key,value)=>{if(el)el.style.setProperty(key,value,'important');};
+  set(dialog,'height','fit-content');set(dialog,'max-height','calc(100dvh - 36px)');set(dialog,'min-height','0');
+  set(dialog,'overflow','hidden');set(dialog,'display','flex');set(dialog,'flex-direction','column');
+  const head=dialog.querySelector('.od-dialog-head'),bodyEl=dialog.querySelector('.od-dialog-body'),foot=dialog.querySelector('.od-dialog-footer');
+  set(head,'flex','0 0 auto');
+  set(bodyEl,'flex','0 1 auto');set(bodyEl,'height','auto');set(bodyEl,'min-height','0');set(bodyEl,'max-height','min(60dvh, 560px)');set(bodyEl,'overflow-y','auto');
+  set(foot,'flex','0 0 auto');set(foot,'height','auto');set(foot,'min-height','0');
+ }
  function showModal(title,body,actions){
   if(!dialog.open){dialogTrigger=document.activeElement;previousOverflow=document.body.style.overflow;}
   dialog.innerHTML=`<div class="od-dialog-head"><div><h2 id="odDialogTitle">${esc(title)}</h2><p id="odDialogDescription">MELIOR · Khoa mổ · Thông tin minh họa</p></div><button type="button" class="od-btn od-icon-button" data-od-close aria-label="Đóng cửa sổ">${icon('close')}</button></div><div class="od-dialog-body">${body}</div><div class="od-dialog-footer"><span>Dữ liệu mô phỏng · Chưa kết nối bệnh viện</span><div class="od-modal-actions">${actions}<button type="button" class="od-btn od-primary" data-od-close>Đóng</button></div></div>`;
   document.body.style.overflow='hidden';if(!dialog.open)dialog.showModal();
-  dialog.querySelector('.od-dialog-body').scrollTop=0;dialog.querySelector('[data-od-close]').focus({preventScroll:true});
+  fitDialog();
+  requestAnimationFrame(()=>{fitDialog();dialog.querySelector('.od-dialog-body').scrollTop=0;});
+  setTimeout(fitDialog,0);
+  dialog.querySelector('[data-od-close]').focus({preventScroll:true});
  }
  function doctorCases(id,key){
   const d=doctorById[id];if(!d||!inBounds(key))return;

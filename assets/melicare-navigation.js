@@ -27,7 +27,18 @@
    for(const app of apps.filter(x=>x.group===group&&x.id!==current)){
     const a=document.createElement('a');a.href=app.href;a.dataset.mcApp=app.id;a.className='mc-switch-link';
     a.innerHTML=`<span class="mc-switch-icon" style="--app-tone:${app.tone}">${svg(app.icon)}</span><span class="mc-switch-name">${app.name}</span>`;
-    if(app.href.startsWith('https:')){a.target='_blank';a.rel='noopener noreferrer';const ext=document.createElement('span');ext.className='mc-switch-external';ext.innerHTML=svg('external');a.append(ext);a.setAttribute('aria-label',app.name+' — mở trong thẻ mới');}
+    if(app.href.startsWith('https:')){
+     a.target='_blank';a.rel='noopener noreferrer';
+     const ext=document.createElement('span');ext.className='mc-switch-external';ext.innerHTML=svg('external');a.append(ext);
+     a.setAttribute('aria-label',app.name+' — mở trong thẻ mới');
+     if(app.id==='meliguide'||app.id==='melicdss'){
+      a.addEventListener('click',(e)=>{
+       if(!window.MELI_AUTH?.openUrl)return;
+       e.preventDefault();
+       window.MELI_AUTH.openUrl(app.href,{newTab:true});
+      });
+     }
+    }
     section.append(a);
    }panel.append(section);
   }

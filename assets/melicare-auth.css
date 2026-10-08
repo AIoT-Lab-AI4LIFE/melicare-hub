@@ -11,6 +11,16 @@ html body.suite-ui.mc-v2 #meliAuthBtnV69 .mc-account-label{white-space:nowrap!im
 @media(max-width:380px){.mc-home .mc-account-button>.mc-icon{display:none}.mc-home .header-inner{padding-left:14px;padding-right:14px}.mc-home .mc-account-button{padding:0 10px}.mc-login-form-card{padding:27px 20px}.mc-demo-buttons{grid-template-columns:1fr}.mc-login-brand em{font-size:27px}}
 
 .mc-login .mc-login-submit{font-size:18px;font-weight:800}
+.mc-role-picker{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.mc-role-choice{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:16px 18px;border:1px solid #dce8f0;border-radius:14px;background:#f8fcff;color:#335c75;cursor:pointer}
+.mc-role-choice:hover{border-color:#8fc6e3;background:#eef8fd;transform:translateY(-1px)}
+.mc-role-choice-icon{width:46px;height:46px;border-radius:13px;background:#e7f5fc;color:#128ac3;display:grid;place-items:center;flex:0 0 46px}
+.mc-role-choice-icon.is-doctor{background:#fff3d3;color:#b68b26}
+.mc-role-choice strong{display:block;font:750 17px/1.4 var(--mc-display)}
+.mc-role-choice small{display:block;margin-top:3px;font-size:14px;color:#7f96a6}
+.mc-role-back{margin-top:18px;width:100%;border:0;background:transparent;color:#6f8a9b;font:650 15px/1.5 var(--mc-body);cursor:pointer;padding:8px}
+.mc-role-back:hover{color:#2f6f8f}
+#mc-role-step>p strong{color:#24485e}
 
 @media(max-width:380px){
 .mc-home .header-inner{gap:6px!important;width:100%!important;padding-left:12px!important;padding-right:12px!important}
