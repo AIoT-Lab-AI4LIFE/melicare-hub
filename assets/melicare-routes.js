@@ -83,7 +83,7 @@
   login: 'MELICARE_Login.html',
   directory: 'DANH_SACH_TRANG.html',
   dashboards: Object.freeze({admin:'MELICARE_Dashboard_Admin.html', doctor:'MELICARE_Dashboard_Doctor.html'}),
-  clinical: Object.freeze({MELIMind:'MELIMind.html', MELIStroke:'MELIStroke.html', MELICardio:'MELICardio.html', MELIAlz:'MELIAlz.html', MELIDiabetes:'MELIDiabetes.html', MELIPostOp:'MELIPostOp.html'}),
+  clinical: Object.freeze({MELIMind:'MELIMind.html', MELIStroke:'https://stoke-predict.devt.vn/', MELICardio:'MELICardio.html', MELIAlz:'MELIAlz.html', MELIDiabetes:'MELIDiabetes.html', MELIPostOp:'MELIPostOp.html'}),
   apps: Object.freeze(apps),
   byId: Object.freeze(Object.fromEntries(apps.map(app => [app.id,app.href]))),
   modules: Object.freeze(Object.fromEntries(apps.map(app => [app.module,app.href])))
