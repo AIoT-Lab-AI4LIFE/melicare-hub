@@ -298,7 +298,7 @@
     }
 
     const loader = document.createElement('script');
-    loader.src = scriptUrl('meli-auth.js');
+    loader.src = scriptUrl('meli-auth.js?v=20261017');
     loader.onload = boot;
     loader.onerror = () => console.error('Failed to load meli-auth.js');
     (document.head || document.documentElement).appendChild(loader);
