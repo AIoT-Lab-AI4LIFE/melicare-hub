@@ -240,6 +240,14 @@
                 loginInput?.focus();
             });
 
+            // Set by MELI_AUTH.openUrl when an external app needs a session first; only token-handoff hosts are honoured.
+            const next = new URLSearchParams(location.search).get('next');
+            const handoff = next && auth.isTokenHandoffUrl(next) ? next : null;
+            if (handoff && user) {
+                auth.openUrl(handoff);
+                return;
+            }
+
             if (user?.role) {
                 dashboard(user);
                 return;
@@ -263,6 +271,10 @@
                 try {
                     await auth.login(identifier, password);
                     pass.value = '';
+                    if (handoff) {
+                        await auth.openUrl(handoff);
+                        return;
+                    }
                     showRoleStep(get());
                 } catch (err) {
                     error.textContent = err?.message || 'Đăng nhập thất bại. Vui lòng thử lại.';

@@ -19,7 +19,7 @@
     "module": "MELIOCR",
     "name": "MELIOCR",
     "icon": "ocr",
-    "href": "MELI_OCR.html",
+    "href": "https://meliocr.meliq.ai/login",
     "group": "ops",
     "tone": "#af801e"
   },
@@ -28,7 +28,7 @@
     "module": "MELIVoice",
     "name": "MELIVoice",
     "icon": "voice",
-    "href": "MELI_Voice.html",
+    "href": "https://melivoice.meliq.ai/",
     "group": "ops",
     "tone": "#8062ba"
   },

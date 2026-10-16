@@ -737,7 +737,7 @@ function showDialog(title,description,content,options={}){
 }
 function openTool(id,forceInfo=false){
   const destination=APP_LINKS[id];
-  if(destination&&!forceInfo){window.location.assign(destination);return;}
+  if(destination&&!forceInfo){window.MELI_AUTH.openUrl(destination);return;}
   const tool=TOOLS[id];if(!tool)return;
   const operational=tabs.some(t=>t.dataset.tab===id);
   let actions=operational?`<button type="button" data-view-preview="${id}">Xem giao diện ${icon('arrow')}</button>`:'<button type="button" data-close-dialog>Đóng</button>';

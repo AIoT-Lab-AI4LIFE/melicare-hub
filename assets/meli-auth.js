@@ -233,7 +233,13 @@
   return roles[0] || 'doctor';
  }
 
- const TOKEN_HANDOFF_HOSTS = new Set(['medibot.leira.com.vn', 'cdss.leira.com.vn']);
+ // Hosts that receive the access token as ?token=..., mapped to the path used when the link has none.
+ const TOKEN_HANDOFF_HOSTS = new Map([
+  ['medibot.leira.com.vn', '/login'],
+  ['cdss.leira.com.vn', '/login'],
+  ['meliocr.meliq.ai', '/login'],
+  ['melivoice.meliq.ai', '/'],
+ ]);
 
  function isTokenHandoffUrl(url) {
   try {
@@ -245,7 +251,7 @@
 
  function withAccessToken(url, token) {
   const target = new URL(url, location.href);
-  if (!target.pathname || target.pathname === '/') target.pathname = '/login';
+  if (!target.pathname || target.pathname === '/') target.pathname = TOKEN_HANDOFF_HOSTS.get(target.hostname) || '/login';
   if (token) target.searchParams.set('token', token);
   else target.searchParams.delete('token');
   return target.toString();
@@ -261,7 +267,9 @@
   if (isTokenHandoffUrl(href)) {
    const token = await getValidAccessToken();
    if (!token) {
-    location.assign((window.MELICARE_SITE && window.MELICARE_SITE.login) || 'MELICARE_Login.html');
+    const login = new URL((window.MELICARE_SITE && window.MELICARE_SITE.login) || 'MELICARE_Login.html', location.href);
+    login.searchParams.set('next', href);
+    location.assign(login.toString());
     return;
    }
    href = withAccessToken(href, token);
