@@ -1034,7 +1034,7 @@ function showTask(id){
  $('#completeTaskButton').disabled=completed.has(id);$('#completeTaskButton').innerHTML=icon('check')+(completed.has(id)?'Đã xử lý trong bản demo':'Đánh dấu đã xử lý');openDialog('taskDialog');
 }
 function showModule(id){
- const destination=MELICARE_CONFIG.moduleUrls[id];if(destination){if(window.MELI_AUTH?.openUrl){window.MELI_AUTH.openUrl(destination);return;}window.location.assign(destination);return;}
+ if(MELICARE_CONFIG.moduleUrls[id]){window.MELICARE_SITE.open(id);return;}
  const m=MODULES.find(m=>m.id===id);if(!m)return;
  closeDialog('taskDialog');closeDialog('patientDialog');
  const count=remainingTasks().filter(t=>t.module===id).length;

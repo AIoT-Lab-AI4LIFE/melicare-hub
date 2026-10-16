@@ -13,7 +13,7 @@
   pos:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/><path d="M3 12h4l2-4 3 8 2-4h7"/>',
   external:'<path d="M14 3h7v7m0-7L10 14M10 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5"/>'
  };
- const apps=window.MELICARE_SITE.apps;
+ const site=window.MELICARE_SITE,apps=site.apps;
  const svg=key=>`<svg viewBox="0 0 24 24" aria-hidden="true">${shapes[key]}</svg>`;
  function init(){
   const host=document.querySelector('[data-mc-switch]');if(!host)return;
@@ -25,19 +25,12 @@
    const section=document.createElement('div');section.className='mc-switch-group';
    const heading=document.createElement('p');heading.className='mc-switch-heading';heading.textContent=label;section.append(heading);
    for(const app of apps.filter(x=>x.group===group&&x.id!==current)){
-    const a=document.createElement('a');a.href=app.href;a.dataset.mcApp=app.id;a.className='mc-switch-link';
+    // Token handoff for sso apps is done by MELI_AUTH.bindTokenHandoffLinks (melicare-auth.js).
+    const a=document.createElement('a');site.applyLink(a,app.id);a.dataset.mcApp=app.id;a.className='mc-switch-link';
     a.innerHTML=`<span class="mc-switch-icon" style="--app-tone:${app.tone}">${svg(app.icon)}</span><span class="mc-switch-name">${app.name}</span>`;
-    if(app.href.startsWith('https:')){
-     a.target='_blank';a.rel='noopener noreferrer';
+    if(site.isExternal(app.href)){
      const ext=document.createElement('span');ext.className='mc-switch-external';ext.innerHTML=svg('external');a.append(ext);
      a.setAttribute('aria-label',app.name+' — mở trong thẻ mới');
-     if(app.id==='meliguide'||app.id==='melicdss'){
-      a.addEventListener('click',(e)=>{
-       if(!window.MELI_AUTH?.openUrl)return;
-       e.preventDefault();
-       window.MELI_AUTH.openUrl(app.href,{newTab:true});
-      });
-     }
     }
     section.append(a);
    }panel.append(section);

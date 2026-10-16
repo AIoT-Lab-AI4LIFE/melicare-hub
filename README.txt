@@ -8,10 +8,12 @@ Unified application switcher is available in:
 - MELIVoice
 
 Links:
-MELIOR -> MELI_OR.html
-MELIOCR -> MELI_OCR.html
-MELIVoice -> MELIVoice.html
-MELIGuide -> https://medibot.leira.com.vn/login
+All destinations (apps, MELIDx sub-tools, SSO token handoff) are defined once in
+assets/melicare-routes.js. Change a URL there; the homepage, dashboards, app switcher,
+MELIDx menus and DANH_SACH_TRANG.html follow automatically.
+- In HTML use <a data-mc-route="meliocr">; in scripts use MELICARE_SITE.open('meliocr').
+- sso:true appends ?token=<access token> when opening (assets/meli-auth.js).
+- https URLs open in a new tab, local pages in the same tab.
 
 Clinical concepts added:
 - MELIDiabetes
