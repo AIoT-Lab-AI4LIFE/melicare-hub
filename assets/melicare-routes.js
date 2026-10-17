@@ -11,7 +11,7 @@
  const routes = [
   {id:'melior',    module:'MELIOR',    name:'MELIOR',    icon:'or',    href:'MELI_OR.html',                       group:'ops',  tone:'#1689ba'},
   {id:'meliocr',   module:'MELIOCR',   name:'MELIOCR',   icon:'ocr',   href:'https://meliocr.meliq.ai/login',     group:'ops',  tone:'#af801e', sso:true},
-  {id:'melivoice', module:'MELIVoice', name:'MELIVoice', icon:'voice', href:'https://melivoice.meliq.ai/',        group:'ops',  tone:'#8062ba', sso:true},
+  {id:'melivoice', module:'MELIVoice', name:'MELIVoice', icon:'voice', href:'https://melivoice.meliq.ai/login',   group:'ops',  tone:'#8062ba', sso:true},
   {id:'meliguide', module:'MELIGuide', name:'MELIGuide', icon:'guide', href:'https://medibot.leira.com.vn/login', group:'ops',  tone:'#328b7b', sso:true},
   {id:'melivlm',   module:'MELIVLM',   name:'MELIVLM',   icon:'vlm',   href:'MELI_VLM.html',                      group:'care', tone:'#5377c1'},
   {id:'melicdss',  module:'MELICDSS',  name:'MELICDSS',  icon:'cdss',  href:'https://cdss.leira.com.vn/login',    group:'care', tone:'#418b88', sso:true},
