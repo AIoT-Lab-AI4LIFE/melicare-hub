@@ -16,10 +16,10 @@
   {id:'melivlm',   module:'MELIVLM',   name:'MELIVLM',   icon:'vlm',   href:'MELI_VLM.html',                      group:'care', tone:'#5377c1'},
   {id:'melicdss',  module:'MELICDSS',  name:'MELICDSS',  icon:'cdss',  href:'https://cdss.leira.com.vn/login',    group:'care', tone:'#418b88', sso:true},
   {id:'melidx',    module:'MELIDx',    name:'MELIDx',    icon:'dx',    href:'MELIDx.html',                        group:'care', tone:'#9a69b6'},
-  {id:'melipos',   module:'MELIPos',   name:'MELIPos',   icon:'pos',   href:'MELIPostOp.html',                    group:'care', tone:'#c26374'},
+  {id:'melipos',   module:'MELIPos',   name:'MELIPos',   icon:'pos',   href:'https://melipostop.meliq.ai/MELIPostOp.html', group:'care', tone:'#c26374', sso:true},
   {id:'melimind',     module:'MELIMind',     name:'MELI Mind',     href:'MELIMind.html',                   group:'dx'},
   {id:'melistroke',   module:'MELIStroke',   name:'MELI Stroke',   href:'https://stoke-predict.devt.vn/',  group:'dx'},
-  {id:'melicardio',   module:'MELICardio',   name:'MELI Cardio',   href:'MELICardio.html',                 group:'dx'},
+  {id:'melicardio',   module:'MELICardio',   name:'MELI Cardio',   href:'https://melipostop.meliq.ai/MELICardio.html', group:'dx', sso:true},
   {id:'melialz',      module:'MELIAlz',      name:'MELI Alz',      href:'MELIAlz.html',                    group:'dx'},
   {id:'melidiabetes', module:'MELIDiabetes', name:'MELI Diabetes', href:'MELIDiabetes.html',               group:'dx'}
  ].map(route => Object.freeze(route));
