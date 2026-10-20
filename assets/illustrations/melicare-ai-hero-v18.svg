@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="mc-ai-scene mc-h18" viewBox="0 0 640 410" role="img" aria-labelledby="mc-h18-title mc-h18-desc">
+<title id="mc-h18-title">AI kết nối vận hành và chăm sóc</title>
+<desc id="mc-h18-desc">Tri thức chuyên gia nuôi dưỡng AI ở trung tâm. Một luồng kết nối liên tục hợp nhất mạng phân bổ nguồn lực bên trái và nhịp chăm sóc hình trái tim bên phải, thể hiện AI hỗ trợ vận hành bệnh viện và khám chữa bệnh.</desc>
+<style>
+.mc-h18 text{font-family:"Nunito Sans",Arial,sans-serif}
+.mc-h18-stream{stroke-dasharray:20 330;animation:mcH18Stream 13s linear infinite}
+.mc-h18-stream-gold{animation-delay:-6.5s}
+.mc-h18-signal{stroke-dasharray:180;animation:mcH18Signal 8s ease-in-out infinite}
+.mc-h18-spark{animation:mcH18Spark 6s ease-in-out infinite;animation-delay:var(--delay,0s)}
+@keyframes mcH18Stream{to{stroke-dashoffset:-700}}
+@keyframes mcH18Signal{0%,100%{stroke-dashoffset:0;opacity:.9}40%{stroke-dashoffset:0;opacity:1}65%{stroke-dashoffset:-180;opacity:.2}66%{stroke-dashoffset:180;opacity:0}90%{stroke-dashoffset:0;opacity:1}}
+@keyframes mcH18Spark{0%,100%{opacity:.45}45%,65%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.mc-h18 *{animation:none!important}.mc-h18-packets{display:none}.mc-h18-signal{stroke-dashoffset:0}}
+@media print{.mc-h18 *{animation:none!important}.mc-h18-packets{display:none}.mc-h18-signal{stroke-dashoffset:0}}
+</style>
+<defs>
+ <linearGradient id="mc-h18-blue-field" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e6f5ff"/><stop offset="1" stop-color="#f4faff"/></linearGradient>
+ <linearGradient id="mc-h18-gold-field" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff9e9"/><stop offset="1" stop-color="#ffedbd"/></linearGradient>
+ <linearGradient id="mc-h18-core" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#31aafa"/><stop offset="1" stop-color="#078cf0"/></linearGradient>
+ <linearGradient id="mc-h18-loop" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#62b7e7"/><stop offset=".53" stop-color="#c6dfed"/><stop offset="1" stop-color="#e1ba61"/></linearGradient>
+ <path id="mc-h18-continuum" d="M320 210C276 164 245 135 188 135C127 135 90 172 90 216C90 262 128 291 182 291C248 291 276 246 320 210C364 174 392 129 458 129C512 129 550 158 550 204C550 248 513 285 452 285C395 285 364 256 320 210Z"/>
+ <path id="mc-h18-expertise" d="M320 123V166"/>
+</defs>
+
+<!-- Two complementary fields remain open, rather than becoming interface cards. -->
+<path d="M112 157C144 131 202 134 239 158C273 180 283 219 263 247C240 280 191 289 149 278C108 267 77 232 82 204C85 185 94 171 112 157Z" fill="url(#mc-h18-blue-field)"/>
+<path d="M400 155C434 128 485 132 519 158C554 184 562 220 538 248C513 279 468 287 426 275C383 263 362 233 368 204C371 184 383 168 400 155Z" fill="url(#mc-h18-gold-field)"/>
+
+<!-- One continuous circulation ties resource intelligence to patient care. -->
+<use href="#mc-h18-continuum" xlink:href="#mc-h18-continuum" fill="none" stroke="url(#mc-h18-loop)" stroke-width="1.5"/>
+<use href="#mc-h18-continuum" xlink:href="#mc-h18-continuum" fill="none" stroke="#078cf0" stroke-width="2.3" stroke-linecap="round" class="mc-h18-stream"/>
+<use href="#mc-h18-continuum" xlink:href="#mc-h18-continuum" fill="none" stroke="#e5b342" stroke-width="2.3" stroke-linecap="round" class="mc-h18-stream mc-h18-stream-gold"/>
+
+<!-- Expertise is a small, verified source, not another large scene. -->
+<text x="320" y="62" text-anchor="middle" fill="#8c763b" font-size="18" font-weight="650">Tri thức chuyên gia</text>
+<path d="M291 89Q305 85 320 94Q335 85 349 89V115Q334 112 320 121Q306 112 291 115Z" fill="#fffaf0" stroke="#c2a35c" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M320 94V121M298 98Q307 97 313 101M327 101Q334 97 342 98M298 105Q307 104 313 108M327 108Q334 104 342 105" fill="none" stroke="#d7bd7e" stroke-width="1.2" stroke-linecap="round"/>
+<circle cx="351" cy="112" r="8" fill="#edb944" stroke="#fff" stroke-width="2"/>
+<path d="m347.5 112 2.5 2.5 4.5-5.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<use href="#mc-h18-expertise" xlink:href="#mc-h18-expertise" fill="none" stroke="#e2c98e" stroke-width="1.3"/>
+
+<!-- Resource allocation: synchronized, deliberately aligned modules. -->
+<g fill="none" stroke="#aed7ef" stroke-width="1.2" stroke-linecap="round">
+ <path d="M132 190H222M132 212H222M132 234H222"/>
+ <path d="M152 183V241M184 183V241M216 183V241" stroke-opacity=".45"/>
+</g>
+<g fill="#8cc9ee">
+ <rect x="128" y="185" width="29" height="10" rx="5"/>
+ <rect x="170" y="185" width="48" height="10" rx="5" fill="#078cf0"/>
+ <rect x="128" y="207" width="48" height="10" rx="5" fill="#b3dcf4"/>
+ <rect x="189" y="207" width="29" height="10" rx="5" fill="#e9b84e"/>
+ <rect x="128" y="229" width="29" height="10" rx="5" fill="#078cf0"/>
+ <rect x="170" y="229" width="48" height="10" rx="5"/>
+</g>
+<path d="M235 190C255 190 265 199 282 207M235 234C257 234 263 222 282 213" fill="none" stroke="#95c9e9" stroke-width="1.3" stroke-linecap="round"/>
+
+<!-- A symmetric care contour with a single deliberate vital signal. -->
+<path d="M464 250C453 242 418 221 418 199C418 177 444 170 458 188L464 196L470 188C484 170 510 177 510 199C510 221 475 242 464 250Z" fill="#fffdf7" stroke="#729fb9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M401 213H438L446 205L454 223L465 192L476 226L484 213H526" fill="none" stroke="#e1ba61" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".25"/>
+<path d="M401 213H438L446 205L454 223L465 192L476 226L484 213H526" fill="none" stroke="#d9a73b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mc-h18-signal"/>
+<path d="M358 207C373 199 381 194 397 195M358 213C373 226 380 232 398 232" fill="none" stroke="#bdced4" stroke-width="1.3" stroke-linecap="round"/>
+
+<!-- A quiet, compact AI focal point. -->
+<circle cx="320" cy="210" r="48" fill="#f8fcff" stroke="#d7eaf6" stroke-width="1"/>
+<path d="M293 178 280 205 290 237 320 250 350 237 360 205 347 178 320 167Z" fill="none" stroke="#a9d4ee" stroke-width="1"/>
+<path d="M293 178 320 210 347 178M280 205 320 210 360 205M290 237 320 210 350 237" fill="none" stroke="#c2e0f2" stroke-width="1"/>
+<g stroke="#fff" stroke-width="1.5">
+ <circle cx="293" cy="178" r="3.7" fill="#078cf0" class="mc-h18-spark"/>
+ <circle cx="347" cy="178" r="3.7" fill="#edb944" class="mc-h18-spark" style="--delay:-2s"/>
+ <circle cx="360" cy="205" r="3" fill="#078cf0"/>
+ <circle cx="350" cy="237" r="3.7" fill="#078cf0" class="mc-h18-spark" style="--delay:-3s"/>
+ <circle cx="290" cy="237" r="3.7" fill="#edb944" class="mc-h18-spark" style="--delay:-1s"/>
+ <circle cx="280" cy="205" r="3" fill="#078cf0"/>
+</g>
+<circle cx="320" cy="210" r="28" fill="url(#mc-h18-core)" stroke="#fff" stroke-width="2"/>
+<text x="320" y="218" text-anchor="middle" fill="#fff" font-size="22" font-weight="600" style="font-family:Poppins,Arial,sans-serif">AI</text>
+
+<text x="177" y="328" text-anchor="middle" fill="#315a72" font-size="21" font-weight="700">Vận hành</text>
+<text x="464" y="328" text-anchor="middle" fill="#315a72" font-size="21" font-weight="700">Khám chữa bệnh</text>
+
+<g class="mc-h18-packets">
+ <circle r="2.6" fill="#d9aa42"><animateMotion dur="4s" repeatCount="indefinite"><mpath href="#mc-h18-expertise" xlink:href="#mc-h18-expertise"/></animateMotion></circle>
+</g>
+</svg>

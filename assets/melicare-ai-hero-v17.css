@@ -1,0 +1,8 @@
+/* Detailed native hospital illustration: control desk, clinical care and expert-supported AI. */
+body.mc-home .hero-art.mc-ai-hero{animation:none;transform:none;margin:0 -18px 0 -14px;width:auto;min-width:0}
+body.mc-home .mc-ai-scene{display:block;width:100%;height:auto;overflow:visible}
+/* The footer statement uses the requested brand typeface. */
+body#mcTypography.mc-home .ecosystem-footer .footer-copy>p:last-child,
+body#mcTypography.mc-home .ecosystem-footer .footer-copy>p:last-child>span{font-family:"Poppins","Segoe UI",Arial,sans-serif!important}
+@media(max-width:760px){body.mc-home .hero-art.mc-ai-hero{width:min(580px,100%);margin:8px auto 0}}
+@media(max-width:640px){body.mc-home .hero-art.mc-ai-hero{width:min(530px,calc(100% + 24px));margin:12px -12px 0}}

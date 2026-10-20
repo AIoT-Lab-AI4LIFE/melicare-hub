@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 /* MELICARE typography v6 — unified across the whole bundle.
    Body/UI: Nunito Sans. Display/product wordmarks: Plus Jakarta Sans. */
 :root{
@@ -138,7 +138,7 @@ body.meli-unified :is(.profile .role,.task-desc,.schedule-detail span,.source-no
 .mc-or :is(.od-subtitle,.od-section-head p:not(.od-eyebrow),.blockhead p,.head p,.summary .date,.stat small),
 .meli-unified :is(.muted,.panel-sub,.role,.task-desc,.schedule-detail span){color:var(--mc-muted)!important}
 .suite-ui :is(.panelHead h2,.sectionHead h2,.mediaHead h2,.groupTitle b,.attentionTop b,.reasonHeader b,.lifeCard b,.factorCard b,.riskText h3,.aiRiskText h3){color:#24475f!important}
-input::placeholder,textarea::placeholder{color:#7b8d9a!important;opacity:1!important}
+input::placeholder,textarea::placeholder{color:#475569!important;opacity:1!important}
 
 @media(max-width:1250px){body.mc-or .room{height:292px!important;min-height:292px!important}}
 @media(max-width:760px){

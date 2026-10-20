@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>MELIOCR</title><style>
+<html lang="vi" data-tool-id="meliocr"><head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>MELIOCR</title><style>
 :root{--p:#1769d2;--bg:#f5f7fb;--bd:#dfe5ee;--tx:#172033;--mu:#697589;--ok:#16845b}*{box-sizing:border-box}body{margin:0;font:16px Arial;background:var(--bg);color:var(--tx)}button,input{font:inherit}button{cursor:pointer}header{height:72px;background:#fff;border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 30px;position:sticky;top:0}.brand{font-size:20px;font-weight:800;margin-right:42px;cursor:pointer;user-select:none}.brand b{background:var(--p);color:#fff;padding:10px;border-radius:10px;margin-right:10px}.nav{height:72px;border:0;background:#fff;padding:0 20px;font-weight:700;color:#687387;border-bottom:3px solid transparent}.nav.active{color:var(--p);border-color:var(--p)}.user{margin-left:auto;color:var(--mu)}main{max-width:1500px;margin:auto;padding:28px 30px}.page{display:none}.page.active{display:block}h1{font-size:28px;margin:0}.sub{color:var(--mu)}.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.card{background:#fff;border:1px solid var(--bd);border-radius:14px}.hidden{display:none!important}.upload{max-width:560px;margin:18px auto 0;padding:26px 28px;text-align:center;border:1px solid var(--bd);box-shadow:0 8px 24px #192b4d0d}.upload h2{font-size:19px;margin:7px 0 5px}.upload p{font-size:18px;color:var(--mu);margin:0 0 15px}.btn{border:1px solid var(--bd);background:#fff;border-radius:9px;padding:10px 15px;font-weight:700}.primary{background:var(--p);border-color:var(--p);color:#fff}.ok{background:var(--ok);border-color:var(--ok);color:#fff}.sm{padding:7px 11px;font-size:18px}.worktop{display:flex;gap:9px;align-items:center;margin:15px 0}.space{flex:1}.pill{padding:7px 10px;background:#edf3fb;border-radius:99px;color:#526077;font-size:18px;font-weight:700}.workspace{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{overflow:hidden}.ph{height:58px;display:flex;align-items:center;padding:0 18px;border-bottom:1px solid var(--bd)}.tools{margin-left:auto}.doc{height:680px;background:#e8edf4;padding:28px;overflow:auto;display:flex;justify-content:center}.paper{width:92%;max-width:610px;min-height:790px;background:#fff;padding:42px;box-shadow:0 8px 24px #0002;transform-origin:top center}.paper h2{text-align:center}.center{text-align:center;font-size:17px}.line{height:9px;background:#e7e7e7;margin:11px 0;border-radius:3px}.w70{width:70%}.w50{width:50%}.mock{border:1px solid #bbb;margin-top:25px}.row{display:grid;grid-template-columns:2fr .5fr .8fr .8fr}.row div{font-size:16px;padding:9px;border-right:1px solid #bbb;border-bottom:1px solid #bbb}.ocr{height:680px;overflow:auto;padding:20px}.sect{text-transform:uppercase;font-size:18px;font-weight:800;color:#667286;margin:4px 0 14px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field label{display:block;font-size:17px;font-weight:700;color:#5f697b;margin-bottom:6px}.field input{width:100%;height:42px;border:1px solid #ccd5e2;border-radius:8px;padding:0 11px}.low{color:#b7791f;float:right}hr{border:0;border-top:1px solid var(--bd);margin:22px 0}.data{width:100%;border-collapse:collapse;font-size:18px}.data th{text-align:left;background:#f7f9fc;padding:10px 7px}.data td{border-bottom:1px solid #edf0f5;padding:5px}.data input{width:100%;padding:7px;border:1px solid transparent}.total{text-align:right;font-size:19px;font-weight:800;margin:18px}.actions{text-align:right}.filters{display:grid;grid-template-columns:1fr 180px 180px auto;gap:10px;padding:16px;margin-bottom:14px}.filters input,.filters select{height:43px;border:1px solid var(--bd);border-radius:8px;padding:0 12px;background:#fff}.history{overflow:hidden}.history table{width:100%;border-collapse:collapse}.history th{text-align:left;background:#f8fafc;padding:14px;color:#596579}.history td{padding:15px;border-top:1px solid #edf0f5}.history tr:hover{background:#f7fbff}.badge{padding:6px 9px;border-radius:99px;font-size:17px;font-weight:800}.done{background:#e8f7f0;color:#16845b}.review{background:#fff4dd;color:#996515}.modal-bg{position:fixed;inset:0;background:#17203366;display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}.modal{width:min(560px,100%);background:#fff;border-radius:16px;box-shadow:0 24px 70px #0003}.modal-head{display:flex;align-items:center;padding:20px 22px;border-bottom:1px solid var(--bd)}.modal-head h2{margin:0;font-size:20px}.modal-head button{margin-left:auto;border:0;background:transparent;font-size:24px;color:#687387}.modal-body{padding:22px}.dropzone{border:1.5px dashed #b9c9df;border-radius:12px;padding:28px;text-align:center;background:#f9fbfe}.dropzone p{margin:7px 0 16px;color:var(--mu);font-size:18px}.modal-foot{display:flex;justify-content:flex-end;gap:9px;padding:16px 22px;border-top:1px solid var(--bd)}@media(max-width:1000px){.workspace{grid-template-columns:1fr}.filters{grid-template-columns:1fr 1fr}}
 
 .invoice-alert{display:flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid #f0d49b;background:#fff9eb;border-radius:10px;color:#8a5b08;font-weight:700}
@@ -22,7 +23,7 @@
 .row-action{border:1px solid #cfd8e6;background:#fff;border-radius:8px;padding:7px 12px;font-size:18px;font-weight:700;color:#40506a;cursor:pointer}
 .row-action.process{border-color:#f0c66d;color:#9a6200;background:#fff9eb}
 .bulk-actions{display:flex;gap:8px}
-.bulk-btn{border:1px solid #d9e0ea;background:#eef1f5;color:#9aa3b2;border-radius:9px;padding:9px 14px;font-weight:750;cursor:not-allowed}
+.bulk-btn{border:1px solid #d9e0ea;background:#eef1f5;color:#475569;border-radius:9px;padding:9px 14px;font-weight:750;cursor:not-allowed}
 .bulk-btn.enabled{cursor:pointer}
 .bulk-btn.view.enabled{background:#eaf3ff;border-color:#b9d6ff;color:#1769d2}
 .bulk-btn.process.enabled{background:#fff2d5;border-color:#edc56d;color:#956000}
@@ -32,16 +33,16 @@
 body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:linear-gradient(180deg,#f8fbff,#f3f7fb);color:var(--tx)}
 header{height:68px;padding:0 32px;background:#fff;border-bottom:1px solid #dce7f2;box-shadow:0 2px 14px #123b6d0b;z-index:30}
 .brand{display:flex;align-items:center;font-size:19px;color:#0b2b50;margin-right:34px}.brand b{width:38px;height:38px;padding:0;margin-right:11px;display:grid;place-items:center;border-radius:11px;background:linear-gradient(145deg,#123b6d,#2274b9);box-shadow:0 5px 14px #123b6d2e;font-size:17px}
-.brand:after{content:"MELICARE";font-size:14px;letter-spacing:.12em;color:#8aa0b7;margin-left:9px;padding-left:9px;border-left:1px solid #d9e4ef}
-.nav{height:68px;background:transparent;border-bottom:2px solid transparent;color:#6a7e93;font-size:18px;padding:0 17px}.nav:hover{color:#123b6d;background:#f7fbff}.nav.active{color:#123b6d;border-color:#2f7ebc;background:linear-gradient(180deg,transparent,#f3f9ff)}
+.brand:after{content:"MELICARE";font-size:14px;letter-spacing:.12em;color:#475569;margin-left:9px;padding-left:9px;border-left:1px solid #d9e4ef}
+.nav{height:68px;background:transparent;border-bottom:2px solid transparent;color:#475569;font-size:18px;padding:0 17px}.nav:hover{color:#123b6d;background:#f7fbff}.nav.active{color:#123b6d;border-color:#2f7ebc;background:linear-gradient(180deg,transparent,#f3f9ff)}
 .user{font-size:18px;color:#5f7388;background:#f4f8fc;border:1px solid #e0e9f2;border-radius:999px;padding:8px 12px}
 main{max-width:1540px;padding:26px 34px 50px}.card{border-color:#dce7f2;border-radius:16px;box-shadow:0 8px 26px #183e640b}
-.upload{max-width:540px;margin:42px auto 0;padding:34px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 14px 38px #123b6d12}.upload h2{color:#153b64}.upload p{color:#7890a7}
+.upload{max-width:540px;margin:42px auto 0;padding:34px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 14px 38px #123b6d12}.upload h2{color:#153b64}.upload p{color:#475569}
 .btn{border-color:#d7e2ed;color:#3e5871;transition:.16s}.primary{background:linear-gradient(135deg,#123b6d,#1e609d);border-color:#123b6d;color:#fff;box-shadow:0 5px 14px #123b6d29}.ok{background:#147d6a;border-color:#147d6a}
 .pill{background:#edf5fc;color:#466681;border:1px solid #deebf5}.workspace{gap:18px}.ph{height:56px;background:linear-gradient(180deg,#fff,#fbfdff);padding:0 20px}.ph strong{font-size:18px;color:#274965}.doc{background:#eaf0f6}.ocr{padding:22px}
-.sect{font-size:16px;letter-spacing:.075em;color:#678198}.field label{color:#607a92}.field input{border-color:#d5e1ec;background:#fbfdff;color:#233f59}.data th{background:#f1f6fb;color:#58738d}.data td{border-color:#e7eef5}
+.sect{font-size:16px;letter-spacing:.075em;color:#475569}.field label{color:#475569}.field input{border-color:#d5e1ec;background:#fbfdff;color:#233f59}.data th{background:#f1f6fb;color:#58738d}.data td{border-color:#e7eef5}
 .modal-bg{background:#071f386b;backdrop-filter:blur(3px)}.modal{border:1px solid #dbe7f2;border-radius:18px;box-shadow:0 30px 90px #09264340}.dropzone{background:#f7fbff;border-color:#aac8e1}
-.title h1{font-size:25px;color:#173c61}.sub{font-size:18px;color:#7890a7;margin-top:5px}.filters{background:#fff;border-radius:14px;box-shadow:0 6px 22px #123b6d09}.filters input,.filters select{border-color:#d9e5ef;color:#49657e}
+.title h1{font-size:25px;color:#173c61}.sub{font-size:18px;color:#475569;margin-top:5px}.filters{background:#fff;border-radius:14px;box-shadow:0 6px 22px #123b6d09}.filters input,.filters select{border-color:#d9e5ef;color:#49657e}
 .history{box-shadow:0 8px 26px #123b6d0a}.history th{background:#edf4fa;color:#557089;font-size:17px}.history td{color:#38536b}.history tr.invoice-unprocessed{background:#fff9ed}.history tr.invoice-unprocessed td:first-child{border-left:3px solid #e2a53a}.history tr.invoice-processed td:first-child{border-left:3px solid #64ad98}
 .badge.done{background:#e8f6f1;color:#13735f}.badge.unprocessed{background:#fff1d5;color:#9a6508}.history-notification{padding:5px 9px 5px 5px;border-radius:12px;background:#fff8e9;border:1px solid #f2dfb5}.bell-button{width:39px;height:39px;border:0;background:transparent;box-shadow:none}.bell-glyph{font-size:21px}.bell-number{right:-2px;top:-4px;background:#d65d45}.notification-label{color:#7a653a;font-size:17px}
 .row-action{border-color:#cdddeb;color:#315d82;background:#f9fcff}.row-action.process{border-color:#edce8f;color:#95610b;background:#fff9ec}.bulk-btn.view.enabled{background:#e7f2fd;border-color:#aacbea;color:#155c97}.bulk-btn.process.enabled{background:#fff1d2;border-color:#ebca84;color:#8d5d0d}
@@ -85,7 +86,7 @@ main{max-width:1540px;padding:26px 34px 50px}.card{border-color:#dce7f2;border-r
 }
 
 .nav{display:flex!important;align-items:center!important;gap:9px!important}
-.navIcon{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:#f1f6fb;color:#607b96;transition:.18s ease}
+.navIcon{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:#f1f6fb;color:#475569;transition:.18s ease}
 .navIcon svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav.active .navIcon{background:linear-gradient(145deg,#123b6d,#2274b9);color:#fff;box-shadow:0 4px 10px rgba(18,59,109,.16)}
 .nav:hover .navIcon{background:#e8f2fb;color:#1e609d}
@@ -94,10 +95,10 @@ main{max-width:1540px;padding:26px 34px 50px}.card{border-color:#dce7f2;border-r
 /* More intuitive MELIOCR navigation icons */
 .navIcon{width:34px!important;height:34px!important;border-radius:10px!important;background:transparent!important;box-shadow:none!important}
 .navIcon svg{width:26px!important;height:26px!important;stroke-width:1.65!important}
-.nav .scanIcon{color:#617995!important}
+.nav .scanIcon{color:#475569!important}
 .nav.active .scanIcon{color:#155d9a!important}
 .nav .scanAccent{stroke:#2b8ac6;stroke-width:2.1}
-.nav .listIcon{color:#647a91!important}
+.nav .listIcon{color:#475569!important}
 .nav .checkAccent{stroke:#18a17a;stroke-width:2.2}
 .nav.active .navIcon{background:#edf6ff!important}
 .nav:hover .navIcon{background:#f0f6fb!important}
@@ -115,8 +116,8 @@ main{max-width:1540px;padding:26px 34px 50px}.card{border-color:#dce7f2;border-r
 .processAction{background:linear-gradient(135deg,#fff8e9,#fff0cf)!important;border-color:#edc97d!important;color:#8f5c08!important}.processAction .actionIco{background:#f4ca72;color:#754900}.processAction:hover{transform:translateY(-1px);background:linear-gradient(135deg,#fff1d3,#ffe5aa)!important;border-color:#dfa840!important;box-shadow:0 7px 17px rgba(193,129,14,.14)}.processAction:hover .actionIco{background:#b8790d;color:#fff}
 
 /* Model processing */
-.ocrProcessWrap{min-height:calc(100vh - 130px);display:grid;place-items:center;padding:42px 20px}.ocrProcessCard{width:min(650px,100%);padding:40px 44px;text-align:center;background:linear-gradient(180deg,#fff,#f9fcff)}.ocrAIOrb{width:78px;height:78px;margin:0 auto 19px;border-radius:24px;background:linear-gradient(145deg,#123b6d,#2274b9);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px rgba(31,111,235,.22);position:relative}.ocrAIOrb:before,.ocrAIOrb:after{content:"";position:absolute;inset:-9px;border:1px solid #bad7f1;border-radius:30px;animation:ocrPulse 1.6s ease-out infinite}.ocrAIOrb:after{inset:-18px;opacity:.4;animation-delay:.35s}.ocrAIOrb svg{width:42px;height:42px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}@keyframes ocrPulse{0%{transform:scale(.92);opacity:.9}100%{transform:scale(1.08);opacity:0}}.ocrProcessCard h2{font-size:23px;color:#173c61;margin:0 0 8px}.ocrProcessCard>p{color:#70839a;margin:0 0 25px}.ocrProgressTrack{height:10px;background:#e8eff6;border-radius:99px;overflow:hidden}.ocrProgressFill{height:100%;width:0;background:linear-gradient(90deg,#1f6feb,#4cc9f0);border-radius:99px;transition:width .3s ease}.ocrProgressMeta{display:flex;justify-content:space-between;margin-top:8px;font-size:15px;color:#7b8da0}.ocrProgressMeta b{color:#235d91}.ocrSteps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:29px}.ocrStep{padding:11px 6px;border-radius:10px;background:#f4f7fa;color:#8a98a8;font-size:14px}.ocrStep b{width:23px;height:23px;border-radius:50%;background:#e2e8ee;display:grid;place-items:center;margin:0 auto 6px}.ocrStep span{display:block}.ocrStep.active{background:#edf5ff;color:#225e95}.ocrStep.active b{background:#1f6feb;color:#fff}.ocrStep.done{background:#eaf7f3;color:#17735f}.ocrStep.done b{background:#16866f;color:#fff}
-.historyResultTop{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:15px;margin:4px 0 14px}.historyResultTop>div{text-align:center}.historyResultTop b{display:block;color:#173c61}.historyResultTop small{display:block;color:#7890a7;margin-top:3px}
+.ocrProcessWrap{min-height:calc(100vh - 130px);display:grid;place-items:center;padding:42px 20px}.ocrProcessCard{width:min(650px,100%);padding:40px 44px;text-align:center;background:linear-gradient(180deg,#fff,#f9fcff)}.ocrAIOrb{width:78px;height:78px;margin:0 auto 19px;border-radius:24px;background:linear-gradient(145deg,#123b6d,#2274b9);color:#fff;display:grid;place-items:center;box-shadow:0 12px 30px rgba(31,111,235,.22);position:relative}.ocrAIOrb:before,.ocrAIOrb:after{content:"";position:absolute;inset:-9px;border:1px solid #bad7f1;border-radius:30px;animation:ocrPulse 1.6s ease-out infinite}.ocrAIOrb:after{inset:-18px;opacity:.4;animation-delay:.35s}.ocrAIOrb svg{width:42px;height:42px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}@keyframes ocrPulse{0%{transform:scale(.92);opacity:.9}100%{transform:scale(1.08);opacity:0}}.ocrProcessCard h2{font-size:23px;color:#173c61;margin:0 0 8px}.ocrProcessCard>p{color:#475569;margin:0 0 25px}.ocrProgressTrack{height:10px;background:#e8eff6;border-radius:99px;overflow:hidden}.ocrProgressFill{height:100%;width:0;background:linear-gradient(90deg,#1f6feb,#4cc9f0);border-radius:99px;transition:width .3s ease}.ocrProgressMeta{display:flex;justify-content:space-between;margin-top:8px;font-size:15px;color:#475569}.ocrProgressMeta b{color:#235d91}.ocrSteps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:29px}.ocrStep{padding:11px 6px;border-radius:10px;background:#f4f7fa;color:#475569;font-size:14px}.ocrStep b{width:23px;height:23px;border-radius:50%;background:#e2e8ee;display:grid;place-items:center;margin:0 auto 6px}.ocrStep span{display:block}.ocrStep.active{background:#edf5ff;color:#225e95}.ocrStep.active b{background:#1f6feb;color:#fff}.ocrStep.done{background:#eaf7f3;color:#17735f}.ocrStep.done b{background:#16866f;color:#fff}
+.historyResultTop{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:15px;margin:4px 0 14px}.historyResultTop>div{text-align:center}.historyResultTop b{display:block;color:#173c61}.historyResultTop small{display:block;color:#475569;margin-top:3px}
 .historyResultMode #upload{display:none!important}.historyResultMode #historyResultTop{display:grid!important}.historyResultMode #work{display:block!important}
 .historyResultMode .worktop{display:none!important}
 </style>
@@ -131,13 +132,13 @@ main{max-width:1540px;padding:26px 34px 50px}.card{border-color:#dce7f2;border-r
   color:#315d77;display:flex;align-items:center;gap:7px;font-size:15px;font-weight:850;cursor:pointer
 }
 .meliAppSwitchBtn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.meliAppSwitchBtn .chev{font-size:16px;color:#7890a0}
+.meliAppSwitchBtn .chev{font-size:16px;color:#475569}
 .meliAppSwitchMenu{
   position:absolute;right:0;top:50px;width:240px;padding:7px;background:#fff;border:1px solid #dbe6ee;
   border-radius:13px;box-shadow:0 18px 45px rgba(20,55,85,.16);display:none;z-index:9999
 }
 .meliAppSwitcher.open .meliAppSwitchMenu{display:block}
-.meliAppSwitchMenu .switchTitle{padding:6px 8px 8px;color:#8a9baa;font-size:13px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}
+.meliAppSwitchMenu .switchTitle{padding:6px 8px 8px;color:#475569;font-size:13px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}
 .meliAppSwitchMenu a{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:9px;text-decoration:none;color:#526e80;font-size:15px;font-weight:800}
 .meliAppSwitchMenu a:hover{background:#f2f7fa;color:#214f6c}.meliAppSwitchMenu a.current{background:#eaf3f9;color:#17486d}
 .meliAppSwitchMenu a>span:first-child{width:28px;height:28px;border-radius:8px;background:#eaf1f6;display:grid;place-items:center}
@@ -278,7 +279,7 @@ header .meliSharedHeader>.meliAppSwitcher{
 }
 #meliAppNavChevronV62{
   margin-left:2px;
-  color:#8193a1;
+  color:#475569;
   transition:transform .18s ease;
 }
 #meliAppNavV62.open #meliAppNavChevronV62{transform:rotate(180deg)}
@@ -301,7 +302,7 @@ header .meliSharedHeader>.meliAppSwitcher{
 
 .meliAppNavTitleV62{
   padding:7px 9px 6px;
-  color:#8a9baa;
+  color:#475569;
   font-size:13px;
   font-weight:900;
   letter-spacing:.09em;
@@ -334,7 +335,7 @@ header .meliSharedHeader>.meliAppSwitcher{
 }
 .meliAppExternalV62{
   margin-left:auto;
-  color:#96a6b3;
+  color:#475569;
   font-size:15px;
 }
 @media(max-width:760px){
@@ -462,7 +463,7 @@ header .meliSharedHeader>.meliAppSwitcher{
 }
 .meliLoginHeadV69 p{
   margin:5px 0 0;
-  color:#7b8ea0;
+  color:#475569;
   font-size:15px;
 }
 .meliLoginCloseV69{
@@ -534,7 +535,7 @@ header .meliSharedHeader>.meliAppSwitcher{
 }
 .meliUserPopoverV69.open{display:block}
 .meliUserPopoverV69 b{display:block;font-size:15px;color:#294e67}
-.meliUserPopoverV69 span{display:block;margin-top:3px;font-size:13px;color:#7d8f9d}
+.meliUserPopoverV69 span{display:block;margin-top:3px;font-size:13px;color:#475569}
 .meliLogoutBtnV69{
   width:100%;
   margin-top:9px;
@@ -679,7 +680,7 @@ header .meliSharedHeader>.meliAppSwitcher{
     right:62px!important;
   }
 }
-</style><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="assets/melicare-base.css" rel="stylesheet"/><meta content="#f5c54b" name="theme-color"/><style>.suite-demo-note{max-width:900px;margin:27px auto 0;padding:0 8px;font:13px/1.65 var(--suite-body);color:#6b8190;text-align:center}.rightPanel .suite-demo-note{margin:18px 0;padding:0 18px 22px}.trendChart text{font-family:var(--suite-body)!important;font-size:16px!important}</style><link href="assets/melicare-components.css" rel="stylesheet"/><link href="assets/melicare-v2.css" rel="stylesheet"/><link href="assets/melicare-auth.css" rel="stylesheet"/><script defer="" src="assets/melicare-auth.js?v=20261017"></script><script defer="" src="assets/melicare-uploads.js"></script><link href="assets/melicare-layout-v3.css" rel="stylesheet"/><script defer="" src="assets/melicare-navigation.js?v=20261017"></script><script src="assets/melicare-routes.js?v=20261017"></script>
+</style><link href="assets/melicare-base.css" rel="stylesheet"/><meta content="#f5c54b" name="theme-color"/><style>.suite-demo-note{max-width:900px;margin:27px auto 0;padding:0 8px;font:13px/1.65 var(--suite-body);color:#475569;text-align:center}.rightPanel .suite-demo-note{margin:18px 0;padding:0 18px 22px}.trendChart text{font-family:var(--suite-body)!important;font-size:16px!important}</style><link href="assets/melicare-components.css" rel="stylesheet"/><link href="assets/melicare-v2.css" rel="stylesheet"/><link href="assets/melicare-auth.css" rel="stylesheet"/><script defer="" src="assets/melicare-auth.js?v=20261020"></script><script defer="" src="assets/melicare-uploads.js"></script><link href="assets/melicare-layout-v3.css" rel="stylesheet"/><script src="assets/melicare-routes.js?v=20261020"></script><script src="assets/meli-auth.js?v=20261020"></script><script src="assets/melicare-app-auth.js?v=20261020" defer></script>
 <link rel="stylesheet" href="assets/melicare-readability.css">
 <link rel="stylesheet" href="assets/melicare-polish-v4.css">
 <link href="assets/melicare-typography-v6.css" rel="stylesheet"/>
@@ -694,23 +695,22 @@ header .meliSharedHeader>.meliAppSwitcher{
 <link rel="apple-touch-icon" href="assets/icons/icon-180.png" sizes="180x180"/>
 <script defer src="assets/melicare-scroll-repair.js"></script>
 <link rel="stylesheet" href="assets/melicare-final-upload-cardio.css"/>
-</head><body id="mcTypography" class="suite-ui suite-ocr meli-refined mc-v2 mc-layout-v3 mc-readable" data-mc-page="meliocr" data-module="MELI_OCR" style=";--suite-accent:#a0781a;--suite-tint:#fff5d9;--suite-edge:#efdfb0"><header class="suite-header"><div class="suite-bar"><a aria-label="MELIOCR" class="suite-brand" href="MELI_OCR.html"><span class="suite-brand-symbol"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><path d="M4 7V4h3m10 0h3v3M4 17v3h3m10 0h3v-3"></path><path d="M8 8h8M8 12h8M8 16h4"></path><circle cx="17" cy="16" r="3"></circle><path d="m19 18 2 2"></path></svg></span><span><span class="suite-word">MELI<em>OCR</em></span><small>MELICARE · HEALTH INTELLIGENCE</small></span></a><nav aria-label="Chức năng OCR" class="suite-local-nav"><button class="nav active" onclick="page('read',this)">
+<link rel="stylesheet" href="./assets/melicare-fresh-palette.css"><link rel="stylesheet" href="assets/melicare-branding.css"/>
+<script src="assets/melicare-branding.js"></script>
+<link rel="stylesheet" href="assets/melicare-theme-v40.css">
+<link rel="stylesheet" href="assets/melicare-standalone-v42.css">
+</head><body id="mcTypography" class="suite-ui suite-ocr meli-refined mc-v2 mc-layout-v3 mc-readable tool-locked" data-mc-page="meliocr" data-module="MELI_OCR" style=";--suite-accent:#a0781a;--suite-tint:#fff5d9;--suite-edge:#efdfb0"><header class="suite-header"><div class="suite-bar"><a aria-label="MELIOCR" class="suite-brand" href="MELI_OCR.html"><span class="suite-brand-symbol"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><path d="M4 7V4h3m10 0h3v3M4 17v3h3m10 0h3v-3"></path><path d="M8 8h8M8 12h8M8 16h4"></path><circle cx="17" cy="16" r="3"></circle><path d="m19 18 2 2"></path></svg></span><span><span class="suite-word mc-product-name" data-mc-product="meliocr"><span class="meli-prefix mc-product-prefix">MELI</span><span class="tool-suffix mc-product-suffix">OCR</span></span></span></a><nav aria-label="Chức năng OCR" class="suite-local-nav"><button class="nav active" onclick="page('read',this)">
 <span class="navIcon"><svg viewbox="0 0 24 24"><path d="M4 7V4h3M17 4h3v3M4 17v3h3M20 17v3h-3"></path><path d="M8 8h8M8 12h8M8 16h5"></path><circle cx="17" cy="16" r="3"></circle><path d="m19 18 2 2"></path></svg></span>
 <span>Đọc hóa đơn</span>
 </button><button class="nav" onclick="page('history',this)">
 <span class="navIcon"><svg viewbox="0 0 24 24"><rect height="18" rx="3" width="14" x="5" y="3"></rect><path d="M8 8h8M8 12h8M8 16h5"></path><path d="m15 17 2 2 3-4"></path></svg></span>
 <span>Danh sách hóa đơn</span>
-</button></nav><div id="meliTopControlsV70"><a aria-label="Về MELICARE" href="MELICARE.html" id="meliHomeV63" title="Về MELICARE">
-<svg viewbox="0 0 24 24">
-<path d="M3 10.8 12 3l9 7.8"></path>
-<path d="M5.5 9.5V21h13V9.5"></path>
-</svg>
-</a><div id="meliAuthV69">
-<button aria-label="Đăng nhập MELICARE" data-mc-account="" id="meliAuthBtnV69" type="button">
+</button></nav><div id="meliTopControlsV70"><div id="meliAuthV69">
+<button aria-label="Tài khoản" data-mc-account="" id="meliAuthBtnV69" type="button">
 <svg viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>
-<span class="loginTextV69">Login</span>
+<span class="loginTextV69">Tài khoản</span>
 </button>
-</div><div class="mc-switch" data-mc-switch=""><button aria-controls="mc-switch-panel" aria-expanded="false" aria-haspopup="true" aria-label="Chuyển ứng dụng MELICARE" class="mc-switch-button" type="button"><svg aria-hidden="true" class="mc-switch-grid" viewbox="0 0 24 24"><rect height="7" rx="2" width="7" x="3" y="3"></rect><rect height="7" rx="2" width="7" x="14" y="3"></rect><rect height="7" rx="2" width="7" x="3" y="14"></rect><rect height="7" rx="2" width="7" x="14" y="14"></rect></svg><span class="mc-switch-label">Ứng dụng</span><svg aria-hidden="true" class="mc-switch-chevron" viewbox="0 0 24 24"><path d="m7 10 5 5 5-5"></path></svg></button></div></div></div></header><main>
+</div></div></div></header><main>
 <section class="page active" id="read"><div class="card upload" id="upload"><div class="mc-upload-zone" data-mc-drop="fileInput"><span aria-hidden="true" class="mc-upload-symbol"><svg aria-hidden="true" viewBox="0 0 100 100" fill="none"><rect x="21" y="12" width="57" height="76" rx="12" fill="white" stroke="#b9dfee" stroke-width="2"/><path d="M36 32h27M36 42h19M36 55h9m9 0h9M36 65h9m9 0h9" stroke="#7cabbf" stroke-width="3" stroke-linecap="round"/><rect x="62" y="63" width="28" height="28" rx="9" fill="#f5c54b"/><path d="M76 82V71m-4 4 4-4 4 4" stroke="#23485e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b class="mc-upload-title">Kéo thả hóa đơn vào đây</b><span class="mc-upload-hint">Có thể chọn nhiều tệp trong một lần</span><button class="mc-invoice-picker" id="mc-invoice-picker" onclick="openUploadModal()" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 16V3m-4 4 4-4 4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg><span>Chọn hóa đơn</span></button><input accept=".pdf,image/*" aria-label="Chọn tệp hóa đơn" hidden="" id="fileInput" multiple="" tabindex="-1" type="file"/><span class="mc-upload-formats"><span>PDF</span><span>JPG</span><span>PNG</span></span></div><div class="mc-upload-steps"><span><b>1</b>Tải tài liệu</span><i>→</i><span><b>2</b>Trích xuất</span><i>→</i><span><b>3</b>Kiểm tra</span></div></div>
 <div class="historyResultTop hidden" id="historyResultTop">
 <button class="btn" data-ui-icon="back" onclick="backToInvoiceHistory()" type="button">Danh sách hóa đơn</button>

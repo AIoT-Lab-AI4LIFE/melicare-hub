@@ -30,3 +30,5 @@ body#mcTypography.mc-or #dashboardPage .efficiencyPanel .effInteractive{flex:1 1
 body#mcTypography.mc-or #dashboardPage .mix .mixbody{flex:1 1 auto!important;height:auto!important;min-height:240px!important;display:grid!important;align-items:center!important;gap:18px!important}
 body#mcTypography.mc-or #dashboardPage .mix .mixrow{min-height:38px!important;align-items:center!important}
 @media(max-width:1100px){body#mcTypography.mc-or #dashboardPage :is(.events,.mix){height:auto!important}}
+
+body#mcTypography.mc-or #opsModal.eventMode{width:min(680px,calc(100vw - 32px))!important;min-height:0!important}

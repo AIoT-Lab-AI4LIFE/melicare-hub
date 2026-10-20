@@ -1,0 +1,34 @@
+/* Keep the primary application entry visible while the product details scroll. */
+#product-dialog[open]{display:flex;flex-direction:column;max-height:calc(100dvh - 32px);overflow:hidden}
+#product-dialog .dialog-head{flex:0 0 auto;padding-bottom:19px}
+#product-dialog .dialog-body{min-height:0;flex:1 1 auto;overflow:auto;padding-bottom:22px;overscroll-behavior:contain}
+#product-dialog>.product-dialog-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:10px;flex:0 0 auto;margin:0;padding:16px 30px 20px;border-top:1px solid var(--tool-line);background:var(--tool-soft)}
+#product-dialog .product-launch{display:flex!important;align-items:center;gap:9px;min-height:44px;width:100%;padding:9px 12px;border:1px solid var(--tool-action);border-radius:10px;color:#fff!important;background:var(--tool-action);text-decoration:none;box-shadow:0 6px 18px var(--tool-shadow);transition:background .16s,box-shadow .16s,transform .16s}
+#product-dialog .product-launch:hover{background:var(--tool-hover);border-color:var(--tool-hover);box-shadow:0 9px 22px var(--tool-shadow);transform:translateY(-1px)}
+#product-dialog .product-launch:active{transform:translateY(0)}
+#product-dialog .product-launch:focus-visible{outline:3px solid var(--tool-action);outline-offset:4px}
+#product-dialog .launch-symbol{display:grid;place-items:center;flex:0 0 27px;width:27px;height:27px;border:1px solid #ffffff26;background:#ffffff12;border-radius:7px}
+#product-dialog .launch-symbol svg{height:17px;width:17px;stroke-width:1.8}
+#product-dialog .launch-copy{display:block;flex:1;min-width:0}
+#product-dialog .launch-copy strong{display:block;color:#fff;font-size:14px;line-height:1.4;font-weight:800}
+#product-dialog .launch-copy small{display:none}
+#product-dialog .launch-arrow{height:17px;width:17px;flex:0 0 17px;color:#fff;transition:transform .16s}
+#product-dialog .product-launch:hover .launch-arrow{transform:translateX(3px)}
+#product-dialog>.product-dialog-actions>#product-contact{width:100%;min-height:44px;border:1px solid var(--tool-line);border-radius:11px;color:var(--tool-action);background:#fff;box-shadow:none;font-size:14px;padding:9px 12px;justify-content:center}
+#product-dialog>.product-dialog-actions>#product-contact:hover{background:var(--tool-soft-hover);border-color:var(--tool-accent)}
+@media(max-width:600px){#product-dialog>.product-dialog-actions{grid-template-columns:1fr;padding:14px 21px 17px;gap:8px}#product-dialog .product-launch{min-height:44px;padding:8px 12px;gap:9px}}
+@media(prefers-reduced-motion:reduce){#product-dialog .product-launch,#product-dialog .launch-arrow{transition:none}}
+
+/* The product dialog inherits the selected tool's shared palette. */
+#product-dialog{border-color:var(--tool-line);border-top:4px solid var(--tool-accent);box-shadow:0 28px 90px var(--tool-shadow)}
+#product-dialog .dialog-head{background:linear-gradient(135deg,var(--tool-soft),#fff 85%);border-color:var(--tool-line)}
+#product-dialog .product-dialog-list .icon{color:var(--tool-action)}
+#product-dialog .product-dialog-note{background:var(--tool-soft);border-left:3px solid var(--tool-accent);color:#475569}
+#product-dialog .close-dialog{flex:0 0 36px;width:36px;height:36px;min-width:36px;background:var(--tool-action);border-color:var(--tool-action);box-shadow:0 4px 13px var(--tool-shadow)}
+#product-dialog .close-dialog:hover{background:var(--tool-hover);border-color:var(--tool-hover)}
+#product-dialog .close-dialog:focus-visible,#product-dialog #product-contact:focus-visible{outline-color:var(--tool-action)}
+html body#mcTypography.melicare-home-v41 #product-contact .mc-product-name[data-mc-product]>.mc-product-prefix{color:#123a58!important}
+html body#mcTypography.melicare-home-v41 #product-contact .mc-product-name[data-mc-product]>.mc-product-suffix{color:var(--tool-accent)!important}
+
+#product-dialog .close-dialog>.icon{width:18px;height:18px}
+@media(max-width:600px){#product-dialog .close-dialog{flex-basis:40px;width:40px;height:40px;min-width:40px}}

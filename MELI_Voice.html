@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 
-<html lang="vi"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>MELI Voice</title>
+<html lang="vi" data-tool-id="melivoice"><head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>MELI Voice</title>
 <style>
-:root{--n:#102a56;--b:#1f6feb;--bg:#f5f8fc;--tx:#142b49;--mu:#6c7e95;--ln:#dfe8f1}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px Inter,Segoe UI,Arial}button,input,textarea{font:inherit}.hidden{display:none!important}header{height:72px;background:#fff;border-bottom:1px solid var(--ln);display:flex;align-items:center;padding:0 30px}.brand{font-size:20px;font-weight:850;margin-right:40px}.brand b{background:linear-gradient(135deg,var(--n),var(--b));color:#fff;padding:11px;border-radius:12px;margin-right:10px}.brand span{color:var(--b)}.nav{height:72px;border:0;background:transparent;padding:0 20px;font-weight:750;color:#667a91;border-bottom:3px solid transparent}.nav.active{color:var(--n);border-color:#2f7ebc}.user{margin-left:auto;color:#64768b}main{max-width:1480px;margin:auto;padding:28px}.page{display:none}.page.active{display:block}.hero h1{margin:0;font-size:26px}.hero p{color:var(--mu);margin:6px 0 20px}.card{background:#fff;border:1px solid var(--ln);border-radius:16px;box-shadow:0 8px 28px #122a560b}.btn{border:1px solid #d4e0eb;background:#fff;border-radius:9px;padding:9px 13px;font-weight:750;color:#405a73}.primary{background:linear-gradient(135deg,var(--n),#1d609d);color:#fff;border-color:var(--n)}.capture{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.record{min-height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center}.mic{width:92px;height:92px;border-radius:50%;border:8px solid #e8f2fc;background:linear-gradient(135deg,var(--n),var(--b));color:#fff;font-size:38px}.mic.rec{background:#d94e59;box-shadow:0 0 0 12px #fbeaec}.record h2{margin:15px 0 3px}.record p,.upload p{color:var(--mu)}.timer{font-size:28px;font-weight:850;margin:12px}.upload{padding:23px}.upload h2{margin:0}.drop{margin-top:16px;padding:32px;border:1.5px dashed #b7cee3;background:#f8fbff;border-radius:14px;text-align:center}.drop strong{display:block;font-size:16px;margin:8px}.selected{margin-top:12px;padding:10px;background:#f0f6fb;border-radius:9px}.processing{margin-top:18px;padding:15px 18px}.workspace{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;margin-top:18px}.head{height:56px;border-bottom:1px solid var(--ln);padding:0 18px;display:flex;align-items:center}.head span{margin-left:auto;background:#fff1d8;color:#94610b;padding:6px 9px;border-radius:99px;font-weight:750}.body{height:610px;overflow:auto;padding:20px}.audio{background:#f2f7fb;border-radius:12px;padding:13px;display:flex;gap:10px;align-items:center}.wave{height:32px;flex:1;background:repeating-linear-gradient(90deg,#91b5d3 0 2px,transparent 2px 6px)}.transcript{font-size:18px;line-height:1.75}.time{color:#2380b9;font-size:16px;font-weight:800}.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.section{font-size:16px;text-transform:uppercase;color:#71859b;font-weight:850;margin:4px 0 12px}.field label{display:block;color:#5b7087;font-size:16px;font-weight:800;margin-bottom:6px}.field input,.field textarea{width:100%;border:1px solid #d5e1ec;border-radius:9px;padding:10px;background:#fbfdff}.field textarea{min-height:75px}.full{grid-column:1/-1}.divider{height:1px;background:#e5edf4;margin:19px 0}.save{text-align:right;margin-top:18px}.tools{display:flex;gap:10px;margin-bottom:14px}.tools input{flex:1;padding:10px;border:1px solid var(--ln);border-radius:9px}.table{overflow:hidden}.table table{width:100%;border-collapse:collapse}.table th{text-align:left;background:#eef4fa;padding:13px}.table td{padding:14px;border-top:1px solid #e8eef4}.badge{background:#e8f6f1;color:#14745f;padding:6px 9px;border-radius:99px}@media(max-width:900px){.capture,.workspace,.grid{grid-template-columns:1fr}.body{height:auto}}
+:root{--n:#102a56;--b:#1f6feb;--bg:#f5f8fc;--tx:#142b49;--mu:#6c7e95;--ln:#dfe8f1}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px Inter,Segoe UI,Arial}button,input,textarea{font:inherit}.hidden{display:none!important}header{height:72px;background:#fff;border-bottom:1px solid var(--ln);display:flex;align-items:center;padding:0 30px}.brand{font-size:20px;font-weight:850;margin-right:40px}.brand b{background:linear-gradient(135deg,var(--n),var(--b));color:#fff;padding:11px;border-radius:12px;margin-right:10px}.brand span{color:var(--b)}.nav{height:72px;border:0;background:transparent;padding:0 20px;font-weight:750;color:#475569;border-bottom:3px solid transparent}.nav.active{color:var(--n);border-color:#2f7ebc}.user{margin-left:auto;color:#64768b}main{max-width:1480px;margin:auto;padding:28px}.page{display:none}.page.active{display:block}.hero h1{margin:0;font-size:26px}.hero p{color:var(--mu);margin:6px 0 20px}.card{background:#fff;border:1px solid var(--ln);border-radius:16px;box-shadow:0 8px 28px #122a560b}.btn{border:1px solid #d4e0eb;background:#fff;border-radius:9px;padding:9px 13px;font-weight:750;color:#405a73}.primary{background:linear-gradient(135deg,var(--n),#1d609d);color:#fff;border-color:var(--n)}.capture{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.record{min-height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center}.mic{width:92px;height:92px;border-radius:50%;border:8px solid #e8f2fc;background:linear-gradient(135deg,var(--n),var(--b));color:#fff;font-size:38px}.mic.rec{background:#d94e59;box-shadow:0 0 0 12px #fbeaec}.record h2{margin:15px 0 3px}.record p,.upload p{color:var(--mu)}.timer{font-size:28px;font-weight:850;margin:12px}.upload{padding:23px}.upload h2{margin:0}.drop{margin-top:16px;padding:32px;border:1.5px dashed #b7cee3;background:#f8fbff;border-radius:14px;text-align:center}.drop strong{display:block;font-size:16px;margin:8px}.selected{margin-top:12px;padding:10px;background:#f0f6fb;border-radius:9px}.processing{margin-top:18px;padding:15px 18px}.workspace{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;margin-top:18px}.head{height:56px;border-bottom:1px solid var(--ln);padding:0 18px;display:flex;align-items:center}.head span{margin-left:auto;background:#fff1d8;color:#94610b;padding:6px 9px;border-radius:99px;font-weight:750}.body{height:610px;overflow:auto;padding:20px}.audio{background:#f2f7fb;border-radius:12px;padding:13px;display:flex;gap:10px;align-items:center}.wave{height:32px;flex:1;background:repeating-linear-gradient(90deg,#91b5d3 0 2px,transparent 2px 6px)}.transcript{font-size:18px;line-height:1.75}.time{color:#2380b9;font-size:16px;font-weight:800}.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.section{font-size:16px;text-transform:uppercase;color:#475569;font-weight:850;margin:4px 0 12px}.field label{display:block;color:#5b7087;font-size:16px;font-weight:800;margin-bottom:6px}.field input,.field textarea{width:100%;border:1px solid #d5e1ec;border-radius:9px;padding:10px;background:#fbfdff}.field textarea{min-height:75px}.full{grid-column:1/-1}.divider{height:1px;background:#e5edf4;margin:19px 0}.save{text-align:right;margin-top:18px}.tools{display:flex;gap:10px;margin-bottom:14px}.tools input{flex:1;padding:10px;border:1px solid var(--ln);border-radius:9px}.table{overflow:hidden}.table table{width:100%;border-collapse:collapse}.table th{text-align:left;background:#eef4fa;padding:13px}.table td{padding:14px;border-top:1px solid #e8eef4}.badge{background:#e8f6f1;color:#14745f;padding:6px 9px;border-radius:99px}@media(max-width:900px){.capture,.workspace,.grid{grid-template-columns:1fr}.body{height:auto}}
 
 /* Refined MELI Voice navigation */
 .mainNav{height:100%;display:flex;align-items:center;gap:8px}
 .mainNav .nav{height:50px;border:0!important;border-radius:13px!important;padding:0 15px!important;display:flex;align-items:center;gap:10px;background:transparent!important;transition:.18s ease;position:relative}
 .mainNav .nav>span:last-child{display:flex;flex-direction:column;align-items:flex-start;line-height:1.08}
 .mainNav .nav b{font-size:18px;color:#60758d;transition:.18s}
-.mainNav .nav small{font-size:13px;color:#9aa8b8;font-weight:650;margin-top:4px;white-space:nowrap}
-.mainNav .navIco{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:#f0f5fa;color:#647d96;transition:.18s}
+.mainNav .nav small{font-size:13px;color:#475569;font-weight:650;margin-top:4px;white-space:nowrap}
+.mainNav .navIco{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:#f0f5fa;color:#475569;transition:.18s}
 .mainNav .navIco svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .mainNav .nav:hover{background:#f7faff!important}
 .mainNav .nav.active{background:#edf5ff!important;box-shadow:inset 0 0 0 1px #d9e9fa}
 .mainNav .nav.active b{color:#123b6d}
-.mainNav .nav.active small{color:#64809b}
+.mainNav .nav.active small{color:#475569}
 .mainNav .nav.active .navIco{background:linear-gradient(145deg,#123b6d,#2274b9);color:#fff;box-shadow:0 4px 10px rgba(18,59,109,.16)}
 
 .historyHero{display:flex;align-items:center;justify-content:space-between}
@@ -32,10 +33,10 @@
 .aiOrb{width:76px;height:76px;margin:0 auto 18px;border-radius:24px;display:grid;place-items:center;background:linear-gradient(145deg,#102a56,#1f6feb);box-shadow:0 12px 30px rgba(31,111,235,.22);position:relative}
 .aiOrb:before,.aiOrb:after{content:"";position:absolute;inset:-9px;border:1px solid #bcd9f5;border-radius:30px;animation:aiPulse 1.6s ease-out infinite}
 .aiOrb:after{inset:-18px;opacity:.45;animation-delay:.35s}@keyframes aiPulse{0%{transform:scale(.92);opacity:.9}100%{transform:scale(1.08);opacity:0}}
-.aiOrb span{color:#fff;font-size:20px;font-weight:850}.modelProcess h2{font-size:22px;margin:0 0 8px}.modelProcess p{color:#6c7e95;margin:0 0 24px}
+.aiOrb span{color:#fff;font-size:20px;font-weight:850}.modelProcess h2{font-size:22px;margin:0 0 8px}.modelProcess p{color:#475569;margin:0 0 24px}
 .progressTrack{height:10px;background:#e8eff6;border-radius:99px;overflow:hidden}.progressFill{height:100%;width:0;background:linear-gradient(90deg,#1f6feb,#4cc9f0);border-radius:99px;transition:width .35s ease}
-.progressMeta{display:flex;justify-content:space-between;margin-top:8px;color:#7a8da2;font-size:15px}.progressMeta span:first-child{font-weight:850;color:#235d91}
-.processSteps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:28px}.pstep{padding:11px 6px;border-radius:10px;background:#f4f7fa;color:#8a98a8;font-size:14px}.pstep b{width:22px;height:22px;border-radius:50%;background:#e2e8ee;display:grid;place-items:center;margin:0 auto 6px}.pstep span{display:block}.pstep.active{background:#edf5ff;color:#225e95}.pstep.active b{background:#1f6feb;color:#fff}.pstep.done{background:#eaf7f3;color:#17735f}.pstep.done b{background:#16866f;color:#fff}
+.progressMeta{display:flex;justify-content:space-between;margin-top:8px;color:#475569;font-size:15px}.progressMeta span:first-child{font-weight:850;color:#235d91}
+.processSteps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:28px}.pstep{padding:11px 6px;border-radius:10px;background:#f4f7fa;color:#475569;font-size:14px}.pstep b{width:22px;height:22px;border-radius:50%;background:#e2e8ee;display:grid;place-items:center;margin:0 auto 6px}.pstep span{display:block}.pstep.active{background:#edf5ff;color:#225e95}.pstep.active b{background:#1f6feb;color:#fff}.pstep.done{background:#eaf7f3;color:#17735f}.pstep.done b{background:#16866f;color:#fff}
 
 /* Fancy row actions */
 .rowFancy{
@@ -69,13 +70,13 @@
   color:#315d77;display:flex;align-items:center;gap:7px;font-size:15px;font-weight:850;cursor:pointer
 }
 .meliAppSwitchBtn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.meliAppSwitchBtn .chev{font-size:16px;color:#7890a0}
+.meliAppSwitchBtn .chev{font-size:16px;color:#475569}
 .meliAppSwitchMenu{
   position:absolute;right:0;top:50px;width:240px;padding:7px;background:#fff;border:1px solid #dbe6ee;
   border-radius:13px;box-shadow:0 18px 45px rgba(20,55,85,.16);display:none;z-index:9999
 }
 .meliAppSwitcher.open .meliAppSwitchMenu{display:block}
-.meliAppSwitchMenu .switchTitle{padding:6px 8px 8px;color:#8a9baa;font-size:13px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}
+.meliAppSwitchMenu .switchTitle{padding:6px 8px 8px;color:#475569;font-size:13px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}
 .meliAppSwitchMenu a{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:9px;text-decoration:none;color:#526e80;font-size:15px;font-weight:800}
 .meliAppSwitchMenu a:hover{background:#f2f7fa;color:#214f6c}.meliAppSwitchMenu a.current{background:#eaf3f9;color:#17486d}
 .meliAppSwitchMenu a>span:first-child{width:28px;height:28px;border-radius:8px;background:#eaf1f6;display:grid;place-items:center}
@@ -216,7 +217,7 @@ header .meliSharedHeader>.meliAppSwitcher{
 }
 #meliAppNavChevronV62{
   margin-left:2px;
-  color:#8193a1;
+  color:#475569;
   transition:transform .18s ease;
 }
 #meliAppNavV62.open #meliAppNavChevronV62{transform:rotate(180deg)}
@@ -239,7 +240,7 @@ header .meliSharedHeader>.meliAppSwitcher{
 
 .meliAppNavTitleV62{
   padding:7px 9px 6px;
-  color:#8a9baa;
+  color:#475569;
   font-size:13px;
   font-weight:900;
   letter-spacing:.09em;
@@ -272,7 +273,7 @@ header .meliSharedHeader>.meliAppSwitcher{
 }
 .meliAppExternalV62{
   margin-left:auto;
-  color:#96a6b3;
+  color:#475569;
   font-size:15px;
 }
 @media(max-width:760px){
@@ -400,7 +401,7 @@ header .meliSharedHeader>.meliAppSwitcher{
 }
 .meliLoginHeadV69 p{
   margin:5px 0 0;
-  color:#7b8ea0;
+  color:#475569;
   font-size:15px;
 }
 .meliLoginCloseV69{
@@ -472,7 +473,7 @@ header .meliSharedHeader>.meliAppSwitcher{
 }
 .meliUserPopoverV69.open{display:block}
 .meliUserPopoverV69 b{display:block;font-size:15px;color:#294e67}
-.meliUserPopoverV69 span{display:block;margin-top:3px;font-size:13px;color:#7d8f9d}
+.meliUserPopoverV69 span{display:block;margin-top:3px;font-size:13px;color:#475569}
 .meliLogoutBtnV69{
   width:100%;
   margin-top:9px;
@@ -617,7 +618,7 @@ header .meliSharedHeader>.meliAppSwitcher{
     right:62px!important;
   }
 }
-</style><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="assets/melicare-base.css" rel="stylesheet"/><meta content="#f5c54b" name="theme-color"/><style>.suite-demo-note{max-width:900px;margin:27px auto 0;padding:0 8px;font:13px/1.65 var(--suite-body);color:#6b8190;text-align:center}.rightPanel .suite-demo-note{margin:18px 0;padding:0 18px 22px}.trendChart text{font-family:var(--suite-body)!important;font-size:16px!important}</style><link href="assets/melicare-components.css" rel="stylesheet"/><link href="assets/melicare-v2.css" rel="stylesheet"/><link href="assets/melicare-auth.css" rel="stylesheet"/><script defer="" src="assets/melicare-auth.js?v=20261017"></script><script defer="" src="assets/melicare-uploads.js"></script><link href="assets/melicare-layout-v3.css" rel="stylesheet"/><script defer="" src="assets/melicare-navigation.js?v=20261017"></script><script src="assets/melicare-routes.js?v=20261017"></script>
+</style><link href="assets/melicare-base.css" rel="stylesheet"/><meta content="#f5c54b" name="theme-color"/><style>.suite-demo-note{max-width:900px;margin:27px auto 0;padding:0 8px;font:13px/1.65 var(--suite-body);color:#475569;text-align:center}.rightPanel .suite-demo-note{margin:18px 0;padding:0 18px 22px}.trendChart text{font-family:var(--suite-body)!important;font-size:16px!important}</style><link href="assets/melicare-components.css" rel="stylesheet"/><link href="assets/melicare-v2.css" rel="stylesheet"/><link href="assets/melicare-auth.css" rel="stylesheet"/><script defer="" src="assets/melicare-auth.js?v=20261020"></script><script defer="" src="assets/melicare-uploads.js"></script><link href="assets/melicare-layout-v3.css" rel="stylesheet"/><script src="assets/melicare-routes.js?v=20261020"></script><script src="assets/meli-auth.js?v=20261020"></script><script src="assets/melicare-app-auth.js?v=20261020" defer></script>
 <link rel="stylesheet" href="assets/melicare-readability.css">
 <link rel="stylesheet" href="assets/melicare-polish-v4.css">
 <link href="assets/melicare-typography-v6.css" rel="stylesheet"/>
@@ -632,24 +633,23 @@ header .meliSharedHeader>.meliAppSwitcher{
 <link rel="apple-touch-icon" href="assets/icons/icon-180.png" sizes="180x180"/>
 <script defer src="assets/melicare-scroll-repair.js"></script>
 <link rel="stylesheet" href="assets/melicare-final-upload-cardio.css"/>
-</head><body id="mcTypography" class="suite-ui suite-voice meli-refined mc-v2 mc-layout-v3 mc-readable" data-mc-page="melivoice" data-module="MELI_Voice" style=";--suite-accent:#7062b1;--suite-tint:#f1edfb;--suite-edge:#dbd4f0">
-<header class="suite-header"><div class="suite-bar"><a aria-label="MELIVoice" class="suite-brand" href="MELI_Voice.html"><span class="suite-brand-symbol"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><rect height="11" rx="4" width="8" x="8" y="3"></rect><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v3M8 21h8"></path></svg></span><span><span class="suite-word">MELI<em>Voice</em></span><small>MELICARE · HEALTH INTELLIGENCE</small></span></a><nav aria-label="Chức năng Voice" class="suite-local-nav"><button class="nav active" onclick="page('capture',this)">
+<link rel="stylesheet" href="./assets/melicare-fresh-palette.css"><link rel="stylesheet" href="assets/melicare-branding.css"/>
+<script src="assets/melicare-branding.js"></script>
+<link rel="stylesheet" href="assets/melicare-theme-v40.css">
+<link rel="stylesheet" href="assets/melicare-standalone-v42.css">
+</head><body id="mcTypography" class="suite-ui suite-voice meli-refined mc-v2 mc-layout-v3 mc-readable tool-locked" data-mc-page="melivoice" data-module="MELI_Voice" style=";--suite-accent:#7062b1;--suite-tint:#f1edfb;--suite-edge:#dbd4f0">
+<header class="suite-header"><div class="suite-bar"><a aria-label="MELIVoice" class="suite-brand" href="MELI_Voice.html"><span class="suite-brand-symbol"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><rect height="11" rx="4" width="8" x="8" y="3"></rect><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v3M8 21h8"></path></svg></span><span><span class="suite-word mc-product-name" data-mc-product="melivoice"><span class="meli-prefix mc-product-prefix">MELI</span><span class="tool-suffix mc-product-suffix">Voice</span></span></span></a><nav aria-label="Chức năng Voice" class="suite-local-nav"><button class="nav active" onclick="page('capture',this)">
 <span class="navIco"><svg viewbox="0 0 24 24"><rect height="11" rx="4" width="8" x="8" y="3"></rect><path d="M5.5 10.5v.8a6.5 6.5 0 0 0 13 0v-.8M12 17.8V21M8.5 21h7"></path></svg></span>
 <span><b>Ghi âm</b><small>Nhập EMR</small></span>
 </button><button class="nav" onclick="page('history',this)">
 <span class="navIco"><svg viewbox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3L4.5 9"></path><path d="M4.5 4.8V9h4.2M12 8v4.4l3 1.8"></path></svg></span>
 <span><b>Lịch sử</b><small>Bản ghi đã xử lý</small></span>
-</button></nav><div id="meliTopControlsV70"><a aria-label="Về MELICARE" href="MELICARE.html" id="meliHomeV63" title="Về MELICARE">
-<svg viewbox="0 0 24 24">
-<path d="M3 10.8 12 3l9 7.8"></path>
-<path d="M5.5 9.5V21h13V9.5"></path>
-</svg>
-</a><div id="meliAuthV69">
-<button aria-label="Đăng nhập MELICARE" data-mc-account="" id="meliAuthBtnV69" type="button">
+</button></nav><div id="meliTopControlsV70"><div id="meliAuthV69">
+<button aria-label="Tài khoản" data-mc-account="" id="meliAuthBtnV69" type="button">
 <svg viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>
-<span class="loginTextV69">Login</span>
+<span class="loginTextV69">Tài khoản</span>
 </button>
-</div><div class="mc-switch" data-mc-switch=""><button aria-controls="mc-switch-panel" aria-expanded="false" aria-haspopup="true" aria-label="Chuyển ứng dụng MELICARE" class="mc-switch-button" type="button"><svg aria-hidden="true" class="mc-switch-grid" viewbox="0 0 24 24"><rect height="7" rx="2" width="7" x="3" y="3"></rect><rect height="7" rx="2" width="7" x="14" y="3"></rect><rect height="7" rx="2" width="7" x="3" y="14"></rect><rect height="7" rx="2" width="7" x="14" y="14"></rect></svg><span class="mc-switch-label">Ứng dụng</span><svg aria-hidden="true" class="mc-switch-chevron" viewbox="0 0 24 24"><path d="m7 10 5 5 5-5"></path></svg></button></div></div></div></header>
+</div></div></div></header>
 <main><section class="page active" id="capture"><div class="hero"><h1>Voice to EMR</h1><p>Ghi âm hoặc tải file giọng nói để tự động chuyển thành dữ liệu hồ sơ bệnh án.</p></div>
 <div class="resultOnlyBack"><button class="btn" data-ui-icon="back" onclick="backToHistory()" type="button">Quay lại lịch sử</button><div><b>Kết quả đã xử lý</b> · Nguyễn Văn An · BA-260930-018</div><button class="btn primary" data-ui-icon="download" onclick="downloadCurrent()" type="button">Download</button></div><div class="capture"><div class="card record"><button aria-label="Bắt đầu hoặc dừng ghi âm" class="mic" id="mic" onclick="toggleRec()"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><rect height="11" rx="4" width="8" x="8" y="3"></rect><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v3M8 21h8"></path></svg></button><h2 id="rt">Bắt đầu ghi âm</h2><p>Nhấn micro để ghi lời đọc của bác sĩ</p><div class="timer" id="timer">00:00</div><div><button class="btn ui-quiet" onclick="resetRec()" type="button">Hủy</button> <button class="btn primary" data-ui-icon="spark" onclick="processAudio()" type="button">Nhận diện &amp; bóc tách</button></div></div>
 <div class="card upload"><h2>Tải file ghi âm</h2><p>Hỗ trợ MP3, WAV, M4A và các định dạng âm thanh phổ biến.</p><div class="drop mc-upload-zone" data-mc-drop="audioFile"><span class="mc-upload-symbol"><svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><path d="M12 16V3m-4 4 4-4 4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg></span><b class="mc-upload-title">Thêm bản ghi âm</b><span class="mc-upload-hint">Kéo thả tệp vào đây hoặc chọn từ máy tính</span><button class="btn mc-upload-trigger" data-ui-icon="upload" onclick="audioFile.click()" type="button"><svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><path d="M12 16V3m-4 4 4-4 4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg><span>Chọn file ghi âm</span></button><input accept="audio/*" hidden="" id="audioFile" type="file"/><span class="mc-upload-formats"><span>MP3</span><span>WAV</span><span>M4A</span></span></div><div class="selected hidden" id="selected"></div><button class="btn primary hidden" data-ui-icon="spark" id="upProcess" onclick="processAudio()" style="width:100%;margin-top:12px" type="button">Nhận diện &amp; bóc tách dữ liệu</button></div></div>

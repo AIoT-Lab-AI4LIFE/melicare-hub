@@ -55,7 +55,7 @@ html body.suite-ui.meli-refined :is(.card,.entryCard,.panel,.mediaPanel){backgro
 html body.suite-ui.meli-refined :is(.sectionHead,.panelHead,.mediaHead,.ph,.head){position:relative;background:#fff!important;border-color:#e7eef3!important;padding:21px 25px!important;min-height:78px!important;gap:15px}
 html body.suite-ui.meli-refined :is(.sectionHead,.panelHead,.mediaHead)::before{content:"";position:absolute;left:0;top:23px;width:4px;height:30px;border-radius:0 4px 4px 0;background:#75c4e8;pointer-events:none}
 html body.suite-ui.meli-refined .sectionHead::before{background:var(--ui-gold);height:38px}
-html body.suite-ui.meli-refined .eyebrow{color:#718596!important;letter-spacing:1.3px!important}
+html body.suite-ui.meli-refined .eyebrow{color:#475569!important;letter-spacing:1.3px!important}
 html body.suite-ui.meli-refined .entryGrid{padding:25px!important;gap:24px!important}
 html body.suite-ui.meli-refined .inputGroup{background:#f6f9fc!important;border-color:#e6edf2!important;border-radius:18px!important;padding:20px!important;box-shadow:none!important;transition:background .18s,border-color .18s!important}
 html body.suite-ui.meli-refined .inputGroup:focus-within{background:#f4faff!important;border-color:#abd6eb!important}
@@ -69,9 +69,9 @@ html body.suite-ui.meli-refined .field :is(input,select,textarea),html body.suit
 }
 html body.suite-ui.meli-refined .field :is(input,select,textarea):hover,html body.suite-ui.meli-refined :is(.filters,.tools) :is(input,select):hover{border-color:#a8c6d9!important}
 html body.suite-ui.meli-refined .field :is(input,select,textarea):focus,html body.suite-ui.meli-refined :is(.filters,.tools,.meliLoginFieldV69) :is(input,select):focus{outline:none!important;border-color:#46a3d0!important;box-shadow:0 0 0 4px #128ac310!important;background:#fff!important}
-html body.suite-ui.meli-refined input::placeholder,html body.suite-ui.meli-refined textarea::placeholder{color:#7b8e9d;opacity:1}
+html body.suite-ui.meli-refined input::placeholder,html body.suite-ui.meli-refined textarea::placeholder{color:#475569;opacity:1}
 html body.suite-ui.meli-refined input[type=checkbox]{accent-color:#128ac3;width:19px;height:19px;vertical-align:middle}
-html body.suite-ui.meli-refined .field input:read-only{background:#f4f7fa!important;color:#687d8d!important}
+html body.suite-ui.meli-refined .field input:read-only{background:#f4f7fa!important;color:#475569!important}
 html body.suite-ui.meli-refined :is(.grid,.fieldGrid){column-gap:17px!important;row-gap:19px!important}
 /* Upload areas: textured paper, an outlined icon, and a calm hover response. */
 html body.suite-ui.meli-refined :is(.drop,.dropzone,.uploadBox){
@@ -86,7 +86,7 @@ html body.suite-ui.meli-refined :is(.uploadIcon,.ui-upload-illustration){width:6
 }
 html body.suite-ui.meli-refined :is(.uploadIcon,.ui-upload-illustration)::after{content:"+";position:absolute;right:-6px;bottom:-5px;display:grid;place-items:center;background:#f5c54b;color:#17344a;border:3px solid #fff;width:25px;height:25px;border-radius:9px;font:800 18px/1 var(--suite-body);box-shadow:0 2px 4px #17344a0a}
 html body.suite-ui.meli-refined :is(.uploadIcon,.ui-upload-illustration) svg{width:31px!important;height:31px!important;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
-html body.suite-ui.meli-refined .uploadSide .or{color:#7b8e9c!important;letter-spacing:1.6px!important}
+html body.suite-ui.meli-refined .uploadSide .or{color:#475569!important;letter-spacing:1.6px!important}
 html body.suite-ui.meli-refined .analyzeBar{padding:0 25px 26px!important}
 html body.suite-ui.meli-refined :is(.fileStatus,.selected){border:1px solid #cce5ef!important;background:#eff8fc!important;border-radius:12px!important;padding:12px 15px!important}
 /* Clinical result surfaces keep the original metric / warning colors. */
@@ -191,7 +191,7 @@ html body.suite-ui.meli-refined.suite-vlm .sidePane{border-radius:0 22px 22px 0!
 html body.suite-ui.meli-refined .thumb{border-radius:13px!important}
 html body.suite-ui.meli-refined .thumb.active{box-shadow:0 0 0 2px #fff,0 0 0 4px #65b8de!important}
 /* Disabled and busy states override every visual treatment above. */
-html body.suite-ui.meli-refined :is(button:disabled,.bulk-btn:not(.enabled),[aria-disabled=true]){opacity:1!important;background:#edf2f5!important;color:#8193a1!important;border-color:#dde5ec!important;box-shadow:none!important;transform:none!important;cursor:not-allowed!important;filter:none!important}
+html body.suite-ui.meli-refined :is(button:disabled,.bulk-btn:not(.enabled),[aria-disabled=true]){opacity:1!important;background:#edf2f5!important;color:#475569!important;border-color:#dde5ec!important;box-shadow:none!important;transform:none!important;cursor:not-allowed!important;filter:none!important}
 html body.suite-ui.meli-refined :is(button:disabled,.bulk-btn:not(.enabled))::before{opacity:.6}
 html body.suite-ui.meli-refined button[aria-busy=true]{cursor:progress!important}
 html body.suite-ui.meli-refined button[aria-busy=true][data-ui-icon]::before{mask:none!important;-webkit-mask:none!important;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;background:none;box-sizing:border-box;animation:ui-spinner .85s linear infinite}
@@ -231,10 +231,10 @@ html body.suite-ui.meli-refined button[aria-busy=true][data-ui-icon]::before{mas
 @media(prefers-reduced-motion:reduce){html body.suite-ui.meli-refined *,html body.suite-ui.meli-refined *::before,html body.suite-ui.meli-refined *::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 @media print{html body.suite-ui.meli-refined :is(.card,.panel,.entryCard,.mediaPanel){box-shadow:none!important} html body.suite-ui.meli-refined button{box-shadow:none!important}}
 /* Specificity guards against the inherited component cascade. */
-html body.suite-ui.meli-refined .btn.ui-quiet{background:transparent!important;border-color:transparent!important;box-shadow:none!important;color:#647a8a!important}
+html body.suite-ui.meli-refined .btn.ui-quiet{background:transparent!important;border-color:transparent!important;box-shadow:none!important;color:#475569!important}
 html body.suite-ui.meli-refined .btn.ui-quiet:hover{background:#edf4f8!important;box-shadow:none!important;border-color:transparent!important}
-html body.suite-ui.meli-refined button:disabled:disabled:disabled,html body.suite-ui.meli-refined .bulk-btn:not(.enabled):not(.enabled){opacity:1!important;background:#edf2f5!important;color:#8193a1!important;border-color:#dde5ec!important;box-shadow:none!important;transform:none!important;cursor:not-allowed!important;filter:none!important}
-html body.suite-ui.meli-refined button:disabled:disabled:disabled:hover{background:#edf2f5!important;color:#8193a1!important;border-color:#dde5ec!important;box-shadow:none!important;transform:none!important}
+html body.suite-ui.meli-refined button:disabled:disabled:disabled,html body.suite-ui.meli-refined .bulk-btn:not(.enabled):not(.enabled){opacity:1!important;background:#edf2f5!important;color:#475569!important;border-color:#dde5ec!important;box-shadow:none!important;transform:none!important;cursor:not-allowed!important;filter:none!important}
+html body.suite-ui.meli-refined button:disabled:disabled:disabled:hover{background:#edf2f5!important;color:#475569!important;border-color:#dde5ec!important;box-shadow:none!important;transform:none!important}
 html body.suite-ui.meli-refined.suite-clinical .metricTabs button[data-metric="sbp"].active{color:#b24643!important;border-color:#efd4d4!important;background:#fff6f5!important}
 html body.suite-ui.meli-refined.suite-clinical .metricTabs button[data-metric="glucose"].active{color:#93611b!important;border-color:#efdfc6!important;background:#fffbf3!important}
 html body.suite-ui.meli-refined.suite-clinical .metricTabs button[data-metric="ldl"].active{color:#a2385c!important;border-color:#edd0dc!important;background:#fff6fa!important}

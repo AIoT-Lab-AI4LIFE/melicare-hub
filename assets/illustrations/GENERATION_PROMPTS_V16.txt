@@ -1,0 +1,37 @@
+MELICARE V16 — SELECTED ILLUSTRATION PROMPTS AND NATIVE HERO
+
+Mode: built-in ImageGen. MELIDx retains the approved V15 generation unchanged. MELIPos is a built-in edit of its V15 illustration, with original pixels and alpha retained during integration.
+
+Shared generation style (V15)
+Use case: illustration-story.
+Asset type: refined 2D editorial product illustration for the MELICARE hospital-AI website.
+Style: strictly TWO-DIMENSIONAL, sophisticated vector-like medical editorial art, precise confident navy outlines, azure blue #078cf0, pale blue and white matte planes, restrained warm ochre #ffb224 accents. At most one flat tonal accent per object. Landscape 3:2, coherent airy asymmetrical composition, connected flowing visual story rather than a rigid infographic. Strong recognizability at small website-card size. No people, faces, hands, silhouettes, body figures or robot mascots. No 3D, no isometric rendering, no glass, no glossy surfaces, no bevels, no metallic lighting, no volumetric gradients, no glows or halos. Genuinely transparent alpha background, no background rectangle. No watermark or branding. Charts are conceptual illustration motifs, not real patient data: no numbers, percentages, axis labels or medical claims. Avoid a collage of boxed software windows; charts may float as elegant open line work and physical paper sheets may curve slightly.
+
+MELIDX — APPROVED, UNCHANGED
+Primary request: illustrate multimodal clinical AI diagnosis with MANY clearly different evidence types, an AI model, prediction graphics, and explainability heatmaps.
+Build a graceful visual convergence: on the left half, cluster a pair of small laboratory sample tubes beside a lab-results sheet with colored assay rows, a physician's handwritten clinical-note sheet with a pen, a blue chest-imaging film showing stylized lungs/ribs, and a slim biomedical signal strip. These must be visually distinct types of medical evidence, not generic identical cards. A few fine blue/gold data streams gather them into a compact central neural-network AI model, drawn with flat connected blue nodes and the exact letters "AI".
+The model flows into the right side: two different conceptual prediction motifs, one small open probability/bar distribution and one smooth predicted trend with a blue observed segment and ochre dashed future segment. Beside them place TWO unmistakable XAI heatmaps: an image-attribution heatmap with a localized ochre/amber focus superimposed on a small blue chest image, and a compact feature-attribution heatmap matrix made of pale-blue, azure and amber cells. The heatmaps should feel like explanations connected to the prediction, not random decoration. A tiny "XAI" label is allowed beside them. No other words.
+All evidence, model, forecasts and explanations should form ONE polished interconnected composition, rich but legible, with generous breathing room and no hard step boxes. Do not include a giant standalone brain or anatomical heart. Medical input data -> AI -> prediction + visual explanations is the immediate meaning.
+
+MELIPOS — BASE GENERATION
+Primary request: illustrate AI prediction of TREATMENT OUTCOMES and COMPLICATIONS from longitudinal critical-care data, anchored by an EMPTY EMERGENCY-ROOM / CRITICAL-CARE BED.
+In the left third, draw a beautifully proportioned EMPTY modern emergency-room hospital bed in a restrained 2D side/three-quarter line drawing, with raised head section, pillow, clean blue blanket, side rails and small casters. No patient or human body under the blanket. A compact bedside monitor and a small IV stand establish the emergency/critical-care setting, without drawing a room full of furniture.
+From the bedside monitor, three clean biomedical time-series traces (different rhythms, azure and pale blue) sweep into the middle of the composition, making longitudinal monitoring unmistakable. The sequences feed into a compact flat blue neural AI model with connected nodes and the exact letters "AI".
+On the right, the model branches naturally into TWO clinically meaningful conceptual forecast motifs: (1) a smooth treatment/recovery trajectory whose observed blue segment continues as an ochre dashed prediction, ending near a small tasteful checkmark, and (2) a separate complications-risk trajectory with an ochre highlighted future rise and a modest warning triangle. Show uncertainty as a very light flat band around part of a forecast, not as glass or glow. The two future outcomes should be visibly distinct. Use elegant OPEN graphs and subtle axes, no numeric labels or fake quantitative claims.
+Keep the bed and evolving signal data dominant, with the forecast graphics integrated into one cohesive flowing composition. No smartwatch, no medication blister, no follow-up calendar, no diagnostic organ or magnifier. The only text allowed is "AI". The immediate story is critical-care bed -> multichannel time series -> AI -> treatment outcome / complication forecasts.
+
+MELIPOS — FINAL SOFTER EDIT
+Use case: style-transfer.
+Input image: edit target, the current MELIPos empty critical-care bed -> multichannel time series -> AI -> two forecast outcomes illustration.
+Primary request: keep this exact meaningful clinical story but make the drawing substantially softer, more graceful and more fluid. The present composition looks rigid. Preserve the empty emergency/critical-care bed, bedside monitor and IV stand, three longitudinal signal streams, a compact AI neural motif, treatment-recovery forecast with a small checkmark, and complication-risk forecast with a small warning mark. No people or human bodies.
+Redraw with a sophisticated TWO-DIMENSIONAL editorial illustration style: elegant gently curved contours, smooth round joins, organic visual rhythm, subtle line-weight variation, generous breathing room and matte blue/gold color planes. Soften the bed's outer frame and front panel, use a naturally draping blue blanket, rounded pillow, neatly aligned side rails and believable casters. Keep hospital equipment proportions accurate and tidy. This remains a 2D illustrated bed, not a glossy product render.
+Make the three signal streams flow naturally in light arcs into the AI network. On the right, REMOVE the rigid L-shaped chart axes and sharp arrowheads. Integrate the two predicted outcomes as airy open flowing curves on transparent space, each with a blue observed part and an ochre dashed future part, plus a restrained pale flat uncertainty band. The recovery checkmark and complication warning should be small, tasteful and clearly associated with their respective curve. Give the two curves a natural offset in the composition rather than a stiff stacked grid. No boxes around the plots, no extra interface cards.
+Use azure #078cf0, navy linework #15384f softened to medium blue on secondary details, white/pale blue and ochre #ffb224. Genuine transparent alpha background. Remove all background glows, halos and heavy shadows. No 3D, glass, gloss, metallic shine, volumetric lighting or photorealism. The only text is "AI"; no numbers, labels, percentages or watermark.
+
+Native hero: code-only inline SVG/CSS, no bitmap. Clinical expertise feeds AI; AI supports a hospital/scheduling scene and a clinical-record/monitored-bed scene. Proportioned scenes, consistent rounded strokes, 5 animated data paths, live allocation and vital-signal accents, reduced-motion support.
+
+Assets:
+assets/illustrations/melidx-v15.png
+assets/illustrations/melipos-v16.png
+assets/illustrations/melicare-ai-hero-v16.svg
+assets/melicare-ai-hero-v16.css

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
-<html lang="vi">
+<html lang="vi" data-tool-id="melipos">
 <head>
+
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>MELIPostOp — Post-operative Complication Intelligence</title>
@@ -65,20 +66,20 @@ main{max-width:1180px;margin:0 auto;padding:24px 22px 44px}
 .timelineLine{position:absolute;left:18%;right:18%;top:22px;height:4px;border-radius:99px;background:#dce6ee}
 .timelineLine i{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--navy),var(--blue));transition:width .35s ease}
 .timelineStep{position:relative;z-index:1;text-align:center}
-.timelineNode{width:46px;height:46px;margin:auto;border-radius:50%;display:grid;place-items:center;background:#e8eef4;color:#76899b;border:4px solid var(--bg);box-shadow:0 0 0 1px #ccd9e3;font-size:18px;font-weight:900}
+.timelineNode{width:46px;height:46px;margin:auto;border-radius:50%;display:grid;place-items:center;background:#e8eef4;color:#475569;border:4px solid var(--bg);box-shadow:0 0 0 1px #ccd9e3;font-size:18px;font-weight:900}
 .timelineStep.active .timelineNode,.timelineStep.done .timelineNode{background:linear-gradient(145deg,var(--navy),var(--blue));color:#fff;box-shadow:0 0 0 1px #8ab1d6,0 8px 18px rgba(47,127,247,.16)}
 .timelineStep.done .timelineNode{background:#4d7598;font-size:0}
 .timelineStep.done .timelineNode:after{content:"✓";font-size:18px}
 .timelineStep b{display:block;margin-top:9px;font-size:17px;color:#536a7e}
-.timelineStep span{display:block;margin-top:3px;font-size:14px;color:#8998a6}
+.timelineStep span{display:block;margin-top:3px;font-size:14px;color:#475569}
 .timelineStep.active b{color:var(--navy)}
 
 /* shared panel */
 .panel,.entryCard{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
 .panelHead,.sectionHead{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid #e6edf3;background:linear-gradient(180deg,#fbfdff,#f7fafc)}
 .panelHead h2,.sectionHead h2{margin:0;font-size:17px;color:#173b66}
-.panelHead p,.sectionHead p{margin:4px 0 0;color:#7b8ea0;font-size:14px}
-.eyebrow{display:block;margin-bottom:5px;color:#8394a5;font-size:13px;font-weight:900;letter-spacing:.1em}
+.panelHead p,.sectionHead p{margin:4px 0 0;color:#475569;font-size:14px}
+.eyebrow{display:block;margin-bottom:5px;color:#475569;font-size:13px;font-weight:900;letter-spacing:.1em}
 
 /* input */
 .entryGrid{display:grid;grid-template-columns:minmax(0,1fr) 205px;gap:14px;padding:15px 16px 12px}
@@ -89,18 +90,18 @@ main{max-width:1180px;margin:0 auto;padding:24px 22px 44px}
 .groupIcon svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .groupTitle b{font-size:15px;color:#31536a}
 .fieldGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.field label{display:block;margin-bottom:4px;color:#667d8f;font-size:13px;font-weight:800}
+.field label{display:block;margin-bottom:4px;color:#475569;font-size:13px;font-weight:800}
 .field input,.field select{width:100%;height:36px;border:1px solid #d5e1ea;border-radius:8px;background:#fff;padding:0 8px;color:#29475d;font-size:15px}
 .field input:focus,.field select:focus{outline:none;border-color:#86b5df;box-shadow:0 0 0 3px rgba(47,127,247,.08)}
 
 .uploadSide{display:flex;flex-direction:column;justify-content:center}
-.or{display:flex;align-items:center;gap:8px;margin-bottom:9px;color:#95a2ad;font-size:13px;font-weight:900}
+.or{display:flex;align-items:center;gap:8px;margin-bottom:9px;color:#475569;font-size:13px;font-weight:900}
 .or:before,.or:after{content:"";height:1px;background:#e0e7ed;flex:1}
 .uploadBox{min-height:170px;border:1.5px dashed #b5cbdc;border-radius:14px;background:#f8fbfd;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;color:#315f7c}
 .uploadBox:hover{background:#f1f7fb}
 .uploadIcon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#eaf3fb;margin-bottom:10px}
 .uploadIcon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.uploadBox b{font-size:15px}.uploadBox span{margin-top:4px;font-size:13px;color:#8192a0}
+.uploadBox b{font-size:15px}.uploadBox span{margin-top:4px;font-size:13px;color:#475569}
 .fileStatus{display:none;margin-top:8px;padding:8px;border-radius:8px;background:#edf5fb;color:#496b80;font-size:13px}
 .fileStatus.show{display:block}
 .analyzeBar{display:flex;justify-content:center;padding:4px 16px 17px}
@@ -116,7 +117,7 @@ main{max-width:1180px;margin:0 auto;padding:24px 22px 44px}
 
 .chartWrap{padding:12px 14px 14px}
 .trendChart{width:100%;height:285px;display:block;background:#fbfdff;border:1px solid #e7edf3;border-radius:12px}
-.chartLegend{display:flex;gap:14px;margin-top:8px;color:#75889a;font-size:13px}
+.chartLegend{display:flex;gap:14px;margin-top:8px;color:#475569;font-size:13px}
 .legendDot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:4px;background:#2f7ff7}
 .legendBand{background:#cfe0ec}
 
@@ -124,13 +125,13 @@ main{max-width:1180px;margin:0 auto;padding:24px 22px 44px}
 .attentionCard{padding:10px;border:1px solid #e1e8ef;border-radius:11px;background:#fbfdff}
 .attentionTop{display:flex;justify-content:space-between;gap:10px}
 .attentionTop b{font-size:15px;color:#31536a}
-.attentionTop small{display:block;margin-top:2px;color:#8091a0;font-size:13px}
+.attentionTop small{display:block;margin-top:2px;color:#475569;font-size:13px}
 .statusHigh{color:#a84e54}.statusWarn{color:#8e671f}.statusGood{color:#2d7f60}
 .rangeBar{position:relative;height:10px;margin:9px 0 5px;border-radius:99px;background:linear-gradient(90deg,#e6f4ed 0 45%,#fff0d9 45% 72%,#fde5e6 72% 100%)}
 .rangeMarker{position:absolute;top:-4px;width:4px;height:18px;border-radius:99px;background:#173f70;transform:translateX(-50%)}
 .thresholdMarker{position:absolute;top:-2px;width:2px;height:14px;background:#9faeb9}
-.rangeLabels{display:flex;justify-content:space-between;color:#8a99a6;font-size:12px}
-.deltaText{margin-top:4px;color:#6f8293;font-size:13px;line-height:1.35}
+.rangeLabels{display:flex;justify-content:space-between;color:#475569;font-size:12px}
+.deltaText{margin-top:4px;color:#475569;font-size:13px;line-height:1.35}
 
 /* risk */
 .riskGrid{display:grid;grid-template-columns:.82fr 1.18fr;gap:14px;margin-top:14px}
@@ -138,15 +139,15 @@ main{max-width:1180px;margin:0 auto;padding:24px 22px 44px}
 .aiPie{flex:0 0 140px;width:140px;height:140px;border-radius:50%;display:grid;place-items:center;position:relative;background:conic-gradient(#d89b2d 0 var(--risk),#e8eef3 var(--risk) 100%)}
 .aiPie:after{content:"";position:absolute;inset:19px;border-radius:50%;background:#fff}
 .aiPieInner{position:relative;z-index:1;text-align:center}
-.aiPieInner b{display:block;font-size:31px;color:#173b66}.aiPieInner span{font-size:12px;color:#7d8d9c}
-.aiRiskText h3{margin:0;font-size:16px;color:#173b66}.aiRiskText p{margin:6px 0 0;font-size:14px;line-height:1.55;color:#657b8e}
+.aiPieInner b{display:block;font-size:31px;color:#173b66}.aiPieInner span{font-size:12px;color:#475569}
+.aiRiskText h3{margin:0;font-size:16px;color:#173b66}.aiRiskText p{margin:6px 0 0;font-size:14px;line-height:1.55;color:#475569}
 
 .scaleGrid{padding:12px 14px 14px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
 .scaleCard{padding:11px;border:1px solid #e1e8ef;border-radius:11px;background:#fbfdff}
 .scaleCard b{display:block;font-size:15px;color:#31536a}
 .scaleValue{display:flex;align-items:end;gap:6px;margin:7px 0 4px}
-.scaleValue strong{font-size:24px;color:#173b66}.scaleValue span{font-size:13px;color:#7d8d9c;margin-bottom:3px}
-.scaleCard p{margin:0;font-size:13px;color:#718595;line-height:1.4}
+.scaleValue strong{font-size:24px;color:#173b66}.scaleValue span{font-size:13px;color:#475569;margin-bottom:3px}
+.scaleCard p{margin:0;font-size:13px;color:#475569;line-height:1.4}
 .scaleNote{grid-column:1/-1;padding:9px 10px;border-radius:9px;background:#fff8ec;border:1px solid #efdfc1;color:#80642d;font-size:13px;line-height:1.45}
 
 /* bottom */
@@ -159,13 +160,13 @@ main{max-width:1180px;margin:0 auto;padding:24px 22px 44px}
 .safeZone{position:absolute;left:0;top:0;bottom:0;border-radius:99px 0 0 99px;background:#dff1e8}
 .patientMarker{position:absolute;top:-4px;width:5px;height:18px;background:#c84b54;border-radius:99px;transform:translateX(-50%)}
 .thresholdLine{position:absolute;top:-2px;width:2px;height:14px;background:#60788a}
-.reasonText{margin-top:6px;font-size:13px;color:#6f8293}
+.reasonText{margin-top:6px;font-size:13px;color:#475569}
 
 .lifestyleList{padding:11px 14px 14px;display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .lifeCard{display:grid;grid-template-columns:38px minmax(0,1fr);gap:9px;padding:10px;border:1px solid #e1e8ef;border-radius:11px;background:#fbfdff}
 .lifeIcon{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:#eaf3fb;color:#315d7a}
 .lifeIcon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.lifeCard b{display:block;font-size:14px;color:#294f67}.lifeCard span{display:block;margin-top:3px;font-size:13px;color:#718595;line-height:1.4}
+.lifeCard b{display:block;font-size:14px;color:#294f67}.lifeCard span{display:block;margin-top:3px;font-size:13px;color:#475569;line-height:1.4}
 
 .disclaimer{margin-top:14px;padding:11px 13px;border-radius:11px;background:#fff8ec;border:1px solid #efdfc0;color:#81642c;font-size:13px;line-height:1.5}
 
@@ -459,7 +460,7 @@ main{max-width:1160px!important;padding-top:20px!important}
   white-space:nowrap!important;
 }
 .attentionTop .statusAndDelta .deltaInline{
-  color:#708493!important;
+  color:#475569!important;
   font-size:14px!important;
   font-weight:700!important;
 }
@@ -502,7 +503,7 @@ main{max-width:1160px!important;padding-top:20px!important}
   white-space:nowrap!important;
 }
 .reasonHeader .reasonDetailInline{
-  color:#708493!important;
+  color:#475569!important;
   font-size:14px!important;
   font-weight:700!important;
   white-space:nowrap!important;
@@ -566,7 +567,7 @@ main{max-width:1160px!important;padding-top:20px!important}
 .methodHead small{
   display:block;
   margin-top:3px;
-  color:#81919f;
+  color:#475569;
   font-size:13px;
   line-height:1.35;
 }
@@ -583,7 +584,7 @@ main{max-width:1160px!important;padding-top:20px!important}
 .methodScore span{
   display:block;
   margin-top:3px;
-  color:#81919f;
+  color:#475569;
   font-size:12px;
   font-weight:750;
 }
@@ -621,7 +622,7 @@ main{max-width:1160px!important;padding-top:20px!important}
   margin-top:9px;
   padding-top:8px;
   border-top:1px solid #e7edf2;
-  color:#6f8293;
+  color:#475569;
   font-size:13px;
   line-height:1.4;
 }
@@ -636,7 +637,7 @@ main{max-width:1160px!important;padding-top:20px!important}
 }
 .methodStatus.applicable{background:#eaf6ef;color:#2d7e60}
 .methodStatus.conditional{background:#fff4e4;color:#8a6424}
-.methodStatus.na{background:#eef2f5;color:#70818f}
+.methodStatus.na{background:#eef2f5;color:#475569}
 
 @media(max-width:980px){
   .riskGrid{grid-template-columns:1fr!important}
@@ -694,7 +695,7 @@ main{max-width:1160px!important;padding-top:20px!important}
 .riskCaption{
   display:block;
   margin-bottom:5px;
-  color:#7f90a1;
+  color:#475569;
   font-size:13px;
   font-weight:900;
   letter-spacing:.09em;
@@ -723,7 +724,7 @@ main{max-width:1160px!important;padding-top:20px!important}
 .riskMethodsHeader span{
   display:block;
   margin-top:3px;
-  color:#8192a0;
+  color:#475569;
   font-size:14px;
 }
 
@@ -823,7 +824,7 @@ main{max-width:1160px!important;padding-top:20px!important}
 }
 .complicationHead b{font-size:16px;color:#31536a}
 .complicationHead strong{font-size:18px;color:#173b66}
-.complicationHead small{display:block;margin-top:2px;color:#8394a5;font-size:13px}
+.complicationHead small{display:block;margin-top:2px;color:#475569;font-size:13px}
 .complicationBar{
   height:8px;
   margin-top:9px;
@@ -844,7 +845,7 @@ main{max-width:1160px!important;padding-top:20px!important}
 .complicationCard[data-type="delirium"] i{background:#7b61c8}
 .complicationMeta{
   margin-top:6px;
-  color:#6f8293;
+  color:#475569;
   font-size:13px;
   line-height:1.4;
 }
@@ -912,7 +913,7 @@ main{max-width:1160px!important;padding-top:20px!important}
 }
 #meliAppNavChevronV62{
   margin-left:2px;
-  color:#8193a1;
+  color:#475569;
   transition:transform .18s ease;
 }
 #meliAppNavV62.open #meliAppNavChevronV62{transform:rotate(180deg)}
@@ -935,7 +936,7 @@ main{max-width:1160px!important;padding-top:20px!important}
 
 .meliAppNavTitleV62{
   padding:7px 9px 6px;
-  color:#8a9baa;
+  color:#475569;
   font-size:13px;
   font-weight:900;
   letter-spacing:.09em;
@@ -968,7 +969,7 @@ main{max-width:1160px!important;padding-top:20px!important}
 }
 .meliAppExternalV62{
   margin-left:auto;
-  color:#96a6b3;
+  color:#475569;
   font-size:15px;
 }
 @media(max-width:760px){
@@ -1096,7 +1097,7 @@ main{max-width:1160px!important;padding-top:20px!important}
 }
 .meliLoginHeadV69 p{
   margin:5px 0 0;
-  color:#7b8ea0;
+  color:#475569;
   font-size:15px;
 }
 .meliLoginCloseV69{
@@ -1168,7 +1169,7 @@ main{max-width:1160px!important;padding-top:20px!important}
 }
 .meliUserPopoverV69.open{display:block}
 .meliUserPopoverV69 b{display:block;font-size:15px;color:#294e67}
-.meliUserPopoverV69 span{display:block;margin-top:3px;font-size:13px;color:#7d8f9d}
+.meliUserPopoverV69 span{display:block;margin-top:3px;font-size:13px;color:#475569}
 .meliLogoutBtnV69{
   width:100%;
   margin-top:9px;
@@ -1313,7 +1314,7 @@ main{max-width:1160px!important;padding-top:20px!important}
     right:62px!important;
   }
 }
-</style><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="assets/melicare-base.css" rel="stylesheet"/><meta content="#f5c54b" name="theme-color"/><style>.suite-demo-note{max-width:900px;margin:27px auto 0;padding:0 8px;font:13px/1.65 var(--suite-body);color:#6b8190;text-align:center}.rightPanel .suite-demo-note{margin:18px 0;padding:0 18px 22px}.trendChart text{font-family:var(--suite-body)!important;font-size:16px!important}</style><link href="assets/melicare-components.css" rel="stylesheet"/><script src="assets/melicare-charts.js"></script><link href="assets/melicare-v2.css" rel="stylesheet"/><link href="assets/melicare-auth.css" rel="stylesheet"/><script defer="" src="assets/melicare-auth.js?v=20261017"></script><script defer="" src="assets/melicare-uploads.js"></script><link href="assets/melicare-layout-v3.css" rel="stylesheet"/><script defer="" src="assets/melicare-navigation.js?v=20261017"></script><script defer="" src="assets/melicare-clinical-rows.js"></script><script src="assets/melicare-routes.js?v=20261017"></script>
+</style><link href="assets/melicare-base.css" rel="stylesheet"/><meta content="#f5c54b" name="theme-color"/><style>.suite-demo-note{max-width:900px;margin:27px auto 0;padding:0 8px;font:13px/1.65 var(--suite-body);color:#475569;text-align:center}.rightPanel .suite-demo-note{margin:18px 0;padding:0 18px 22px}.trendChart text{font-family:var(--suite-body)!important;font-size:16px!important}</style><link href="assets/melicare-components.css" rel="stylesheet"/><script src="assets/melicare-charts.js"></script><link href="assets/melicare-v2.css" rel="stylesheet"/><link href="assets/melicare-auth.css" rel="stylesheet"/><script defer="" src="assets/melicare-auth.js?v=20261020"></script><script defer="" src="assets/melicare-uploads.js"></script><link href="assets/melicare-layout-v3.css" rel="stylesheet"/><script defer="" src="assets/melicare-clinical-rows.js"></script><script src="assets/melicare-routes.js?v=20261020"></script><script src="assets/meli-auth.js?v=20261020"></script><script src="assets/melicare-app-auth.js?v=20261020" defer></script>
 <link rel="stylesheet" href="assets/melicare-readability.css">
 <link rel="stylesheet" href="assets/melicare-polish-v4.css">
 <link href="assets/melicare-typography-v6.css" rel="stylesheet"/>
@@ -1328,19 +1329,18 @@ main{max-width:1160px!important;padding-top:20px!important}
 <link rel="apple-touch-icon" href="assets/icons/icon-180.png" sizes="180x180"/>
 <script defer src="assets/melicare-scroll-repair.js"></script>
 <link rel="stylesheet" href="assets/melicare-final-upload-cardio.css"/>
+<link rel="stylesheet" href="./assets/melicare-fresh-palette.css"><link rel="stylesheet" href="assets/melicare-branding.css"/>
+<script src="assets/melicare-branding.js"></script>
+<link rel="stylesheet" href="assets/melicare-theme-v40.css">
+<link rel="stylesheet" href="assets/melicare-standalone-v42.css">
 </head>
-<body id="mcTypography" class="suite-ui suite-postop suite-clinical meli-refined mc-v2 mc-layout-v3 mc-readable" data-mc-page="melipos" data-module="MELIPostOp" style=";--suite-accent:#a37720;--suite-tint:#fff5da;--suite-edge:#efdfb0">
-<header class="suite-header"><div class="suite-bar"><a aria-label="MELIPostOp" class="suite-brand" href="MELIPostOp.html"><span class="suite-brand-symbol"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><path d="M12 3 3 7v6c0 5 9 9 9 9s9-4 9-9V7l-9-4Z"></path><path d="M7 12h3l2-4 2 8 2-4h2"></path></svg></span><span><span class="suite-word">MELI<em>PostOp</em></span><small>MELICARE · HEALTH INTELLIGENCE</small></span></a><span class="suite-context"><i></i>CHĂM SÓC HẬU ĐIỀU TRỊ</span><div id="meliTopControlsV70"><a aria-label="Về MELICARE" href="MELICARE.html" id="meliHomeV63" title="Về MELICARE">
-<svg viewbox="0 0 24 24">
-<path d="M3 10.8 12 3l9 7.8"></path>
-<path d="M5.5 9.5V21h13V9.5"></path>
-</svg>
-</a><div id="meliAuthV69">
-<button aria-label="Đăng nhập MELICARE" data-mc-account="" id="meliAuthBtnV69" type="button">
+<body id="mcTypography" class="suite-ui suite-postop suite-clinical meli-refined mc-v2 mc-layout-v3 mc-readable tool-locked" data-mc-page="melipos" data-module="MELIPostOp" style=";--suite-accent:#a37720;--suite-tint:#fff5da;--suite-edge:#efdfb0">
+<header class="suite-header"><div class="suite-bar"><a aria-label="MELIPostOp" class="suite-brand" href="MELIPostOp.html"><span class="suite-brand-symbol"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><path d="M12 3 3 7v6c0 5 9 9 9 9s9-4 9-9V7l-9-4Z"></path><path d="M7 12h3l2-4 2 8 2-4h2"></path></svg></span><span><span class="suite-word mc-product-name" data-mc-product="melipos"><span class="meli-prefix mc-product-prefix">MELI</span><span class="tool-suffix mc-product-suffix">Pos</span></span></span></a><span class="suite-context"><i></i>CHĂM SÓC HẬU ĐIỀU TRỊ</span><div id="meliTopControlsV70"><div id="meliAuthV69">
+<button aria-label="Tài khoản" data-mc-account="" id="meliAuthBtnV69" type="button">
 <svg viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>
-<span class="loginTextV69">Login</span>
+<span class="loginTextV69">Tài khoản</span>
 </button>
-</div><div class="mc-switch" data-mc-switch=""><button aria-controls="mc-switch-panel" aria-expanded="false" aria-haspopup="true" aria-label="Chuyển ứng dụng MELICARE" class="mc-switch-button" type="button"><svg aria-hidden="true" class="mc-switch-grid" viewbox="0 0 24 24"><rect height="7" rx="2" width="7" x="3" y="3"></rect><rect height="7" rx="2" width="7" x="14" y="3"></rect><rect height="7" rx="2" width="7" x="3" y="14"></rect><rect height="7" rx="2" width="7" x="14" y="14"></rect></svg><span class="mc-switch-label">Ứng dụng</span><svg aria-hidden="true" class="mc-switch-chevron" viewbox="0 0 24 24"><path d="m7 10 5 5 5-5"></path></svg></button></div></div></div></header>
+</div></div></div></header>
 <main>
 <div class="timeline">
 <div class="timelineLine"><i id="timelineProgress"></i></div>

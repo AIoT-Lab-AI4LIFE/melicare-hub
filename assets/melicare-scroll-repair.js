@@ -29,9 +29,7 @@
   if(el.tagName==='DIALOG'&&!el.open){set(el,'display','none');return;}
   set(el,'max-height','calc(100dvh - 32px)');set(el,'min-height','0px');set(el,'overflow-y','auto');set(el,'overscroll-behavior','auto');
   const body=el.querySelector(bodySelector);if(!body)return;
-  set(el,'display','flex');set(el,'flex-direction','column');
-  const event=el.classList.contains('eventMode');
-  const compact=event||(el.classList.contains('opsPageModal')&&!el.classList.contains('roomScheduleMode')&&!el.classList.contains('doctorCaseMode'));
+  set(el,'display','flex');set(el,'flex-direction','column');const compact=(el.classList.contains('opsPageModal')&&!el.classList.contains('roomScheduleMode')&&!el.classList.contains('doctorCaseMode'))||(el.classList.contains('opsModal')&&el.classList.contains('eventMode')); 
   set(el,'height',compact?'auto':'min(780px, calc(100dvh - 32px))');set(el,'overflow','hidden');
   set(body,'display','block');set(body,'min-height','0px');set(body,'max-height','none');set(body,'height','auto');set(body,'flex',compact?'0 1 auto':'1 1 0px');set(body,'overflow-y',event?'visible':'auto');set(body,'overflow-x',event?'visible':'auto');set(body,'overscroll-behavior','auto');set(body,'scrollbar-gutter',event?'auto':'stable');
   Array.from(el.children).filter(c=>c!==body).forEach(c=>{set(c,'flex','0 0 auto');set(c,'flex-shrink','0');set(c,'flex-grow','0');});

@@ -174,6 +174,24 @@
   return setSession(data);
  }
 
+ // POST /auth/register requires username, displayName and password; it returns a session like login.
+ async function register(profile, options = {}) {
+  const body = {
+   username: String(profile?.username || '').trim(),
+   displayName: String(profile?.displayName || '').trim(),
+   password: String(profile?.password || ''),
+  };
+  const email = String(profile?.email || '').trim();
+  if (email) body.email = email;
+  if (!body.username || !body.displayName || !body.password) {
+   const error = new Error('Vui lòng nhập họ tên, tên đăng nhập và mật khẩu.');
+   error.status = 400;
+   throw error;
+  }
+  const data = await request('/auth/register', { method: 'POST', body, signal: options.signal });
+  return setSession(data);
+ }
+
  async function refresh(options = {}) {
   if (refreshPromise) return refreshPromise;
   refreshPromise = (async () => {
@@ -195,6 +213,15 @@
    }
   })();
   return refreshPromise;
+ }
+
+ // Revokes the refresh token server-side (best effort) and always clears the local session.
+ async function logout() {
+  const refreshToken = getSession()?.refreshToken;
+  try {
+   await request('/auth/logout', { method: 'POST', body: refreshToken ? { refreshToken } : {} });
+  } catch (_) {}
+  clearSession();
  }
 
  async function getValidAccessToken(options = {}) {
@@ -295,6 +322,8 @@
   AUTH_URL,
   API,
   login,
+  register,
+  logout,
   refresh,
   getSession,
   setSession,

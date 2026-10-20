@@ -42,16 +42,7 @@
         }
 
         async function logout() {
-            const refreshToken = auth.getRefreshToken();
-            try {
-                await fetch(auth.API + '/auth/logout', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                    credentials: 'include',
-                    body: JSON.stringify(refreshToken ? { refreshToken } : {}),
-                });
-            } catch (_) { }
-            auth.clearSession();
+            await auth.logout();
             location.assign(site.home);
         }
 

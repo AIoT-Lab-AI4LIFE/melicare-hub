@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+500;600;700;800&display=swap');
 /* Requested product typography and readable operating-room views. */
 html body :is(.suite-word,.suite-word em,.brandText,.brandText span,.brandText em,.meliProductText,.meliProductText em,.brand-word,.brand-light,.brand-suffix,.tool-wordmark,.tool-suffix,.hub-name,.meliBrandText b){font-family:'Poppins','Segoe UI',Arial,sans-serif!important}
 html body .hero-description-line{font-weight:400!important}

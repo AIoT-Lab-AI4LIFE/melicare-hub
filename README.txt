@@ -14,6 +14,15 @@ MELIDx menus and DANH_SACH_TRANG.html follow automatically.
 - In HTML use <a data-mc-route="meliocr">; in scripts use MELICARE_SITE.open('meliocr').
 - sso:true appends ?token=<access token> when opening (assets/meli-auth.js).
 - https URLs open in a new tab, local pages in the same tab.
+- login is the app's own login page (<App>_Login.html). Signed out, the homepage popup button "Mở ứng dụng"
+  goes to it in the same tab and, after MeliAuth login/register (assets/melicare-app-auth.js), on to href.
+  Signed in, "Mở ứng dụng" opens href in a new window; the header shows the signed-in account.
+- Local app pages (<html data-tool-id="…">) redirect to their app login when there is no MeliAuth session.
+
+V48 UI (20/10/2026):
+- Homepage, per-app login pages, palette/branding and page styling taken from the MELICARE_V48 bundle.
+- The bundle's browser-only demo login (melicare-tool-auth/accounts/login/config.js, Admin123) is not used;
+  login, register, token handoff and destinations stay on MeliAuth + melicare-routes.js.
 
 Clinical concepts added:
 - MELIDiabetes
