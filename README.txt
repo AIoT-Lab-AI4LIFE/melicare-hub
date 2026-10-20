@@ -59,7 +59,7 @@ V9 updates:
 
 V10 updates:
 - Fixed MELI VLM page scrolling; whole page scrolls normally and side panels remain usable.
-- MELICDSS card now opens https://cdss.leira.com.vn.
+- MELICDSS card now opens https://cdss.meliq.ai.
 - JavaScript syntax of MELI VLM revalidated successfully.
 
 V11 updates:
@@ -269,7 +269,7 @@ V50 updates:
   MELIOCR -> MELI_OCR.html
   MELIVoice -> MELI_Voice.html
   MELIVLM -> MELI_VLM.html
-  MELICDSS -> https://cdss.leira.com.vn
+  MELICDSS -> https://cdss.meliq.ai
   MELIDx -> MELIDx.html
   MELIPostOp -> MELIPosOpt.html
 

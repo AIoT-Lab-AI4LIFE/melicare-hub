@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return 'https://medibot.leira.com.vn/login?token=';
     }
     if (/cdss\.leira\.com\.vn\/login/i.test(href) || /MELICDSS/i.test(href) || /MELICDSS/i.test(label)) {
-      return 'https://cdss.leira.com.vn/login?token=';
+      return 'https://cdss.meliq.ai/login?token=';
     }
     return '';
   }
