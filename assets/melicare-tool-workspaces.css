@@ -1,0 +1,54 @@
+/* Workspace paint only: dimensions, data and event behavior stay in each tool. */
+html[data-tool-id]{--app-heading:#123a58;--app-bg:color-mix(in srgb,var(--tool-accent) 2.5%,#f8fafc)}
+html[data-tool-id] body#mcTypography{
+ --blue:var(--tool-action)!important;--b:var(--tool-action)!important;--p:var(--tool-action)!important;--primary:var(--tool-action)!important;
+ --suite-blue:var(--tool-action)!important;--accent:var(--tool-action)!important;--suite-accent:var(--tool-action)!important;
+ --blue-soft:var(--tool-soft)!important;--blue-light:var(--tool-soft)!important;--suite-sky:var(--tool-soft)!important;
+ --line:var(--tool-line);--ln:var(--tool-line);--bd:var(--tool-line);--suite-line:var(--tool-line);
+ --ink:#1e293b;--tx:#1e293b;--text:#1e293b;--muted:#475569;--mu:#475569;
+ --or-gold:var(--tool-action);--or-gold-hover:var(--tool-hover);--or-sky:var(--tool-accent);--or-sky-soft:var(--tool-soft);--or-sky-deep:var(--tool-action);
+ background:#f8fafc!important;background:var(--app-bg)!important;color:#1e293b!important;
+}
+html[data-tool-id] body#mcTypography :is(.suite-header,.mc-or-header){background:linear-gradient(105deg,#fff,var(--tool-soft))!important;border-bottom-color:var(--tool-line)!important;box-shadow:inset 0 -3px var(--tool-accent)!important}
+html[data-tool-id] body#mcTypography :is(.suite-brand-symbol,.brandMark){background:var(--tool-soft)!important;border-color:var(--tool-line)!important;color:var(--tool-action)!important;box-shadow:none!important}
+html[data-tool-id] body#mcTypography :is(.panelHead,.sectionHead,.mediaHead,.ph,.head,.paneHead){background:linear-gradient(100deg,#fff,var(--tool-soft))!important;border-color:var(--tool-line)!important}
+html[data-tool-id] body#mcTypography :is(.suite-context i,.mc-upload-eyebrow:before){background:var(--tool-accent)!important}
+html[data-tool-id] body#mcTypography :is(.mc-upload-eyebrow,.hub-open){color:var(--tool-action)!important}
+html[data-tool-id] body#mcTypography :is(.btn.primary,.btn.ok,.analyzeBtn,.mc-invoice-picker,.mc-detail-done,.sendBtn,.newChat,.caseBtn,.primaryAction,.eqAdd,.updateBtn,.assignEq,.eqSave,.saveSchedule,.opsSave,.roomPopupAdd,.opsBtn.primary,.primary,#saveSchedule,#opsPageSave,#eqSave){background:var(--tool-action)!important;border-color:var(--tool-action)!important;color:#fff!important;box-shadow:0 3px 10px var(--tool-shadow)!important}
+html[data-tool-id] body#mcTypography :is(.btn.primary,.btn.ok,.analyzeBtn,.mc-invoice-picker,.mc-detail-done,.sendBtn,.newChat,.caseBtn,.primaryAction,.eqAdd,.updateBtn,.assignEq,.eqSave,.saveSchedule,.opsSave,.roomPopupAdd,.opsBtn.primary,.primary,#saveSchedule,#opsPageSave,#eqSave):hover{background:var(--tool-hover)!important;border-color:var(--tool-hover)!important;color:#fff!important}
+html[data-tool-id] body#mcTypography :is(.btn.primary,.btn.ok,.analyzeBtn,.mc-invoice-picker,.sendBtn,.newChat,.caseBtn) :is(span,b,strong,svg){color:inherit!important}
+html[data-tool-id] body#mcTypography :is(.btn:not(.primary):not(.ok):not(.danger):not(.bad):not(.warning),.scheduleBtn,.editEq,.opsBtn.secondary,.od-btn,.boardArrow,.viewAction,.viewFancy,.processAction,.processFancy,.miniBtn){color:var(--tool-action)!important;border-color:var(--tool-line)!important}
+html[data-tool-id] body#mcTypography :is(.btn:not(.primary):not(.ok):not(.danger):not(.bad):not(.warning),.od-btn,.miniBtn):hover{background:var(--tool-soft)!important;border-color:var(--tool-accent)!important}
+html[data-tool-id] body#mcTypography :is(.viewAction,.viewFancy,.processAction,.processFancy){background:var(--tool-soft)!important;color:var(--tool-action)!important;border-color:var(--tool-line)!important}
+html[data-tool-id] body#mcTypography :is(.actionIco,.actionIcon,.lifeIcon){background:var(--tool-soft)!important;color:var(--tool-action)!important;border-color:var(--tool-line)!important}
+html[data-tool-id] body#mcTypography :is(.riskSummaryBox,.aiRiskSummaryBox){background:linear-gradient(135deg,#fff,var(--tool-soft))!important;border-color:var(--tool-line)!important}
+html[data-tool-id="melior"] body#mcTypography button.active{background:var(--tool-soft)!important;color:var(--tool-action)!important;border-color:var(--tool-line)!important}
+html[data-tool-id] body#mcTypography :is(.suite-local-nav .nav.active,.mainNav .nav.active,.mc-or-nav button.active,.mc-topnav button.active,.menu button.active,.dxNav a.active){background:var(--tool-soft)!important;color:var(--tool-action)!important;border-color:var(--tool-line)!important}
+html[data-tool-id] body#mcTypography :is(.suite-local-nav .nav.active,.mainNav .nav.active) :is(b,small){color:var(--tool-action)!important}
+html[data-tool-id] body#mcTypography header :is(.nav.active .navIcon,.nav.active .navIco){background:var(--tool-action)!important;color:#fff!important;border-color:var(--tool-action)!important;box-shadow:none!important}
+html[data-tool-id] body#mcTypography .suite-local-nav .nav.active::after{background:var(--tool-accent)!important}
+html[data-tool-id] body#mcTypography :is(.ocrStep.active,.pstep.active){background:var(--tool-soft)!important;color:var(--tool-action)!important}
+html[data-tool-id] body#mcTypography :is(.ocrStep.active,.pstep.active)>b{background:var(--tool-action)!important;color:#fff!important}
+html[data-tool-id] body#mcTypography :is(.timelineStep.active .timelineNode,.timelineStep.done .timelineNode){background:var(--tool-action)!important;color:#fff!important;box-shadow:0 0 0 3px var(--tool-ring)!important;border-color:var(--tool-action)!important}
+html[data-tool-id] body#mcTypography :is(.timelineStep.active b,.timelineStep.done b){color:var(--tool-action)!important}
+html[data-tool-id] body#mcTypography :is(.mc-upload-zone,.uploadBox,.dropzone,.drop){background:linear-gradient(135deg,#fff,var(--tool-soft))!important;border-color:var(--tool-line)!important;color:var(--tool-action)!important}
+html[data-tool-id] body#mcTypography :is(.mc-upload-zone,.uploadBox,.dropzone,.drop):hover{border-color:var(--tool-accent)!important;background:var(--tool-soft)!important}
+html[data-tool-id] body#mcTypography :is(.uploadIcon,.mc-upload-symbol,.ui-upload-illustration,.groupIcon,.hub-icon){background:var(--tool-soft)!important;border-color:var(--tool-line)!important;color:var(--tool-action)!important}
+html[data-tool-id] body#mcTypography :is(.uploadIcon,.ui-upload-illustration)::after{background:var(--tool-action)!important;color:#fff!important}
+html[data-tool-id] body#mcTypography .hub-card{--tool:var(--tool-accent)!important;border-color:var(--tool-line)!important}
+html[data-tool-id] body#mcTypography .hub-card:hover{border-color:var(--tool-accent)!important;box-shadow:0 8px 22px var(--tool-shadow)!important}
+html[data-tool-id] body#mcTypography .hub-card:after{background:var(--tool-accent)!important}
+html[data-tool-id] body#mcTypography .mic:not(.rec){background:var(--tool-action)!important;border-color:var(--tool-soft)!important;color:#fff!important}
+html[data-tool-id] body#mcTypography .wave{background:repeating-linear-gradient(90deg,var(--tool-accent) 0 2px,transparent 2px 6px)!important}
+html[data-tool-id] body#mcTypography :is(.historyRow.active,.thumb.active,.projectItem.active){background:var(--tool-soft)!important;color:var(--tool-action)!important;border-color:var(--tool-accent)!important}
+html[data-tool-id] body#mcTypography :is(.suggestion,.message.user .msgBody){background:var(--tool-soft)!important;border-color:var(--tool-line)!important;color:#1e293b!important}
+html[data-tool-id] body#mcTypography .suggestion:hover{background:var(--tool-soft-hover)!important;border-color:var(--tool-accent)!important}
+html[data-tool-id] body#mcTypography :is(.avatar,.projectDot){background:var(--tool-soft)!important;color:var(--tool-action)!important}
+html[data-tool-id] body#mcTypography :is(.modeTabs,.metricTabs){background:var(--tool-soft)!important;border-color:var(--tool-line)!important}
+html[data-tool-id] body#mcTypography :is(.modeTabs button.active,.metricTabs button.active:not([data-metric])){color:var(--tool-action)!important;border-color:var(--tool-line)!important;background:#fff!important}
+html[data-tool-id] body#mcTypography :is(a,button,input,select,textarea):focus-visible{outline-color:var(--tool-action)!important}
+html[data-tool-id] body#mcTypography :is(input,select,textarea):focus-visible{border-color:var(--tool-action)!important;box-shadow:0 0 0 4px var(--tool-ring)!important}
+html[data-tool-id] body#mcTypography #meliTopControlsV70 #meliAuthBtnV69,html[data-tool-id] body#mcTypography [data-tool-account]{background:var(--tool-soft)!important;border-color:var(--tool-line)!important;color:var(--tool-action)!important}
+html[data-tool-id] body#mcTypography .effLine{stroke:var(--tool-accent)!important}
+html[data-tool-id] body#mcTypography .effPts circle{fill:var(--tool-accent)!important;stroke:#fff!important}
+/* Semantic risk colors and medical-image overlays deliberately remain source-specific. */

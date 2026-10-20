@@ -12,7 +12,7 @@
   --mc-card-title:17px;
   --mc-section-title:21px;
   --mc-page-title:31px;
-  --mc-ink:#1f3d52;
+  --mc-ink:var(--tool-action,#1f3d52);
   --mc-muted:#536b7d;
 }
 
@@ -95,7 +95,7 @@ body[data-mc-page="melivlm"] :is(.chatHeader h1,.rightHead h2){font-size:19px!im
 body[data-mc-page="melivlm"] :is(.chatHeader p,.rightHead p,.sideTitle){font-size:13px!important}
 body[data-mc-page="melivlm"] :is(.msgText,.composer textarea){font-size:16px!important}
 body[data-mc-page="melivlm"] .suggestions{max-width:600px!important;gap:8px!important;margin-top:14px!important;grid-auto-rows:auto!important}
-body[data-mc-page="melivlm"] .suggestion{min-height:68px!important;height:auto!important;padding:10px 13px!important;border-radius:13px!important;gap:8px!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;font-size:14.5px!important;line-height:1.4!important;color:#405e73!important;background:#f5f8fb!important}
+body[data-mc-page="melivlm"] .suggestion{min-height:68px!important;height:auto!important;padding:10px 13px!important;border-radius:13px!important;gap:8px!important;flex-direction:row!important;align-items:center!important;justify-content:flex-start!important;font-size:14.5px!important;line-height:1.4!important;color:var(--tool-action,#405e73)!important;background:var(--tool-soft,#f5f8fb)!important}
 body[data-mc-page="melivlm"] .suggestion[data-ui-icon]::before{width:21px!important;height:21px!important;flex:0 0 21px!important;margin:0!important}
 body[data-mc-page="melivlm"] .welcome{padding-bottom:9px!important}
 

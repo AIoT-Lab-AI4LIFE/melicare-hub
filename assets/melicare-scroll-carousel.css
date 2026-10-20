@@ -5,12 +5,12 @@ body#mcTypography.suite-vlm .imageViewer img{width:100%!important;height:100%!im
 body#mcTypography :is(.attentionList,.reasonList,.lifestyleList,.factorList,.task-list,.record-list,.progress-rows,.emergencyList,.assignCaseList,.deviceList,.roomSurgeryList,.statusStageList,.historyMini,.paneBody,#historyRows,#historyList){max-height:560px!important;min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-gutter:stable;}
 body#mcTypography :is(.table-scroll,.od-table-scroll,.eqList,.caseList){max-height:600px!important;min-height:0!important;overflow:auto!important;overscroll-behavior:contain!important;scrollbar-gutter:stable;}
 body#mcTypography.mc-or #casesPage .caseList{max-height:none!important;}
-body#mcTypography :is(.table-scroll,.od-table-scroll) thead{position:sticky;top:0;z-index:2;background:#f4f9fc}
-body#mcTypography :is(.caseListHead,.eqHead){position:sticky!important;top:0!important;z-index:2!important;background:#f4f9fc!important}
+body#mcTypography :is(.table-scroll,.od-table-scroll) thead{position:sticky;top:0;z-index:2;background:var(--tool-soft,#f4f9fc)}
+body#mcTypography :is(.caseListHead,.eqHead){position:sticky!important;top:0!important;z-index:2!important;background:var(--tool-soft,#f4f9fc)!important}
 body#mcTypography.mc-or #odTodayDoctors{display:flex!important;flex-wrap:nowrap!important;gap:14px!important;overflow-x:auto!important;overflow-y:hidden!important;min-width:0!important;scroll-snap-type:x proximity;padding-bottom:14px!important}
 body#mcTypography.mc-or #odTodayDoctors .od-today-card{flex:0 0 calc((100% - (var(--od-page-size) - 1)*14px)/var(--od-page-size))!important;min-width:230px!important;max-width:none!important;scroll-snap-align:start;display:flex!important;flex-direction:column!important;animation:od-page-in .2s ease-out}
 body#mcTypography.mc-or .od-today-pagination{display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap;padding:0 26px 22px}
-body#mcTypography.mc-or .od-today-pagination select{width:70px;min-height:42px;padding:8px;border:1px solid #d5e6f0;border-radius:9px;background:#fff}
+body#mcTypography.mc-or .od-today-pagination select{width:70px;min-height:42px;padding:8px;border:1px solid var(--tool-line,#d5e6f0);border-radius:9px;background:#fff}
 body#mcTypography.mc-or #odTodayPageLabel{margin-right:8px;color:#475569;font-size:14px}
 @keyframes od-page-in{from{opacity:.4;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
 @media(prefers-reduced-motion:reduce){body#mcTypography.mc-or #odTodayDoctors .od-today-card{animation:none}}
@@ -18,6 +18,6 @@ body#mcTypography.mc-or #odTodayPageLabel{margin-right:8px;color:#475569;font-si
 body#mcTypography.suite-postop #reasonList{max-height:560px!important;overflow-y:auto!important;min-height:0!important}
 body#mcTypography.suite-diabetes #reasonList{max-height:560px!important;overflow-y:auto!important;min-height:0!important}
 
-body#mcTypography .meli-copyright{padding:20px 24px;text-align:center;border-top:1px solid #e0e9ee;color:#475569;font-family:var(--mc-font-body);font-size:14px;line-height:1.5;background:#f8fbfd}
+body#mcTypography .meli-copyright{padding:20px 24px;text-align:center;border-top:1px solid var(--tool-line,#e0e9ee);color:#475569;font-family:var(--mc-font-body);font-size:14px;line-height:1.5;background:var(--tool-soft,#f8fbfd)}
 body#mcTypography.suite-voice .card.table,body#mcTypography.suite-ocr .card.history{max-height:600px!important;min-height:0!important;overflow:auto!important;scrollbar-gutter:stable}
-body#mcTypography.suite-voice .card.table thead,body#mcTypography.suite-ocr .card.history thead{position:sticky;top:0;z-index:2;background:#f4f9fc}
+body#mcTypography.suite-voice .card.table thead,body#mcTypography.suite-ocr .card.history thead{position:sticky;top:0;z-index:2;background:var(--tool-soft,#f4f9fc)}

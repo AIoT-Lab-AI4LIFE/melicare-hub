@@ -32,3 +32,9 @@ html body#mcTypography.melicare-home-v41 #product-contact .mc-product-name[data-
 
 #product-dialog .close-dialog>.icon{width:18px;height:18px}
 @media(max-width:600px){#product-dialog .close-dialog{flex-basis:40px;width:40px;height:40px;min-width:40px}}
+
+/* V50: consistent blue emphasis for the four homepage heading phrases. */
+#hero-title>.accent,
+#melior-title>.heading-accent,
+#catalog-title>.heading-accent,
+#connection-title>.heading-accent{color:#066dbb}

@@ -21,8 +21,8 @@ html body.mc-or .app>aside.mc-or-header{
   grid-template-rows:48px 48px!important;
   gap:6px 20px!important;
   padding:10px 24px 12px!important;
-  border-bottom:1px solid #e6eef3!important;
-  box-shadow:0 3px 14px rgba(29,73,103,.035)!important;
+  border-bottom:1px solid var(--tool-line,#e6eef3)!important;
+  box-shadow:0 3px 14px color-mix(in srgb,var(--tool-action,#1d4967) 3.500%,transparent)!important;
 }
 html body.mc-or .app>.workspace{padding-top:126px!important}
 html body.mc-or .app>aside.mc-or-header>.mc-or-local-nav{
@@ -39,9 +39,9 @@ html body.mc-or .mc-or-header .mc-or-local-nav button{
   font:750 16px/1.35 'Nunito Sans','Segoe UI',Arial,sans-serif!important;
   box-shadow:none!important;
 }
-html body.mc-or .mc-or-header .mc-or-local-nav button:hover{background:#f2f8fc!important;color:#265b78!important}
+html body.mc-or .mc-or-header .mc-or-local-nav button:hover{background:var(--tool-soft,#f2f8fc)!important;color:var(--tool-action,#265b78)!important}
 html body.mc-or .mc-or-header .mc-or-local-nav button.active{
-  background:#edf8fd!important;color:#128ac3!important;
+  background:var(--tool-soft,#edf8fd)!important;color:var(--tool-action,#128ac3)!important;
   border:0!important;box-shadow:none!important;
 }
 html body.mc-or .mc-or-header .mc-or-local-nav button.active:after{

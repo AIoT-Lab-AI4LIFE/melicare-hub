@@ -22,7 +22,8 @@
   }
   function render(options) {
     const svg=options.svg||document.getElementById('trendChart');if(!svg)return;
-    const meta=registry[options.metric]||[options.label||options.metric,options.unit||'',options.color||'#168ac0'];
+    const themeColor=getComputedStyle(document.documentElement).getPropertyValue('--tool-accent').trim()||'#168ac0';
+    const meta=registry[options.metric]||[options.label||options.metric,options.unit||'',options.color||themeColor];
     const label=options.label||meta[0],unit=options.unit||meta[1],color=options.color||meta[2];
     const values=options.values.map(Number).filter(Number.isFinite);if(!values.length)return;
     const ref=Number(options.reference),hasRef=Number.isFinite(ref),last=values.at(-1),diff=last-values[0];
