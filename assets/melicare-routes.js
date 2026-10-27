@@ -18,7 +18,7 @@
         { id: 'melivlm', module: 'MELIVLM', name: 'MELIVLM', icon: 'vlm', href: 'MELI_VLM.html', login: 'MELIVLM_Login.html', group: 'care', tone: '#5377c1', roles: ['doctor'] },
         { id: 'melicdss', module: 'MELICDSS', name: 'MELICDSS', icon: 'cdss', href: 'https://cdss.meliq.ai/login', login: 'MELICDSS_Login.html', group: 'care', tone: '#418b88', roles: ['doctor'], sso: true },
         { id: 'melidx', module: 'MELIDx', name: 'MELIDx', icon: 'dx', href: 'MELIDx.html', login: 'MELIDx_Login.html', group: 'care', tone: '#9a69b6', roles: ['doctor'] },
-        { id: 'melipos', module: 'MELIPos', name: 'MELIPos', icon: 'pos', href: 'MELIPostOp.html', login: 'MELIPos_Login.html', group: 'care', tone: '#c26374', roles: ['doctor'] },
+        { id: 'melipos', module: 'MELIPos', name: 'MELIPos', icon: 'pos', href: 'https://melipos.meliq.ai/MELIPostOp.html', login: 'MELIPos_Login.html', group: 'care', tone: '#c26374', roles: ['doctor'], sso: true },
         { id: 'melimind', module: 'MELIMind', name: 'MELI Mind', href: 'MELIMind.html', group: 'dx', parent: 'melidx' },
         { id: 'melistroke', module: 'MELIStroke', name: 'MELI Stroke', href: 'https://stoke-predict.devt.vn/', group: 'dx', parent: 'melidx' },
         { id: 'melicardio', module: 'MELICardio', name: 'MELI Cardio', href: 'MELICardio.html', group: 'dx', parent: 'melidx' },

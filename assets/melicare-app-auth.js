@@ -13,10 +13,24 @@
  const isLogin = root.dataset.toolLogin === 'true';
  const currentPage = () => decodeURIComponent(location.pathname.split('/').pop() || '');
 
+ // An sso app on its own host (e.g. https://melipos.meliq.ai) may ask to come back to any page there.
+ function sameAppHost(next) {
+  if (!app.sso || !site.isExternal(app.href)) return null;
+  try {
+   const url = new URL(next);
+   if (url.protocol !== 'https:' || url.host !== new URL(app.href).host) return null;
+   url.searchParams.delete('token');
+   return url.href;
+  } catch (_) {
+   return null;
+  }
+ }
+
  // Only pages that belong to this app are accepted as ?next=, so the login cannot redirect elsewhere.
  function destination(next) {
   const route = next && site.routes.find((item) => item.href === next && !site.isExternal(item.href));
-  return route && site.appFor(route.id) === app ? route.href : app.href;
+  if (route && site.appFor(route.id) === app) return route.href;
+  return (next && sameAppHost(next)) || app.href;
  }
 
  function loginUrl(page) {
