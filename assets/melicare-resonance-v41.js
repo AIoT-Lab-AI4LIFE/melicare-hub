@@ -35,9 +35,9 @@ const lesionRegions=[
 function lesionAt(seconds,reduced=false){const t=timeAt(seconds);return lesionRegions.map((r,i)=>({id:r.id,index:i,opacity:reduced?.62:.32+.62*(.5-.5*Math.cos(2*Math.PI*(t+r.phase)/3))}))}
 function lesionMarkup(q){const r=lesionRegions[q.index],[x,y]=r.center;return`<g data-lesion-zone="${r.id}" clip-path="url(#mi-lesion-${r.id})" opacity="${f(q.opacity)}">${path(r.shape,GOLD,'none',0,'filter="url(#mi-lesion-halo)"')}${path(r.shape,GOLD,'#fff0ad',.8,'opacity=".78"')}${path(r.shape,'#fff5c2','none',0,`opacity=".85" transform="translate(${x} ${y}) scale(.48) translate(${-x} ${-y})" filter="url(#mi-lesion-soft)"`)}</g>`}
 const zoneLabels=[
- {id:'operations',lead:'vận hành ',accent:'tối ưu',curve:'M65 879C210 1009 496 1092 744 1030'},
- {id:'clinical',x:800,y:700,lead:'chẩn đoán ',accent:'chính xác',stacked:true},
- {id:'aftercare',lead:'chăm sóc ',accent:'thông minh',curve:'M1015 982C1232 1063 1461 1049 1530 914'}
+ {id:'operations',lead:"operations ",accent:"optimized",curve:'M65 879C210 1009 496 1092 744 1030'},
+ {id:'clinical',x:800,y:700,lead:"diagnosis ",accent:"accurate",stacked:true},
+ {id:'aftercare',lead:"care ",accent:"intelligent",curve:'M1015 982C1232 1063 1461 1049 1530 914'}
 ];
 function labelAt(seconds,reduced=false){const t=timeAt(seconds);return zoneLabels.map((r,i)=>({id:r.id,index:i,opacity:reduced?1:.64+.36*Math.cos(2*Math.PI*(t-i)/3)}))}
 function zoneLabelMarkup(seconds=0,reduced=false){const labels=labelAt(seconds,reduced);return'<g class="mi-zone-labels" aria-hidden="true">'+zoneLabels.map((r,i)=>{
@@ -50,7 +50,7 @@ function render(seconds=0,options={}){
  const clips=lesionRegions.map(r=>`<clipPath id="mi-lesion-${r.id}">${path(r.clip,'white')}</clipPath>`).join('')+zoneLabels.filter(r=>r.curve).map(r=>path(r.curve,'none','none',0,`id="mi-label-${r.id}"`)).join('');
  const defs=`<defs>${paletteFilter()}<filter id="mi-lesion-halo" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3.2"/></filter><filter id="mi-lesion-soft" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation=".8"/></filter>${clips}<image id="mi-art" width="1536" height="1024" preserveAspectRatio="xMidYMid meet" style="image-rendering:auto" xlink:href="${art}"/></defs>`;
  const overlays=`<g aria-hidden="true">${voiceAt(t,reduced).map(voiceMarkup).join('')}${scheduleAt(t,reduced).map(scheduleMarkup).join('')}${lesionAt(t,reduced).map(lesionMarkup).join('')}</g>`;
- return`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1536 1080" class="mc-resonance-scene mc-illustrated-scene" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" role="img" aria-labelledby="mi-title mi-desc"><title id="mi-title">Vận hành tối ưu · Chẩn đoán chính xác · Chăm sóc thông minh</title><desc id="mi-desc">Ba cụm chữ sáng luân phiên nhẹ. Chữ và hiệu ứng là vector SVG, nền dùng ảnh đầy đủ 1536 pixel.</desc>${defs}<use xlink:href="#mi-art" filter="url(#mi-brand-palette)"/>${overlays}${zoneLabelMarkup(t,reduced)}</svg>`;
+ return`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1536 1080" class="mc-resonance-scene mc-illustrated-scene" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" role="img" aria-labelledby="mi-title mi-desc"><title id="mi-title">Optimized operations · Accurate diagnosis · Intelligent care</title><desc id="mi-desc">Three text groups glow gently in sequence. Text and effects use SVG vectors over a full 1536-pixel image.</desc>${defs}<use xlink:href="#mi-art" filter="url(#mi-brand-palette)"/>${overlays}${zoneLabelMarkup(t,reduced)}</svg>`;
 }
 return{paletteFilter,cycle,timeAt,voiceAt,scheduleRows,scheduleAt,lesionRegions,lesionAt,zoneLabels,labelAt,zoneLabelMarkup,render};
 });

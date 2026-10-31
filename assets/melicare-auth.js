@@ -76,8 +76,8 @@
 
             document.querySelectorAll('[data-mc-account]').forEach((b) => {
                 b.innerHTML = icon + '<span class="mc-account-label"></span>';
-                b.querySelector('span').textContent = user ? user.name : 'Đăng nhập';
-                b.setAttribute('aria-label', user ? 'Tài khoản ' + user.name : 'Đăng nhập MELICARE');
+                b.querySelector('span').textContent = user ? user.name : 'Sign in';
+                b.setAttribute('aria-label', user ? 'Account ' + user.name : 'Sign in to MELICARE');
                 b.setAttribute('aria-expanded', 'false');
             });
 
@@ -102,23 +102,23 @@
                 menu = document.createElement('div');
                 menu.className = 'mc-account-menu';
                 menu.setAttribute('role', 'dialog');
-                menu.setAttribute('aria-label', 'Tài khoản');
+                menu.setAttribute('aria-label', 'Account');
                 const name = document.createElement('strong');
                 name.textContent = user.name;
                 menu.append(name);
                 const detail = document.createElement('small');
-                const roleLabel = user.role === 'admin' ? 'Quản lý bệnh viện' : user.role === 'doctor' ? 'Bác sỹ' : 'Chưa chọn vai trò';
-                detail.textContent = roleLabel + ' · Đã đăng nhập';
+                const roleLabel = user.role === 'admin' ? 'Hospital management' : user.role === 'doctor' ? 'Physician' : 'No role selected';
+                detail.textContent = roleLabel + ' · Signed in';
                 menu.append(detail);
                 if (user.role) {
                     const link = document.createElement('a');
                     link.href = paths[user.role];
-                    link.textContent = 'Mở dashboard của tôi';
+                    link.textContent = 'Open my dashboard';
                     menu.append(link);
                 }
                 const switchRole = document.createElement('a');
                 switchRole.href = site.login;
-                switchRole.textContent = 'Đổi vai trò làm việc';
+                switchRole.textContent = 'Switch workspace role';
                 switchRole.addEventListener('click', (e) => {
                     e.preventDefault();
                     auth.clearWorkspaceRole();
@@ -128,7 +128,7 @@
                 const out = document.createElement('button');
                 out.type = 'button';
                 out.dataset.mcLogout = '';
-                out.textContent = 'Đăng xuất';
+                out.textContent = 'Sign out';
                 menu.append(out);
                 document.body.append(menu);
                 const r = button.getBoundingClientRect();
@@ -203,7 +203,7 @@
                 showPassword.addEventListener('click', (e) => {
                     const visible = pass.type === 'password';
                     pass.type = visible ? 'text' : 'password';
-                    e.currentTarget.textContent = visible ? 'Ẩn' : 'Hiện';
+                    e.currentTarget.textContent = visible ? 'Hide' : 'Show';
                     e.currentTarget.setAttribute('aria-pressed', String(visible));
                 });
             }
@@ -216,7 +216,7 @@
                         dashboard(get());
                     } catch (err) {
                         if (error) {
-                            error.textContent = err?.message || 'Không chọn được vai trò.';
+                            error.textContent = err?.message || 'Could not select the role.';
                             error.hidden = false;
                             showLoginStep();
                         }
@@ -254,7 +254,7 @@
                 const identifier = loginInput.value.trim();
                 const password = pass.value;
                 if (!identifier || !password) {
-                    error.textContent = 'Vui lòng nhập tài khoản và mật khẩu.';
+                    error.textContent = 'Please enter your account and password.';
                     error.hidden = false;
                     return;
                 }
@@ -268,7 +268,7 @@
                     }
                     showRoleStep(get());
                 } catch (err) {
-                    error.textContent = err?.message || 'Đăng nhập thất bại. Vui lòng thử lại.';
+                    error.textContent = err?.message || 'Sign-in failed. Please try again.';
                     error.hidden = false;
                     loginInput.setAttribute('aria-invalid', 'true');
                     pass.setAttribute('aria-invalid', 'true');

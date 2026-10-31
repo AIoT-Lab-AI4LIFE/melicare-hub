@@ -1,0 +1,7 @@
+/* Neural fabric: an open, asymmetrical composition, with no surrounding cards. */
+body.mc-home .hero-art.mc-ai-hero{animation:none;transform:none;width:min(560px,100%);min-width:0;margin:0 auto}
+body.mc-home .mc-ai-scene{display:block;width:100%;height:auto;overflow:visible}
+body#mcTypography.mc-home .ecosystem-footer .footer-copy>p:last-child,
+body#mcTypography.mc-home .ecosystem-footer .footer-copy>p:last-child>span{font-family:"Poppins","Segoe UI",Arial,sans-serif!important}
+@media(max-width:760px){body.mc-home .hero-art.mc-ai-hero{width:min(480px,100%);margin:4px auto 0}}
+@media(max-width:640px){body.mc-home .hero-art.mc-ai-hero{width:min(460px,100%);margin:12px auto 0}}

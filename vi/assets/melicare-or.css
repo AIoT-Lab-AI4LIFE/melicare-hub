@@ -1,0 +1,206 @@
+/* Recovered functional MELIOR page: preserve its scheduling logic and local navigation. */
+body.mc-or{--navy:#128ac3;--blue:var(--tool-action,#066dbb);--primary:var(--tool-action,#066dbb);--bg:var(--tool-soft,#f5f9fc);--ink:#21465d;--font:'Nunito Sans','Segoe UI',Arial,sans-serif;font-family:var(--font)!important;background:var(--tool-soft,#f5f9fc)!important;color:#294b61!important;font-size:17px!important}
+body.mc-or :is(button,input,select,textarea){font-family:var(--font)!important}
+body.mc-or :is(h1,h2,h3,.meliBrandText b){font-family:'Plus Jakarta Sans','Segoe UI',Arial,sans-serif!important}
+body.mc-or .meliBrandText em{color:var(--tool-action,#128ac3)!important;font-family:'Nunito Sans','Segoe UI',Arial,sans-serif!important}
+body.mc-or .meliBrandMark{background:var(--tool-soft,#ecf8fe)!important;border-color:var(--tool-line,#d4eaf5)!important;color:var(--tool-action,#128ac3)!important;box-shadow:none!important}
+body.mc-or .menu button.active{background:var(--tool-soft,#e9f7fe)!important;color:var(--tool-action,#128ac3)!important;border-color:var(--tool-line,#c3e3f3)!important;box-shadow:inset 0 -3px #f5c54b!important}
+body.mc-or .menu button:hover{background:var(--tool-soft,#f1f9fe)!important;color:var(--tool-action,#128ac3)!important}
+body.mc-or .mc-or-topbar{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:18px!important;min-height:76px!important;height:auto!important;padding:15px 24px!important;background:#fff!important;overflow:visible!important;position:relative!important;z-index:110!important}
+body.mc-or .mc-or-original-meta{display:none!important}
+.mc-or-controls{display:flex;align-items:center;gap:10px;margin-left:auto;flex-shrink:0}
+body.mc-or .card{border-radius:19px!important;border-color:var(--tool-line,#dceaf2)!important;box-shadow:0 5px 24px color-mix(in srgb,var(--tool-action,#244f6f) 3.137%,transparent)!important}
+body.mc-or .primary,body.mc-or .btn.primary{background:#f5c54b!important;color:#3e534a!important;border-color:#e7ba46!important;border-radius:11px!important;box-shadow:0 4px 12px #d4a33615!important}
+body.mc-or .summary{background:linear-gradient(105deg,var(--tool-soft,#eef9ff),#fffdf5)!important;border-color:var(--tool-line,#d8e9f3)!important}
+@media(max-width:760px){body.mc-or .mc-or-topbar{padding:14px!important;gap:10px!important;flex-wrap:wrap!important}body.mc-or .mc-or-topbar>b{font-size:16px!important}.mc-or-controls{gap:6px}.mc-or-controls .mc-account-button{padding:0 10px;font-size:15px}.mc-or-controls .mc-icon-button{width:40px;padding:0}.mc-or-controls .mc-app-switch summary{font-size:14px;padding:10px}}
+/* Put global controls in the real header, not the legacy auto-hidden title bar. */
+html body.mc-or .workspace>.mc-or-topbar{display:none!important}
+html body.mc-or .workspace{padding-top:88px!important}
+html body.mc-or .app>aside{padding:12px 24px!important;gap:20px!important;display:flex!important;align-items:center!important}
+html body.mc-or aside .menu{flex:1 1 auto!important;min-width:0!important;overflow-x:auto!important;scrollbar-width:thin!important}
+html body.mc-or aside .brand{flex:0 0 205px!important;min-width:0!important}
+html body.mc-or aside .mc-or-controls{flex:0 0 auto!important}
+html body.mc-or .mc-or-controls .mc-account-button,html body.mc-or .mc-or-controls .mc-app-switch summary{font-size:15px!important}
+html body.mc-or .mc-or-controls .mc-account-label{font-size:15px!important;color:var(--tool-action,#2b5872)!important}
+@media(max-width:1050px){html body.mc-or .app>aside{flex-wrap:wrap!important;height:145px!important;gap:9px!important;padding:12px 20px!important}html body.mc-or aside .brand{order:1!important;flex:1 1 auto!important}html body.mc-or aside .mc-or-controls{order:2!important;margin-left:auto!important}html body.mc-or aside .menu{order:3!important;flex:0 0 100%!important;max-width:100%!important;width:100%!important;min-height:57px!important}html body.mc-or .workspace{padding-top:145px!important}}
+@media(max-width:600px){html body.mc-or .app>aside{padding:10px 14px!important;gap:8px!important;height:144px!important}html body.mc-or aside .brand{flex:1 1 110px!important}.mc-or-controls .mc-account-label{display:none!important}html body.mc-or .mc-or-controls .mc-app-switch summary{font-size:0!important;padding:10px!important;gap:0!important;width:44px;height:44px;background:#f5c54b!important}html body.mc-or .mc-or-controls .mc-app-switch summary:before{content:'▦';font-size:24px!important}html body.mc-or .mc-or-controls .mc-app-switch summary>span{display:none!important}html body.mc-or .workspace{padding-top:144px!important}.mc-or-controls .mc-account-button{height:44px}.mc-or-controls{gap:6px}}
+
+/* MELIOR palette — aligned with the approved MELICARE landing page.
+   Only visual tokens and colour-related declarations are changed here.
+   Scheduling, layout, typography, navigation and state labels are untouched. */
+html body.mc-or.mc-v2.mc-layout-v3 {
+  --or-sky:var(--tool-action,#128ac3); --or-sky-deep:var(--tool-action,#087cab); --or-sky-soft:var(--tool-soft,#edf4fa);
+  --or-gold:#f5c54b; --or-gold-hover:#ffda75; --or-cream:#fff7e3;
+  --or-ink:#17344a; --or-muted:#586f7e; --or-subtle:#718b9b;
+  --or-page:var(--tool-soft,#f6fafc); --or-white:#fff; --or-line:var(--tool-soft,#dfebf2);
+  --or-success:#25856f; --or-success-soft:#edf8f3;
+  --or-warning:#8c651d; --or-warning-soft:#fff7e3;
+  --or-danger:#bc515e; --or-danger-soft:#fff1f3;
+  --nav:var(--or-sky); --nav2:var(--or-sky-deep);
+  --navy:var(--or-ink); --blue:var(--tool-action,#066dbb); --primary:var(--tool-action,#066dbb);
+  --bg:var(--or-page); --card:var(--or-white); --ink:var(--or-ink);
+  --muted:var(--or-muted); --line:var(--or-line);
+  --green:var(--or-success); --amber:var(--or-gold); --red:var(--or-danger);
+  --meli-ink:var(--or-ink); --meli-text:var(--or-ink); --meli-navy:var(--or-ink);
+  --meli-blue:var(--or-sky); --meli-cyan:var(--tool-action,#77c8e8); --meli-bg:var(--or-page);
+  --meli-surface:var(--or-white); --meli-soft:var(--or-sky-soft);
+  --meli-softblue:var(--or-sky-soft); --meli-line:var(--or-line); --meli-muted:var(--or-muted);
+  --shadow:0 5px 22px color-mix(in srgb,var(--tool-action,#17344a) 4.500%,transparent);
+  background:var(--or-page)!important; color:var(--or-ink)!important;
+  accent-color:var(--or-sky);
+}
+/* Brand, surfaces and text. The shared switcher retains its suite-wide colours. */
+html body.mc-or.mc-v2.mc-layout-v3 .meliBrandText b {color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .meliBrandText em {color:var(--or-sky)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .meliBrandMark {background:var(--or-sky-soft)!important;color:var(--or-sky)!important;border-color:var(--tool-line,#d1eaf5)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(#casesPage,#equipmentPage,#dutyPage) {background:transparent!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(h1,h2,h3,h4,.roomname,.roomOpsName,.formSectionTitle,.eqFormTitle) {color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.blockhead p,.casesHero p,.eqHero p,.dutyHeroText p,.eyebrow,.dutyEyebrow,.dutySectionKicker) {color:var(--or-muted)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.card,.caseKpi,.eqStat,.roomOpsStat,.dutyStat,.integratedBoard,.caseList,.caseDetail,.eqBoard,.eqList,.eqDetail,.dutyRosterPanel,.dutyWeekPanel,.dutySelected,.departmentDoctors) {
+ background:var(--or-white)!important;border-color:var(--or-line)!important;box-shadow:0 5px 22px color-mix(in srgb,var(--tool-action,#17344a) 4.500%,transparent)!important;
+}
+/* One action hierarchy: warm gold primary, sky secondary, semantic danger. */
+html body.mc-or.mc-v2.mc-layout-v3 :is(.caseBtn,.primaryAction,.eqAdd,.updateBtn,.assignEq,.eqSave,.saveSchedule,.opsSave,.roomPopupAdd,.opsBtn.primary,.btn.primary,.primary,#saveSchedule,#opsPageSave,#eqSave) {
+ background:var(--or-gold)!important; color:var(--or-ink)!important;
+ border-color:#e9b93e!important;box-shadow:0 4px 12px rgba(207,157,37,.14)!important;
+}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.caseBtn,.primaryAction,.eqAdd,.updateBtn,.assignEq,.eqSave,.saveSchedule,.opsSave,.roomPopupAdd,.opsBtn.primary,.btn.primary,.primary,#saveSchedule,#opsPageSave,#eqSave):hover {
+ background:var(--or-gold-hover)!important;color:var(--or-ink)!important;border-color:#dbae36!important;
+ box-shadow:0 6px 16px rgba(207,157,37,.18)!important;
+}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyAddBtn span {background:rgba(255,255,255,.5)!important;color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.scheduleBtn,.editEq,.opsBtn.secondary,.deviceBuilder button,.dayNavToday,.boardTools .today,#cancelSchedule,#opsPageCancel,#eqCancel) {
+ background:var(--or-sky-soft)!important;color:var(--or-sky-deep)!important;border-color:var(--tool-line,#cce6f3)!important;box-shadow:none!important;
+}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.scheduleBtn,.editEq,.opsBtn.secondary,.deviceBuilder button,.dayNavToday,.boardTools .today,#cancelSchedule,#opsPageCancel,#eqCancel):hover {background:var(--tool-soft,#def1fb)!important;border-color:var(--tool-line,#9dd2e9)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.caseClose,.opsClose,.eqClose,.detailClose,#opsPageClose) {background:var(--or-white)!important;color:var(--or-muted)!important;border-color:var(--or-line)!important;box-shadow:none!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.caseClose,.opsClose,.eqClose,.detailClose,#opsPageClose):hover {background:var(--or-sky-soft)!important;color:var(--or-sky-deep)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.opsBtn.danger,.dangerBtn) {background:var(--or-danger)!important;color:#fff!important;border-color:var(--or-danger)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(input,select,textarea) {background:var(--or-white)!important;color:var(--or-ink)!important;border-color:var(--tool-line,#d5e6ef)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(input,select,textarea):focus {border-color:var(--or-sky)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--tool-action,#128ac3) 12.000%,transparent)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(button,a):focus-visible {outline-color:var(--or-sky)!important}
+/* Overview: neutral white cards, blue emphasis and a warm upcoming-cases card. */
+html body.mc-or.mc-v2.mc-layout-v3 .summary {background:linear-gradient(110deg,var(--tool-soft,#eaf7ff),#fffdf6)!important;border-color:var(--or-line)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .summary>div:first-child {background:var(--or-white)!important;border-color:var(--or-line)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .summary .date {background:var(--or-sky-soft)!important;border-color:var(--tool-line,#d8eaf4)!important;color:var(--or-muted)!important;box-shadow:none!important}
+html body.mc-or.mc-v2.mc-layout-v3 .summary :is(.stat,.remain) {background:var(--or-white)!important;border-color:var(--or-line)!important;box-shadow:none!important}
+html body.mc-or.mc-v2.mc-layout-v3 .summary .stat::before {background:var(--or-sky)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .summary .stat:nth-child(3)::before {background:var(--or-success)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .summary .remain {background:var(--or-cream)!important;border-color:#f0dfb0!important}
+html body.mc-or.mc-v2.mc-layout-v3 .summary .remain::before {background:var(--or-gold)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .summary :is(.stat,.remain)::after,html body.mc-or.mc-v2.mc-layout-v3 .summary>div:first-child::after {background:none!important}
+html body.mc-or.mc-v2.mc-layout-v3 .summary .stat b {color:var(--or-sky-deep)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .summary .stat:nth-child(3) b {color:var(--or-success)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .summary :is(.stat strong,.remain b) {color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .summary :is(.stat small,.remain small) {color:var(--or-muted)!important}
+/* Operating rooms: retain green/amber/red meanings, reduce saturation in backgrounds. */
+html body.mc-or.mc-v2.mc-layout-v3 .room {background:var(--tool-soft,#f4fbff)!important;border-color:var(--tool-line,#d2eaf5)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .room.ready {background:#f4fbf8!important;border-color:#d2e9df!important}
+html body.mc-or.mc-v2.mc-layout-v3 .room.warning {background:var(--or-cream)!important;border-color:#efdeaf!important}
+html body.mc-or.mc-v2.mc-layout-v3 .tag {background:var(--or-sky)!important;color:#fff!important}
+html body.mc-or.mc-v2.mc-layout-v3 .ready .tag {background:var(--or-success)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .warning .tag {background:var(--or-gold)!important;color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.nextcase,.roomMetaBox,.infoBox,.eqUsage,.remainingBox,.roomTask,.opsStat) {background:var(--tool-soft,#f4faff)!important;border-color:var(--or-line)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.bar,.vbar,.caseTimeBar,.statusProgressTrack) {background:var(--tool-soft,#e9f0f4)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.pages .active,.bar i,.dots i.done,.detailSteps .done,.caseTimeBar i) {background:var(--or-sky)!important;border-color:var(--or-sky)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dots i.current {border-color:var(--or-sky)!important;box-shadow:0 0 0 3px var(--tool-action,#d5edf8)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .ready .bar i {background:var(--or-success)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .warning :is(.bar i,.dots i.done) {background:var(--or-gold)!important;border-color:var(--or-gold)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .warning .dots i.current {border-color:#cb9830!important;box-shadow:0 0 0 3px #fff0c5!important}
+html body.mc-or.mc-v2.mc-layout-v3 .roomOpsCard {background:#fff!important;border-color:var(--or-line)!important}
+/* Charts, date controls and table selection. */
+html body.mc-or.mc-v2.mc-layout-v3 :is(.effLinePath,.effLine) {stroke:var(--or-sky)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.effPoint,.effPts circle) {fill:var(--or-sky)!important;stroke:#fff!important}
+html body.mc-or.mc-v2.mc-layout-v3 .effPointHalo {fill:var(--tool-action,#d8edf7)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .effGrid {stroke:var(--tool-action,#e4eef4)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .effPeriod {background:var(--tool-soft,#f4f9fc)!important;border-color:var(--or-line)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .effPeriod button {background:transparent!important;color:var(--or-muted)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .effPeriod button.active {background:var(--or-sky-soft)!important;color:var(--or-sky-deep)!important;box-shadow:inset 0 0 0 1px var(--tool-action,#b9dfef)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .effTooltip {background:var(--or-ink)!important;border-color:var(--or-ink)!important;color:#fff!important}
+html body.mc-or.mc-v2.mc-layout-v3 .vbar i {background:var(--or-gold)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .delta {color:var(--or-warning)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .bad .vbar i {background:var(--or-danger)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .bad .delta {color:var(--or-danger)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.boardDateHead,.eqDateHead,.dutyCalHead,.durationhead,.caseListHead,.eqHead,.dutyPanelHead,.dutyWeekTop,.dutySelectedHead,.dutyDirectoryHead) {background:var(--tool-soft,#f3faff)!important;border-color:var(--or-line)!important;color:var(--or-muted)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.weekMini,.eqWeekMini,.roomDateNav,.dutyWeekPanel .weekDutyGrid) {background:var(--tool-soft,#f7fbfd)!important;border-color:var(--or-line)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.weekMini,.eqWeekMini) button {background:transparent!important;color:var(--or-muted)!important;box-shadow:none!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.weekMini,.eqWeekMini) button.active {background:var(--or-gold)!important;color:var(--or-ink)!important;box-shadow:0 2px 8px rgba(207,157,37,.13)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.weekMini,.eqWeekMini) button.active :is(b,span,small) {color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.boardFilters,.eqBoardFilters) button.active {background:var(--or-sky-soft)!important;color:var(--or-sky-deep)!important;border-color:var(--tool-line,#b8deef)!important;box-shadow:none!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.surgeryRow,.eqRow):hover {background:var(--tool-soft,#f5fbff)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.surgeryRow,.eqRow).selected {background:var(--tool-soft,#eaf7ff)!important;box-shadow:inset 3px 0 var(--or-sky)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.equipmentTags i,.deviceToken,.caseChip,.doctorChip,.eqType,.selectedDutyTag) {background:var(--or-sky-soft)!important;color:var(--or-sky-deep)!important;border-color:var(--tool-line,#cde7f3)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .statusChip,html body.mc-or.mc-v2.mc-layout-v3 .eqStatus.busy {background:var(--or-sky-soft)!important;color:var(--or-sky-deep)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .statusChip.waiting {background:var(--or-cream)!important;color:var(--or-warning)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .statusChip.done,html body.mc-or.mc-v2.mc-layout-v3 .eqStatus.ready {background:var(--or-success-soft)!important;color:var(--or-success)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .eqStatus.service {background:var(--or-cream)!important;color:var(--or-warning)!important}
+/* Detail banners: no more heavy navy blocks; use the landing-page sky/cream wash. */
+html body.mc-or.mc-v2.mc-layout-v3 :is(.caseDetailHead,.eqDetailHead) {background:linear-gradient(110deg,var(--tool-soft,#eaf7ff),var(--tool-soft,#f8fcff) 68%,#fff7e3)!important;color:var(--or-ink)!important;border-color:var(--or-line)!important;box-shadow:inset 0 4px 0 #f5c54b!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.caseDetailHead,.eqDetailHead)::after {background:color-mix(in srgb,var(--tool-action,#128ac3) 5.000%,transparent)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.caseDetailHead,.eqDetailHead) h2 {color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.caseDetailHead,.eqDetailHead) :is(p,small,span) {color:var(--or-muted)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.detailSection,.eqSection) {background:#fff!important;border-color:var(--or-line)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.detailButtons,.eqActions) {background:var(--tool-soft,#f8fbfd)!important;border-color:var(--or-line)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.caseKpi.total,.caseKpi.running,.caseKpi.waiting,.eqStat) {background:#fff!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.caseKpi.total,.caseKpi.running) .kpiIcon {background:var(--or-sky-soft)!important;color:var(--or-sky)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .caseKpi.waiting .kpiIcon {background:var(--or-cream)!important;color:var(--or-warning)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .caseKpi.attention {background:#fffaf0!important;border-color:#efdfb7!important}
+html body.mc-or.mc-v2.mc-layout-v3 .eqStat i {background:var(--or-sky-soft)!important;color:var(--or-sky)!important}
+/* Staff rota: sky day shifts, warm cream night shifts, green assigned-surgery status. */
+html body.mc-or.mc-v2.mc-layout-v3 .dutyQuickStrip {background:linear-gradient(110deg,#fff,var(--tool-soft,#f3faff))!important;border-color:var(--or-line)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyQuickItem b {color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyQuickItem span {color:var(--or-muted)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyQuickIcon.blue {background:var(--or-sky-soft)!important;color:var(--or-sky)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyQuickIcon.violet {background:var(--tool-soft,#edf8fd)!important;color:var(--or-sky-deep)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyQuickIcon.teal {background:var(--or-success-soft)!important;color:var(--or-success)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyQuickIcon.amber {background:var(--or-cream)!important;color:var(--or-warning)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.avatar,.doctorPopupAvatar) {background:var(--or-sky-soft)!important;color:var(--or-sky-deep)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyWeekPanel .weekDutyDay.selected {background:linear-gradient(#fff9e9,#fff)!important;border-color:#ecdba8!important;box-shadow:inset 0 3px var(--or-gold)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyWeekPanel .weekDutyDay.today .weekDayNo {background:var(--or-gold)!important;color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyWeekPanel .weekDoctor {background:var(--or-sky-soft)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyWeekPanel .weekDoctor.night {background:var(--or-cream)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyWeekPanel .weekDoctor.surgery {background:var(--or-success-soft)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyWeekPanel .weekDoctor b {color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .dutyWeekPanel .weekDoctor span {color:var(--or-muted)!important}
+html body.mc-or.mc-v2.mc-layout-v3 #todayDuty .dutyPerson:hover {background:var(--or-sky-soft)!important;box-shadow:inset 3px 0 var(--or-sky)!important}
+/* Modal frames and forms share the same light surface language. */
+html body.mc-or.mc-v2.mc-layout-v3 :is(.detailOverlay,.opsOverlay,.opsPageOverlay,.eqOverlay,.caseOverlay) {background:color-mix(in srgb,var(--tool-action,#17344a) 30.000%,transparent)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.detailModal,.opsModal,.opsPageModal,.eqModal,.caseModal) {background:var(--or-white)!important;border-color:var(--or-line)!important;box-shadow:0 25px 75px color-mix(in srgb,var(--tool-action,#17344a) 20.000%,transparent)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.opsModalHead,.opsPageHead,.eqModalHead,.caseModalHead) {background:linear-gradient(115deg,var(--tool-soft,#eaf7ff),#fff 74%,#fff7e3)!important;border-color:var(--or-line)!important;color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.opsModalHead,.opsPageHead,.eqModalHead,.caseModalHead) :is(h2,h3) {color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.opsModalHead,.opsPageHead,.eqModalHead,.caseModalHead) :is(p,small) {color:var(--or-muted)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.caseModalBody,.eqModalBody,.opsPageBody,.opsModalBody) {background:var(--tool-soft,#f8fbfd)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.caseModalActions,.eqModalActions,.opsPageActions,.opsActions) {background:#fff!important;border-color:var(--or-line)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.formSection,.eqFormSection,.schedulePanel,.roomCapabilityBox,.roomAbilityBox,.roomScheduleCompact,.doctorPopupHero,.doctorSurgeryCard,.opsForm) {background:#fff!important;border-color:var(--or-line)!important;box-shadow:none!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.formSectionTitle,.eqFormTitle)::before {background:var(--or-sky)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.field label,.eqField label,.opsForm label) {color:var(--or-muted)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.opsStat,.statusInfoBox,.statusControlPanel,.scheduleSummary,.noteHint) {background:var(--tool-soft,#f3faff)!important;border-color:var(--or-line)!important;color:var(--or-muted)!important}
+/* Emergency colours are semantic rather than decorative: keep red and amber distinct. */
+html body.mc-or.mc-v2.mc-layout-v3 .emergencyItem.critical {background:var(--or-danger-soft)!important;border-color:#f0d7dd!important}
+html body.mc-or.mc-v2.mc-layout-v3 .emergencyItem.warning {background:var(--or-warning-soft)!important;border-color:#f0dfb4!important}
+html body.mc-or.mc-v2.mc-layout-v3 .emergencyItem.attention {background:var(--or-sky-soft)!important;border-color:var(--tool-line,#cde6f2)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.emergencyBadge,.critical .severity) {background:var(--or-danger)!important;color:#fff!important}
+html body.mc-or.mc-v2.mc-layout-v3 .warning .severity {background:var(--or-gold)!important;color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .attention .severity {background:var(--or-sky)!important;color:#fff!important}
+html body.mc-or.mc-v2.mc-layout-v3 .opsModal.eventMode.criticalTone .opsModalHead {background:var(--or-danger-soft)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .opsModal.eventMode.warningTone .opsModalHead {background:var(--or-cream)!important}
+/* Secondary room cards and selected controls in nested dialogs. */
+html body.mc-or.mc-v2.mc-layout-v3 .orCard {background:#fff!important;border-color:var(--or-line)!important;box-shadow:0 5px 22px color-mix(in srgb,var(--tool-action,#17344a) 4.500%,transparent)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.orCurrent,.orNext) {background:var(--tool-soft,#f4faff)!important;border-color:var(--or-line)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .orStatus.running {background:var(--or-sky-soft)!important;color:var(--or-sky-deep)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .orStatus.ready {background:var(--or-success-soft)!important;color:var(--or-success)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .orStatus.prep {background:var(--or-cream)!important;color:var(--or-warning)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .orStatus.cleaning {background:var(--tool-soft,#eef3f6)!important;color:var(--or-muted)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .orNext button {background:var(--or-gold)!important;color:var(--or-ink)!important;border-color:#e9b93e!important}
+html body.mc-or.mc-v2.mc-layout-v3 .orNext button:hover {background:var(--or-gold-hover)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.orBar,.caseTimeProgress) {background:var(--tool-soft,#e9f0f4)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.orBar i,.orStages .done,.stageTrack .done) {background:var(--or-sky)!important;border-color:var(--or-sky)!important}
+html body.mc-or.mc-v2.mc-layout-v3 :is(.orStages .current,.stageTrack .current) {border-color:var(--or-sky)!important;box-shadow:0 0 0 3px var(--tool-action,#d5edf8)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .deviceChoice.selected {background:var(--or-sky-soft)!important;color:var(--or-sky-deep)!important;border-color:var(--tool-line,#acd7eb)!important;box-shadow:inset 0 0 0 1px var(--tool-action,#acd7eb)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .statusStage.selected {background:var(--or-sky-soft)!important;border-color:var(--tool-line,#acd7eb)!important;box-shadow:inset 3px 0 var(--or-sky)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .statusStage.selected .statusStageNo {background:var(--or-sky)!important;color:#fff!important}
+html body.mc-or.mc-v2.mc-layout-v3 .statusStage.done .statusStageNo {background:var(--or-success)!important;color:#fff!important}
+html body.mc-or.mc-v2.mc-layout-v3 .statusStage.selected :is(.statusStageState,.statusStageCheck) {color:var(--or-sky-deep)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .critical .emergencySeverity {background:var(--or-danger)!important;color:#fff!important}
+html body.mc-or.mc-v2.mc-layout-v3 .warning .emergencySeverity {background:var(--or-gold)!important;color:var(--or-ink)!important}
+html body.mc-or.mc-v2.mc-layout-v3 .attention .emergencySeverity {background:var(--or-sky)!important;color:#fff!important}

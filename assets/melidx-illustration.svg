@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="mc-care-art mc-care-art-refined" viewBox="0 0 520 320" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="mc11-dx-title mc11-dx-desc">
-<title id="mc11-dx-title">MELIDx — dữ liệu lâm sàng, AI theo nhóm bệnh, hỗ trợ chẩn đoán</title><desc id="mc11-dx-desc">Ảnh y tế, tín hiệu và các chỉ số người bệnh đi vào công cụ AI theo nhóm bệnh, hỗ trợ phân tích tim mạch, thần kinh và chuyển hóa.</desc>
+<title id="mc11-dx-title">MELIDx — dữ liệu lâm sàng, AI theo nhóm bệnh, hỗ trợ diagnosis</title><desc id="mc11-dx-desc">Medical images, tín hiệu và các chỉ số patients bệnh đi vào công cụ AI theo nhóm bệnh, hỗ trợ phân tích tim mạch, thần kinh và metabolism.</desc>
 <defs>
  <linearGradient id="mc11-dx-blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#30a8fb"/><stop offset="1" stop-color="#087bda"/></linearGradient>
  <linearGradient id="mc11-dx-area" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#078cf0" stop-opacity=".18"/><stop offset="1" stop-color="#078cf0" stop-opacity="0"/></linearGradient>
  <filter id="mc11-dx-shadow" x="-35%" y="-35%" width="180%" height="185%"><feGaussianBlur in="SourceAlpha" stdDeviation="4"/><feOffset dy="6"/><feColorMatrix type="matrix" values="0 0 0 0 .03 0 0 0 0 .4 0 0 0 0 .7 0 0 0 .10 0"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 </defs>
 <g font-family="'Nunito Sans',Arial,sans-serif" stroke-linecap="round" stroke-linejoin="round">
-<text x="35" y="44" fill="#15384f" font-size="18" font-weight="800">Dữ liệu người bệnh</text>
+<text x="35" y="44" fill="#15384f" font-size="18" font-weight="800">Data patients bệnh</text>
 <text x="326" y="44" fill="#15384f" font-size="18" font-weight="800">Theo nhóm bệnh</text>
 <!-- Recognizable input modalities, with no human figure or floating organs. -->
 <g transform="translate(37 79)">
  <circle cx="23" cy="23" r="23" fill="#e0f1fc" stroke="#abcfe7" stroke-width="1.1"/>
  <path d="M22 8c-9-4-19 5-16 15-2 10 8 18 16 14 8 4 18-4 16-14 3-10-7-19-16-15Z" fill="#9bd5f7" stroke="#fff" stroke-width="1.2"/>
  <path d="M22 10v25m-10-17q5-5 10 1m10-1q-5-5-10 1M11 28q6-5 11 0m11 0q-6-5-11 0" stroke="#fff" stroke-width="1.1" fill="none"/>
- <text x="58" y="29" fill="#426882" font-size="17" font-weight="700">Ảnh y tế</text>
+ <text x="58" y="29" fill="#426882" font-size="17" font-weight="700">Medical images</text>
 </g>
 <g transform="translate(37 145)">
  <path d="M0 24h9l5-9 6 24 7-36 8 29 6-8h8" fill="none" stroke="#078cf0" stroke-width="1.9"/>
@@ -23,7 +23,7 @@
  <path d="M5 0h25M9 0v25a8 8 0 0 0 16 0V0" fill="none" stroke="#7fb8de" stroke-width="1.5"/>
  <path d="M10 18h14v7a7 7 0 0 1-14 0Z" fill="#83caf5"/>
  <path d="M12 10h5" stroke="#7fb8de" stroke-width="1.3"/>
- <text x="52" y="24" fill="#426882" font-size="17" font-weight="700">Chỉ số</text>
+ <text x="52" y="24" fill="#426882" font-size="17" font-weight="700">Indicator</text>
 </g>
 <!-- A tidy bracket expresses shared input, without pretending all models are one model. -->
 <path d="M185 103h6q9 0 9 9v46q0 12 12 12m-27 65h6q9 0 9-9v-44q0-12 12-12h8" fill="none" stroke="#aacde5" stroke-width="1.5"/>
@@ -34,12 +34,12 @@
 <path d="M285 170h11q10 0 10-10v-46q0-10 10-10h9m-40 66h40m-40 0h11q10 0 10 10v46q0 10 10 10h9" fill="none" stroke="#9ec9e6" stroke-width="1.5"/>
 <g fill="#078cf0"><circle cx="325" cy="104" r="2.5"/><circle cx="325" cy="170" r="2.5"/><circle cx="325" cy="236" r="2.5"/></g>
 <g font-size="18" font-weight="800" fill="#15384f">
- <text x="339" y="109">Tim mạch</text><text x="339" y="175">Thần kinh</text><text x="339" y="241">Chuyển hóa</text>
+ <text x="339" y="109">Cardiology</text><text x="339" y="175">Neurology</text><text x="339" y="241">Chuyển hóa</text>
 </g>
 <g fill="#63839a" font-size="14" font-weight="600">
- <text x="339" y="130">Chỉ số &amp; điện tim</text>
- <text x="339" y="196">Ảnh &amp; nguy cơ</text>
- <text x="339" y="262">Chỉ số đường huyết</text>
+ <text x="339" y="130">Indicator &amp; điện tim</text>
+ <text x="339" y="196">Images &amp; nguy cơ</text>
+ <text x="339" y="262">Indicator đường huyết</text>
 </g>
 <text x="260" y="299" text-anchor="middle" fill="#54778e" font-size="17" font-weight="700">Hỗ trợ phân tích và đánh giá nguy cơ</text>
 </g></svg>

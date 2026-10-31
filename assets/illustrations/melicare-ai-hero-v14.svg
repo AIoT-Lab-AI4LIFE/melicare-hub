@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="mc-ai-scene mc-h14" viewBox="0 0 720 540" role="group" aria-labelledby="mc-h14-title mc-h14-desc">
 <title id="mc-h14-title">Dòng chảy trí tuệ y tế</title>
-<desc id="mc-h14-desc">Các dải dữ liệu vận hành và bằng chứng lâm sàng đan qua một mạng suy luận AI, được bổ sung tri thức chuyên gia. Dòng thông tin liên tục hỗ trợ bác sỹ, chăm sóc người bệnh và điều phối bệnh viện. Các luồng sáng chuyển động thể hiện sự hội tụ và phản hồi; chọn Vận hành hoặc Khám chữa bệnh để đi đến phần tương ứng.</desc>
+<desc id="mc-h14-desc">Các dải dữ liệu operations và bằng chứng lâm sàng đan qua một mạng suy luận AI, được bổ sung tri thức chuyên gia. Dòng thông tin liên tục hỗ trợ physicians, care patients bệnh và điều phối bệnh viện. Các luồng sáng chuyển động thể hiện sự hội tụ và phản hồi; chọn Vận hành hoặc Examination chữa bệnh để đi đến phần tương ứng.</desc>
 <style>
 .mc-h14 text{font-family:"Nunito Sans",Arial,sans-serif}
 .mc-h14-label{font-size:20px;font-weight:750;fill:#234f6b}
@@ -72,20 +72,20 @@
  <path d="m285 310-19 20h-32m216-135 18-19h31"/>
  <circle cx="234" cy="330" r="2" fill="#fff"/><circle cx="499" cy="176" r="2" fill="#fff"/>
 </g>
-<text x="229" y="349" text-anchor="end" class="mc-h14-note">Dữ liệu đa phương thức</text>
+<text x="229" y="349" text-anchor="end" class="mc-h14-note">Data đa phương thức</text>
 <text x="501" y="162" class="mc-h14-note">Hỗ trợ quyết định</text>
 <!-- Typography supplies precise meaning while the artwork stays open and fluid. -->
-<a href="#van-hanh" class="mc-h14-link" aria-label="Xem vận hành bệnh viện thông minh" transform="translate(-35 -55)">
+<a href="#van-hanh" class="mc-h14-link" aria-label="Xem operations bệnh viện intelligent" transform="translate(-35 -55)">
  <circle class="mc-h14-hotspot" cx="106" cy="110" r="10"/>
  <path d="M102 110h8m-4-4v8" stroke="#078cf0" stroke-width="1.4"/>
  <text x="128" y="116" class="mc-h14-label">Vận hành</text>
  <text x="128" y="134" class="mc-h14-note">Điều phối · Tối ưu nguồn lực</text>
 </a>
-<a href="#kham-chua-benh" class="mc-h14-link" aria-label="Xem khám chữa bệnh thông minh" transform="translate(0 38)">
+<a href="#kham-chua-benh" class="mc-h14-link" aria-label="Xem khám chữa bệnh intelligent" transform="translate(0 38)">
  <circle class="mc-h14-hotspot" cx="461" cy="388" r="10"/>
  <path d="M456 388h3l2-4 3 8 2-4h3" fill="none" stroke="#078cf0" stroke-width="1.2"/>
- <text x="483" y="394" class="mc-h14-label">Khám chữa bệnh</text>
- <text x="483" y="413" class="mc-h14-note">Đồng hành bác sỹ và người bệnh</text>
+ <text x="483" y="394" class="mc-h14-label">Examination chữa bệnh</text>
+ <text x="483" y="413" class="mc-h14-note">Đồng hành physicians và patients bệnh</text>
 </a>
 <g transform="translate(0 28)">
  <circle cx="190" cy="447" r="3" fill="#dfad36"/>

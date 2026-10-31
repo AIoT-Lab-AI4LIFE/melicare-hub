@@ -1,0 +1,479 @@
+/* MELICARE / Yellow & Sky — matched to MELICARE_font_lon.html.
+   Clinical scores, alert colors and product-specific data colors are preserved. */
+:root{
+ --suite-ink:#17344a;--suite-navy:#15384f;--suite-blue:var(--tool-action,#066dbb);
+ --suite-sky:var(--tool-soft,#edf4fa);--suite-yellow:#f5c54b;--suite-cream:#fff7e3;
+ --suite-line:var(--tool-soft,#e0e9ee);--suite-muted:#586f7e;--suite-paper:#fff;
+ --suite-body:'Nunito Sans','Avenir Next','Segoe UI',Arial,sans-serif;
+ --suite-display:'Plus Jakarta Sans','Avenir Next','Trebuchet MS','Segoe UI',sans-serif;
+ --suite-header:84px;--suite-shadow:0 10px 32px color-mix(in srgb,var(--tool-action,#174969) 3.137%,transparent);
+ --ink:var(--suite-ink);--tx:var(--suite-ink);--navy:var(--suite-navy);--n:var(--suite-navy);
+ --p:var(--tool-action,#066dbb);--b:var(--tool-action,#066dbb);--blue:var(--tool-action,#066dbb);--blue-soft:var(--tool-soft,#edf4fa);
+ --bg:var(--tool-soft,#f8fbfd);--surface:#fff;--surface-2:var(--tool-soft,#f1f8fc);--line:var(--suite-line);--bd:var(--suite-line);--ln:var(--suite-line);
+ --mu:var(--suite-muted);--muted:var(--suite-muted);--shadow:var(--suite-shadow)
+}
+html{scroll-padding-top:165px;scrollbar-gutter:stable}
+html body.suite-ui{font-family:var(--suite-body)!important;font-size:18px!important;line-height:1.6;color:var(--suite-ink)!important;background:radial-gradient(ellipse at 7% 0,#fff5d980,transparent 34%),radial-gradient(ellipse at 95% 4%,color-mix(in srgb,var(--tool-soft,#e5f5ff) 61.176%,transparent),transparent 39%),var(--tool-soft,#f8fbfd)!important;-webkit-font-smoothing:antialiased;min-width:0}
+html body.suite-ui :is(button,input,select,textarea){font-family:var(--suite-body)!important}
+html body.suite-ui :is(h1,h2,h3,h4){font-family:var(--suite-display)!important;font-weight:700;line-height:1.4;letter-spacing:-.55px;color:var(--suite-navy)}
+html body.suite-ui h1{font-size:34px!important}
+html body.suite-ui :is(main,.app,.panel,.entryCard,.inputGroup,.field,.card){min-width:0}
+html body.suite-ui :is(button,a){-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+html body.suite-ui :is(button,a,input,select,textarea):focus-visible{outline:3px solid var(--tool-action,#36a9df)!important;outline-offset:3px}
+html body.suite-ui ::selection{background:#fde59b;color:var(--suite-navy)}
+html body.suite-ui [hidden],html body.suite-ui .hidden{display:none!important}
+html body.suite-ui :is(button,a){transition:background .18s,border-color .18s,color .18s,box-shadow .18s,transform .18s}
+html body.suite-ui button:disabled{cursor:not-allowed!important;opacity:.5;box-shadow:none!important}
+html body.suite-ui svg{max-width:100%}
+/* An actual flex/grid header replaces the legacy overlapping fixed controls. */
+html body.suite-ui header.suite-header{position:sticky!important;inset:auto!important;top:0!important;height:auto!important;min-height:var(--suite-header)!important;padding:0 30px!important;background:#ffffffef!important;border-bottom:1px solid var(--suite-line)!important;box-shadow:0 4px 20px color-mix(in srgb,var(--tool-action,#174969) 2.353%,transparent)!important;z-index:1000!important;display:block!important;backdrop-filter:blur(18px)}
+.suite-bar{width:100%;max-width:1540px;margin:auto;min-height:var(--suite-header);display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:28px;position:relative}
+.suite-brand{display:inline-flex;align-items:center;gap:12px;text-decoration:none;white-space:nowrap;line-height:1.2;color:var(--suite-navy);min-width:0}
+.suite-brand-symbol{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:13px;background:var(--suite-tint,var(--tool-soft,#eaf7ff));border:1px solid var(--suite-edge,var(--tool-line,#cae7f5));color:var(--suite-accent,var(--suite-blue))}
+.suite-icon{display:block;width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.suite-word{font-family:var(--suite-display);font-size:28px;font-weight:800;letter-spacing:-1px;line-height:1.2}
+.suite-word em{font-family:var(--suite-body);font-size:1.03em;font-style:normal;font-weight:500;color:var(--suite-accent,var(--suite-blue));letter-spacing:-.6px}
+.suite-brand small{display:block;font-size:10px;letter-spacing:1.75px;font-weight:700;color:#475569;margin-top:5px}
+.suite-context{justify-self:center;display:flex;align-items:center;gap:9px;color:#475569;font-size:13px;font-weight:700;letter-spacing:1px;white-space:nowrap}
+.suite-context i{width:7px;height:7px;display:inline-block;border-radius:50%;background:var(--suite-yellow);box-shadow:0 0 0 4px var(--suite-cream)}
+html body.suite-ui .suite-local-nav{display:flex!important;position:static!important;transform:none!important;justify-self:center;align-items:center;gap:6px;height:auto!important;width:auto!important;min-width:0}
+html body.suite-ui header.suite-header .suite-local-nav .nav{position:relative!important;inset:auto!important;transform:none!important;margin:0!important;display:flex!important;align-items:center!important;gap:9px!important;height:52px!important;min-height:52px!important;padding:0 15px!important;border:1px solid transparent!important;border-radius:12px!important;background:transparent!important;color:#587282!important;font-size:17px!important;font-weight:700!important;white-space:nowrap;box-shadow:none!important}
+html body.suite-ui header.suite-header .suite-local-nav .nav:hover{background:var(--tool-soft,#f2f9fd)!important;color:var(--suite-blue)!important}
+html body.suite-ui header.suite-header .suite-local-nav .nav.active{background:var(--suite-sky)!important;border-color:var(--tool-line,#cbe7f5)!important;color:var(--tool-action,#126d9b)!important;box-shadow:inset 0 -3px 0 var(--suite-yellow)!important}
+html body.suite-ui header.suite-header .nav :is(.navIcon,.navIco){background:transparent!important;border:0!important;box-shadow:none!important;width:25px!important;height:25px!important;flex:0 0 25px!important;color:inherit!important;border-radius:0!important}
+html body.suite-ui header.suite-header .nav :is(.navIcon,.navIco) svg{width:24px!important;height:24px!important;stroke:currentColor!important}
+html body.suite-ui header.suite-header .nav b{font-size:17px!important;color:inherit!important;font-weight:750!important}
+html body.suite-ui header.suite-header .nav small{display:none!important}
+html body.suite-ui #meliTopControlsV70{position:static!important;inset:auto!important;max-width:none!important;display:flex!important;gap:9px!important;margin:0!important;font-family:var(--suite-body)!important;z-index:auto!important;justify-content:flex-end!important}
+html body.suite-ui #meliTopControlsV70>:is(#meliHomeV63,#meliAuthV69,#meliAppNavV62){position:relative!important;inset:auto!important;margin:0!important;z-index:auto!important}
+html body.suite-ui #meliTopControlsV70 :is(#meliHomeV63,#meliAuthBtnV69,#meliAppNavBtnV62){height:46px!important;min-height:46px!important;border:1px solid var(--suite-line)!important;border-radius:12px!important;background:#fff!important;box-shadow:none!important;color:var(--tool-action,#36596f)!important;font:700 16px/1.3 var(--suite-body)!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;transform:none!important}
+html body.suite-ui #meliTopControlsV70 #meliHomeV63{width:46px!important;background:var(--suite-sky)!important;border-color:var(--tool-line,#cbe7f5)!important;flex:0 0 46px!important}
+html body.suite-ui #meliTopControlsV70 #meliAuthBtnV69{padding:0 14px!important;width:auto!important;min-width:46px!important}
+html body.suite-ui #meliTopControlsV70 #meliAuthBtnV69.loggedInV69{width:46px!important;padding:0!important}
+html body.suite-ui #meliTopControlsV70 #meliAppNavBtnV62{background:var(--suite-yellow)!important;border-color:var(--suite-yellow)!important;padding:0 15px!important;min-width:0!important;width:auto!important;color:var(--suite-navy)!important}
+html body.suite-ui #meliTopControlsV70 #meliAppNavBtnV62:hover{background:#efb82f!important;border-color:#efb82f!important}
+html body.suite-ui #meliTopControlsV70 :is(#meliHomeV63,#meliAuthBtnV69):hover{background:var(--tool-soft,#f1f9fe)!important;border-color:var(--tool-line,#bcdfee)!important}
+html body.suite-ui #meliTopControlsV70 :is(.labelV62,.loginTextV69,#meliAppNavChevronV62){display:inline!important}
+html body.suite-ui #meliTopControlsV70 svg{width:21px!important;height:21px!important}
+html body.suite-ui #meliAppNavMenuV62{top:56px!important;right:0!important;width:340px!important;max-width:calc(100vw - 28px)!important;max-height:calc(100dvh - 108px)!important;overflow-y:auto!important;background:#fff!important;border:1px solid var(--tool-line,#dbe8ef)!important;border-radius:18px!important;padding:12px!important;box-shadow:0 18px 50px color-mix(in srgb,var(--tool-action,#15384f) 14.902%,transparent)!important;z-index:1100!important;backdrop-filter:none!important}
+html body.suite-ui .meliAppNavTitleV62{font:800 12px/1.5 var(--suite-body)!important;color:#475569!important;padding:10px 10px 6px!important;letter-spacing:1px!important}
+html body.suite-ui #meliAppNavMenuV62 a{font:700 17px/1.4 var(--suite-body)!important;padding:11px 10px!important;min-height:48px!important;border-radius:11px!important;color:var(--suite-navy)!important;gap:11px!important}
+html body.suite-ui #meliAppNavMenuV62 a:hover{background:var(--suite-sky)!important;transform:none!important}
+html body.suite-ui .meliAppDotV62{width:32px!important;height:32px!important;flex-basis:32px!important;font:800 11px/1 var(--suite-body)!important;background:var(--suite-tint,var(--suite-sky))!important;color:var(--suite-accent,var(--suite-blue))!important;border-radius:9px!important}
+html body.suite-ui .meliAppExternalV62{font-size:16px!important;color:#475569!important}
+html body.suite-ui .suite-unavailable{cursor:help!important;opacity:.65}
+html body.suite-ui .suite-menu-note{font-size:12px;color:#475569;margin-left:auto;font-weight:500}
+/* Login and dialogs share the master contact-dialog typography. */
+html body.suite-ui #meliLoginModalV69{z-index:2000!important;padding:20px!important;background:color-mix(in srgb,var(--tool-action,#15384f) 34.118%,transparent)!important;backdrop-filter:blur(7px)!important}
+html body.suite-ui .meliLoginDialogV69{width:min(480px,100%)!important;border-radius:22px!important;border:1px solid var(--suite-line)!important;box-shadow:0 24px 80px color-mix(in srgb,var(--tool-action,#17344a) 18.824%,transparent)!important;max-height:calc(100dvh - 40px);overflow:auto!important}
+html body.suite-ui .meliLoginHeadV69{padding:26px 26px 20px!important;background:linear-gradient(110deg,#fffaf0,var(--tool-soft,#eff9ff))!important}
+html body.suite-ui .meliLoginHeadV69 h2{font-size:26px!important}
+html body.suite-ui .meliLoginHeadV69 p{font-size:15px!important;line-height:1.65!important;color:var(--suite-muted)!important}
+html body.suite-ui .meliLoginBodyV69{padding:23px 26px 26px!important}
+html body.suite-ui .meliLoginFieldV69 label{font-size:16px!important;color:var(--tool-action,#446579)!important;margin-bottom:8px!important}
+html body.suite-ui .meliLoginFieldV69 input{height:49px!important;font-size:17px!important;padding:10px 13px!important;border-color:var(--tool-line,#d1e3ed)!important;border-radius:11px!important;background:var(--tool-soft,#fbfdff)!important}
+html body.suite-ui .meliLoginSubmitV69{height:50px!important;background:var(--suite-yellow)!important;color:var(--suite-navy)!important;font-size:18px!important;border-radius:12px!important}
+html body.suite-ui :is(.meliLoginCloseV69,.modal-head button){flex:0 0 38px;min-width:38px;min-height:38px}
+html body.suite-ui .meliLoginErrorV69{font-size:15px!important}
+html body.suite-ui #meliUserPopoverV69{position:fixed!important;top:76px!important;right:30px!important;z-index:1500!important;width:260px!important;padding:18px!important;border-radius:16px!important}
+html body.suite-ui #meliUserPopoverV69 b{font-size:17px!important}
+html body.suite-ui #meliUserPopoverV69 span{font-size:14px!important}
+html body.suite-ui .meliLogoutBtnV69{height:42px!important;font-size:16px!important}
+/* Application surfaces, type hierarchy and form controls. */
+html body.suite-ui main{max-width:1440px!important;padding:30px 32px 56px!important;margin-inline:auto!important}
+html body.suite-ui :is(.card,.entryCard,.panel,.mediaPanel){border:1px solid var(--suite-line)!important;border-radius:22px!important;box-shadow:var(--suite-shadow)!important;background:#fff!important}
+html body.suite-ui :is(.panelHead,.sectionHead,.mediaHead,.ph,.head){background:linear-gradient(105deg,var(--tool-soft,#fbfdff),var(--tool-soft,#f3faff))!important;border-color:var(--suite-line)!important;padding:18px 22px!important;min-height:72px!important;height:auto!important;gap:14px;flex-shrink:0}
+html body.suite-ui :is(.panelHead,.sectionHead,.mediaHead) h2{font-size:22px!important;letter-spacing:-.55px!important;line-height:1.4!important;color:var(--suite-navy)!important}
+html body.suite-ui :is(.panelHead,.sectionHead,.mediaHead) p{font-size:15px!important;line-height:1.6!important;color:var(--suite-muted)!important;margin-top:6px!important}
+html body.suite-ui :is(.ph,.head) strong{font-size:19px!important}
+html body.suite-ui .eyebrow{font-size:12px!important;font-weight:800!important;letter-spacing:1.35px!important;color:#577687!important}
+html body.suite-ui :is(.sub,.hero>p){font-size:18px!important;line-height:1.7!important;color:var(--suite-muted)!important}
+html body.suite-ui .hero{margin-bottom:24px}
+html body.suite-ui .hero h1{font-size:34px!important;line-height:1.4!important}
+html body.suite-ui :is(.btn,.row-action,.bulk-btn,.rowFancy,.fancyAction){font-size:16px!important;min-height:44px!important;border-radius:11px!important;padding:9px 15px!important;line-height:1.4!important;box-shadow:none!important}
+html body.suite-ui .btn{color:var(--tool-action,#36596f);border-color:var(--tool-line,#d2e3ed);background:#fff}
+html body.suite-ui :is(.btn.primary,.analyzeBtn,.actions .btn.ok){background:var(--suite-yellow)!important;border:1px solid var(--suite-yellow)!important;color:var(--suite-navy)!important;font-size:18px!important;font-weight:800!important;min-height:50px!important;border-radius:12px!important;padding:12px 22px!important;height:auto!important;box-shadow:0 5px 14px #e5b24320!important;line-height:1.4!important}
+html body.suite-ui :is(.btn.primary,.analyzeBtn,.actions .btn.ok):hover{background:#efb82f!important;border-color:#efb82f!important;box-shadow:0 7px 20px #e5b24330!important}
+html body.suite-ui .btn:not(.primary):not(.ok):hover{background:var(--suite-sky);border-color:var(--tool-line,#c3e1f1)}
+html body.suite-ui :is(.viewAction,.viewFancy,.bulk-btn.view.enabled){background:var(--suite-sky)!important;border-color:var(--tool-line,#c5e4f3)!important;color:var(--tool-action,#126d9b)!important}
+html body.suite-ui :is(.processAction,.processFancy,.bulk-btn.process.enabled){background:var(--suite-cream)!important;border-color:#efdcaa!important;color:#8a661e!important}
+html body.suite-ui :is(.fancyAction,.rowFancy){min-width:112px!important;white-space:nowrap}
+html body.suite-ui :is(.inputGroup,.factorCard,.reasonCard,.lifeCard,.attentionCard,.methodCard,.scaleCard){border-color:var(--tool-line,#e1eaf0)!important;background:var(--tool-soft,#fbfdff)!important;border-radius:14px!important}
+html body.suite-ui :is(.inputGroup){padding:20px!important;background:var(--tool-soft,#f8fcff)!important}
+html body.suite-ui .groupTitle{gap:10px!important;margin-bottom:17px!important}
+html body.suite-ui .groupTitle b{font-size:18px!important;color:#284b60!important}
+html body.suite-ui :is(.groupIcon,.lifeIcon){background:var(--suite-sky)!important;color:var(--suite-blue)!important;border-radius:11px!important}
+html body.suite-ui .groupIcon{width:36px!important;height:36px!important;flex:0 0 36px}
+html body.suite-ui .groupIcon svg{width:21px!important;height:21px!important}
+html body.suite-ui .field label{font-size:16px!important;line-height:1.45!important;font-weight:700!important;color:#4d687a!important;margin-bottom:8px!important}
+html body.suite-ui .field :is(input,select,textarea){font-size:17px!important;line-height:1.45!important;min-height:46px!important;height:auto!important;padding:10px 12px!important;border:1px solid var(--tool-line,#cfdfe9)!important;border-radius:10px!important;background:#fff!important;color:var(--suite-ink)!important}
+html body.suite-ui .field :is(input,select,textarea):focus{border-color:var(--tool-line,#66b7df)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--tool-action,#128ac3) 7.059%,transparent)!important}
+html body.suite-ui :is(.grid,.fieldGrid){gap:16px!important}
+html body.suite-ui :is(.uploadBox,.dropzone,.drop){border:1.5px dashed var(--tool-line,#a6d3e9)!important;background:linear-gradient(135deg,var(--tool-soft,#f2faff),#fffaf0)!important;border-radius:18px!important;padding:25px 20px!important;text-align:center}
+html body.suite-ui :is(.uploadBox b,.drop strong){font-size:19px!important;color:var(--tool-action,#2b536b)!important;line-height:1.5!important}
+html body.suite-ui :is(.uploadBox span,.dropzone p,.drop p){font-size:16px!important;line-height:1.6!important;color:var(--suite-muted)!important}
+html body.suite-ui .uploadIcon{background:var(--suite-sky)!important;color:var(--suite-blue)!important;width:58px!important;height:58px!important;border-radius:16px!important}
+html body.suite-ui .uploadIcon svg{width:29px!important;height:29px!important}
+html body.suite-ui :is(.fileStatus,.selected){font-size:16px!important;overflow-wrap:anywhere;line-height:1.5!important}
+html body.suite-ui .or{font-size:13px!important;letter-spacing:1px!important;margin:0 0 16px!important}
+html body.suite-ui :is(.badge,.pill){font-size:15px!important;line-height:1.45!important;padding:6px 11px!important}
+html body.suite-ui .sect,html body.suite-ui .section{font-size:14px!important;letter-spacing:.8px!important;color:#557588!important}
+html body.suite-ui :is(.table,.history){border-radius:18px!important;overflow-x:auto!important}
+html body.suite-ui :is(.table,.history) th{font-size:16px!important;background:var(--tool-soft,#eff8fd)!important;color:var(--tool-action,#426276)!important;padding:16px 15px!important;white-space:nowrap}
+html body.suite-ui :is(.table,.history) td{font-size:17px!important;line-height:1.5!important;padding:16px 15px!important;border-color:var(--tool-line,#e5edf2)!important}
+html body.suite-ui .data{font-size:16px!important}
+html body.suite-ui .data :is(th,td){padding:11px 9px!important}
+html body.suite-ui :is(.filters,.tools){gap:12px!important}
+html body.suite-ui :is(.filters,.tools) :is(input,select){font-size:17px!important;min-height:46px!important;min-width:0;border-color:var(--tool-line,#d1e2ed)!important;border-radius:11px!important}
+html body.suite-ui .filters{grid-template-columns:minmax(220px,1fr) 200px 200px auto;padding:20px!important}
+html body.suite-ui .notification-label{font-size:15px!important}
+html body.suite-ui :is(.modelProcessCard,.ocrProcessCard){border-radius:24px!important;background:linear-gradient(130deg,#fff,var(--tool-soft,#f1faff))!important;border-color:var(--suite-line)!important}
+html body.suite-ui :is(.aiOrb,.ocrAIOrb){background:var(--suite-blue)!important;box-shadow:0 10px 30px color-mix(in srgb,var(--tool-action,#128ac3) 13.725%,transparent)!important}
+html body.suite-ui :is(.progressFill,.ocrProgressFill){background:linear-gradient(90deg,var(--suite-blue),var(--tool-action,#73c8ec))!important}
+html body.suite-ui :is(.progressMeta,.ocrProgressMeta){font-size:15px!important;line-height:1.5!important}
+html body.suite-ui :is(.pstep,.ocrStep){font-size:14px!important;line-height:1.45!important;padding:12px 7px!important}
+html body.suite-ui :is(.pstep.active,.ocrStep.active){background:var(--suite-sky)!important;color:var(--tool-action,#126d9b)!important}
+html body.suite-ui :is(.pstep.active b,.ocrStep.active b){background:var(--suite-blue)!important}
+/* Clinical workflow: retain all existing fields and data colors. */
+html body.suite-ui.suite-clinical .dxNav{top:var(--suite-header)!important;z-index:900!important;background:#ffffffed!important;backdrop-filter:blur(15px);padding:12px 22px!important;gap:9px!important;box-shadow:none!important;border-color:var(--suite-line)!important;overflow-x:auto;scrollbar-width:thin}
+html body.suite-ui.suite-clinical .dxNav a{height:43px!important;min-height:43px!important;padding:0 18px!important;border:1px solid transparent!important;border-radius:11px!important;font-size:17px!important;font-weight:700!important;white-space:nowrap;color:#506c7c!important;flex:none}
+html body.suite-ui.suite-clinical .dxNav a.active{background:var(--suite-cream)!important;border-color:#f1dda6!important;color:#8a661e!important}
+html body.suite-ui.suite-clinical .dxNav a:hover{background:var(--suite-sky)!important;color:var(--tool-action,#126d9b)!important}
+html body.suite-ui.suite-clinical main{max-width:1400px!important;padding-top:28px!important}
+html body.suite-ui.suite-clinical .timeline{margin:0 auto 28px!important;padding:0 35px!important;gap:10px!important;max-width:960px;min-width:0}
+html body.suite-ui.suite-clinical .timelineNode{width:46px!important;height:46px!important;border:4px solid var(--tool-line,#f8fbfd)!important;background:var(--tool-soft,#e9f1f6)!important;color:#475569!important;box-shadow:0 0 0 1px var(--tool-action,#d7e5ee)!important;font-size:17px!important}
+html body.suite-ui.suite-clinical .timelineStep.active .timelineNode{background:var(--suite-yellow)!important;color:var(--suite-navy)!important;box-shadow:0 0 0 1px #f1d78b!important}
+html body.suite-ui.suite-clinical .timelineStep.done .timelineNode{background:var(--suite-blue)!important;color:#fff!important;font-size:0!important;box-shadow:0 0 0 1px var(--tool-action,#7dc4e5)!important}
+html body.suite-ui.suite-clinical .timelineLine{background:var(--tool-soft,#deebf2)!important}
+html body.suite-ui.suite-clinical .timelineLine i{background:var(--suite-blue)!important}
+html body.suite-ui.suite-clinical .timelineStep b{font-size:18px!important;line-height:1.5!important;margin-top:10px!important;color:var(--tool-action,#36596f)!important}
+html body.suite-ui.suite-clinical .timelineStep span{font-size:15px!important;line-height:1.45!important;color:#475569!important}
+html body.suite-ui.suite-clinical .entryGrid{grid-template-columns:minmax(0,1fr) 260px!important;padding:24px!important;gap:24px!important;align-items:stretch!important}
+html body.suite-ui.suite-clinical .inputGroups{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important}
+html body.suite-ui.suite-clinical .uploadSide{min-width:0!important;justify-content:center!important}
+html body.suite-ui.suite-clinical .uploadBox{min-height:210px!important;width:100%!important}
+html body.suite-ui.suite-clinical .analyzeBar{padding:0 24px 24px!important}
+html body.suite-ui.suite-clinical .results{margin-top:26px!important;scroll-margin-top:170px}
+html body.suite-ui.suite-clinical .metricTabs{flex-wrap:wrap;gap:6px!important}
+html body.suite-ui.suite-clinical .metricTabs button{height:auto!important;min-height:38px!important;font-size:15px!important;padding:7px 12px!important;border-radius:9px!important;line-height:1.4!important}
+html body.suite-ui.suite-clinical .topGrid>.panel:first-child .panelHead{flex-wrap:wrap}
+html body.suite-ui.suite-clinical .chartWrap{padding:20px!important}
+html body.suite-ui.suite-clinical .chartLegend{font-size:14px!important;line-height:1.5!important;gap:12px!important;flex-wrap:wrap;margin-top:12px!important}
+html body.suite-ui.suite-clinical .trendChart{background:var(--tool-soft,#fbfdff)!important;border-color:var(--tool-line,#e3edf3)!important;border-radius:15px!important;min-height:300px!important}
+html body.suite-ui.suite-clinical :is(.attentionList,.reasonList,.lifestyleList){padding:16px!important;gap:12px!important;align-content:start!important}
+html body.suite-ui.suite-clinical :is(.attentionCard,.reasonCard,.lifeCard){padding:15px!important;min-width:0}
+html body.suite-ui.suite-clinical :is(.attentionTop b,.reasonHeader b,.lifeCard b,.factorCard b,.scaleCard b,.methodHead b){font-size:17px!important;line-height:1.5!important;white-space:normal!important;color:var(--tool-action,#31536a)!important}
+html body.suite-ui.suite-clinical :is(.attentionTop small,.reasonHeader span,.lifeCard span,.factorCard span,.scaleCard p,.methodHead small,.methodNote,.reasonText,.deltaText,.indicatorDeltaInline,.reasonValueInline,.reasonDetailInline,.deltaInline,.aiRiskText p,.riskText p){font-size:15px!important;line-height:1.65!important;white-space:normal!important}
+html body.suite-ui.suite-clinical :is(.attentionTop,.reasonHeader){gap:10px!important;align-items:start!important}
+html body.suite-ui.suite-clinical :is(.indicatorLine,.indicatorTitleLine,.reasonTitleLine,.statusAndDelta){flex-wrap:wrap!important;gap:4px 9px!important;white-space:normal!important}
+html body.suite-ui.suite-clinical .attentionTop .statusAndDelta{justify-content:flex-end!important}
+html body.suite-ui.suite-clinical .reasonHeader span{color:#a25155}
+html body.suite-ui.suite-clinical .rangeLabels{font-size:12px!important;line-height:1.5!important;flex-wrap:wrap;gap:5px}
+html body.suite-ui.suite-clinical :is(.rangeBar,.compareTrack){margin-block:12px 7px!important}
+html body.suite-ui.suite-clinical :is(.riskSummaryBox,.aiRiskSummaryBox){padding:18px!important;gap:20px!important;border-radius:17px!important;background:linear-gradient(110deg,#fffcf4,var(--tool-soft,#f5fbff))!important;border-color:var(--suite-line)!important;grid-template-columns:126px minmax(0,1fr)!important}
+html body.suite-ui.suite-clinical :is(.riskPie,.aiPie){width:120px!important;height:120px!important;flex-basis:120px!important}
+html body.suite-ui.suite-clinical :is(.riskPieInner b,.aiPieInner b){font-family:var(--suite-display)!important;font-size:32px!important;letter-spacing:-1px!important;line-height:1.3!important}
+html body.suite-ui.suite-clinical :is(.riskPieInner span,.aiPieInner span){font-size:13px!important;line-height:1.3!important}
+html body.suite-ui.suite-clinical :is(.riskText h3,.aiRiskText h3){font-size:22px!important;line-height:1.45!important}
+html body.suite-ui.suite-clinical :is(.factorCard,.methodCard){padding:16px!important}
+html body.suite-ui.suite-clinical :is(.factorChip,.methodStatus){font-size:13px!important;line-height:1.45!important;padding:6px 9px!important}
+html body.suite-ui.suite-clinical .methodScore strong{font-size:29px!important;line-height:1.2!important}
+html body.suite-ui.suite-clinical .methodScore span{font-size:13px!important;line-height:1.5!important}
+html body.suite-ui.suite-clinical :is(.lifeCard){grid-template-columns:42px minmax(0,1fr)!important;gap:12px!important}
+html body.suite-ui.suite-clinical .lifeIcon{width:40px!important;height:40px!important;font-size:22px!important}
+html body.suite-ui.suite-clinical :is(.disclaimer,.scaleNote){font-size:15px!important;line-height:1.7!important;background:var(--suite-cream)!important;border:1px solid #edddb1!important;border-radius:13px!important;padding:16px 19px!important;color:#7e662e!important}
+html body.suite-ui.suite-clinical .compactClinicalGrid{gap:20px!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.05fr)!important;align-items:stretch!important}
+html body.suite-ui.suite-clinical .compactClinicalGrid :is(.riskPanel,.lifestylePanel,.reasonPanel){height:500px!important;min-height:500px!important;max-height:500px!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
+html body.suite-ui.suite-clinical .compactClinicalGrid .riskSummaryBox{grid-template-columns:1fr!important;justify-items:center;text-align:center}
+html body.suite-ui.suite-clinical .compactClinicalGrid :is(.combinedRiskBody,.reasonList,.lifestyleList){flex:1;overflow-y:auto!important;min-height:0!important;max-height:none!important}
+html body.suite-ui.suite-clinical :is(.topGrid,.resultLowerGrid,.alzResultsGrid,.analysisMediaGrid,.mindLowerGrid){gap:20px!important}
+html body.suite-ui.suite-clinical :is(.combinedRiskBody,.mediaBody){padding:18px!important}
+html body.suite-ui.suite-clinical .viewerTools{flex-wrap:wrap;gap:7px!important}
+html body.suite-ui.suite-clinical .viewerTools button{min-height:38px!important;height:auto!important;font-size:15px!important;padding:8px 12px!important}
+html body.suite-ui.suite-clinical .mediaHead{flex-wrap:wrap!important}
+html body.suite-ui.suite-clinical .mriLabel{font-size:13px!important}
+html body.suite-stroke .entryGrid{grid-template-columns:minmax(0,1fr) 280px!important}
+html body.suite-stroke .topGrid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)!important}
+html body.suite-stroke .resultLowerGrid{grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr)!important}
+html body.suite-stroke .resultLowerGrid>.leftResultStack,html body.suite-stroke .combinedRiskPanel{height:760px!important;min-height:760px!important;max-height:760px!important}
+html body.suite-stroke .scaleGrid{padding:16px!important;gap:12px!important}
+/* OCR workspace, history and modal. */
+html body.suite-ocr .upload{max-width:640px!important;margin:44px auto!important;padding:42px!important;background:linear-gradient(130deg,#fff,var(--tool-soft,#f3faff))!important}
+html body.suite-ocr .upload h2{font-size:28px!important;margin:14px 0 10px!important}
+html body.suite-ocr .upload p{font-size:18px!important;line-height:1.7!important;max-width:440px;margin:0 auto 24px!important}
+html body.suite-ocr .upload>.btn{margin-top:4px}
+html body.suite-ocr .modal-bg{z-index:1600!important;background:color-mix(in srgb,var(--tool-action,#15384f) 37.647%,transparent)!important;backdrop-filter:blur(6px)!important}
+html body.suite-ocr .modal{width:min(630px,100%)!important;border-radius:22px!important;max-height:calc(100dvh - 40px);overflow:auto}
+html body.suite-ocr :is(.modal-head,.modal-body,.modal-foot){padding:22px 26px!important}
+html body.suite-ocr .modal-head h2{font-size:25px!important}
+html body.suite-ocr :is(.doc,.ocr){height:740px!important}
+html body.suite-ocr .doc{background:var(--tool-soft,#edf4f9)!important;padding:24px!important}
+html body.suite-ocr .paper{width:100%;padding:32px;flex:0 0 100%;max-width:610px;box-shadow:0 10px 30px color-mix(in srgb,var(--tool-action,#17344a) 8.235%,transparent)!important}
+html body.suite-ocr .ocr{padding:24px!important}
+html body.suite-ocr .title{gap:15px;flex-wrap:wrap;margin-bottom:20px!important}
+html body.suite-ocr .worktop{gap:10px!important;flex-wrap:wrap}
+html body.suite-ocr .worktop .pill{max-width:100%!important}
+html body.suite-ocr .history table{min-width:1050px}
+html body.suite-ocr .historyResultTop{gap:16px;line-height:1.5}
+html body.suite-ocr .historyResultTop small{font-size:15px!important}
+html body.suite-ocr .invoice-check{width:19px!important;height:19px!important;accent-color:var(--suite-blue)}
+/* Voice: airy capture and readable editable results. */
+html body.suite-voice .capture{gap:24px!important;align-items:stretch}
+html body.suite-voice .record{padding:32px!important;background:radial-gradient(ellipse at 50% 25%,color-mix(in srgb,var(--tool-soft,#e8f7ff) 52.157%,transparent),transparent 70%),#fff!important;min-height:380px!important}
+html body.suite-voice .mic{width:96px!important;height:96px!important;border:9px solid var(--tool-line,#e4f4fc)!important;background:var(--suite-blue)!important;box-shadow:0 0 0 1px var(--tool-action,#c7e6f5),0 10px 24px color-mix(in srgb,var(--tool-action,#128ac3) 8.235%,transparent);font-size:34px!important;display:grid;place-items:center;padding:0!important;cursor:pointer}
+html body.suite-voice .mic .suite-icon{width:36px;height:36px}
+html body.suite-voice .mic.rec{background:#cb5661!important;border-color:#fce7eb!important;box-shadow:0 0 0 8px #fbeaec!important}
+html body.suite-voice .record h2{font-size:25px!important}
+html body.suite-voice .record p{font-size:17px!important}
+html body.suite-voice .timer{font-family:var(--suite-display)!important;font-size:38px!important;font-variant-numeric:tabular-nums;color:#254c64}
+html body.suite-voice .upload{padding:32px!important}
+html body.suite-voice .upload h2{font-size:25px!important}
+html body.suite-voice .upload>p{font-size:17px!important}
+html body.suite-voice .drop{margin-top:22px!important;padding:28px 22px!important}
+html body.suite-voice .workspace{gap:24px!important}
+html body.suite-voice .body{height:690px!important;padding:25px!important}
+html body.suite-voice .transcript{font-size:18px!important;line-height:1.9!important}
+html body.suite-voice .time{font-size:15px!important;color:var(--suite-blue)!important}
+html body.suite-voice .audio{background:var(--suite-sky)!important;border-radius:13px!important}
+html body.suite-voice .wave{min-width:0;background:repeating-linear-gradient(90deg,var(--tool-action,#77bcdd) 0 2px,transparent 2px 6px)!important}
+html body.suite-voice .historyHero{gap:16px;flex-wrap:wrap}
+html body.suite-voice .resultOnlyBack{flex-wrap:wrap;gap:14px}
+/* VLM: preserve dark image viewers, unify the surrounding workspace. */
+html body.suite-vlm .app{margin-top:0!important;padding-top:0!important;grid-template-columns:260px minmax(0,1fr) 330px;min-height:calc(100dvh - var(--suite-header))!important;align-items:start!important}
+html body.suite-vlm :is(.sidebar,.rightPanel){top:var(--suite-header)!important;height:calc(100dvh - var(--suite-header))!important;max-height:calc(100dvh - var(--suite-header))!important;background:var(--tool-soft,#f7fbfe)!important;border-color:var(--suite-line)!important;min-height:0}
+html body.suite-vlm .sidebarTop{padding:18px!important}
+html body.suite-vlm .newChat{min-height:48px!important;height:auto!important;font-size:17px!important;background:var(--suite-cream)!important;border-color:#efdda9!important;color:#81611e!important;border-radius:12px!important;padding:12px!important}
+html body.suite-vlm .sideSection{padding-inline:15px!important}
+html body.suite-vlm .sideTitle{font-size:12px!important;letter-spacing:1px!important;padding-block:16px 10px!important;color:#475569!important}
+html body.suite-vlm :is(.projectItem,.historyRow){font-size:16px!important;line-height:1.5!important;padding:12px!important;border-radius:11px!important}
+html body.suite-vlm .historyRow.active{background:var(--suite-sky)!important;color:var(--tool-action,#186f9a)!important}
+html body.suite-vlm .historyRow small{font-size:13px!important;line-height:1.5!important}
+html body.suite-vlm .userMini b{font-size:16px!important}
+html body.suite-vlm .userMini span{font-size:13px!important}
+html body.suite-vlm .center{min-height:calc(100dvh - var(--suite-header))!important}
+html body.suite-vlm .chatHeader{min-height:90px!important;flex:0 0 auto!important;padding:18px 24px!important;align-items:center;gap:12px}
+html body.suite-vlm .chatHeader h1{font-size:20px!important;line-height:1.4!important}
+html body.suite-vlm .chatHeader p{font-size:14px!important;line-height:1.45!important}
+html body.suite-vlm .chatHeaderActions{flex-shrink:0}
+html body.suite-vlm .iconBtn{width:40px!important;height:40px!important;border-radius:11px!important}
+html body.suite-vlm .chatInner{padding-inline:28px!important}
+html body.suite-vlm .welcome{padding:36px 0 14px!important}
+html body.suite-vlm .welcomeIcon{background:var(--suite-sky)!important;color:var(--suite-blue)!important;border:1px solid var(--tool-line,#c4e4f3);border-radius:18px!important;width:64px!important;height:64px!important;font:800 18px var(--suite-display)!important}
+html body.suite-vlm .welcome h2{font-size:29px!important;line-height:1.45!important;letter-spacing:-.8px!important}
+html body.suite-vlm .welcome p{font-size:17px!important;line-height:1.8!important;color:#475569!important;max-width:600px!important}
+html body.suite-vlm .suggestions{gap:12px!important;margin-top:25px!important}
+html body.suite-vlm .suggestion{font-size:16px!important;line-height:1.7!important;padding:18px!important;border-radius:15px!important;background:var(--tool-soft,#fbfdff)!important;border-color:var(--tool-line,#dce9f0)!important}
+html body.suite-vlm .suggestion:hover{background:var(--suite-sky)!important;border-color:var(--tool-line,#bce1f2)!important}
+html body.suite-vlm .msgRole{font-size:15px!important;color:var(--tool-action,#4a6b80)!important}
+html body.suite-vlm .msgText{font-size:18px!important;line-height:1.8!important}
+html body.suite-vlm .message.user .msgText{background:var(--suite-sky)!important;border-radius:16px!important;padding:13px 17px!important}
+html body.suite-vlm .message.user .avatar{background:var(--suite-blue)!important}
+html body.suite-vlm .avatar{font-size:12px!important;line-height:1!important;border-radius:11px!important;background:var(--suite-cream)!important;color:#8a671c}
+html body.suite-vlm .composerWrap{padding:22px!important;z-index:30!important}
+html body.suite-vlm .composer{border-color:var(--tool-line,#bfdce9)!important;border-radius:19px!important;padding:14px!important;box-shadow:0 8px 24px color-mix(in srgb,var(--tool-action,#174969) 4.706%,transparent)!important}
+html body.suite-vlm .composer textarea{font-size:18px!important;line-height:1.65!important;min-height:74px!important}
+html body.suite-vlm .composerBottom{gap:10px;align-items:center}
+html body.suite-vlm .composerLeft{flex-wrap:wrap;gap:8px}
+html body.suite-vlm .miniBtn{font-size:15px!important;min-height:42px!important;height:auto!important;line-height:1.4!important;padding:9px 12px!important;border-radius:10px!important}
+html body.suite-vlm #composerReportBtn{background:var(--suite-cream)!important;color:#87641b!important;border-color:#efdcaa!important}
+html body.suite-vlm .sendBtn{flex:0 0 43px!important;width:43px!important;height:43px!important;background:var(--suite-blue)!important;border-radius:12px!important}
+html body.suite-vlm .disclaimer{font-size:13px!important;line-height:1.65!important;color:#475569!important}
+html body.suite-vlm .rightHead{padding:21px 18px!important;background:linear-gradient(110deg,var(--tool-soft,#f5fbff),#fffaf0)!important}
+html body.suite-vlm .rightHead h2{font-size:20px!important}
+html body.suite-vlm .rightHead p{font-size:14px!important}
+html body.suite-vlm .uploadArea{padding:18px!important}
+html body.suite-vlm .uploadBtn{min-height:49px!important;height:auto!important;font-size:16px!important;padding:11px 14px!important;border-color:var(--tool-line,#abd3e8)!important;background:#fff!important;border-radius:12px!important}
+html body.suite-vlm .imageViewer{margin:18px!important;border-radius:16px!important}
+html body.suite-vlm .viewerLabel{font-size:12px!important}
+html body.suite-vlm .galleryTitle{padding:0 18px 12px!important}
+html body.suite-vlm .galleryTitle b{font-size:16px!important}
+html body.suite-vlm .galleryTitle span{font-size:13px!important}
+html body.suite-vlm .gallery{padding:0 18px 18px!important;gap:10px!important;min-height:130px!important}
+html body.suite-vlm .thumb{border-radius:12px!important}
+html body.suite-vlm .thumb span{font-size:11px!important}
+html body.suite-vlm .answerRef{flex-wrap:wrap;padding:15px!important;border-radius:13px!important;background:var(--tool-soft,#f5fbff)!important}
+html body.suite-vlm .answerRef b{font-size:15px!important}
+html body.suite-vlm .answerRef :is(span,button){font-size:14px!important}
+html body.suite-vlm .reportBlock{padding:19px!important;background:var(--tool-soft,#f8fcff)!important;border-radius:16px!important}
+html body.suite-vlm .reportBlock h3{font-size:20px!important}
+html body.suite-vlm .reportBlock p{font-size:17px!important;line-height:1.75!important}
+html body.suite-vlm .sidePane{top:var(--suite-header)!important;left:260px!important;width:410px!important;max-width:calc(100vw - 20px)!important;z-index:800!important;border-color:var(--suite-line)!important}
+html body.suite-vlm .paneHead{padding:20px!important}
+html body.suite-vlm .paneHead h3{font-size:21px!important}
+html body.suite-vlm :is(.historyCard,.projectCard){padding:17px!important;border-radius:13px!important}
+html body.suite-vlm :is(.historyCard,.projectCard) b{font-size:17px!important}
+html body.suite-vlm :is(.historyCard,.projectCard) span{font-size:14px!important}
+.suite-mobile-panels{display:none}
+/***** Responsive rules *****/
+@media(max-width:1240px){
+ .suite-context{display:none}
+ .suite-bar{grid-template-columns:auto 1fr auto;gap:20px}
+ html body.suite-ui .suite-local-nav{gap:4px}
+ html body.suite-ui header.suite-header .suite-local-nav .nav{font-size:16px!important;padding-inline:12px!important}
+ html body.suite-ui #meliTopControlsV70 #meliAuthBtnV69{width:46px!important;padding:0!important}
+ html body.suite-ui #meliTopControlsV70 .loginTextV69{display:none!important}
+ html body.suite-ui.suite-clinical .entryGrid{grid-template-columns:minmax(0,1fr) 240px!important;gap:20px!important}
+ html body.suite-ui.suite-clinical .inputGroups{grid-template-columns:minmax(0,1fr)!important}
+ html body.suite-ui.suite-clinical .compactClinicalGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-template-areas:'risk lifestyle' 'reason reason'!important}
+ html body.suite-ui.suite-clinical .compactClinicalGrid :is(.riskPanel,.lifestylePanel,.reasonPanel){height:auto!important;min-height:0!important;max-height:none!important}
+ html body.suite-ui.suite-clinical .compactClinicalGrid :is(.reasonList,.lifestyleList){max-height:460px!important}
+ html body.suite-ui.suite-clinical .compactClinicalGrid .riskSummaryBox{grid-template-columns:126px minmax(0,1fr)!important;text-align:left!important}
+ html body.suite-ocr .filters{grid-template-columns:1fr 1fr!important}
+ html body.suite-vlm .app{grid-template-columns:225px minmax(0,1fr) 295px!important}
+ html body.suite-vlm .sidePane{left:225px!important}
+ html body.suite-vlm .chatInner{padding-inline:22px!important}
+ html body.suite-vlm .suggestions{grid-template-columns:1fr!important}
+}
+@media(max-width:1040px){
+ html body.suite-ui header.suite-header{padding-inline:22px!important}
+ .suite-bar{gap:20px}
+ html body.suite-ui #meliTopControlsV70 #meliAppNavBtnV62{width:46px!important;padding:0!important}
+ html body.suite-ui #meliTopControlsV70 :is(.labelV62,#meliAppNavChevronV62){display:none!important}
+ html body.suite-ui main{padding-inline:24px!important}
+ html body.suite-ui.suite-clinical .topGrid,html body.suite-stroke .topGrid{grid-template-columns:1fr!important}
+ html body.suite-ui.suite-clinical .resultLowerGrid,html body.suite-stroke .resultLowerGrid{grid-template-columns:1fr!important}
+ html body.suite-stroke .resultLowerGrid>.leftResultStack,html body.suite-stroke .combinedRiskPanel{height:auto!important;min-height:0!important;max-height:none!important}
+ html body.suite-stroke .leftResultStack{grid-template-rows:auto auto!important}
+ html body.suite-ui.suite-clinical :is(.reasonList,.attentionList,.lifestyleList){max-height:460px!important;overflow:auto!important}
+ html body.suite-vlm .app{grid-template-columns:minmax(0,1fr) 300px!important;display:grid!important;margin-top:0!important}
+ html body.suite-vlm .sidebar{display:none!important}
+ html body.suite-vlm .rightPanel{display:flex!important}
+ html body.suite-vlm .sidePane{left:0!important}
+ html body.suite-vlm .suite-mobile-panels{display:flex;gap:7px;flex-wrap:wrap;padding:12px 22px;border-bottom:1px solid var(--suite-line);background:var(--tool-soft,#f6fbff)}
+ html body.suite-vlm .suite-mobile-panels button{border:1px solid var(--tool-line,#cce2ee);background:#fff;color:var(--tool-action,#315d77);border-radius:9px;font-size:15px;font-weight:700;padding:7px 12px;min-height:38px}
+}
+@media(max-width:760px){
+ :root{--suite-header:78px}
+ html body.suite-ui{font-size:17px!important}
+ html body.suite-ui header.suite-header{padding-inline:16px!important;backdrop-filter:blur(12px)}
+ .suite-bar{grid-template-columns:minmax(0,1fr) auto;gap:0 10px;min-height:78px}
+ .suite-brand{gap:8px;padding-block:16px;min-width:0}
+ .suite-brand-symbol{width:35px;height:35px;flex-basis:35px;border-radius:11px}
+ .suite-brand-symbol .suite-icon{width:22px;height:22px}
+ .suite-word{font-size:23px;letter-spacing:-.75px}
+ .suite-brand small{font-size:8px;letter-spacing:1.35px}
+ html body.suite-ui #meliTopControlsV70{gap:6px!important;grid-column:2;grid-row:1}
+ html body.suite-ui #meliTopControlsV70 :is(#meliHomeV63,#meliAuthBtnV69,#meliAppNavBtnV62){width:39px!important;height:41px!important;min-width:39px!important;min-height:41px!important;padding:0!important;border-radius:10px!important}
+ html body.suite-ui #meliTopControlsV70 #meliHomeV63{flex-basis:39px!important}
+ html body.suite-ui #meliTopControlsV70 svg{width:19px!important;height:19px!important}
+ html body.suite-ui .suite-local-nav{grid-column:1/-1;grid-row:2;justify-self:stretch;justify-content:flex-start!important;padding:0 0 11px;overflow:auto;gap:8px;max-width:100%;scrollbar-width:thin}
+ html body.suite-ui header.suite-header .suite-local-nav .nav{flex:1 0 auto;justify-content:center!important;height:46px!important;min-height:46px!important;font-size:16px!important;padding:0 12px!important}
+ html body.suite-ui header.suite-header .nav b{font-size:16px!important}
+ html body.suite-ui #meliUserPopoverV69{right:16px!important;top:70px!important}
+ html body.suite-ui #meliAppNavMenuV62{top:51px!important;max-height:calc(100dvh - 99px)!important;width:320px!important}
+ html body.suite-ui main{padding:24px 16px 38px!important}
+ html body.suite-ui :is(.panelHead,.sectionHead,.mediaHead,.ph,.head){padding:17px 18px!important;min-height:68px!important}
+ html body.suite-ui :is(.panelHead,.sectionHead,.mediaHead) h2{font-size:21px!important}
+ html body.suite-ui :is(h1,.hero h1){font-size:28px!important}
+ html body.suite-ui :is(.fieldGrid,.grid){gap:14px!important}
+ html body.suite-ui :is(.tools,.worktop,.historyResultTop){flex-wrap:wrap}
+ html body.suite-ui .filters{grid-template-columns:1fr!important;padding:16px!important}
+ html body.suite-ui .filters>*{width:100%!important}
+ html body.suite-ui .meliLoginHeadV69{padding:23px 22px 18px!important}
+ html body.suite-ui .meliLoginBodyV69{padding:21px 22px 23px!important}
+ html body.suite-ui.suite-clinical .dxNav{padding:10px 16px!important;justify-content:flex-start!important;gap:6px!important}
+ html body.suite-ui.suite-clinical .dxNav a{font-size:16px!important;padding-inline:14px!important}
+ html body.suite-ui.suite-clinical .timeline{padding:0!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;margin-bottom:24px!important}
+ html body.suite-ui.suite-clinical .timelineStep{display:block!important;text-align:center!important}
+ html body.suite-ui.suite-clinical .timelineNode{margin:auto!important;width:42px!important;height:42px!important}
+ html body.suite-ui.suite-clinical .timelineStep b{font-size:15px!important;line-height:1.4!important;margin-top:10px!important}
+ html body.suite-ui.suite-clinical .timelineStep span{display:none!important}
+ html body.suite-ui.suite-clinical .timelineLine{left:17%!important;right:17%!important;top:20px!important;bottom:auto!important;height:3px!important;width:auto!important}
+ html body.suite-ui.suite-clinical .timelineLine i{height:3px!important;width:var(--suite-progress,0%)!important}
+ html body.suite-ui.suite-clinical .entryGrid,html body.suite-stroke .entryGrid{grid-template-columns:1fr!important;padding:18px!important;gap:20px!important}
+ html body.suite-ui.suite-clinical .inputGroup{padding:17px!important}
+ html body.suite-ui.suite-clinical .analyzeBar{padding:0 18px 20px!important}
+ html body.suite-ui.suite-clinical .analyzeBtn{width:100%!important;min-width:0!important}
+ html body.suite-ui.suite-clinical .uploadBox{min-height:170px!important}
+ html body.suite-ui.suite-clinical :is(.riskSummaryBox,.aiRiskSummaryBox){grid-template-columns:112px minmax(0,1fr)!important;gap:15px!important;padding:16px!important}
+ html body.suite-ui.suite-clinical :is(.riskPie,.aiPie){width:106px!important;height:106px!important;flex-basis:106px!important}
+ html body.suite-ui.suite-clinical :is(.riskText h3,.aiRiskText h3){font-size:20px!important}
+ html body.suite-ui.suite-clinical .compactClinicalGrid{grid-template-columns:1fr!important;grid-template-areas:'risk' 'lifestyle' 'reason'!important}
+ html body.suite-ui.suite-clinical .compactClinicalGrid .riskSummaryBox{grid-template-columns:112px minmax(0,1fr)!important}
+ html body.suite-ui.suite-clinical :is(.alzResultsGrid,.analysisMediaGrid,.mindLowerGrid){grid-template-columns:1fr!important}
+ html body.suite-ui.suite-clinical .mindLowerGrid{grid-template-areas:'reason' 'risk' 'lifestyle' 'mri'!important}
+ html body.suite-ui.suite-clinical :is(.lifestyleList,.scaleGrid){grid-template-columns:1fr!important}
+ html body.suite-ui.suite-clinical .chartWrap{padding:14px!important;overflow-x:auto}
+ html body.suite-ui.suite-clinical .trendChart{min-width:540px;min-height:265px!important;height:265px!important}
+ html body.suite-ui.suite-clinical :is(.reasonList,.attentionList,.lifestyleList){max-height:520px!important}
+ html body.suite-ocr .upload{padding:30px 23px!important;margin:22px auto!important}
+ html body.suite-ocr .upload h2{font-size:25px!important}
+ html body.suite-ocr .workspace{grid-template-columns:1fr!important}
+ html body.suite-ocr :is(.doc,.ocr){height:620px!important}
+ html body.suite-ocr .doc{padding:16px!important;justify-content:flex-start!important}
+ html body.suite-ocr .paper{min-width:460px!important;max-width:none}
+ html body.suite-ocr .ocr{padding:19px!important}
+ html body.suite-ocr .historyResultTop{grid-template-columns:1fr!important;text-align:center}
+ html body.suite-ocr .grid{grid-template-columns:1fr!important}
+ html body.suite-ocr .ocr .data{min-width:480px}
+ html body.suite-ocr .ph{flex-wrap:wrap;gap:10px}
+ html body.suite-voice .capture,html body.suite-voice .workspace{grid-template-columns:1fr!important;gap:20px!important}
+ html body.suite-voice :is(.record,.upload){padding:28px 23px!important}
+ html body.suite-voice .body{height:auto!important;max-height:800px!important;padding:21px!important}
+ html body.suite-voice .grid{grid-template-columns:1fr!important}
+ html body.suite-voice .tools{flex-wrap:wrap}
+ html body.suite-voice .tools input{flex:1 1 100%}
+ html body.suite-voice .head{flex-wrap:wrap}
+ html body.suite-vlm .app{display:flex!important;flex-direction:column!important}
+ html body.suite-vlm .center{width:100%;min-height:calc(100dvh - var(--suite-header))!important}
+ html body.suite-vlm .rightPanel{position:static!important;width:100%;height:auto!important;max-height:none!important;border-left:0!important;border-top:1px solid var(--suite-line);scroll-margin-top:85px}
+ html body.suite-vlm .chatInner{padding-inline:19px!important}
+ html body.suite-vlm .chatHeader{padding:16px 18px!important;min-height:84px!important}
+ html body.suite-vlm .chatHeader h1{font-size:18px!important}
+ html body.suite-vlm .chatHeader p{font-size:13px!important}
+ html body.suite-vlm .welcome{padding:25px 0 10px!important}
+ html body.suite-vlm .welcome h2{font-size:27px!important}
+ html body.suite-vlm .welcome p{font-size:17px!important}
+ html body.suite-vlm .composerWrap{padding:15px!important}
+ html body.suite-vlm .composer{padding:11px!important}
+ html body.suite-vlm .miniBtn{font-size:14px!important;padding:8px 10px!important}
+ html body.suite-vlm .chatScroll{min-height:0!important;padding-bottom:15px!important}
+ html body.suite-vlm .suite-mobile-panels{padding-inline:18px}
+ html body.suite-vlm .message{grid-template-columns:30px minmax(0,1fr)!important;gap:9px}
+ html body.suite-vlm .message.user{grid-template-columns:minmax(0,1fr) 30px!important}
+ html body.suite-vlm .avatar{width:30px!important;height:30px!important}
+ html body.suite-vlm .imageViewer{height:300px!important}
+ html body.suite-vlm .gallery{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media(max-width:420px){
+ .suite-word{font-size:21px}
+ .suite-brand-symbol{width:31px;height:34px;flex-basis:31px}
+ .suite-brand{gap:7px}
+ .suite-bar{gap:0 6px}
+ html body.suite-ui header.suite-header{padding-inline:12px!important}
+ html body.suite-ui #meliTopControlsV70{gap:5px!important}
+ html body.suite-ui #meliTopControlsV70 :is(#meliHomeV63,#meliAuthBtnV69,#meliAppNavBtnV62){width:35px!important;min-width:35px!important;height:39px!important;min-height:39px!important}
+ html body.suite-ui #meliTopControlsV70 #meliHomeV63{flex-basis:35px!important}
+ html body.suite-ui .fieldGrid{grid-template-columns:1fr!important}
+ html body.suite-ui .processSteps,html body.suite-ui .ocrSteps{grid-template-columns:1fr 1fr!important}
+ html body.suite-ui.suite-clinical :is(.riskSummaryBox,.aiRiskSummaryBox){grid-template-columns:1fr!important;text-align:center;justify-items:center}
+ html body.suite-ui.suite-clinical .compactClinicalGrid .riskSummaryBox{grid-template-columns:1fr!important;text-align:center!important}
+ html body.suite-ui.suite-clinical .factorGrid{grid-template-columns:1fr!important}
+}
+@media(max-width:359px){
+ .suite-word{font-size:19px}
+ .suite-brand-symbol{display:none}
+ .suite-brand small{font-size:8px;letter-spacing:.75px}
+ html body.suite-ui header.suite-header .suite-local-nav .nav{font-size:15px!important;padding-inline:9px!important;gap:6px!important}
+ html body.suite-ui header.suite-header .nav :is(.navIcon,.navIco){display:none!important}
+ html body.suite-vlm .composerBottom{align-items:flex-end}
+ html body.suite-vlm .composerLeft{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}html body.suite-ui *,html body.suite-ui *::before,html body.suite-ui *::after{animation:none!important;transition:none!important}}
+@media print{html body.suite-ui{background:#fff!important}html body.suite-ui header.suite-header,html body.suite-ui .dxNav{position:static!important}html body.suite-ui #meliTopControlsV70{display:none!important}html body.suite-ui :is(.body,.ocr,.doc,.reasonList,.attentionList,.lifestyleList,.riskPanel,.reasonPanel,.lifestylePanel){height:auto!important;max-height:none!important;overflow:visible!important;box-shadow:none!important}}
+/* Final cross-page checks: backdrop spans the viewport; VLM header stays anchored. */
+html body.suite-ui{min-height:100dvh!important;background-repeat:no-repeat!important;background-attachment:fixed!important}
+html body.suite-ui.suite-vlm header.suite-header{position:fixed!important;left:0!important;right:0!important;top:0!important}
+html body.suite-ui.suite-vlm .app{margin-top:var(--suite-header)!important}
+
+@media(max-width:1240px){html body.suite-ui #meliTopControlsV70 #meliAuthBtnV69 .loginTextV69{display:none!important}}
+html body.suite-ui.suite-voice .record>div:last-child{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+@media(max-width:760px){html body.suite-ui.suite-voice .record .primary{font-size:16px!important;padding:12px 15px!important}}
+/* Invoice columns prioritize the medicine name; paired panel headers align. */
+html body.suite-ui.suite-ocr .ph{min-height:80px!important}
+html body.suite-ui.suite-ocr .data{table-layout:fixed;width:100%}
+html body.suite-ui.suite-ocr .data :is(th,td):first-child{width:43%}
+html body.suite-ui.suite-ocr .data :is(th,td):nth-child(2){width:10%}
+html body.suite-ui.suite-ocr .data :is(th,td):nth-child(3){width:22%}
+html body.suite-ui.suite-ocr .data :is(th,td):nth-child(4){width:25%}
+html body.suite-ui.suite-ocr .data input{min-width:0;font-size:16px;color:var(--suite-ink)}

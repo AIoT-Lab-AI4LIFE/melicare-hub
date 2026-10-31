@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="mc-care-art mc-care-art-refined" viewBox="0 0 520 320" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="mc11-vlm-title mc11-vlm-desc">
-<title id="mc11-vlm-title">MELIVLM — từ ảnh y tế đến hỏi đáp và báo cáo</title><desc id="mc11-vlm-desc">Bác sỹ đặt câu hỏi về một vùng trên ảnh X-quang. AI hỗ trợ phân tích ảnh và tạo báo cáo nháp để bác sỹ kiểm duyệt.</desc>
+<title id="mc11-vlm-title">MELIVLM — từ images y tế đến hỏi đáp và report cáo</title><desc id="mc11-vlm-desc">Physician đặt câu hỏi về một vùng trên images X-quang. AI hỗ trợ phân tích images và tạo report cáo nháp để physicians kiểm duyệt.</desc>
 <defs>
  <linearGradient id="mc11-vlm-blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#30a8fb"/><stop offset="1" stop-color="#087bda"/></linearGradient>
  <linearGradient id="mc11-vlm-area" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#078cf0" stop-opacity=".18"/><stop offset="1" stop-color="#078cf0" stop-opacity="0"/></linearGradient>
  <filter id="mc11-vlm-shadow" x="-35%" y="-35%" width="180%" height="185%"><feGaussianBlur in="SourceAlpha" stdDeviation="4"/><feOffset dy="6"/><feColorMatrix type="matrix" values="0 0 0 0 .03 0 0 0 0 .4 0 0 0 0 .7 0 0 0 .10 0"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
 </defs>
 <g font-family="'Nunito Sans',Arial,sans-serif" stroke-linecap="round" stroke-linejoin="round">
-<text x="46" y="43" fill="#15384f" font-size="18" font-weight="800">Ảnh y tế</text>
-<text x="282" y="43" fill="#15384f" font-size="18" font-weight="800">Hỏi đáp trên ảnh</text>
+<text x="46" y="43" fill="#15384f" font-size="18" font-weight="800">Medical images</text>
+<text x="282" y="43" fill="#15384f" font-size="18" font-weight="800">Hỏi đáp trên images</text>
 <!-- An actual imaging object, with the question anchored to its region of interest. -->
 <g transform="translate(43 62)">
  <rect width="180" height="204" rx="13" fill="url(#mc11-vlm-blue)" filter="url(#mc11-vlm-shadow)"/>
@@ -26,7 +26,7 @@
 <g transform="translate(281 66)">
  <path d="M12 0h170q12 0 12 12v44q0 12-12 12H28L13 80V68h-1Q0 68 0 56V12Q0 0 12 0Z" fill="#fff" stroke="#cbe1f0" stroke-width="1.2"/>
  <path d="M16 20h5m-5 7h8" stroke="#078cf0" stroke-width="1.6"/>
- <text x="35" y="27" fill="#345c76" font-size="17" font-weight="700">Vùng này có gì</text>
+ <text x="35" y="27" fill="#345c76" font-size="17" font-weight="700">Vùng này has gì</text>
  <text x="35" y="49" fill="#345c76" font-size="17" font-weight="700">cần chú ý?</text>
 </g>
 <!-- AI is a transformation step between the source image and its report. -->
@@ -41,5 +41,5 @@
  <path d="M16 45h138M16 59h119M16 73h130M16 87h87" stroke="#b0d0e6" stroke-width="2.5"/>
 </g>
 <path d="m295 291 4 4 8-9" stroke="#078cf0" stroke-width="1.7" fill="none"/>
-<text x="315" y="296" fill="#54778e" font-size="15" font-weight="700">Bác sỹ kiểm duyệt</text>
+<text x="315" y="296" fill="#54778e" font-size="15" font-weight="700">Physician kiểm duyệt</text>
 </g></svg>

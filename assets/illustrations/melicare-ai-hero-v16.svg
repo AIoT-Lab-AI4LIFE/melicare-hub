@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="mc-ai-scene mc-h16" viewBox="0 0 720 500" role="img" aria-labelledby="mc-h16-title mc-h16-desc">
-<title id="mc-h16-title">AI và tri thức chuyên gia phục vụ vận hành và khám chữa bệnh</title>
-<desc id="mc-h16-desc">Sách và hướng dẫn chuyên môn cung cấp tri thức cho AI ở trung tâm. AI kết nối với bệnh viện và bảng điều phối ở bên trái, cùng giường bệnh, hồ sơ khám và màn hình theo dõi ở bên phải, hỗ trợ tối ưu nguồn lực, hỗ trợ bác sỹ và chăm sóc người bệnh.</desc>
+<title id="mc-h16-title">AI và tri thức chuyên gia phục vụ operations và khám chữa bệnh</title>
+<desc id="mc-h16-desc">Sách và hướng dẫn chuyên môn cung cấp tri thức cho AI ở trung tâm. AI kết nối với bệnh viện và bảng điều phối ở bên trái, cùng beds bệnh, records khám và màn hình monitoring ở bên phải, hỗ trợ optimized nguồn lực, hỗ trợ physicians và care patients bệnh.</desc>
 <style>
 .mc-h16 text{font-family:"Nunito Sans",Arial,sans-serif}
 .mc-h16-title{font-size:20px;font-weight:750;fill:#244e67}
@@ -90,9 +90,9 @@
 <circle cx="48" cy="160" r="8" fill="#fff"/><circle cx="176" cy="160" r="8" fill="#fff"/><circle cx="48" cy="160" r="2.3" fill="#8dbddc" stroke="none"/><circle cx="176" cy="160" r="2.3" fill="#8dbddc" stroke="none"/>
 <path d="M196 117v-15m-171 15V98" fill="none"/>
 </g></g>
-<text x="160" y="432" text-anchor="middle" class="mc-h16-title">Vận hành bệnh viện</text>
+<text x="160" y="432" text-anchor="middle" class="mc-h16-title">Hospital operations</text>
 <text x="160" y="455" text-anchor="middle" class="mc-h16-note">Điều phối · Tối ưu nguồn lực</text>
-<text x="560" y="432" text-anchor="middle" class="mc-h16-title">Khám chữa bệnh</text>
-<text x="560" y="455" text-anchor="middle" class="mc-h16-note">Hỗ trợ bác sỹ · Chăm sóc người bệnh</text>
+<text x="560" y="432" text-anchor="middle" class="mc-h16-title">Examination chữa bệnh</text>
+<text x="560" y="455" text-anchor="middle" class="mc-h16-note">Physician support · Chăm sóc patients bệnh</text>
 <g class="mc-h16-packets">
 <circle r="3.2" fill="#e5ac32"><animateMotion dur="3.5s" begin="0s" repeatCount="indefinite"><mpath href="#mc-h16-expert-route" xlink:href="#mc-h16-expert-route"/></animateMotion></circle><circle r="3.2" fill="#078cf0"><animateMotion dur="4s" begin="-1s" repeatCount="indefinite"><mpath href="#mc-h16-ops-route" xlink:href="#mc-h16-ops-route"/></animateMotion></circle><circle r="3.2" fill="#078cf0"><animateMotion dur="4s" begin="-1s" repeatCount="indefinite"><mpath href="#mc-h16-care-route" xlink:href="#mc-h16-care-route"/></animateMotion></circle><circle r="2.3" fill="#a7c8df"><animateMotion dur="6s" begin="-3s" repeatCount="indefinite"><mpath href="#mc-h16-ops-return" xlink:href="#mc-h16-ops-return"/></animateMotion></circle><circle r="2.3" fill="#a7c8df"><animateMotion dur="6s" begin="-3s" repeatCount="indefinite"><mpath href="#mc-h16-care-return" xlink:href="#mc-h16-care-return"/></animateMotion></circle></g></svg>

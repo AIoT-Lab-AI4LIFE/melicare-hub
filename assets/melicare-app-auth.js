@@ -1,6 +1,6 @@
 /* Per-app login pages (<html data-tool-id="…" data-tool-login="true">) and the pages they guard (<html data-tool-id="…">).
  * Authentication is MeliAuth (meli-auth.js); destinations come from melicare-routes.js.
- * Signed out, the homepage sends "Mở ứng dụng" to <App>_Login.html in the same tab; a successful login then opens
+ * Signed out, the homepage sends "Open application" to <App>_Login.html in the same tab; a successful login then opens
  * the app there (sso apps receive ?token=… via MELI_AUTH.openUrl). Signed in, the homepage opens the app directly.
  */
 (() => {
@@ -61,8 +61,8 @@
    const register = mode === 'register';
    $('tool-login-panel').hidden = register;
    $('tool-register-panel').hidden = !register;
-   heading.textContent = register ? 'Tạo tài khoản ' + app.name : 'Chào mừng trở lại';
-   description.textContent = register ? 'Tạo tài khoản MeliAuth để dùng ' + app.name + '.' : 'Đăng nhập để tiếp tục công việc của bạn.';
+   heading.textContent = register ? 'Create your ' + app.name + ' account' : 'Welcome back';
+   description.textContent = register ? 'Create a MeliAuth account to use ' + app.name + '.' : 'Sign in to continue your work.';
    tabs.forEach((tab) => {
     const active = tab.dataset.authTab === mode;
     tab.setAttribute('aria-selected', String(active));
@@ -89,7 +89,7 @@
   function togglePassword(button, input) {
    const show = input.type === 'password';
    input.type = show ? 'text' : 'password';
-   button.textContent = show ? 'Ẩn' : 'Hiện';
+   button.textContent = show ? 'Hide' : 'Show';
    button.setAttribute('aria-pressed', String(show));
   }
   $('tool-show-password').addEventListener('click', (event) => togglePassword(event.currentTarget, $('tool-password')));
@@ -114,7 +114,7 @@
      if (await run() === false) return;
      await auth.openUrl(target);
     } catch (problem) {
-     error.textContent = problem?.message || 'Chưa thể kết nối máy chủ xác thực. Vui lòng thử lại.';
+     error.textContent = problem?.message || 'Could not reach the authentication server. Please try again.';
      error.hidden = false;
     } finally {
      pending = false;
@@ -127,7 +127,7 @@
   const username = $('tool-username');
   const password = $('tool-password');
   const loginError = $('tool-login-error');
-  bindForm($('tool-login-form'), $('tool-login-submit'), loginError, 'Đăng nhập ', 'Đang đăng nhập… ', async () => {
+  bindForm($('tool-login-form'), $('tool-login-submit'), loginError, 'Sign in ', 'Signing in… ', async () => {
    try {
     await auth.login(username.value, password.value);
    } catch (problem) {
@@ -142,9 +142,9 @@
   const registerPassword = $('register-password');
   const confirm = $('register-confirm');
   const registerError = $('register-error');
-  bindForm($('tool-register-form'), $('register-submit'), registerError, 'Tạo tài khoản', 'Đang tạo tài khoản…', async () => {
+  bindForm($('tool-register-form'), $('register-submit'), registerError, 'Create account', 'Creating account…', async () => {
    if (registerPassword.value !== confirm.value) {
-    registerError.textContent = 'Mật khẩu nhập lại chưa khớp.';
+    registerError.textContent = 'The passwords do not match.';
     registerError.hidden = false;
     confirm.setAttribute('aria-invalid', 'true');
     confirm.focus();
@@ -173,9 +173,9 @@
    $('tool-login-panel').hidden = true;
    $('tool-register-panel').hidden = true;
    success.hidden = true;
-   heading.textContent = 'Bạn đã đăng nhập';
-   description.textContent = 'Phiên MeliAuth đang hoạt động trên cửa sổ này.';
-   $('tool-preview-account').textContent = (user.displayName || user.username || 'Tài khoản MeliAuth') + (user.username && user.displayName ? ' · ' + user.username : '');
+   heading.textContent = 'You are signed in';
+   description.textContent = 'A MeliAuth session is active in this window.';
+   $('tool-preview-account').textContent = (user.displayName || user.username || 'MeliAuth account') + (user.username && user.displayName ? ' · ' + user.username : '');
   }
   $('tool-preview-continue').addEventListener('click', () => auth.openUrl(target));
   $('tool-preview-logout').addEventListener('click', async () => {

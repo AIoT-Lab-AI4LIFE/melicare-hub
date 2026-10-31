@@ -18,10 +18,10 @@
  function init(){
   const host=document.querySelector('[data-mc-switch]');if(!host)return;
   const button=host.querySelector('button');if(!button)return;
-  const panel=document.createElement('nav');panel.id='mc-switch-panel';panel.className='mc-switch-panel';panel.setAttribute('aria-label','Các ứng dụng MELICARE');panel.hidden=true;
-  const title=document.createElement('div');title.className='mc-switch-title';title.textContent='Ứng dụng MELICARE';panel.append(title);
+  const panel=document.createElement('nav');panel.id='mc-switch-panel';panel.className='mc-switch-panel';panel.setAttribute('aria-label','MELICARE applications');panel.hidden=true;
+  const title=document.createElement('div');title.className='mc-switch-title';title.textContent='MELICARE applications';panel.append(title);
   const current=document.body.dataset.mcPage;
-  for(const [group,label] of [['ops','Vận hành bệnh viện'],['care','Khám chữa bệnh']]){
+  for(const [group,label] of [['ops','Hospital operations'],['care','Clinical care']]){
    const section=document.createElement('div');section.className='mc-switch-group';
    const heading=document.createElement('p');heading.className='mc-switch-heading';heading.textContent=label;section.append(heading);
    for(const app of apps.filter(x=>x.group===group&&x.id!==current)){
@@ -30,7 +30,7 @@
     a.innerHTML=`<span class="mc-switch-icon" style="--app-tone:${app.tone}">${svg(app.icon)}</span><span class="mc-switch-name">${app.name}</span>`;
     if(site.isExternal(app.href)){
      const ext=document.createElement('span');ext.className='mc-switch-external';ext.innerHTML=svg('external');a.append(ext);
-     a.setAttribute('aria-label',app.name+' — mở trong thẻ mới');
+     a.setAttribute('aria-label',app.name+' — opens in a new tab');
     }
     section.append(a);
    }panel.append(section);

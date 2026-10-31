@@ -1,0 +1,63 @@
+/* Shared readable surfaces, typography and homepage brand palette. */
+html body#mcTypography{
+ --ink:#1e293b;--tx:#1e293b;--text:#1e293b;--mc-ink:#1e293b;--suite-ink:#1e293b;
+ --muted:#475569;--mu:#475569;--mc-muted:#475569;--suite-muted:#475569;
+ --navy:#123a58;--n:var(--tool-action,#123a58);--nav:#123a58;--nav2:#123a58;--suite-navy:#123a58;
+ --blue:var(--tool-action,#066dbb);--b:var(--tool-action,#066dbb);--p:var(--tool-action,#066dbb);--blue-deep:var(--tool-action,#123a58);--suite-blue:var(--tool-action,#066dbb)!important;
+ --yellow:#f7af3e;--gold:#f7af3e;--amber:#f7af3e;--suite-yellow:#f7af3e!important;
+ --bg:var(--tool-soft,#f4f7fa);--surface:#fff;--surface-2:var(--tool-soft,#f1f5f9);--card:#fff;--paper:#fff;
+ --line:var(--tool-soft,#d3dde7);--ln:var(--tool-soft,#d3dde7);--bd:var(--tool-soft,#d3dde7);--suite-line:var(--tool-soft,#d3dde7);
+ --blue-soft:var(--tool-soft,#edf4fa);--blue-light:var(--tool-soft,#edf4fa);--suite-sky:var(--tool-soft,#edf4fa);--gold-light:#fff7e7;--suite-cream:#fff7e7;
+ --font:'Nunito Sans','Segoe UI',Arial,sans-serif;--body:var(--font);--display:'Plus Jakarta Sans','Segoe UI',Arial,sans-serif;
+ --mc-font-body:var(--font);--mc-font-display:var(--display);--mc-body:var(--font);--mc-body-font:var(--font);--suite-body:var(--font);--suite-display:var(--display);
+ --read-control:#aabacc;--read-line:var(--tool-soft,#d3dde7);--read-divider:var(--tool-soft,#dce4ec);
+ color:#1e293b!important;background:var(--tool-soft,#f4f7fa)!important;font-family:var(--font)!important;font-size:16px!important;font-weight:500;line-height:1.6!important;
+ -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+html body#mcTypography :is(button,input,textarea,select,table,label,p,small){font-family:var(--font)!important}
+html body#mcTypography :is(input,textarea,select){color:#1e293b!important;background-color:#fff!important;border-color:#aabacc!important;font-size:16px!important;font-weight:500;line-height:1.5!important}
+html body#mcTypography :is(input,textarea)::placeholder{color:#526176!important;opacity:1!important}
+html body#mcTypography :is(input,textarea,select):focus-visible{outline:2px solid var(--tool-action,#066dbb);outline-offset:2px;box-shadow:0 0 0 4px color-mix(in srgb,var(--tool-action,#066dbb) 7.059%,transparent)!important}
+html body#mcTypography :is(h1,h2,h3,h4){font-family:var(--display)!important;color:#123a58;font-weight:700;line-height:1.4!important}
+html body#mcTypography :is(.panel,.card,.entryCard,.mediaPanel,.history,.hub-card,.kpi,.module-card,.patient-card,.mc-login-form-card){background:#fff!important}
+html body#mcTypography :is(.panelHead,.sectionHead,.mediaHead,.chatHeader,.rightHead,.paneHead,.table-panel thead){background:var(--tool-soft,#f1f5f9)!important}
+html body#mcTypography :is(.sidebar,.rightPanel,.sidePane){background:#fff!important}
+html body#mcTypography :is(.sub,.muted,.panel-sub,.source-note,.task-desc,.role,.time,.date,.rangeLabels,.chartLegend,.chart-legend,.kpi-foot,.kpi-bottom,.kpi-unit,.dept-foot,.table-footer,.sideTitle,.fileStatus,.viewerLabel,.mc-switch-heading,.meliAppNavTitleV62){color:#475569!important;opacity:1!important}
+html body#mcTypography :is(.panelHead p,.sectionHead p,.mediaHead p,.hero p,.upload p,.record p,.chatHeader p,.rightHead p,.field label,.timelineStep span,.uploadBox span,.factorCard span,.lifeCard span,.riskText p,.aiRiskText p,.schedule-detail span,.task-byline,.reasonText,.deltaText){color:#475569!important;opacity:1!important}
+html body#mcTypography :is(small,.mc-row-meta,.mc-row-measurement,.source-note,.chartLegend,.chart-legend,.rangeLabels,.mc-switch-heading){font-size:14px!important;line-height:1.5!important}
+html body#mcTypography :is(td,th){line-height:1.55!important;font-variant-numeric:tabular-nums}
+html body#mcTypography th{color:#334155!important;background:var(--tool-soft,#edf2f7)!important;font-weight:700!important}
+html body#mcTypography :is(.btn.primary,.analyzeBtn,.actions .btn.ok,.mc-invoice-picker,.mc-detail-done,.meliLoginSubmitV69){background:var(--tool-action,#066dbb)!important;border-color:var(--tool-action,#066dbb)!important;color:#fff!important;box-shadow:none!important}
+html body#mcTypography :is(.btn.primary,.analyzeBtn,.actions .btn.ok,.mc-invoice-picker,.mc-detail-done):hover{background:var(--tool-action,#055a9a)!important;border-color:var(--tool-action,#055a9a)!important}
+html body#mcTypography :is(.mc-switch-button,#meliAppNavBtnV62){background:#fff7e7!important;border-color:#d8b375!important;color:#123a58!important;box-shadow:none!important}
+html body#mcTypography :is(.mc-account-button,#meliHomeV63,#meliAuthBtnV69,.mc-dashboard-home){background:var(--tool-soft,#edf4fa)!important;border-color:var(--tool-line,#bacddd)!important;color:#123a58!important;box-shadow:none!important}
+html body#mcTypography :is(.suite-local-nav .nav.active,.dxNav a.active){color:#123a58!important;background:#fff2d9!important;border-color:#d8b375!important}
+html body#mcTypography :is(.mc-product-name,.mc-product-prefix){--mc-product-ink:var(--tool-action,#123a58);color:#123a58!important}
+html body#mcTypography .mc-product-name>.mc-product-suffix{color:var(--mc-product-accent)!important}
+html body#mcTypography .mc-product-name,html body#mcTypography .mc-product-name :is(.mc-product-prefix,.mc-product-suffix){font-family:'Poppins','Segoe UI',Arial,sans-serif!important}
+html body#mcTypography :is(a,button,input,select,textarea):focus-visible{outline:3px solid var(--tool-action,#066dbb);outline-offset:3px}
+html body#mcTypography :is(button:disabled,input:disabled,select:disabled){opacity:.65}
+html body#mcTypography .mc-chart-tooltip{color:#fff!important;background:var(--tool-action,#123a58)!important}
+html body#mcTypography .viewerLabel{color:#fff!important;background:color-mix(in srgb,var(--tool-action,#123a58) 90.196%,transparent)!important}
+html body#mcTypography svg text{font-family:var(--font)!important;font-weight:600}
+/* Login: deep blue primary action, restrained ochre accents and clear form text. */
+html body#mcTypography.mc-login{background:radial-gradient(ellipse at 0 0,#fff3da 0,transparent 45%),linear-gradient(125deg,var(--tool-soft,#f8fafc),var(--tool-soft,#edf4fa))!important}
+html body#mcTypography.mc-login .mc-login-back{color:#123a58!important}
+html body#mcTypography.mc-login .mc-login-eyebrow{color:#8a5b16!important;font-weight:800}
+html body#mcTypography.mc-login .mc-login-copy h1{font-size:clamp(32px,3.3vw,43px)!important;line-height:1.35!important}
+html body#mcTypography.mc-login .mc-login-copy h1 span{color:var(--tool-action,#066dbb)!important}
+html body#mcTypography.mc-login :is(.mc-login-copy>p,.mc-login-form-card>p,.mc-login-role small,.mc-login-note,.mc-demo-accounts>strong,.mc-demo-buttons small,.mc-login-warning){color:#475569!important}
+html body#mcTypography.mc-login .mc-login-role{background:#fff!important;border-color:var(--tool-line,#d3dde7)!important;box-shadow:none!important}
+html body#mcTypography.mc-login .mc-login-role>span{background:var(--tool-soft,#edf4fa)!important;color:var(--tool-action,#066dbb)!important}
+html body#mcTypography.mc-login .mc-login-role:nth-child(2)>span{background:#fff2d9!important;color:#8a5b16!important}
+html body#mcTypography.mc-login .mc-login-form-card{border-color:var(--tool-line,#c8d6e3)!important;box-shadow:0 16px 48px color-mix(in srgb,var(--tool-action,#123a58) 6.275%,transparent)!important}
+html body#mcTypography.mc-login .mc-login-form-card:before{background:linear-gradient(90deg,var(--tool-action,#123a58) 0 68%,#f7af3e 68%)!important}
+html body#mcTypography.mc-login .mc-login-field label{color:#1e293b!important;font-weight:700}
+html body#mcTypography.mc-login .mc-login-password button{background:var(--tool-soft,#edf4fa)!important;color:#123a58!important}
+html body#mcTypography.mc-login .mc-login-submit{background:var(--tool-action,#123a58)!important;color:#fff!important;border-color:var(--tool-action,#123a58)!important;box-shadow:none!important}
+html body#mcTypography.mc-login .mc-login-submit:hover{background:var(--tool-action,#1b4e73)!important}
+html body#mcTypography.mc-login .mc-demo-buttons button{background:var(--tool-soft,#f1f5f9)!important;color:#123a58!important;border-color:var(--tool-line,#c8d6e3)!important}
+html body#mcTypography.mc-login .mc-demo-buttons button:hover{background:#fff7e7!important;border-color:#d8b375!important}
+html body#mcTypography.mc-login .mc-login-warning{font-size:14px!important;line-height:1.65!important}
+@media(max-width:780px){html body#mcTypography.mc-login .mc-login-back{font-size:14px!important;gap:8px!important}}
+@media(prefers-contrast:more){html body#mcTypography{--muted:#334155;--mc-muted:#334155;--suite-muted:#334155;--read-control:#64748b}}

@@ -37,9 +37,9 @@
  const keyOf=d=>d.toISOString().slice(0,10);
  function addDays(key,n){const d=civilDate(key);d.setUTCDate(d.getUTCDate()+n);return keyOf(d);}
  function monday(key){const day=civilDate(key).getUTCDay();return addDays(key,-((day+6)%7));}
- const fmt=key=>new Intl.DateTimeFormat('vi-VN',{timeZone:'UTC',day:'2-digit',month:'2-digit',year:'numeric'}).format(civilDate(key));
+ const fmt=key=>new Intl.DateTimeFormat("en-GB",{timeZone:'UTC',day:'2-digit',month:'2-digit',year:'numeric'}).format(civilDate(key));
  const fmtDM=key=>fmt(key).slice(0,5);
- const dow=key=>['Chủ nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'][civilDate(key).getUTCDay()];
+ const dow=key=>["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][civilDate(key).getUTCDay()];
  const fullDate=key=>`${dow(key)}, ${fmt(key)}`;
  const inBounds=key=>/^\d{4}-\d{2}-\d{2}$/.test(key)&&key>=CONFIG.minDate&&key<=CONFIG.maxDate&&!Number.isNaN(+civilDate(key))&&keyOf(civilDate(key))===key;
  const safeDate=key=>key<CONFIG.minDate?CONFIG.minDate:key>CONFIG.maxDate?CONFIG.maxDate:key;
@@ -52,18 +52,18 @@
  // Reuse the doctor's name/specialty from the source; avoid inventing qualifications or contacts.
  const doctors=(typeof DUTY_DOCTORS!=='undefined'?DUTY_DOCTORS:[]).map((d,i)=>({
   id:`BS${String(i+1).padStart(3,'0')}`,name:d[0],specialty:d[1],
-  role:d[1]==='Gây mê hồi sức'?'Bác sỹ gây mê':'Phẫu thuật viên',ana:d[1]==='Gây mê hồi sức',
+  role:d[1]==="Anesthesiology"?"Anesthesiologist":"Surgeon",ana:d[1]==="Anesthesiology",
   initials:d[0].replace(/^BS\.\s*/,'').split(/\s+/).slice(-2).map(w=>w[0]).join(''),
   short:d[0].replace(/^BS\.\s*/,'').split(/\s+/).slice(-2).join(' ')
  }));
  const doctorById=Object.fromEntries(doctors.map(d=>[d.id,d]));
  const surgeons=doctors.filter(d=>!d.ana),anesthetists=doctors.filter(d=>d.ana);
- const SHIFTS={day:{label:'Trực ngày',time:'07:00–19:00',long:'07:00–19:00',icon:'sun'},night:{label:'Trực đêm',time:'19:00–07:00',long:'19:00–07:00 hôm sau',icon:'moon'}};
+ const SHIFTS={day:{label:"Day shift",time:'07:00–19:00',long:'07:00–19:00',icon:'sun'},night:{label:"Night shift",time:'19:00–07:00',long:"19:00–07:00 next day",icon:'moon'}};
  const procedures={
-  'BS001':['Cắt túi mật nội soi','Cắt ruột thừa nội soi','Phẫu thuật nội soi TEP'],
-  'BS003':['Thay khớp háng toàn phần','Kết hợp xương đùi','Cố định xương'],
-  'BS005':['Cắt thùy tuyến giáp','Cắt túi mật nội soi','Phẫu thuật nội soi TEP'],
-  'BS006':['Nội soi đại tràng can thiệp','Nội soi can thiệp','Cắt ruột thừa nội soi']
+  'BS001':["Laparoscopic cholecystectomy","Laparoscopic appendectomy","Laparoscopic TEP repair"],
+  'BS003':["Total hip replacement","Femoral fracture fixation","Bone fixation"],
+  'BS005':["Thyroid lobectomy","Laparoscopic cholecystectomy","Laparoscopic TEP repair"],
+  'BS006':["Interventional colonoscopy","Interventional endoscopy","Laparoscopic appendectomy"]
  };
  function getDay(key){
   if(cache.has(key))return cache.get(key);
@@ -75,7 +75,7 @@
   const cases=slots.map(([start,end,shift,pi],i)=>{
    const surgeon=shift==='day'?daySurgeon:nightSurgeon,ana=shift==='day'?dayAna:nightAna;
    return {id:`MH-${key.replaceAll('-','')}-${String(i+1).padStart(2,'0')}`,date:key,start,end,shift,
-    procedure:(procedures[surgeon.id]||['Ca phẫu thuật minh họa'])[pi],patient:`Người bệnh mẫu ${String(i+1).padStart(2,'0')}`,
+    procedure:(procedures[surgeon.id]||["Illustrative surgical case"])[pi],patient:`Sample patient ${String(i+1).padStart(2,'0')}`,
     room:`PM${String(1+mod(serial+(shift==='day'?0:1),4)).padStart(2,'0')}`,team:[surgeon.id,ana.id]};
   });
   savedAssignments.filter(a=>a.date===key).forEach(a=>{
@@ -88,35 +88,35 @@
  function casesOf(key,id){return getDay(key).cases.filter(c=>c.team.includes(id));}
  function assignmentOf(key,id){return getDay(key).assignments.find(a=>a.doctorId===id);}
  function avatar(d){return `<span class="od-avatar ${d.ana?'ana':''}" aria-hidden="true">${esc(d.initials)}</span>`;}
- function shiftTag(shift){if(!shift)return '<span class="od-shift-tag off">Không trực</span>';const s=SHIFTS[shift];return `<span class="od-shift-tag ${shift}">${icon(s.icon)}${s.label}</span>`;}
+ function shiftTag(shift){if(!shift)return "<span class=\"od-shift-tag off\">Off duty</span>";const s=SHIFTS[shift];return `<span class="od-shift-tag ${shift}">${icon(s.icon)}${s.label}</span>`;}
  function clockMinutes(){
   const p=new Intl.DateTimeFormat('en-GB',{timeZone:CONFIG.timeZone,hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
   return Number(p.find(x=>x.type==='hour').value)*60+Number(p.find(x=>x.type==='minute').value);
  }
  const minutes=t=>Number(t.slice(0,2))*60+Number(t.slice(3));
  function caseState(c){
-  if(c.date<today)return ['done','Đã kết thúc'];
-  if(c.date>today)return ['','Dự kiến'];
-  const now=clockMinutes();if(now>=minutes(c.end))return ['done','Hoàn thành'];
-  if(now>=minutes(c.start))return ['active','Đang mổ'];return ['','Chờ mổ'];
+  if(c.date<today)return ['done',"Ended"];
+  if(c.date>today)return ['',"Planned"];
+  const now=clockMinutes();if(now>=minutes(c.end))return ['done',"Completed"];
+  if(now>=minutes(c.start))return ['active',"In surgery"];return ['',"Awaiting surgery"];
  }
  function caseItem(c,doctorId=null){
   const [state,label]=caseState(c),doctor=doctorById[doctorId];
-  return `<article class="od-case-item"><div class="od-case-time">${c.start}<small>đến ${c.end}</small></div><div class="od-case-content"><strong>${esc(c.procedure)}</strong><p>${esc(c.id)} · ${esc(c.patient)}</p><div class="od-case-tags"><span>${icon('room')}${c.room}</span><span>${icon('clock')}90 phút</span>${doctor?`<span>${icon('user')}${doctor.ana?'Gây mê':'Phẫu thuật viên'}</span>`:''}</div>${!doctor?`<div class="od-case-doctors">${c.team.map(id=>`<button type="button" class="od-doctor-link" data-od-doctor-cases="${id}" data-od-date="${c.date}" aria-label="Xem ca mổ của ${esc(doctorById[id].name)} ngày ${fmt(c.date)}">${esc(doctorById[id].name)}</button>`).join('')}</div>`:''}</div><span class="od-case-state ${state}">${label}</span></article>`;
+  return `<article class="od-case-item"><div class="od-case-time">${c.start}<small>until ${c.end}</small></div><div class="od-case-content"><strong>${esc(c.procedure)}</strong><p>${esc(c.id)} · ${esc(c.patient)}</p><div class="od-case-tags"><span>${icon('room')}${c.room}</span><span>${icon('clock')}90 min</span>${doctor?`<span>${icon('user')}${doctor.ana?"Anesthesia":"Surgeon"}</span>`:''}</div>${!doctor?`<div class="od-case-doctors">${c.team.map(id=>`<button type="button" class="od-doctor-link" data-od-doctor-cases="${id}" data-od-date="${c.date}" aria-label="View surgical cases for ${esc(doctorById[id].name)} on ${fmt(c.date)}">${esc(doctorById[id].name)}</button>`).join('')}</div>`:''}</div><span class="od-case-state ${state}">${label}</span></article>`;
  }
  let todayPage=0,todayPageSize=4;
  function renderToday(){
   const data=getDay(today);
   $('odTodayDate').textContent=fullDate(today);
-  $('odTodaySummary').innerHTML=`<span><b>${data.assignments.length}</b>bác sỹ</span><span><b>${data.cases.length}</b>ca mổ</span>`;
+  $('odTodaySummary').innerHTML=`<span><b>${data.assignments.length}</b>physicians</span><span><b>${data.cases.length}</b>surgical cases</span>`;
   const pageCount=Math.max(1,Math.ceil(data.assignments.length/todayPageSize));todayPage=Math.min(todayPage,pageCount-1);
   const start=todayPage*todayPageSize;
   $('odTodayDoctors').style.setProperty('--od-page-size',todayPageSize);
-  $('odTodayPageLabel').textContent=`${data.assignments.length?start+1:0}–${Math.min(start+todayPageSize,data.assignments.length)} / ${data.assignments.length} bác sỹ`;
+  $('odTodayPageLabel').textContent=`${data.assignments.length?start+1:0}–${Math.min(start+todayPageSize,data.assignments.length)} / ${data.assignments.length} physicians`;
   $('odTodayPrev').disabled=todayPage===0;$('odTodayNext').disabled=todayPage>=pageCount-1;
   $('odTodayDoctors').innerHTML=data.assignments.slice(start,start+todayPageSize).map(a=>{
    const d=doctorById[a.doctorId],n=casesOf(today,d.id).length;
-   return `<button type="button" class="od-today-card" data-od-doctor-cases="${d.id}" data-od-date="${today}" aria-label="${esc(d.name)}, ${SHIFTS[a.shift].label.toLowerCase()}, ${n} ca mổ ngày ${fmt(today)}"><span class="od-today-card-top">${avatar(d)}${shiftTag(a.shift)}</span><strong class="od-today-name">${esc(d.name)}</strong><span class="od-today-specialty">${esc(d.specialty)}</span><span class="od-today-card-foot">${icon('clock')}<span>${SHIFTS[a.shift].time}${a.shift==='night'?' (+1)':''}</span><span class="od-case-link">${n} ca mổ ${icon('right')}</span></span></button>`;
+   return `<button type="button" class="od-today-card" data-od-doctor-cases="${d.id}" data-od-date="${today}" aria-label="${esc(d.name)}, ${SHIFTS[a.shift].label.toLowerCase()}, ${n} daytime surgical cases ${fmt(today)}"><span class="od-today-card-top">${avatar(d)}${shiftTag(a.shift)}</span><strong class="od-today-name">${esc(d.name)}</strong><span class="od-today-specialty">${esc(d.specialty)}</span><span class="od-today-card-foot">${icon('clock')}<span>${SHIFTS[a.shift].time}${a.shift==='night'?' (+1)':''}</span><span class="od-case-link">${n} surgical cases ${icon('right')}</span></span></button>`;
   }).join('');
  }
  function renderWeek(scroll=false,focus=false){
@@ -126,7 +126,7 @@
   $('odNextWeek').disabled=addDays(week,7)>CONFIG.maxDate;
   $('odWeekGrid').innerHTML=Array.from({length:7},(_,i)=>{
    const key=addDays(week,i),data=getDay(key),isToday=key===today,active=key===selected;
-   return `<button type="button" class="od-day-button ${isToday?'is-today':''}" data-od-day="${key}" aria-pressed="${active}" ${isToday?'aria-current="date"':''} tabindex="${active?0:-1}" ${inBounds(key)?'':'disabled'} aria-label="${fullDate(key)}${isToday?', hôm nay':''}, ${data.assignments.length} bác sỹ trực, ${data.cases.length} ca mổ"><span class="od-day-heading"><span>${['Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy','Chủ nhật'][i]}</span><strong class="od-day-date">${Number(key.slice(-2))}</strong></span>${['day','night'].map(shift=>`<span class="od-calendar-shift ${shift}"><span class="od-calendar-shift-label">${icon(SHIFTS[shift].icon)}${shift==='day'?'Ca ngày':'Ca đêm'}</span>${data.assignments.filter(a=>a.shift===shift).map(a=>`<span class="od-calendar-shift-name">${esc(doctorById[a.doctorId].short)}</span>`).join('')}</span>`).join('')}<span class="od-day-count"><span>${isToday?'Hôm nay':fmtDM(key)} · ${data.cases.length} ca mổ</span>${icon('right')}</span></button>`;
+   return `<button type="button" class="od-day-button ${isToday?'is-today':''}" data-od-day="${key}" aria-pressed="${active}" ${isToday?'aria-current="date"':''} tabindex="${active?0:-1}" ${inBounds(key)?'':'disabled'} aria-label="${fullDate(key)}${isToday?", today":''}, ${data.assignments.length} physicians on duty, ${data.cases.length} surgical cases"><span class="od-day-heading"><span>${["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"][i]}</span><strong class="od-day-date">${Number(key.slice(-2))}</strong></span>${['day','night'].map(shift=>`<span class="od-calendar-shift ${shift}"><span class="od-calendar-shift-label">${icon(SHIFTS[shift].icon)}${shift==='day'?"Day shift":"Night shift"}</span>${data.assignments.filter(a=>a.shift===shift).map(a=>`<span class="od-calendar-shift-name">${esc(doctorById[a.doctorId].short)}</span>`).join('')}</span>`).join('')}<span class="od-day-count"><span>${isToday?"Today":fmtDM(key)} · ${data.cases.length} surgical cases</span>${icon('right')}</span></button>`;
   }).join('');
   renderSelected();
   if(scroll||focus){
@@ -136,11 +136,11 @@
  }
  function renderSelected(){
   const data=getDay(selected);
-  $('odSelectedTitle').textContent=`${fullDate(selected)}${selected===today?' · Hôm nay':''}`;
-  $('odSelectedSummary').textContent=`${data.assignments.length} bác sỹ · 2 kíp trực · ${data.cases.length} ca mổ dự kiến`;
+  $('odSelectedTitle').textContent=`${fullDate(selected)}${selected===today?" · Today":''}`;
+  $('odSelectedSummary').textContent=`${data.assignments.length} physicians · 2 shifts · ${data.cases.length} planned surgical cases`;
   $('odSelectedCaseCount').textContent=data.cases.length;
   $('odSelectedStaff').innerHTML=['day','night'].map(shift=>`<div class="od-shift-card ${shift}"><div class="od-shift-card-head">${icon(SHIFTS[shift].icon)}<strong>${SHIFTS[shift].label}</strong><span>${SHIFTS[shift].long}</span></div><div class="od-shift-staff">${data.assignments.filter(a=>a.shift===shift).map(a=>{
-   const d=doctorById[a.doctorId];return `<button type="button" class="od-person-row" data-od-doctor-cases="${d.id}" data-od-date="${selected}" aria-label="Xem ca mổ của ${esc(d.name)} ngày ${fmt(selected)}">${avatar(d)}<span class="od-person-info"><strong class="od-person-name">${esc(d.name)}</strong><small>${esc(d.specialty)} · ${d.ana?'Gây mê':'Mổ chính'}</small></span><span class="od-person-count">${casesOf(selected,d.id).length} ca mổ</span>${icon('right')}</button>`;
+   const d=doctorById[a.doctorId];return `<button type="button" class="od-person-row" data-od-doctor-cases="${d.id}" data-od-date="${selected}" aria-label="View surgical cases for ${esc(d.name)} on ${fmt(selected)}">${avatar(d)}<span class="od-person-info"><strong class="od-person-name">${esc(d.name)}</strong><small>${esc(d.specialty)} · ${d.ana?"Anesthesia":"Lead surgeon"}</small></span><span class="od-person-count">${casesOf(selected,d.id).length} surgical cases</span>${icon('right')}</button>`;
   }).join('')}</div></div>`).join('');
   $('odSelectedCases').innerHTML=`<div class="od-case-list">${data.cases.map(c=>caseItem(c)).join('')}</div>`;
   selectDetailTab(detailTab);
@@ -156,11 +156,11 @@
   const q=norm($('odDoctorSearch').value),specialty=$('odSpecialtyFilter').value;
   const list=doctors.filter(d=>(!specialty||d.specialty===specialty)&&norm(`${d.name} ${d.id} ${d.specialty} ${d.role}`).includes(q));
   $('odDirectoryTotal').textContent=doctors.length;
-  $('odFilterCount').textContent=`${list.length} / ${doctors.length} bác sỹ`;
+  $('odFilterCount').textContent=`${list.length} / ${doctors.length} physicians`;
   $('odDirectoryEmpty').hidden=list.length>0;
   $('odDoctorRows').closest('.od-table-scroll').hidden=list.length===0;
   $('odDoctorRows').innerHTML=list.map(d=>{
-   const a=assignmentOf(today,d.id);return `<tr><td><div class="od-table-person">${avatar(d)}<div><strong>${esc(d.name)}</strong><small>${d.id} · Khoa mổ</small></div></div></td><td>${esc(d.specialty)}</td><td class="od-table-role">${esc(d.role)}</td><td><div class="od-table-shift">${shiftTag(a?.shift)}<small>${a?SHIFTS[a.shift].long:'Không có ca trực bắt đầu hôm nay'}</small></div></td><td><button type="button" class="od-btn" data-od-profile="${d.id}" aria-label="Xem chi tiết bác sỹ ${esc(d.name)}">${icon('eye')}<span>Xem chi tiết</span></button><button type="button" class="od-btn od-primary od-assign-button" data-od-assign="${d.id}" aria-label="Phân công bác sỹ ${esc(d.name)}">${icon('surgery')}<span>Phân công</span></button></td></tr>`;
+   const a=assignmentOf(today,d.id);return `<tr><td><div class="od-table-person">${avatar(d)}<div><strong>${esc(d.name)}</strong><small>${d.id} · Surgical department</small></div></div></td><td>${esc(d.specialty)}</td><td class="od-table-role">${esc(d.role)}</td><td><div class="od-table-shift">${shiftTag(a?.shift)}<small>${a?SHIFTS[a.shift].long:"No shift starts today"}</small></div></td><td><button type="button" class="od-btn" data-od-profile="${d.id}" aria-label="View physician details ${esc(d.name)}">${icon('eye')}<span>View details</span></button><button type="button" class="od-btn od-primary od-assign-button" data-od-assign="${d.id}" aria-label="Assign physician ${esc(d.name)}">${icon('surgery')}<span>Assign</span></button></td></tr>`;
   }).join('');
  }
  let dialog=null,dialogTrigger=null,previousOverflow='';
@@ -175,7 +175,7 @@
  }
  function showModal(title,body,actions){
   if(!dialog.open){dialogTrigger=document.activeElement;previousOverflow=document.body.style.overflow;}
-  dialog.innerHTML=`<div class="od-dialog-head"><div><h2 id="odDialogTitle">${esc(title)}</h2><p id="odDialogDescription">MELIOR · Khoa mổ · Thông tin minh họa</p></div><button type="button" class="od-btn od-icon-button" data-od-close aria-label="Đóng cửa sổ">${icon('close')}</button></div><div class="od-dialog-body">${body}</div><div class="od-dialog-footer"><span>Dữ liệu mô phỏng · Chưa kết nối bệnh viện</span><div class="od-modal-actions">${actions}<button type="button" class="od-btn od-primary" data-od-close>Đóng</button></div></div>`;
+  dialog.innerHTML=`<div class="od-dialog-head"><div><h2 id="odDialogTitle">${esc(title)}</h2><p id="odDialogDescription">MELIOR · Surgical department · Illustrative information</p></div><button type="button" class="od-btn od-icon-button" data-od-close aria-label="Close window">${icon('close')}</button></div><div class="od-dialog-body">${body}</div><div class="od-dialog-footer"><span>Simulated data · No hospital connection</span><div class="od-modal-actions">${actions}<button type="button" class="od-btn od-primary" data-od-close>Close</button></div></div>`;
   document.body.style.overflow='hidden';if(!dialog.open)dialog.showModal();
   fitDialog();
   requestAnimationFrame(()=>{fitDialog();dialog.querySelector('.od-dialog-body').scrollTop=0;});
@@ -185,42 +185,42 @@
  function doctorCases(id,key){
   const d=doctorById[id];if(!d||!inBounds(key))return;
   const a=assignmentOf(key,id),cases=casesOf(key,id);
-  const body=`<div class="od-profile-hero">${avatar(d)}<div><strong>${esc(d.name)}</strong><p>${esc(d.specialty)} · ${esc(d.role)}</p></div>${shiftTag(a?.shift)}</div><div class="od-modal-section-head"><h3>${key===today?'Ca mổ hôm nay':'Ca mổ trong ngày'} · ${fmt(key)}</h3><span>${cases.length} ca được phân công</span></div>${a?`<div class="od-modal-date">${icon('clock')}${SHIFTS[a.shift].long}${a.shift==='night'?` (${fmt(addDays(key,1))})`:''}</div>`:''}${cases.length?`<div class="od-case-list">${cases.map(c=>caseItem(c,id)).join('')}</div>`:`<div class="od-empty-case">${icon('empty')}<h3>Chưa có ca mổ được phân công</h3><p>${a?'Bác sỹ có lịch trực nhưng chưa được phân công ca mổ.':'Bác sỹ không có ca trực bắt đầu trong ngày này.'}</p></div>`}`;
-  showModal('Ca mổ của bác sỹ',body,`<button type="button" class="od-btn" data-od-profile="${d.id}">${icon('user')}Xem hồ sơ</button>`);
+  const body=`<div class="od-profile-hero">${avatar(d)}<div><strong>${esc(d.name)}</strong><p>${esc(d.specialty)} · ${esc(d.role)}</p></div>${shiftTag(a?.shift)}</div><div class="od-modal-section-head"><h3>${key===today?"Today's surgical cases":"Daily surgical cases"} · ${fmt(key)}</h3><span>${cases.length} assigned cases</span></div>${a?`<div class="od-modal-date">${icon('clock')}${SHIFTS[a.shift].long}${a.shift==='night'?` (${fmt(addDays(key,1))})`:''}</div>`:''}${cases.length?`<div class="od-case-list">${cases.map(c=>caseItem(c,id)).join('')}</div>`:`<div class="od-empty-case">${icon('empty')}<h3>No surgical cases assigned</h3><p>${a?"The physician is on duty but has no assigned surgical cases.":"The physician has no shift starting on this date."}</p></div>`}`;
+  showModal("Physician surgical cases",body,`<button type="button" class="od-btn" data-od-profile="${d.id}">${icon('user')}View profile</button>`);
  }
  function doctorProfile(id){
   const d=doctorById[id];if(!d)return;
   const a=assignmentOf(today,id),weekDays=Array.from({length:7},(_,i)=>addDays(week,i));
   const weekCount=weekDays.filter(k=>assignmentOf(k,id)).length;
-  const body=`<div class="od-profile-hero">${avatar(d)}<div><strong>${esc(d.name)}</strong><p>${d.id} · Khoa mổ</p></div>${shiftTag(a?.shift)}</div><div class="od-profile-grid">${[['Chuyên khoa',d.specialty],['Vai trò',d.role],['Lịch hôm nay',a?SHIFTS[a.shift].long:'Không trực'],['Trong tuần đang xem',`${weekCount} ca trực · ${weekDays.reduce((sum,k)=>sum+casesOf(k,id).length,0)} ca mổ`]].map(([key,val])=>`<dl class="od-profile-field"><dt>${esc(key)}</dt><dd>${esc(val)}</dd></dl>`).join('')}</div><div class="od-modal-section-head"><h3>Lịch trực trong tuần đang xem</h3><span>${fmtDM(week)} – ${fmt(addDays(week,6))}</span></div><div class="od-profile-week">${weekDays.map(k=>{
+  const body=`<div class="od-profile-hero">${avatar(d)}<div><strong>${esc(d.name)}</strong><p>${d.id} · Surgical department</p></div>${shiftTag(a?.shift)}</div><div class="od-profile-grid">${[["Specialty",d.specialty],["Role",d.role],["Today's schedule",a?SHIFTS[a.shift].long:"Off duty"],["In the selected week",`${weekCount} shifts · ${weekDays.reduce((sum,k)=>sum+casesOf(k,id).length,0)} surgical cases`]].map(([key,val])=>`<dl class="od-profile-field"><dt>${esc(key)}</dt><dd>${esc(val)}</dd></dl>`).join('')}</div><div class="od-modal-section-head"><h3>Duty roster for selected week</h3><span>${fmtDM(week)} – ${fmt(addDays(week,6))}</span></div><div class="od-profile-week">${weekDays.map(k=>{
    const as=assignmentOf(k,id),n=casesOf(k,id).length;
-   return `<div class="od-profile-week-row ${k===today?'today':''}"><strong>${dow(k)} · ${fmtDM(k)}${k===today?' · Hôm nay':''}</strong><span>${as?SHIFTS[as.shift].long:'Không trực'}</span>${as?`<button type="button" class="od-btn" data-od-doctor-cases="${id}" data-od-date="${k}" aria-label="Xem ${n} ca mổ của ${esc(d.name)} ngày ${fmt(k)}">${n} ca mổ ${icon('right')}</button>`:'<span>—</span>'}</div>`;
+   return `<div class="od-profile-week-row ${k===today?'today':''}"><strong>${dow(k)} · ${fmtDM(k)}${k===today?" · Today":''}</strong><span>${as?SHIFTS[as.shift].long:"Off duty"}</span>${as?`<button type="button" class="od-btn" data-od-doctor-cases="${id}" data-od-date="${k}" aria-label="Xem ${n} surgical cases for ${esc(d.name)} on ${fmt(k)}">${n} surgical cases ${icon('right')}</button>`:'<span>—</span>'}</div>`;
   }).join('')}</div>`;
-  showModal('Hồ sơ bác sỹ',body,`<button type="button" class="od-btn" data-od-doctor-cases="${id}" data-od-date="${today}">${icon('surgery')}Ca mổ hôm nay</button>`);
+  showModal("Physician profile",body,`<button type="button" class="od-btn" data-od-doctor-cases="${id}" data-od-date="${today}">${icon('surgery')}Today's surgical cases</button>`);
  }
  
  function eligibleCases(key){return getDay(key).cases.filter(c=>key>civilToday()||(key===civilToday()&&minutes(c.start)>clockMinutes()));}
  function assignmentProblem(d,key,c){
-  if(!inBounds(key)||key<civilToday())return 'Vui lòng chọn hôm nay hoặc một ngày trong tương lai.';
-  if(!c||!eligibleCases(key).some(x=>x.id===c.id))return 'Ca mổ này đã bắt đầu hoặc không còn khả dụng. Hãy chọn ca khác.';
-  if(c.team.includes(d.id))return 'Bác sỹ đã được phân công vào ca mổ này.';
-  if(casesOf(key,d.id).some(x=>minutes(x.start)<minutes(c.end)&&minutes(c.start)<minutes(x.end)))return 'Bác sỹ đã có ca mổ trùng thời gian. Hãy chọn ca khác.';
+  if(!inBounds(key)||key<civilToday())return "Please select today or a future date.";
+  if(!c||!eligibleCases(key).some(x=>x.id===c.id))return "This case has started or is no longer available. Choose another case.";
+  if(c.team.includes(d.id))return "The physician is already assigned to this case.";
+  if(casesOf(key,d.id).some(x=>minutes(x.start)<minutes(c.end)&&minutes(c.start)<minutes(x.end)))return "The physician has an overlapping case. Choose another case.";
   return '';
  }
  function assignDoctor(id){
   const d=doctorById[id];if(!d)return;
   const now=civilToday(),initial=selected>=now?selected:now;
-  showModal('Phân công bác sỹ vào ca mổ',`<div class="od-profile-hero">${avatar(d)}<div><strong>${esc(d.name)}</strong><p>${esc(d.specialty)} · ${esc(d.role)}</p></div></div><form id="odAssignForm" class="od-assign-form"><label for="odAssignDate">Ngày phẫu thuật</label><input id="odAssignDate" type="date" min="${now}" max="${CONFIG.maxDate}" value="${initial}" required><label for="odAssignCase">Ca mổ</label><select id="odAssignCase" required></select><div id="odAssignPreview" class="od-assign-preview"></div><p id="odAssignError" role="alert"></p><p>Chọn ca chưa bắt đầu. Bác sỹ sẽ được bổ sung vào kíp mổ theo vai trò ${d.ana?'gây mê':'phẫu thuật viên'}.</p></form>`,`<button type="submit" form="odAssignForm" id="odAssignSave" class="od-btn od-primary">Lưu phân công</button>`);
+  showModal("Assign physician to surgical case",`<div class="od-profile-hero">${avatar(d)}<div><strong>${esc(d.name)}</strong><p>${esc(d.specialty)} · ${esc(d.role)}</p></div></div><form id="odAssignForm" class="od-assign-form"><label for="odAssignDate">Surgery date</label><input id="odAssignDate" type="date" min="${now}" max="${CONFIG.maxDate}" value="${initial}" required><label for="odAssignCase">Surgical case</label><select id="odAssignCase" required></select><div id="odAssignPreview" class="od-assign-preview"></div><p id="odAssignError" role="alert"></p><p>Select a case that has not started. The physician will join the surgical team as ${d.ana?"anesthesia":"surgeon"}.</p></form>`,`<button type="submit" form="odAssignForm" id="odAssignSave" class="od-btn od-primary">Save assignment</button>`);
   const date=$('odAssignDate'),select=$('odAssignCase'),error=$('odAssignError'),save=$('odAssignSave');
   function preview(){
    const key=date.value,c=inBounds(key)?getDay(key).cases.find(x=>x.id===select.value):null;
-   $('odAssignPreview').innerHTML=c?`<strong>${esc(c.procedure)}</strong><p>${esc(c.id)} · ${esc(c.room)} · ${c.start}–${c.end}</p><p>Kíp hiện tại: ${c.team.map(id=>esc(doctorById[id].name)).join(', ')}</p>`:'';
+   $('odAssignPreview').innerHTML=c?`<strong>${esc(c.procedure)}</strong><p>${esc(c.id)} · ${esc(c.room)} · ${c.start}–${c.end}</p><p>Current team: ${c.team.map(id=>esc(doctorById[id].name)).join(', ')}</p>`:'';
    const problem=assignmentProblem(d,key,c);error.textContent=problem;save.disabled=!!problem;
   }
   function update(){
    const key=date.value,valid=inBounds(key)&&key>=civilToday();
    const list=valid?eligibleCases(key):[];
-   select.innerHTML=list.length?list.map(c=>`<option value="${esc(c.id)}">${c.start}–${c.end} · ${esc(c.room)} · ${esc(c.procedure)}</option>`).join(''):'<option value="">Không có ca mổ chưa bắt đầu trong ngày này</option>';
+   select.innerHTML=list.length?list.map(c=>`<option value="${esc(c.id)}">${c.start}–${c.end} · ${esc(c.room)} · ${esc(c.procedure)}</option>`).join(''):"<option value=\"\">No unstarted surgical cases on this date</option>";
    select.disabled=!list.length;preview();
   }
   date.addEventListener('change',update);select.addEventListener('change',preview);
@@ -228,9 +228,9 @@
    e.preventDefault();const key=date.value,c=inBounds(key)?getDay(key).cases.find(x=>x.id===select.value):null,problem=assignmentProblem(d,key,c);
    if(problem){error.textContent=problem;save.disabled=true;return;}
    const record={date:key,doctorId:id,caseId:c.id};
-   try{localStorage.setItem(ASSIGN_KEY,JSON.stringify([...savedAssignments,record]));}catch(_){error.textContent='Không lưu được phân công trên trình duyệt. Vui lòng thử lại.';return;}
+   try{localStorage.setItem(ASSIGN_KEY,JSON.stringify([...savedAssignments,record]));}catch(_){error.textContent="Unable to save the assignment in this browser. Please try again.";return;}
    savedAssignments.push(record);cache.delete(key);selected=key;week=monday(key);refresh();
-   showModal('Đã lưu phân công',`<div class="od-profile-hero">${avatar(d)}<div><strong>${esc(d.name)}</strong><p>Đã được phân công ngày ${fmt(key)}</p></div></div>${caseItem(getDay(key).cases.find(x=>x.id===c.id),id)}`,`<button type="button" class="od-btn" data-od-doctor-cases="${id}" data-od-date="${key}">Xem ca mổ của bác sỹ</button>`);
+   showModal("Assignment saved",`<div class="od-profile-hero">${avatar(d)}<div><strong>${esc(d.name)}</strong><p>Assigned for ${fmt(key)}</p></div></div>${caseItem(getDay(key).cases.find(x=>x.id===c.id),id)}`,`<button type="button" class="od-btn" data-od-doctor-cases="${id}" data-od-date="${key}">View physician surgical cases</button>`);
   });update();
  }
 
@@ -244,7 +244,7 @@
   if(ready||!$('dutyPage'))return;
   ready=true;
   document.querySelectorAll('[data-od-icon]').forEach(el=>{el.outerHTML=icon(el.dataset.odIcon);});
-  if(surgeons.length<2||anesthetists.length<2){$('odTodayDoctors').textContent='Chưa có đủ dữ liệu kíp trực để hiển thị.';return;}
+  if(surgeons.length<2||anesthetists.length<2){$('odTodayDoctors').textContent="Insufficient on-call team data to display.";return;}
   [...new Set(doctors.map(d=>d.specialty))].sort((a,b)=>a.localeCompare(b,'vi')).forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;$('odSpecialtyFilter').append(o);});
   dialog=document.createElement('dialog');dialog.id='odDialog';dialog.className='od-modal';dialog.setAttribute('aria-labelledby','odDialogTitle');dialog.setAttribute('aria-describedby','odDialogDescription');document.body.append(dialog);
   dialog.addEventListener('close',()=>{document.body.style.overflow=previousOverflow;if(dialogTrigger?.isConnected)dialogTrigger.focus({preventScroll:true});});
