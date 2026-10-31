@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" shape-rendering="geometricPrecision">
+<rect width="320" height="320" fill="#FFFFFF"/>
+<g fill="#0B0D0F">
+  <path d="M 101.981,19.647 A 122.0,122.0 0 0 1 244.082,201.346 L 217.900,173.269 A 85.27,85.27 0 0 0 113.939,54.376 Z"/>
+  <path d="M 183.734,249.530 A 122.0,122.0 0 0 1 25.671,97.300 L 60.603,108.650 A 85.27,85.27 0 0 0 155.413,219.160 Z"/>
+</g>
+<rect x="50.0" y="52.0" width="36.5" height="36.5" fill="#FCAF25"/>
+<polygon points="136.500,170.000 190.000,169.500 289.000,273.000 234.150,273.050" fill="#0A91FE"/>
+</svg>
