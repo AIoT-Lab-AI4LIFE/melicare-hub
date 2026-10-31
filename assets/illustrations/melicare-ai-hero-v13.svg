@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="mc-ai-scene" viewBox="0 0 640 480" role="img" aria-labelledby="mc-hero-title mc-hero-desc">
- <title id="mc-hero-title">AI kết nối vận hành và chăm sóc người bệnh</title>
- <desc id="mc-hero-desc">Dữ liệu vận hành và tri thức chuyên gia hội tụ tại mạng AI, hỗ trợ bác sỹ cùng người bệnh đưa ra quyết định chăm sóc. Các điểm sáng chuyển động thể hiện dòng thông tin liên tục.</desc>
+ <title id="mc-hero-title">AI kết nối operations và care patients bệnh</title>
+ <desc id="mc-hero-desc">Data operations và tri thức chuyên gia hội tụ tại mạng AI, hỗ trợ physicians cùng patients bệnh đưa ra quyết định care. Các points sáng chuyển động thể hiện dòng thông tin liên tục.</desc>
  <style>
 .mc-ai-scene text{font-family:"Nunito Sans",Arial,sans-serif}
 .mc-ai-scene .mc-ai-label{font-size:18px;font-weight:750;fill:#31596f}
@@ -94,8 +94,8 @@
   <rect x="477" y="254" width="57" height="36" rx="6" fill="#fff" stroke="#286988" stroke-width="1.8" transform="rotate(-6 505 272)"/>
   <path class="mc-ai-clinical-signal" d="M486 273h9l4-7 5 13 4-7h14" fill="none" stroke="#078cf0" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
   <path d="m455 273 24-4m60 5-7-2" stroke="#f3d5b6" stroke-width="8" stroke-linecap="round"/>
-  <text x="500" y="322" text-anchor="middle" class="mc-ai-label">Khám chữa bệnh</text>
-  <text x="500" y="343" text-anchor="middle" class="mc-ai-note">Bác sỹ · Người bệnh</text>
+  <text x="500" y="322" text-anchor="middle" class="mc-ai-label">Examination chữa bệnh</text>
+  <text x="500" y="343" text-anchor="middle" class="mc-ai-note">Physician · Patient</text>
  </g>
  <!-- Expert knowledge is a source for AI, not an isolated decorative badge. -->
  <g class="mc-ai-knowledge">

@@ -1,0 +1,281 @@
+/* MELICARE · Refined components
+   Visual-only refinement over the approved Yellow & Sky theme.
+   Layout, clinical data and existing event handlers remain in the source pages. */
+:root{
+ --ui-blue:var(--tool-action,#128ac3);--ui-blue-deep:var(--tool-action,#096b9a);--ui-gold:#f5c54b;--ui-ink:var(--tool-action,#17344a);
+ --ui-line:var(--tool-soft,#dce7ee);--ui-soft:var(--tool-soft,#f5f9fc);--ui-muted:#586f7e;
+ --ui-shadow:0 2px 4px color-mix(in srgb,var(--tool-action,#1d4159) 2.500%,transparent),0 16px 38px -20px color-mix(in srgb,var(--tool-action,#1d4159) 18.000%,transparent);
+ --ui-button-shadow:0 1px 2px color-mix(in srgb,var(--tool-action,#17344a) 5.500%,transparent),0 4px 10px -6px color-mix(in srgb,var(--tool-action,#17344a) 14.000%,transparent);
+ --ui-motion:180ms cubic-bezier(.2,.75,.3,1);
+}
+/* Buttons: one shape vocabulary, explicit primary / secondary / quiet states. */
+html body.suite-ui.meli-refined :is(.btn,.row-action,.bulk-btn,.rowFancy,.fancyAction,.miniBtn,.newChat,.uploadBtn,.viewFirstImageBtn,.answerRef button,.viewerTools button){
+ min-height:46px!important;height:auto!important;max-width:100%;padding:11px 17px!important;
+ border:1px solid var(--tool-line,#cfdfe9)!important;border-radius:13px!important;background:#fff!important;
+ color:var(--tool-action,#34586e)!important;font-size:16px!important;font-weight:750!important;line-height:1.4!important;
+ box-shadow:var(--ui-button-shadow)!important;transition:background var(--ui-motion),border-color var(--ui-motion),box-shadow var(--ui-motion),transform var(--ui-motion)!important;
+ display:inline-flex;align-items:center;justify-content:center;gap:9px;vertical-align:middle;cursor:pointer;
+}
+html body.suite-ui.meli-refined :is(.btn.primary,.analyzeBtn,.actions .btn.ok,.meliLoginSubmitV69){
+ min-height:52px!important;height:auto!important;padding:13px 23px!important;border-radius:15px!important;
+ border:1px solid #e9b83f!important;background:linear-gradient(180deg,#f9cf63 0%,#f5c54b 100%)!important;
+ color:#17344a!important;font-size:18px!important;font-weight:800!important;line-height:1.4!important;
+ box-shadow:inset 0 1px 0 #ffe49a,0 2px 2px #ad7c1410,0 8px 16px -9px #bb881958!important;
+ display:inline-flex;align-items:center;justify-content:center;gap:11px;text-decoration:none;
+}
+html body.suite-ui.meli-refined .analyzeBtn{min-width:254px!important}
+html body.suite-ui.meli-refined :is(.viewAction,.viewFancy,.bulk-btn.view.enabled,.miniBtn,.newChat,.viewFirstImageBtn){
+ background:var(--tool-soft,#eef8fd)!important;border-color:var(--tool-line,#c5e3f1)!important;color:var(--tool-action,#126c96)!important;
+ box-shadow:inset 0 1px 0 #fff,var(--ui-button-shadow)!important;
+}
+html body.suite-ui.meli-refined :is(.processAction,.processFancy,.bulk-btn.process.enabled){
+ background:#fff7e2!important;border-color:#eed49a!important;color:#805c16!important;
+ box-shadow:inset 0 1px 0 #fffdf7,var(--ui-button-shadow)!important;
+}
+html body.suite-ui.meli-refined :is(.fancyAction,.rowFancy){min-width:118px!important;gap:9px!important;padding:10px 14px!important;border-radius:12px!important;white-space:nowrap!important}
+html body.suite-ui.meli-refined :is(.actionIco,.actionIcon){width:25px!important;height:25px!important;flex:0 0 25px;background:transparent!important;border-radius:0!important;color:inherit!important}
+html body.suite-ui.meli-refined :is(.actionIco,.actionIcon) svg{width:21px!important;height:21px!important}
+html body.suite-ui.meli-refined .actionArrow{font-size:20px!important;line-height:1!important;opacity:.55!important;margin-left:5px!important}
+html body.suite-ui.meli-refined .ui-quiet{background:transparent!important;border-color:transparent!important;box-shadow:none!important;color:#607689!important}
+html body.suite-ui.meli-refined .ui-destructive{background:#fff6f6!important;border-color:#f0ced1!important;color:#a13947!important}
+html body.suite-ui.meli-refined .ui-icon-only{width:44px!important;min-width:44px!important;padding:10px!important;aspect-ratio:1}
+html body.suite-ui.meli-refined .ui-icon-only[data-ui-icon]{font-size:0!important;gap:0!important}
+html body.suite-ui.meli-refined button[data-ui-icon]::before{content:"";display:inline-block;flex:0 0 20px;width:20px;height:20px;background:currentColor;mask:var(--ui-glyph) center/contain no-repeat;-webkit-mask:var(--ui-glyph) center/contain no-repeat;pointer-events:none}
+html body.suite-ui.meli-refined :is(button,a,input,select,textarea,[tabindex]):focus-visible{outline:3px solid var(--tool-action,#3c9fce)!important;outline-offset:4px!important}
+html body.suite-ui.meli-refined :is(.btn,.analyzeBtn,.row-action,.rowFancy,.fancyAction,.miniBtn,.newChat,.uploadBtn,.viewFirstImageBtn,.meliLoginSubmitV69):active{transform:translateY(1px)!important;box-shadow:inset 0 2px 4px color-mix(in srgb,var(--tool-action,#17344a) 6.275%,transparent)!important}
+@media(hover:hover){
+ html body.suite-ui.meli-refined :is(.btn,.row-action,.rowFancy,.fancyAction,.miniBtn,.newChat,.uploadBtn,.viewFirstImageBtn,.viewerTools button):not(:disabled):hover{background:var(--tool-soft,#eaf6fc)!important;border-color:var(--tool-line,#90c9e4)!important;color:var(--tool-action,#096b9a)!important;box-shadow:0 4px 10px -4px color-mix(in srgb,var(--tool-action,#126b9a) 14.118%,transparent)!important;transform:translateY(-1px)!important}
+ html body.suite-ui.meli-refined :is(.btn.primary,.analyzeBtn,.actions .btn.ok,.meliLoginSubmitV69):not(:disabled):hover{background:linear-gradient(180deg,#ffda7a,#f7c74f)!important;border-color:#dea928!important;color:#15384f!important;box-shadow:inset 0 1px 0 #ffe9ad,0 8px 18px -7px #c68d2950!important;transform:translateY(-1px)!important}
+ html body.suite-ui.meli-refined :is(.processAction,.processFancy,.bulk-btn.process.enabled):hover{background:#fff0c5!important;border-color:#ddba60!important;color:#795411!important}
+ html body.suite-ui.meli-refined .ui-quiet:hover{background:var(--tool-soft,#edf3f7)!important;border-color:transparent!important;box-shadow:none!important}
+ html body.suite-ui.meli-refined .ui-destructive:hover{background:#ffe9eb!important;border-color:#e6abb3!important;color:#932737!important}
+}
+/* Stable, quiet surfaces. Noninteractive cards do not jump on hover. */
+html body.suite-ui.meli-refined :is(.card,.entryCard,.panel,.mediaPanel){background:#fff!important;border:1px solid var(--tool-line,#dce7ee)!important;border-radius:24px!important;box-shadow:var(--ui-shadow)!important}
+html body.suite-ui.meli-refined :is(.sectionHead,.panelHead,.mediaHead,.ph,.head){position:relative;background:#fff!important;border-color:var(--tool-line,#e7eef3)!important;padding:21px 25px!important;min-height:78px!important;gap:15px}
+html body.suite-ui.meli-refined :is(.sectionHead,.panelHead,.mediaHead)::before{content:"";position:absolute;left:0;top:23px;width:4px;height:30px;border-radius:0 4px 4px 0;background:var(--tool-action,#75c4e8);pointer-events:none}
+html body.suite-ui.meli-refined .sectionHead::before{background:var(--ui-gold);height:38px}
+html body.suite-ui.meli-refined .eyebrow{color:#475569!important;letter-spacing:1.3px!important}
+html body.suite-ui.meli-refined .entryGrid{padding:25px!important;gap:24px!important}
+html body.suite-ui.meli-refined .inputGroup{background:var(--tool-soft,#f6f9fc)!important;border-color:var(--tool-line,#e6edf2)!important;border-radius:18px!important;padding:20px!important;box-shadow:none!important;transition:background .18s,border-color .18s!important}
+html body.suite-ui.meli-refined .inputGroup:focus-within{background:var(--tool-soft,#f4faff)!important;border-color:var(--tool-line,#abd6eb)!important}
+html body.suite-ui.meli-refined .groupTitle{margin-bottom:18px!important;gap:11px!important}
+html body.suite-ui.meli-refined .groupIcon{width:38px!important;height:38px!important;flex:0 0 38px!important;border:1px solid var(--tool-line,#d2eaf6)!important;border-radius:12px!important;background:linear-gradient(155deg,#fff,var(--tool-soft,#e9f6fc))!important;box-shadow:0 3px 6px -4px color-mix(in srgb,var(--tool-action,#147fab) 25.882%,transparent)!important;color:var(--tool-action,#1689ba)!important}
+html body.suite-ui.meli-refined .inputGroup:nth-child(2n) .groupIcon{background:linear-gradient(155deg,#fff,#fff4d6)!important;border-color:#f0dfb5!important;color:#97731f!important}
+html body.suite-ui.meli-refined .field label{color:#526a7c!important;margin-bottom:8px!important;font-weight:700!important}
+html body.suite-ui.meli-refined .field :is(input,select,textarea),html body.suite-ui.meli-refined :is(.filters,.tools,.meliLoginFieldV69) :is(input,select){
+ min-height:48px!important;border:1px solid var(--tool-line,#ccdce7)!important;border-radius:12px!important;background:#fff!important;
+ box-shadow:inset 0 1px 2px color-mix(in srgb,var(--tool-action,#17344a) 1.176%,transparent)!important;padding:11px 13px!important;color:#1e3f54!important;transition:border-color .18s,box-shadow .18s,background .18s!important;
+}
+html body.suite-ui.meli-refined .field :is(input,select,textarea):hover,html body.suite-ui.meli-refined :is(.filters,.tools) :is(input,select):hover{border-color:var(--tool-line,#a8c6d9)!important}
+html body.suite-ui.meli-refined .field :is(input,select,textarea):focus,html body.suite-ui.meli-refined :is(.filters,.tools,.meliLoginFieldV69) :is(input,select):focus{outline:none!important;border-color:var(--tool-action,#46a3d0)!important;box-shadow:0 0 0 4px color-mix(in srgb,var(--tool-action,#128ac3) 6.275%,transparent)!important;background:#fff!important}
+html body.suite-ui.meli-refined input::placeholder,html body.suite-ui.meli-refined textarea::placeholder{color:#475569;opacity:1}
+html body.suite-ui.meli-refined input[type=checkbox]{accent-color:var(--tool-action,#128ac3);width:19px;height:19px;vertical-align:middle}
+html body.suite-ui.meli-refined .field input:read-only{background:var(--tool-soft,#f4f7fa)!important;color:#475569!important}
+html body.suite-ui.meli-refined :is(.grid,.fieldGrid){column-gap:17px!important;row-gap:19px!important}
+/* Upload areas: textured paper, an outlined icon, and a calm hover response. */
+html body.suite-ui.meli-refined :is(.drop,.dropzone,.uploadBox){
+ background:radial-gradient(circle at center,color-mix(in srgb,var(--tool-action,#98bfd5) 14.902%,transparent) .8px,transparent 1px) 0 0/12px 12px,linear-gradient(125deg,var(--tool-soft,#f8fcff),#fffdf7)!important;
+ border:1.5px dashed var(--tool-line,#a8cedf)!important;border-radius:21px!important;padding:28px 22px!important;
+ box-shadow:inset 0 0 0 5px #ffffffa6!important;transition:background .2s,border-color .2s,box-shadow .2s!important;
+}
+html body.suite-ui.meli-refined :is(.drop,.dropzone,.uploadBox):is(:hover,:focus-within){border-color:var(--tool-action,#319dcf)!important;box-shadow:inset 0 0 0 5px #ffffffcc,0 0 0 4px color-mix(in srgb,var(--tool-action,#128ac3) 3.922%,transparent)!important}
+html body.suite-ui.meli-refined :is(.uploadIcon,.ui-upload-illustration){width:66px!important;height:66px!important;flex:0 0 66px!important;display:grid!important;place-items:center!important;position:relative;
+ margin:0 auto 18px!important;border:1px solid var(--tool-line,#d3e6f0)!important;border-radius:20px!important;background:#fff!important;color:var(--tool-action,#1688b9)!important;
+ box-shadow:0 4px 12px color-mix(in srgb,var(--tool-action,#1d6c92) 6.275%,transparent),0 1px 2px color-mix(in srgb,var(--tool-action,#1d6c92) 6.275%,transparent)!important;
+}
+html body.suite-ui.meli-refined :is(.uploadIcon,.ui-upload-illustration)::after{content:"+";position:absolute;right:-6px;bottom:-5px;display:grid;place-items:center;background:#f5c54b;color:#17344a;border:3px solid #fff;width:25px;height:25px;border-radius:9px;font:800 18px/1 var(--suite-body);box-shadow:0 2px 4px color-mix(in srgb,var(--tool-action,#17344a) 3.922%,transparent)}
+html body.suite-ui.meli-refined :is(.uploadIcon,.ui-upload-illustration) svg{width:31px!important;height:31px!important;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+html body.suite-ui.meli-refined .uploadSide .or{color:#475569!important;letter-spacing:1.6px!important}
+html body.suite-ui.meli-refined .analyzeBar{padding:0 25px 26px!important}
+html body.suite-ui.meli-refined :is(.fileStatus,.selected){border:1px solid var(--tool-line,#cce5ef)!important;background:var(--tool-soft,#eff8fc)!important;border-radius:12px!important;padding:12px 15px!important}
+/* Clinical result surfaces keep the original metric / warning colors. */
+html body.suite-ui.meli-refined :is(.attentionList,.reasonList,.lifestyleList){gap:12px!important}
+html body.suite-ui.meli-refined :is(.attentionCard,.reasonCard,.factorCard,.lifeCard,.scaleCard,.methodCard){background:var(--tool-soft,#f8fbfd)!important;border-color:var(--tool-line,#e1eaf0)!important;border-radius:16px!important}
+html body.suite-ui.meli-refined :is(.attentionCard,.reasonCard){padding:15px 17px!important}
+html body.suite-ui.meli-refined .attentionCard{background:linear-gradient(105deg,color-mix(in srgb,var(--indicator,var(--tool-action,#128ac3)) 4%,#fff),#fff)!important}
+html body.suite-ui.meli-refined .reasonCard{background:linear-gradient(105deg,color-mix(in srgb,var(--reason,var(--indicator,var(--tool-action,#128ac3))) 3%,#fff),#fff)!important}
+html body.suite-ui.meli-refined .lifeCard{padding:17px!important;border-color:transparent!important;background:var(--tool-soft,#f5f9fc)!important;gap:13px!important}
+html body.suite-ui.meli-refined .lifeIcon{background:var(--tool-soft,#e7f5fc)!important;border:1px solid var(--tool-line,#d6eaf5)!important;border-radius:13px!important;color:var(--tool-action,#2081ae)!important}
+html body.suite-ui.meli-refined .lifeCard:nth-child(even) .lifeIcon{background:#fff4d9!important;border-color:#f1e3be!important;color:#9c7724!important}
+html body.suite-ui.meli-refined :is(.riskSummaryBox,.aiRiskSummaryBox){border-radius:19px!important;background:linear-gradient(135deg,var(--tool-soft,#f5fbff),#fffcf3)!important;border:1px solid var(--tool-line,#dbeaf1)!important;box-shadow:inset 0 1px 0 #fff!important}
+html body.suite-ui.meli-refined .factorCard{background:var(--tool-soft,#f5f9fc)!important;border:1px solid var(--tool-line,#e5edf3)!important;padding:16px!important}
+html body.suite-ui.meli-refined .methodCard{background:#fff!important;box-shadow:0 3px 10px -7px color-mix(in srgb,var(--tool-action,#17344a) 12.941%,transparent)!important;border-top-color:var(--tool-line,#e4ecf1)!important;border-right-color:var(--tool-line,#e4ecf1)!important;border-bottom-color:var(--tool-line,#e4ecf1)!important}
+html body.suite-ui.meli-refined :is(.factorChip,.methodStatus,.badge,.pill){border-radius:8px!important;font-weight:700!important}
+html body.suite-ui.meli-refined .metricTabs{padding:5px!important;border:1px solid var(--tool-line,#e3ebf1)!important;background:var(--tool-soft,#f4f8fb)!important;border-radius:13px!important;gap:4px!important}
+html body.suite-ui.meli-refined .metricTabs button{border-radius:9px!important;border-color:transparent!important;background:transparent!important;padding:7px 12px!important;min-height:37px!important;box-shadow:none!important;transition:background .18s,color .18s!important}
+html body.suite-ui.meli-refined .metricTabs button:not(.active):hover{background:var(--tool-soft,#e7f1f7)!important}
+html body.suite-ui.meli-refined .metricTabs button.active{background:#fff!important;border-color:var(--tool-line,#dce7ee)!important;box-shadow:0 1px 4px color-mix(in srgb,var(--tool-action,#17344a) 5.098%,transparent)!important}
+/* Source-specific selected metric colors are deliberately not replaced. */
+html body.suite-ui.meli-refined .viewerTools button{min-width:39px!important;min-height:39px!important;padding:7px 11px!important;border-radius:10px!important;font-variant-numeric:tabular-nums}
+html body.suite-ui.meli-refined :is(.mriViewer,.imageViewer,.eegViewer){border-radius:17px!important}
+html body.suite-ui.meli-refined :is(.disclaimer,.scaleNote){border-radius:14px!important}
+/* Header controls are compact; no independent positioning or extra wrappers. */
+html body.suite-ui.meli-refined .suite-local-nav{background:var(--tool-soft,#f3f7fa);border:1px solid var(--tool-line,#e8eef3);border-radius:17px;padding:4px!important;gap:4px!important}
+html body.suite-ui.meli-refined header.suite-header .suite-local-nav .nav{border-radius:12px!important;height:45px!important;min-height:45px!important;background:transparent!important;padding:0 16px!important;border:1px solid transparent!important}
+html body.suite-ui.meli-refined header.suite-header .suite-local-nav .nav.active{background:#fff!important;border-color:var(--tool-line,#dce8ef)!important;box-shadow:0 1px 4px color-mix(in srgb,var(--tool-action,#17344a) 3.529%,transparent)!important;color:var(--tool-action,#086e9e)!important}
+html body.suite-ui.meli-refined header.suite-header .suite-local-nav .nav.active::after{content:"";position:absolute;left:35%;right:35%;height:3px;bottom:1px;background:#f5c54b;border-radius:9px}
+html body.suite-ui.meli-refined #meliTopControlsV70 :is(#meliHomeV63,#meliAuthBtnV69,#meliAppNavBtnV62){border-radius:13px!important;box-shadow:var(--ui-button-shadow)!important}
+html body.suite-ui.meli-refined #meliTopControlsV70 #meliAppNavBtnV62{background:linear-gradient(180deg,#f9cf63,#f5c54b)!important;border-color:#ebbc45!important;box-shadow:inset 0 1px 0 #ffe59c,0 3px 6px -4px #92702036!important}
+html body.suite-ui.meli-refined #meliTopControlsV70 #meliAppNavBtnV62:hover{background:#f9cd5b!important}
+html body.suite-ui.meli-refined #meliTopControlsV70 #meliHomeV63{background:#fff!important;border-color:var(--tool-line,#dce7ee)!important}
+html body.suite-ui.meli-refined #meliTopControlsV70 #meliAuthBtnV69{background:var(--tool-soft,#f4faff)!important;border-color:var(--tool-line,#d4e7f3)!important}
+html body.suite-ui.meli-refined #meliAppNavMenuV62{padding:12px!important;border-radius:23px!important;box-shadow:0 20px 55px -14px color-mix(in srgb,var(--tool-action,#15384f) 25.098%,transparent),0 4px 10px color-mix(in srgb,var(--tool-action,#15384f) 3.922%,transparent)!important;border-color:var(--tool-line,#dce7ee)!important}
+html body.suite-ui.meli-refined #meliAppNavMenuV62 a{border-radius:12px!important;padding:12px!important}
+html body.suite-ui.meli-refined #meliAppNavMenuV62 a:hover{background:var(--tool-soft,#f0f8fc)!important}
+html body.suite-ui.meli-refined .meliAppDotV62{border:1px solid color-mix(in srgb,var(--tool-action,#17344a) 4.314%,transparent)!important;border-radius:10px!important}
+html body.suite-ui.meli-refined .dxNav a{border-radius:12px!important}
+html body.suite-ui.meli-refined .dxNav a.active{background:#fff5d9!important;box-shadow:inset 0 1px 0 #fff,0 2px 3px color-mix(in srgb,var(--tool-action,#17344a) 1.961%,transparent)!important}
+html body.suite-ui.meli-refined .timelineNode{border-radius:15px!important;box-shadow:0 0 0 1px var(--tool-action,#d7e5ee),0 3px 8px color-mix(in srgb,var(--tool-action,#17344a) 3.137%,transparent)!important}
+html body.suite-ui.meli-refined .timelineStep.active .timelineNode{box-shadow:0 0 0 1px #e5bd54,0 3px 10px #d6a12817!important}
+/* Dialogs follow the same tactile button and input treatment. */
+html body.suite-ui.meli-refined :is(.modal,.meliLoginDialogV69){border-radius:26px!important;border:1px solid var(--tool-line,#dce7ee)!important;box-shadow:0 25px 75px -20px color-mix(in srgb,var(--tool-action,#102c45) 37.647%,transparent)!important;background:#fff!important}
+html body.suite-ui.meli-refined :is(.modal-head,.meliLoginHeadV69){background:linear-gradient(120deg,var(--tool-soft,#f8fcff),#fffdf5)!important;border-bottom-color:var(--tool-line,#e2ebf2)!important;padding:25px 27px!important}
+html body.suite-ui.meli-refined :is(.modal-head h2,.meliLoginHeadV69 h2){font-size:25px!important;line-height:1.4!important}
+html body.suite-ui.meli-refined :is(.modal-body,.meliLoginBodyV69){padding:25px 27px!important}
+html body.suite-ui.meli-refined .modal-foot{background:var(--tool-soft,#f8fbfd)!important;border-top-color:var(--tool-line,#e6edf3)!important;gap:11px!important;padding:19px 27px!important;flex-wrap:wrap}
+html body.suite-ui.meli-refined :is(.modal-head>button,.meliLoginCloseV69,.paneClose,.iconBtn){width:40px!important;min-width:40px!important;height:40px!important;min-height:40px!important;border:1px solid var(--tool-line,#dce6ee)!important;border-radius:12px!important;background:#fff!important;color:#567287!important;display:grid;place-items:center;flex:none;box-shadow:var(--ui-button-shadow)!important;cursor:pointer}
+html body.suite-ui.meli-refined :is(.modal-head>button,.meliLoginCloseV69,.paneClose,.iconBtn):hover{background:var(--tool-soft,#edf7fc)!important;border-color:var(--tool-line,#bcdbea)!important;color:var(--tool-action,#086e9e)!important}
+/* Page-specific finishing: voice capture. */
+html body.suite-ui.meli-refined .capture{gap:24px!important;grid-template-columns:1fr 1fr!important}
+html body.suite-ui.meli-refined .record{background:radial-gradient(ellipse at 50% 23%,var(--tool-soft,#edf8ff) 0,transparent 63%),#fff!important;padding:37px 25px!important;position:relative}
+html body.suite-ui.meli-refined .record .mic{background:linear-gradient(155deg,var(--tool-action,#259dce),var(--tool-action,#0d84b9))!important;width:104px!important;height:104px!important;border:7px solid var(--tool-line,#e9f6fd)!important;box-shadow:0 0 0 1px var(--tool-action,#bbdef0),0 9px 24px -10px color-mix(in srgb,var(--tool-action,#127fb9) 28.627%,transparent),inset 0 1px 0 #ffffff66!important;transition:background .2s,box-shadow .2s,transform .2s!important}
+html body.suite-ui.meli-refined .record .mic:hover{transform:scale(1.035)!important;box-shadow:0 0 0 6px var(--tool-action,#eaf6fd),0 12px 30px -12px color-mix(in srgb,var(--tool-action,#127fb9) 33.333%,transparent)!important}
+html body.suite-ui.meli-refined .record .mic.rec{background:linear-gradient(155deg,#dc6775,#c8485d)!important;border-color:#fff0f2!important;box-shadow:0 0 0 6px #fae6eb,0 8px 22px -10px #bd405555!important}
+html body.suite-ui.meli-refined .record h2{margin-top:24px!important;margin-bottom:0!important}
+html body.suite-ui.meli-refined .record .timer{font-family:var(--suite-display)!important;font-size:32px!important;letter-spacing:1px!important;font-weight:700!important;font-variant-numeric:tabular-nums;line-height:1.35!important;border:1px solid var(--tool-line,#dfebf3);background:var(--tool-soft,#f4f9fc);border-radius:13px;padding:10px 23px!important;margin:10px 0 23px!important;color:var(--tool-action,#35586d)!important}
+html body.suite-ui.meli-refined .record>div:last-child{gap:12px!important}
+html body.suite-ui.meli-refined.suite-voice .upload{padding:30px!important;background:#fff!important}
+html body.suite-ui.meli-refined.suite-voice .drop{margin-top:21px!important}
+html body.suite-ui.meli-refined .audio{border:1px solid var(--tool-line,#dbeaf3);background:var(--tool-soft,#f0f8fd)!important;border-radius:16px!important;padding:16px!important}
+html body.suite-ui.meli-refined .audio .btn{width:43px;min-width:43px;padding:9px!important;box-shadow:none!important}
+html body.suite-ui.meli-refined .save{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap;padding-top:10px}
+html body.suite-ui.meli-refined :is(.modelProcessCard,.ocrProcessCard){background:radial-gradient(ellipse at 50% 0%,var(--tool-soft,#eff9ff),transparent 50%),#fff!important;border-radius:28px!important;box-shadow:var(--ui-shadow)!important}
+html body.suite-ui.meli-refined :is(.pstep,.ocrStep){border-radius:13px!important;border:1px solid var(--tool-line,#e4ecf2);background:var(--tool-soft,#f5f8fa)!important}
+html body.suite-ui.meli-refined :is(.pstep.active,.ocrStep.active){border-color:var(--tool-line,#a9d6ea);background:var(--tool-soft,#edf8fd)!important}
+html body.suite-ui.meli-refined :is(.pstep.done,.ocrStep.done){background:#eef8f3!important;border-color:#cce8d9;color:#267653!important}
+/* OCR: a focused upload canvas and clear, consistent row actions. */
+html body.suite-ui.meli-refined.suite-ocr .upload{max-width:690px!important;padding:44px 40px!important;border-radius:28px!important;background:radial-gradient(ellipse at 50% 0%,var(--tool-soft,#f0f9ff),transparent 65%),#fff!important;box-shadow:0 3px 7px color-mix(in srgb,var(--tool-action,#174969) 1.569%,transparent),0 20px 50px -25px color-mix(in srgb,var(--tool-action,#174969) 14.510%,transparent)!important}
+html body.suite-ui.meli-refined.suite-ocr .upload h2{margin-top:22px!important}
+html body.suite-ui.meli-refined .filters{border:1px solid var(--tool-line,#dce7ee)!important;border-radius:18px!important;box-shadow:0 2px 4px color-mix(in srgb,var(--tool-action,#174969) 1.176%,transparent)!important;background:#fff!important}
+html body.suite-ui.meli-refined :is(.history,.table){border-radius:22px!important;box-shadow:var(--ui-shadow)!important}
+html body.suite-ui.meli-refined :is(.history,.table) th{background:var(--tool-soft,#f3f8fb)!important;border-bottom:1px solid var(--tool-line,#dce8ef)!important}
+html body.suite-ui.meli-refined :is(.history,.table) tr:hover{background:var(--tool-soft,#f2f9fd)}
+html body.suite-ui.meli-refined .history-notification{border:1px solid #ecdbac!important;border-radius:13px!important;background:#fff9e9!important;padding:6px 12px 6px 5px!important}
+html body.suite-ui.meli-refined .bell-glyph{animation:none!important}
+html body.suite-ui.meli-refined .history-notification:hover .bell-glyph{animation:bellSwing 1.25s ease-in-out 1!important}
+html body.suite-ui.meli-refined .worktop{gap:11px!important;align-items:center!important;margin-bottom:18px!important}
+html body.suite-ui.meli-refined .worktop .btn{padding:10px 15px!important}
+html body.suite-ui.meli-refined .actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:wrap}
+html body.suite-ui.meli-refined .data input{border-radius:7px!important;border:1px solid transparent;background:var(--tool-soft,#f7fafc);min-height:40px;padding:7px!important}
+html body.suite-ui.meli-refined .data input:focus{border-color:var(--tool-line,#7cb9d8);outline:3px solid color-mix(in srgb,var(--tool-action,#128ac3) 6.275%,transparent);background:#fff}
+/* VLM: friendly prompt cards and a distinct composer surface. */
+html body.suite-ui.meli-refined.suite-vlm .newChat{width:100%;min-height:50px!important;background:#fff5d9!important;border-color:#ecd397!important;color:#755b20!important}
+html body.suite-ui.meli-refined.suite-vlm .suggestions{gap:13px!important}
+html body.suite-ui.meli-refined.suite-vlm .suggestion{background:#fff!important;border:1px solid var(--tool-line,#dce7ef)!important;box-shadow:0 2px 5px color-mix(in srgb,var(--tool-action,#17344a) 1.176%,transparent)!important;border-radius:18px!important;padding:19px!important;position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:15px!important;text-align:left;transition:background .18s,border-color .18s,box-shadow .18s!important}
+html body.suite-ui.meli-refined.suite-vlm .suggestion[data-ui-icon]::before{width:25px;height:25px;flex-basis:25px;color:var(--tool-action,#1c8cbd)}
+html body.suite-ui.meli-refined.suite-vlm .suggestion:nth-child(2n)[data-ui-icon]::before{color:#ad8530}
+html body.suite-ui.meli-refined.suite-vlm .suggestion:hover{border-color:var(--tool-line,#95cde7)!important;background:var(--tool-soft,#f7fcff)!important;box-shadow:0 5px 18px -7px color-mix(in srgb,var(--tool-action,#128ac3) 16.078%,transparent)!important}
+html body.suite-ui.meli-refined.suite-vlm .composer{border:1px solid var(--tool-line,#bdd9e8)!important;border-radius:23px!important;background:#fff!important;padding:15px!important;box-shadow:0 3px 7px color-mix(in srgb,var(--tool-action,#123f60) 1.961%,transparent),0 10px 28px -12px color-mix(in srgb,var(--tool-action,#123f60) 15.686%,transparent)!important;transition:box-shadow .18s,border-color .18s}
+html body.suite-ui.meli-refined.suite-vlm .composer:focus-within{border-color:var(--tool-line,#6db7da)!important;box-shadow:0 0 0 4px color-mix(in srgb,var(--tool-action,#128ac3) 4.314%,transparent),0 10px 28px -12px color-mix(in srgb,var(--tool-action,#123f60) 15.686%,transparent)!important}
+html body.suite-ui.meli-refined.suite-vlm .composer textarea:focus-visible{outline:none!important}
+html body.suite-ui.meli-refined.suite-vlm .composer .miniBtn{min-height:42px!important;font-size:15px!important;border-radius:12px!important;padding:9px 13px!important;background:var(--tool-soft,#f5f9fc)!important;border-color:var(--tool-line,#dce7ee)!important;box-shadow:none!important}
+html body.suite-ui.meli-refined.suite-vlm #composerReportBtn{background:#fff6dd!important;border-color:#efdb9c!important;color:#785c20!important}
+html body.suite-ui.meli-refined.suite-vlm #sendBtn{min-width:46px!important;width:46px!important;height:46px!important;border:1px solid var(--tool-action,#0878ab)!important;border-radius:14px!important;background:linear-gradient(160deg,var(--tool-action,#1e96c8),var(--tool-action,#0c7caf))!important;color:#fff!important;box-shadow:inset 0 1px 0 #ffffff33,0 4px 10px -3px color-mix(in srgb,var(--tool-action,#128ac3) 19.216%,transparent)!important;display:grid!important;place-items:center!important}
+html body.suite-ui.meli-refined.suite-vlm #sendBtn:hover{background:var(--tool-action,#0b7daf)!important;transform:translateY(-1px)!important;filter:none!important}
+html body.suite-ui.meli-refined.suite-vlm :is(.historyRow.active,.projectItem.active){background:var(--tool-soft,#edf7fd)!important;border-left:3px solid #f5c54b;border-radius:11px!important}
+html body.suite-ui.meli-refined.suite-vlm .uploadBtn{border-style:dashed!important;border-color:var(--tool-line,#9cc9df)!important;background:#fff!important;width:100%!important;min-height:48px!important}
+html body.suite-ui.meli-refined.suite-vlm :is(.historyCard,.projectCard,.reportBlock,.answerRef){border-radius:16px!important;border-color:var(--tool-line,#dce8f0)!important;background:var(--tool-soft,#f8fbfd)!important}
+html body.suite-ui.meli-refined.suite-vlm :is(.historyCard,.projectCard):hover{background:var(--tool-soft,#f0f8fd)!important;border-color:var(--tool-line,#abd4e7)!important}
+html body.suite-ui.meli-refined.suite-vlm .sidePane{border-radius:0 22px 22px 0!important;box-shadow:16px 0 35px -14px color-mix(in srgb,var(--tool-action,#17344a) 14.902%,transparent)!important}
+html body.suite-ui.meli-refined .thumb{border-radius:13px!important}
+html body.suite-ui.meli-refined .thumb.active{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--tool-action,#65b8de)!important}
+/* Disabled and busy states override every visual treatment above. */
+html body.suite-ui.meli-refined :is(button:disabled,.bulk-btn:not(.enabled),[aria-disabled=true]){opacity:1!important;background:var(--tool-soft,#edf2f5)!important;color:#475569!important;border-color:var(--tool-line,#dde5ec)!important;box-shadow:none!important;transform:none!important;cursor:not-allowed!important;filter:none!important}
+html body.suite-ui.meli-refined :is(button:disabled,.bulk-btn:not(.enabled))::before{opacity:.6}
+html body.suite-ui.meli-refined button[aria-busy=true]{cursor:progress!important}
+html body.suite-ui.meli-refined button[aria-busy=true][data-ui-icon]::before{mask:none!important;-webkit-mask:none!important;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;background:none;box-sizing:border-box;animation:ui-spinner .85s linear infinite}
+@keyframes ui-spinner{to{transform:rotate(360deg)}}
+/* Preserve large typography on small screens; wrap controls, not the page. */
+@media(max-width:980px){
+ html body.suite-ui.meli-refined .capture{grid-template-columns:1fr!important}
+ html body.suite-ui.meli-refined .suite-local-nav{padding:4px!important}
+ html body.suite-ui.meli-refined .entryGrid{padding:20px!important;gap:20px!important}
+ html body.suite-ui.meli-refined .analyzeBar{padding:0 20px 24px!important}
+}
+@media(max-width:600px){
+ html body.suite-ui.meli-refined :is(.card,.entryCard,.panel,.mediaPanel){border-radius:20px!important}
+ html body.suite-ui.meli-refined :is(.sectionHead,.panelHead,.mediaHead,.ph,.head){padding:18px!important;gap:12px}
+ html body.suite-ui.meli-refined .sectionHead::before,html body.suite-ui.meli-refined .panelHead::before,html body.suite-ui.meli-refined .mediaHead::before{top:21px;height:25px;width:3px}
+ html body.suite-ui.meli-refined .inputGroup{padding:17px!important;border-radius:16px!important}
+ html body.suite-ui.meli-refined .entryGrid{padding:15px!important;gap:18px!important}
+ html body.suite-ui.meli-refined :is(.drop,.dropzone,.uploadBox){padding:24px 17px!important;border-radius:18px!important}
+ html body.suite-ui.meli-refined .analyzeBar{padding:0 15px 20px!important}
+ html body.suite-ui.meli-refined .analyzeBtn{width:100%!important;min-width:0!important}
+ html body.suite-ui.meli-refined :is(.btn.primary,.actions .btn.ok){font-size:17px!important;padding:12px 17px!important;gap:8px!important}
+ html body.suite-ui.meli-refined :is(.btn,.miniBtn){white-space:normal!important}
+ html body.suite-ui.meli-refined .record{padding:29px 18px!important}
+ html body.suite-ui.meli-refined.suite-voice .upload{padding:23px 18px!important}
+ html body.suite-ui.meli-refined.suite-ocr .upload{padding:34px 22px!important}
+ html body.suite-ui.meli-refined .record>div:last-child{width:100%;display:flex;flex-wrap:wrap;justify-content:center}
+ html body.suite-ui.meli-refined .record>div:last-child .primary{flex:1;min-width:0}
+ html body.suite-ui.meli-refined :is(.actions,.save){gap:9px}
+ html body.suite-ui.meli-refined :is(.modal-body,.meliLoginBodyV69,.modal-head,.meliLoginHeadV69){padding:22px 20px!important}
+ html body.suite-ui.meli-refined .modal-foot{padding:17px 20px!important}
+ html body.suite-ui.meli-refined.suite-vlm .suggestion{padding:16px!important;border-radius:16px!important}
+ html body.suite-ui.meli-refined.suite-vlm .composer{padding:12px!important;border-radius:20px!important}
+ html body.suite-ui.meli-refined.suite-vlm .composer .miniBtn{font-size:15px!important;padding:9px 11px!important}
+ html body.suite-ui.meli-refined.suite-vlm .composer .miniBtn::before{width:18px;height:18px;flex-basis:18px}
+ html body.suite-ui.meli-refined.suite-vlm .composerLeft{gap:7px!important}
+}
+@media(prefers-reduced-motion:reduce){html body.suite-ui.meli-refined *,html body.suite-ui.meli-refined *::before,html body.suite-ui.meli-refined *::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media print{html body.suite-ui.meli-refined :is(.card,.panel,.entryCard,.mediaPanel){box-shadow:none!important} html body.suite-ui.meli-refined button{box-shadow:none!important}}
+/* Specificity guards against the inherited component cascade. */
+html body.suite-ui.meli-refined .btn.ui-quiet{background:transparent!important;border-color:transparent!important;box-shadow:none!important;color:#475569!important}
+html body.suite-ui.meli-refined .btn.ui-quiet:hover{background:var(--tool-soft,#edf4f8)!important;box-shadow:none!important;border-color:transparent!important}
+html body.suite-ui.meli-refined button:disabled:disabled:disabled,html body.suite-ui.meli-refined .bulk-btn:not(.enabled):not(.enabled){opacity:1!important;background:var(--tool-soft,#edf2f5)!important;color:#475569!important;border-color:var(--tool-line,#dde5ec)!important;box-shadow:none!important;transform:none!important;cursor:not-allowed!important;filter:none!important}
+html body.suite-ui.meli-refined button:disabled:disabled:disabled:hover{background:var(--tool-soft,#edf2f5)!important;color:#475569!important;border-color:var(--tool-line,#dde5ec)!important;box-shadow:none!important;transform:none!important}
+html body.suite-ui.meli-refined.suite-clinical .metricTabs button[data-metric="sbp"].active{color:#b24643!important;border-color:#efd4d4!important;background:#fff6f5!important}
+html body.suite-ui.meli-refined.suite-clinical .metricTabs button[data-metric="glucose"].active{color:#93611b!important;border-color:#efdfc6!important;background:#fffbf3!important}
+html body.suite-ui.meli-refined.suite-clinical .metricTabs button[data-metric="ldl"].active{color:#a2385c!important;border-color:#edd0dc!important;background:#fff6fa!important}
+html body.suite-ui.meli-refined.suite-vlm button.newChat{background:#fff6dc!important;border-color:#eddaaa!important;color:#7d6225!important}
+/* Content-driven rows keep large labels inside their cards in scrollable panels. */
+html body.suite-ui.meli-refined :is(.scaleGrid,.factorGrid,.reasonList,.attentionList,.lifestyleList){grid-auto-rows:max-content!important;align-content:start!important}
+html body.suite-ui.meli-refined .combinedRiskPanel .methodCard,html body.suite-ui.meli-refined .methodCard{display:block!important;height:auto!important;min-height:min-content!important;max-height:none!important;overflow:visible!important}
+html body.suite-ui.meli-refined .methodCard .methodStatus{margin-top:12px!important}
+html body.suite-ui.meli-refined .methodCard.ai{border-left:3px solid var(--tool-line,#2f7ff7)!important}
+html body.suite-ui.meli-refined .methodCard.cha{border-left:3px solid #7d63c9!important}
+html body.suite-ui.meli-refined .methodCard.abcd{border-left:3px solid #d9912f!important}
+html body.suite-ui.meli-refined .methodCard.essen{border-left:3px solid #2c9b72!important}
+html body.suite-ui.meli-refined .methodCard.fram{border-left:3px solid #c64f73!important}
+@media(max-width:1240px){
+ html body.suite-ui.meli-refined.suite-mind .mindLowerGrid .lifestyleList{grid-template-columns:1fr!important}
+}
+/* The inherited tablet rule reduced columns without changing named grid areas. */
+@media(min-width:981px) and (max-width:1240px){
+ html body.suite-ui.meli-refined.suite-mind .mindLowerGrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;grid-template-areas:"reason risk" "lifestyle mri"!important}
+}
+@media(max-width:980px){
+ html body.suite-ui.meli-refined.suite-mind .mindLowerGrid{grid-template-columns:1fr!important;grid-template-areas:"reason" "risk" "lifestyle" "mri"!important}
+}
+
+body.meli-refined [data-ui-icon="upload"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%2015V3m-4%204%204-4%204%204M4%2014v5a2%202%200%200%200%202%202h12a2%202%200%200%200%202-2v-5%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="download"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%203v12m-4-4%204%204%204-4M4%2015v4a2%202%200%200%200%202%202h12a2%202%200%200%200%202-2v-4%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="spark"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m12%203%202.6%206.4L21%2012l-6.4%202.6L12%2021l-2.6-6.4L3%2012l6.4-2.6L12%203Z%22%2F%3E%3Cpath%20d%3D%22M20%202v4m-2-2h4%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="document"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M14%203H6a2%202%200%200%200-2%202v14a2%202%200%200%200%202%202h12a2%202%200%200%200%202-2V9Z%22%2F%3E%3Cpath%20d%3D%22M14%203v6h6M8%2013h8M8%2017h5%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="save"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%203h13l4%204v13a1%201%200%200%201-1%201H4a1%201%200%200%201-1-1V4a1%201%200%200%201%201-1Z%22%2F%3E%3Cpath%20d%3D%22M7%203v6h10V3M7%2021v-8h10v8%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="check"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m5%2012%204%204L19%206%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="filter"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%206h16M7%2012h10M10%2018h4%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="back"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%2012H4m7-7-7%207%207%207%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="next"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%2012h16m-7-7%207%207-7%207%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="plus"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%205v14M5%2012h14%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="close"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m6%206%2012%2012M18%206%206%2012%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="eye"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2%2012s3.5-7%2010-7%2010%207%2010%207-3.5%207-10%207-10-7-10-7Z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%223%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="image"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%223%22%20width%3D%2218%22%20height%3D%2218%22%20rx%3D%223%22%2F%3E%3Ccircle%20cx%3D%228%22%20cy%3D%228%22%20r%3D%221.5%22%2F%3E%3Cpath%20d%3D%22m21%2015-5-5-8%2011M3%2016l4-4%204%204%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="focus"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M8%203H4a1%201%200%200%200-1%201v4m13-5h4a1%201%200%200%201%201%201v4M3%2016v4a1%201%200%200%200%201%201h4m8%200h4a1%201%200%200%200%201-1v-4%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%224%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="compare"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%225%22%20width%3D%227%22%20height%3D%2214%22%20rx%3D%222%22%2F%3E%3Crect%20x%3D%2214%22%20y%3D%225%22%20width%3D%227%22%20height%3D%2214%22%20rx%3D%222%22%2F%3E%3Cpath%20d%3D%22M6%209h1M17%2015h1%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="chat"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M21%2011.5a8.5%208.5%200%200%201-8.5%208.5H4l-1%201v-9.5A8.5%208.5%200%200%201%2011.5%203H13M18%202v6m-3-3h6%22%2F%3E%3Cpath%20d%3D%22M7%2010h6M7%2014h9%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="play"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m8%205%2011%207-11%207Z%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="minus"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M5%2012h14%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="arrowup"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%2020V4m-7%207%207-7%207%207%22%2F%3E%3C%2Fsvg%3E")}
+body.meli-refined [data-ui-icon="bell"]{--ui-glyph:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M18%208a6%206%200%200%200-12%200c0%207-3%207-3%209h18c0-2-3-2-3-9M10%2021h4%22%2F%3E%3C%2Fsvg%3E")}

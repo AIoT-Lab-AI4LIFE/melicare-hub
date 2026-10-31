@@ -53,7 +53,7 @@
 
  function normalizeSession(data) {
   if (!data || typeof data.accessToken !== 'string') {
-   throw new Error('Phản hồi đăng nhập không hợp lệ.');
+   throw new Error('Invalid sign-in response.');
   }
   return {
    accessToken: data.accessToken,
@@ -92,11 +92,11 @@
 
  function setWorkspaceRole(role) {
   if (role !== 'admin' && role !== 'doctor') {
-   throw new Error('Vai trò không hợp lệ.');
+   throw new Error('Invalid role.');
   }
   const session = getSession();
   if (!session?.accessToken) {
-   throw new Error('Chưa đăng nhập.');
+   throw new Error('Not signed in.');
   }
   session.workspaceRole = role;
   writeStorage(session);
@@ -124,15 +124,15 @@
  }
 
  async function parseError(response) {
-  let message = 'Yêu cầu xác thực thất bại.';
+  let message = 'Authentication request failed.';
   try {
    const body = await response.json();
    if (typeof body?.message === 'string') message = body.message;
    else if (Array.isArray(body?.message) && body.message.length) message = body.message.join(', ');
    else if (typeof body?.error === 'string') message = body.error;
   } catch (_) {
-   if (response.status === 401) message = 'Tài khoản hoặc mật khẩu không đúng.';
-   else if (response.status >= 500) message = 'Máy chủ xác thực đang gặp sự cố. Thử lại sau.';
+   if (response.status === 401) message = 'Incorrect account or password.';
+   else if (response.status >= 500) message = 'The authentication server is having problems. Please try again later.';
   }
   const error = new Error(message);
   error.status = response.status;
@@ -162,7 +162,7 @@
   const id = String(identifier || '').trim();
   const pwd = String(password || '');
   if (!id || !pwd) {
-   const error = new Error('Vui lòng nhập tài khoản và mật khẩu.');
+   const error = new Error('Please enter your account and password.');
    error.status = 400;
    throw error;
   }
@@ -184,7 +184,7 @@
   const email = String(profile?.email || '').trim();
   if (email) body.email = email;
   if (!body.username || !body.displayName || !body.password) {
-   const error = new Error('Vui lòng nhập họ tên, tên đăng nhập và mật khẩu.');
+   const error = new Error('Please enter your full name, username and password.');
    error.status = 400;
    throw error;
   }

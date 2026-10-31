@@ -1,0 +1,17 @@
+
+/* Illustration and wordmark revision: intentionally scoped to the landing page. */
+body.mc-home .brand{gap:0}
+body.mc-home .melicare-wordmark{display:block;width:246px;height:auto;max-width:100%;object-fit:contain}
+body.mc-home .footer-bottom .melicare-wordmark{width:218px}
+body.mc-home .care-stage .visual-panel.melicare-fancy-visual{display:block!important;height:auto!important;aspect-ratio:auto!important;align-self:start;padding:12px!important;background:linear-gradient(145deg,#ffffff 0%,#f3f9ff 52%,#e9f4ff 100%)!important;border:1px solid #cfe2f2!important;border-radius:24px!important;box-shadow:0 10px 26px rgba(17,91,144,.07),inset 0 1px 0 #fff!important;overflow:hidden!important}
+body.mc-home .care-stage .visual-panel.melicare-fancy-visual>.mc-care-image{display:block!important;width:100%!important;height:auto!important;aspect-ratio:520/320!important;object-fit:contain;object-position:center;background:transparent}
+body.mc-home .mc-care-art text{font-family:"Nunito Sans",Arial,sans-serif}
+@media(max-width:640px){body.mc-home .melicare-wordmark{width:clamp(170px,54vw,205px)}body.mc-home .footer-bottom .melicare-wordmark{width:190px}}
+@media(max-width:640px){body.mc-home .care-stage .visual-panel.melicare-fancy-visual{padding:9px!important;border-radius:20px!important}}
+/* Each product name and its learn-more arrow are one inline action. */
+body#mcTypography.mc-home .care-title-link{display:inline-flex;align-items:center;gap:10px;width:auto;min-height:44px;margin:0;padding:0;border:0;background:transparent;text-align:left;font-size:inherit!important;line-height:1.25;color:var(--blue);border-radius:6px}
+body#mcTypography.mc-home .care-title-link>.tool-wordmark{font-size:inherit!important}
+body#mcTypography.mc-home .care-title-link>.icon{width:22px;height:22px;flex:0 0 22px;stroke-width:1.8;transition:transform .2s,color .2s;color:#475569}
+body#mcTypography.mc-home .care-title-link:hover>.icon{color:#078cf0;transform:translate(2px,-2px)}
+body#mcTypography.mc-home .care-copy p{min-height:0!important}
+@media(prefers-reduced-motion:reduce){body#mcTypography.mc-home .care-title-link>.icon{transition:none}}

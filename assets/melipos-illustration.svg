@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="mc-care-art mc-care-art-refined" viewBox="0 0 520 320" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="mc11-pos-title mc11-pos-desc">
-<title id="mc11-pos-title">MELIPos — diễn biến sau mổ, nhận diện nguy cơ, ưu tiên theo dõi</title><desc id="mc11-pos-desc">Đường diễn biến chỉ số sau mổ vượt vùng cần chú ý. Điểm này được liên kết trực tiếp tới cảnh báo nguy cơ biến chứng và ưu tiên theo dõi người bệnh.</desc>
+<title id="mc11-pos-title">MELIPos — diễn biến sau mổ, nhận diện nguy cơ, ưu tiên monitoring</title><desc id="mc11-pos-desc">Đường diễn biến chỉ số sau mổ vượt vùng cần chú ý. Điểm này được liên kết trực tiếp tới cảnh report complication risk và ưu tiên monitoring patients bệnh.</desc>
 <defs>
  <linearGradient id="mc11-pos-blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#30a8fb"/><stop offset="1" stop-color="#087bda"/></linearGradient>
  <linearGradient id="mc11-pos-area" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#078cf0" stop-opacity=".18"/><stop offset="1" stop-color="#078cf0" stop-opacity="0"/></linearGradient>
@@ -8,7 +8,7 @@
 <g font-family="'Nunito Sans',Arial,sans-serif" stroke-linecap="round" stroke-linejoin="round">
 <text x="35" y="44" fill="#15384f" font-size="20" font-weight="800">Phát hiện sớm nguy cơ</text>
 <!-- An actual monitoring chart: source data, time axis, threshold and identified event. -->
-<text x="51" y="80" fill="#54778e" font-size="16" font-weight="700">Chỉ số sau mổ</text>
+<text x="51" y="80" fill="#54778e" font-size="16" font-weight="700">Indicator sau mổ</text>
 <path d="M52 98v146h253" fill="none" stroke="#b9d5e8" stroke-width="1.2"/>
 <path d="M53 116h249M53 200h249" stroke="#deebf4" stroke-width="1"/>
 <path d="M62 214C93 213 108 204 131 200S163 185 181 182 205 172 225 155 265 110 295 109V243H62Z" fill="url(#mc11-pos-area)"/>
@@ -27,10 +27,10 @@
  <path d="M-19 13 0-20 19 13Z" fill="#ffce70" stroke="#e9aa35" stroke-width="1.1"/>
  <path d="M0-8v10m0 6v.1" stroke="#946319" stroke-width="2" fill="none"/>
 </g>
-<text x="381" y="148" text-anchor="middle" fill="#8b641d" font-size="16" font-weight="800">Cảnh báo sớm</text>
+<text x="381" y="148" text-anchor="middle" fill="#8b641d" font-size="16" font-weight="800">Cảnh report sớm</text>
 <text x="381" y="178" text-anchor="middle" fill="#15384f" font-size="20" font-weight="800">Nguy cơ</text>
 <text x="381" y="201" text-anchor="middle" fill="#15384f" font-size="20" font-weight="800">biến chứng</text>
 <path d="m326 236 4 4 8-9" stroke="#078cf0" stroke-width="1.7" fill="none"/>
-<text x="347" y="241" fill="#54778e" font-size="16" font-weight="700">Ưu tiên theo dõi</text>
-<text x="260" y="300" text-anchor="middle" fill="#54778e" font-size="17" font-weight="700">Nhận diện nguy cơ để chủ động chăm sóc</text>
+<text x="347" y="241" fill="#54778e" font-size="16" font-weight="700">Priority monitoring</text>
+<text x="260" y="300" text-anchor="middle" fill="#54778e" font-size="17" font-weight="700">Recognition nguy cơ để chủ động care</text>
 </g></svg>

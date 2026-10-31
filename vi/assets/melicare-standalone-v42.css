@@ -1,0 +1,6 @@
+/* Application pages expose only their own workflow and account. */
+body.tool-locked>:not(script):not(style){visibility:hidden}
+html body#mcTypography [data-tool-account]{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;min-height:44px!important;width:auto!important;max-width:240px!important;padding:0 13px!important;border:1px solid #bacddd!important;background:#edf4fa!important;color:#123a58!important;border-radius:11px!important;font-family:'Nunito Sans',Arial,sans-serif!important;cursor:pointer}
+html body#mcTypography [data-tool-account] .mc-account-label{white-space:nowrap!important;font-size:15px!important;font-weight:700!important;overflow:hidden;text-overflow:ellipsis}
+.tool-account-menu{width:250px}.tool-account-menu>small{color:#475569}.tool-account-menu>button{color:#9d3440;background:#fff}
+@media(max-width:760px){html body#mcTypography [data-tool-account] .mc-account-label{display:none!important}html body#mcTypography [data-tool-account]{width:44px!important;min-width:44px!important;padding:0!important}}

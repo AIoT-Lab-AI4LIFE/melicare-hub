@@ -1,0 +1,18 @@
+MELICARE V14 — FINAL SELECTED ART AND PROMPT
+
+Mode: built-in ImageGen, fresh 2D illustration generation. Selected MELIPos contains no people; its genuine alpha and pixels are retained without bitmap editing.
+
+MELIVLM and MELIDx are unchanged from the approved V13 files; their prompts remain in GENERATION_PROMPTS_V13.txt.
+
+The hero is coded natively in SVG/CSS: continuous blue/gold data contours, an inference mesh, operational data channels, a clinical signal, specialist-knowledge input and six animated route packets. No generated bitmap is used for the hero. The footer statement uses Poppins.
+
+FINAL MELIPOS GENERATION PROMPT
+Use case: illustration-story.
+Asset type: final 2D MELIPos product illustration for AI-assisted POST-TREATMENT CARE, matching a blue/gold medical-image and specialist-diagnosis illustration set.
+Primary request: create one refined connected composition with NO PEOPLE or body parts. Immediately show intelligent recovery monitoring after treatment, early risk prediction and planned follow-up. On the left, draw an elegant blue wearable monitoring device lying by itself, with a clean tiny pulse trace on its screen, next to a small white postoperative dressing pad (a tasteful medical dressing, no wound). A single flowing data line carries the wearable readings into a compact flat blue neural-node network at the center; inside it the only text is the exact letters "AI". The line continues into a graceful recovery trend: blue measured signal changing to a short amber dashed predicted segment, with one modest early-warning point. This same care loop curves into a white illustrated follow-up care plan with a small calendar/checkmark integrated into its paper, plus a tiny blue medication blister near the lower edge. The monitoring device, AI analysis and follow-up care plan should clearly belong to one ongoing recovery-care loop. Keep the care plan modest; avoid chart dashboards or boxed software panels. The postoperative dressing and ongoing follow-up must distinguish this from diagnosing diseases.
+Composition: landscape 3:2, organic airy asymmetry, not a row of disconnected icons or a diagram of rigid steps. Beautiful confident precise outlines, restrained details, balanced negative space, sophisticated TWO-DIMENSIONAL vector-like editorial illustration. Azure #078cf0, navy #15384f, pale sky blue, white and warm ochre #ffb224. Matte solid 2D fills with at most one limited flat tonal accent per object.
+Background: genuinely transparent alpha. No rectangular background, no halo, no soft glow.
+Absolutely NO people, doctors, patients, faces, hands, arms, legs, silhouettes, human outlines or bodies. No anatomical organs, heart, brain, blood droplet, magnifier, diagnostic scan or shield. No 3D, no isometric angle, no glass, no metallic sheen, no bevel, no gradients, no rendered lighting or shadows, no photorealism. No words except "AI", no numbers, percentages, watermark or logo.
+
+Integrated asset: assets/illustrations/melipos-v14.png
+Native hero source: assets/illustrations/melicare-ai-hero-v14.svg

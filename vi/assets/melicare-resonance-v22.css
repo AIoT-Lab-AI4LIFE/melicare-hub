@@ -1,0 +1,11 @@
+/* AI above, open clinical zones below. */
+body.mc-home .hero-grid{grid-template-columns:1fr 1.16fr;align-items:center;gap:0}
+body.mc-home .hero-art.mc-ai-hero{animation:none;transform:none;width:113%;max-width:720px;min-width:0;margin:0 -5% 0 -8%;position:relative;align-self:center}
+.mc-resonance-scene{display:block;width:100%;height:auto;overflow:visible}
+.mi-caption-ready{position:relative}.mi-caption-ready .mi-flow-caption{display:none}.mi-live-caption{position:absolute;z-index:3;left:clamp(140px,var(--caption-x,50%),calc(100% - 140px));top:95%;transform:translate(-50%,calc(-50% + var(--caption-rise,0px)));width:max-content;max-width:min(340px,calc(100% - 28px));padding:9px 14px;color:#16466c;background:rgba(255,255,255,.97);border:1px solid #d5e6f0;border-radius:15px;box-shadow:0 3px 15px #16466c0a;font:500 13.5px/1.55 "Poppins",Arial,sans-serif;letter-spacing:-.1px;text-align:center;pointer-events:none;opacity:0}.mi-live-caption:before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:#ffb224;margin:0 7px 2px 0}
+@media(max-width:480px){.mi-live-caption{font-size:12.5px;padding:8px 11px;left:clamp(130px,var(--caption-x,50%),calc(100% - 130px))}}
+body#mcTypography.mc-home .ecosystem-footer .footer-copy>p:last-child,body#mcTypography.mc-home .ecosystem-footer .footer-copy>p:last-child>span{font-family:"Poppins","Segoe UI",Arial,sans-serif!important}
+@media(max-width:1000px){body.mc-home .hero-grid{grid-template-columns:1fr 1.1fr}body.mc-home .hero-art.mc-ai-hero{width:115%;margin-left:-9%}}
+@media(max-width:760px){body.mc-home .hero-grid{display:flex;flex-direction:column}body.mc-home .hero-art.mc-ai-hero{width:min(680px,110%);max-width:none;margin:4px -5% 0}}
+@media(max-width:480px){body.mc-home .hero-art.mc-ai-hero{width:116%;margin:12px -8% 0}}
+@media print{.mc-resonance-scene{max-height:370px}body.mc-home .hero-art.mc-ai-hero{width:100%;margin:0}}

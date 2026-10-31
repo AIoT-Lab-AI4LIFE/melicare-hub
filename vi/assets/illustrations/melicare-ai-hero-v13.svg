@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="mc-ai-scene" viewBox="0 0 640 480" role="img" aria-labelledby="mc-hero-title mc-hero-desc">
+ <title id="mc-hero-title">AI kết nối vận hành và chăm sóc người bệnh</title>
+ <desc id="mc-hero-desc">Dữ liệu vận hành và tri thức chuyên gia hội tụ tại mạng AI, hỗ trợ bác sỹ cùng người bệnh đưa ra quyết định chăm sóc. Các điểm sáng chuyển động thể hiện dòng thông tin liên tục.</desc>
+ <style>
+.mc-ai-scene text{font-family:"Nunito Sans",Arial,sans-serif}
+.mc-ai-scene .mc-ai-label{font-size:18px;font-weight:750;fill:#31596f}
+.mc-ai-scene .mc-ai-note{font-size:14px;font-weight:600;fill:#7390a2}
+.mc-ai-scene .mc-ai-kicker{font-size:12px;font-weight:800;letter-spacing:1.25px;fill:#4784aa}
+.mc-ai-stream{animation:mcAIStream 7s linear infinite}
+.mc-ai-stream-care{animation-delay:-2.5s;animation-duration:6.2s}
+.mc-ai-stream-knowledge{animation-delay:-1s;animation-duration:6.8s}
+.mc-ai-ring{transform-box:fill-box;transform-origin:center;animation:mcAIBreathe 5s ease-in-out infinite}
+.mc-ai-ring-two{animation-delay:-2.5s}
+.mc-ai-synapse{animation:mcAISynapse 3.2s ease-in-out infinite}
+.mc-ai-synapse-two{animation-delay:-1.6s}
+.mc-ai-roster{animation:mcAIShift 6s ease-in-out infinite;transform-box:fill-box;transform-origin:left center}
+.mc-ai-clinical-signal{stroke-dasharray:70;animation:mcAITrace 5s ease-in-out infinite}
+@keyframes mcAIStream{to{stroke-dashoffset:-264}}
+@keyframes mcAIBreathe{0%,100%{transform:scale(.97);opacity:.6}50%{transform:scale(1.055);opacity:1}}
+@keyframes mcAISynapse{0%,100%{opacity:.4}45%,65%{opacity:1}}
+@keyframes mcAIShift{0%,15%,90%,100%{transform:scaleX(.65)}40%,70%{transform:scaleX(1)}}
+@keyframes mcAITrace{0%,8%{stroke-dashoffset:70}48%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:-70}}
+@media(prefers-reduced-motion:reduce){.mc-ai-scene *{animation:none!important}.mc-ai-packets{display:none}.mc-ai-clinical-signal{stroke-dashoffset:0}}
+@media print{.mc-ai-scene *{animation:none!important}.mc-ai-packets{display:none}.mc-ai-clinical-signal{stroke-dashoffset:0}}
+ </style>
+ <defs>
+  <path id="mc-hero-ops-flow" d="M177 195C204 119 254 107 295 167"/>
+  <path id="mc-hero-care-flow" d="M365 199C413 164 450 169 479 218"/>
+  <path id="mc-hero-knowledge-flow" d="M296 355C258 307 282 262 315 237"/>
+  <path id="mc-hero-feedback-flow" d="M500 291C491 371 408 404 343 366"/>
+ </defs>
+ <!-- A loose, open field keeps the scene connected without enclosing it in cards. -->
+ <path d="M74 227C26 96 206 37 360 72S646 227 565 352 241 471 139 382" fill="none" stroke="#dfedf6" stroke-width="1.5" stroke-dasharray="3 9"/>
+ <path d="M149 93C229 44 373 64 424 108" fill="none" stroke="#c9e3f4" stroke-width="1.5"/>
+ <g fill="none" stroke-linecap="round">
+  <use href="#mc-hero-ops-flow" xlink:href="#mc-hero-ops-flow" stroke="#c2e3f7" stroke-width="2"/>
+  <use href="#mc-hero-care-flow" xlink:href="#mc-hero-care-flow" stroke="#c2e3f7" stroke-width="2"/>
+  <use href="#mc-hero-knowledge-flow" xlink:href="#mc-hero-knowledge-flow" stroke="#f2d797" stroke-width="2"/>
+  <use href="#mc-hero-feedback-flow" xlink:href="#mc-hero-feedback-flow" stroke="#d9e9f3" stroke-width="1.5"/>
+  <use class="mc-ai-stream" href="#mc-hero-ops-flow" xlink:href="#mc-hero-ops-flow" stroke="#078cf0" stroke-width="2.2" stroke-dasharray="12 120"/>
+  <use class="mc-ai-stream mc-ai-stream-care" href="#mc-hero-care-flow" xlink:href="#mc-hero-care-flow" stroke="#078cf0" stroke-width="2.2" stroke-dasharray="12 120"/>
+  <use class="mc-ai-stream mc-ai-stream-knowledge" href="#mc-hero-knowledge-flow" xlink:href="#mc-hero-knowledge-flow" stroke="#e8aa26" stroke-width="2.2" stroke-dasharray="10 100"/>
+ </g>
+ <!-- Hospital operations: hospital, a living roster and balanced capacity. -->
+ <g class="mc-ai-operations">
+  <path d="M66 175C61 136 109 118 154 130S225 179 207 220 116 254 81 226Z" fill="#eaf6ff"/>
+  <g stroke="#286988" stroke-width="2" stroke-linejoin="round">
+   <path d="M91 198v-52h54v52m-63 0h87M145 162h17v36" fill="#fff"/>
+   <path d="M113 141v-9h11v9m-5-5v8m-4-4h8" fill="none" stroke="#078cf0"/>
+   <path d="M103 159h6m12 0h6m-24 12h6m12 0h6m25 3h4m-4 11h4" stroke="#80bde4"/>
+   <path d="M112 198v-15h13v15" fill="#eaf6ff"/>
+  </g>
+  <g transform="translate(148 193)">
+   <rect x="0" y="0" width="61" height="45" rx="9" fill="#fff" stroke="#9bcce8" stroke-width="1.6"/>
+   <path d="M0 12h61m-46-17v9m31-9v9" stroke="#83b8d7" stroke-width="1.6" stroke-linecap="round"/>
+   <path d="M11 23h9m9 0h9m-27 10h9" stroke="#8dcefa" stroke-width="5" stroke-linecap="round"/>
+   <path class="mc-ai-roster" d="M29 33h20" stroke="#ffb224" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <text x="132" y="275" text-anchor="middle" class="mc-ai-label">Vận hành</text>
+ </g>
+ <!-- The central AI network uses the same blue as the brand. -->
+ <g class="mc-ai-core">
+  <circle class="mc-ai-ring" cx="326" cy="202" r="66" fill="none" stroke="#b8def6" stroke-width="1.2"/>
+  <circle class="mc-ai-ring mc-ai-ring-two" cx="326" cy="202" r="56" fill="none" stroke="#cfe9fa" stroke-width="1.2"/>
+  <circle cx="326" cy="202" r="43" fill="#078cf0"/>
+  <g fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.3">
+   <path d="m309 177-14 25 16 25 31-3 15-27-16-21-32 1 17 25 16 22M295 202h31l31-5m-46 30 15-25 15-26"/>
+  </g>
+  <g fill="#fff"><circle cx="309" cy="177" r="3"/><circle cx="295" cy="202" r="3"/><circle cx="311" cy="227" r="3"/><circle cx="342" cy="224" r="3"/><circle cx="357" cy="197" r="3"/><circle cx="341" cy="176" r="3"/></g>
+  <circle cx="326" cy="202" r="14" fill="#078cf0"/>
+  <text x="326" y="207.5" text-anchor="middle" fill="#fff" font-size="16" font-weight="800" font-family="Poppins,Arial,sans-serif">AI</text>
+  <circle class="mc-ai-synapse" cx="291" cy="151" r="4" fill="#ffb224"/>
+  <circle class="mc-ai-synapse mc-ai-synapse-two" cx="381" cy="220" r="4" fill="#078cf0"/>
+ </g>
+ <text x="326" y="109" text-anchor="middle" class="mc-ai-kicker">CÔNG NGHỆ AI TIÊN TIẾN</text>
+ <!-- A doctor and patient share the same clinical information. -->
+ <g class="mc-ai-consultation">
+  <path d="M425 225C404 187 441 150 491 155S584 204 576 252 474 307 436 274Z" fill="#edf7fe"/>
+  <!-- Experienced physician: silver hair, coat and stethoscope. -->
+  <path d="M420 278c2-33 16-52 43-52s43 21 45 52" fill="#fff" stroke="#286988" stroke-width="1.8"/>
+  <path d="m451 228 12 22 12-22m-23 5-5 27 16-10 16 10-5-27" fill="#d1edff" stroke="#72b4dc" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M445 193c0-18 34-23 37-2l-2 16c-1 12-9 20-17 20-10 0-17-9-18-20Z" fill="#f3d5b6"/>
+  <path d="M444 202c-11-22 11-39 26-33 16 0 20 16 14 28-4-1-8-7-10-12-6 8-16 12-30 12Z" fill="#526e80"/>
+  <path d="M447 186c5-9 14-13 24-11m-25 16c8-8 16-10 22-10" fill="none" stroke="#c2ccd1" stroke-width="2.3" stroke-linecap="round"/>
+  <path d="M455 207h1m16 0h1m-13 10c3 2 6 2 9 0" fill="none" stroke="#61727c" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M444 235v13a10 10 0 0 0 20 0v-3m-20 0h20" fill="none" stroke="#286988" stroke-width="1.5"/>
+  <circle cx="464" cy="253" r="3.2" fill="#078cf0" stroke="#fff" stroke-width="1.4"/>
+  <!-- Patient. -->
+  <path d="M497 279c1-29 14-46 34-46 24 0 39 19 39 46" fill="#8ecbf3" stroke="#286988" stroke-width="1.8"/>
+  <path d="M518 202c0-18 30-20 33-2v16c0 12-8 20-16 20-9 0-17-10-17-21Z" fill="#f3d5b6"/>
+  <path d="M517 207c-9-22 8-36 23-30 14 0 20 13 14 30-7-2-12-9-15-16-4 7-13 12-22 12Z" fill="#244c65"/>
+  <path d="M524 214h1m17 0h1m-14 11c3 2 6 2 9-1" fill="none" stroke="#61727c" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- One shared record, not separate screens. -->
+  <rect x="477" y="254" width="57" height="36" rx="6" fill="#fff" stroke="#286988" stroke-width="1.8" transform="rotate(-6 505 272)"/>
+  <path class="mc-ai-clinical-signal" d="M486 273h9l4-7 5 13 4-7h14" fill="none" stroke="#078cf0" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="m455 273 24-4m60 5-7-2" stroke="#f3d5b6" stroke-width="8" stroke-linecap="round"/>
+  <text x="500" y="322" text-anchor="middle" class="mc-ai-label">Khám chữa bệnh</text>
+  <text x="500" y="343" text-anchor="middle" class="mc-ai-note">Bác sỹ · Người bệnh</text>
+ </g>
+ <!-- Expert knowledge is a source for AI, not an isolated decorative badge. -->
+ <g class="mc-ai-knowledge">
+  <path d="M244 349c8-19 39-27 64-19s52 22 46 44-45 26-76 19-43-23-34-44Z" fill="#fff4da"/>
+  <path d="M258 344c17-4 31-3 43 6 12-9 26-10 43-6v41c-17-4-31-3-43 6-12-9-26-10-43-6Z" fill="#fff" stroke="#ac853d" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M301 350v41m-33-35c8-1 14 0 22 4m-22 7c8-1 14 0 22 4m22-15c8-4 14-5 22-4m-22 15c8-4 14-5 22-4" fill="none" stroke="#dab967" stroke-width="1.7" stroke-linecap="round"/>
+  <circle cx="345" cy="340" r="12" fill="#ffb224"/>
+  <path d="m339 340 4 4 8-9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="302" y="421" text-anchor="middle" class="mc-ai-label">Tri thức chuyên gia</text>
+ </g>
+ <!-- Packets travel from operations and expert knowledge into AI, then to care. -->
+ <g class="mc-ai-packets">
+  <circle r="4" fill="#078cf0"><animateMotion dur="5.6s" repeatCount="indefinite"><mpath href="#mc-hero-ops-flow" xlink:href="#mc-hero-ops-flow"/></animateMotion></circle>
+  <circle r="4" fill="#ffb224"><animateMotion dur="5s" begin="-2s" repeatCount="indefinite"><mpath href="#mc-hero-knowledge-flow" xlink:href="#mc-hero-knowledge-flow"/></animateMotion></circle>
+  <circle r="4" fill="#078cf0"><animateMotion dur="4.8s" begin="-1.5s" repeatCount="indefinite"><mpath href="#mc-hero-care-flow" xlink:href="#mc-hero-care-flow"/></animateMotion></circle>
+  <circle r="3" fill="#dfac3e"><animateMotion dur="6.4s" begin="-3s" repeatCount="indefinite"><mpath href="#mc-hero-feedback-flow" xlink:href="#mc-hero-feedback-flow"/></animateMotion></circle>
+ </g>
+</svg>

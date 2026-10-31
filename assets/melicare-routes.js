@@ -2,7 +2,7 @@
  * Change a URL here and the homepage, dashboards, app switcher, MELIDx menus and page directory all follow.
  *   href   absolute https URL (external app, opens in a new tab) or a local page.
  *   group  ops | care → listed in the app switcher; dx → MELIDx sub-tool.
- *   login  per-app login page (homepage "Mở ứng dụng" opens it in a new window; after login it opens href).
+ *   login  per-app login page (homepage "Open application" opens it in a new window; after login it opens href).
  *   roles  workspace roles whose dashboard menu lists the app; parent → the app whose login guards a dx page.
  *   sso    true → MELI_AUTH appends ?token=<access token> when opening (see meli-auth.js).
  * Markup links with <a data-mc-route="<id or module>">; scripts call MELICARE_SITE.open(id).
@@ -34,8 +34,8 @@
     const apps = routes.filter(route => route.group === 'ops' || route.group === 'care');
     const appsForRole = role => apps.filter(app => app.roles.includes(role));
     const menuSections = role => [
-        { id: 'ops', label: role === 'admin' ? 'Vận hành bệnh viện' : 'Dữ liệu & hồ sơ' },
-        { id: 'care', label: 'Hỗ trợ bác sỹ' }
+        { id: 'ops', label: role === 'admin' ? 'Hospital operations' : 'Data & records' },
+        { id: 'care', label: 'Physician support' }
     ].map(section => ({ ...section, apps: appsForRole(role).filter(app => app.group === section.id) })).filter(section => section.apps.length);
     const isExternal = href => /^https?:\/\//i.test(href);
     const find = key => lookup.get(key) || null;

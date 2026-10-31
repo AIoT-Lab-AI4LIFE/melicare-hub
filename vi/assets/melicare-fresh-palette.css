@@ -1,0 +1,3 @@
+/* Palette from the uploaded MELICARE homepage. */
+:root,html,body{--suite-blue:var(--tool-action,#066dbb);--suite-yellow:#f7af3e;--suite-blue-deep:var(--tool-action,#123a58);--suite-yellow-deep:#8a5b16;--blue:var(--tool-action,#066dbb);--yellow:#f7af3e;--brand-blue:var(--tool-action,#123a58);--brand-yellow:#f7af3e;--suite-sky:var(--tool-soft,#edf4fa);--suite-cream:#fff7e7}
+a:focus-visible,button:focus-visible{outline:3px solid var(--tool-action,#066dbb);outline-offset:3px}

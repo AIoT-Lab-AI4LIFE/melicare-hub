@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="mc-ai-scene mc-h16" viewBox="0 0 720 500" role="img" aria-labelledby="mc-h16-title mc-h16-desc">
+<title id="mc-h16-title">AI và tri thức chuyên gia phục vụ vận hành và khám chữa bệnh</title>
+<desc id="mc-h16-desc">Sách và hướng dẫn chuyên môn cung cấp tri thức cho AI ở trung tâm. AI kết nối với bệnh viện và bảng điều phối ở bên trái, cùng giường bệnh, hồ sơ khám và màn hình theo dõi ở bên phải, hỗ trợ tối ưu nguồn lực, hỗ trợ bác sỹ và chăm sóc người bệnh.</desc>
+<style>
+.mc-h16 text{font-family:"Nunito Sans",Arial,sans-serif}
+.mc-h16-title{font-size:20px;font-weight:750;fill:#244e67}
+.mc-h16-note{font-size:14px;font-weight:600;fill:#7793a5}
+.mc-h16-ink{stroke:#356b89;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mc-h16-detail{stroke:#8bbbd7;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.mc-h16-flow{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.7}
+.mc-h16-flow-accent{stroke-dasharray:8 75;animation:mcH16Flow 6s linear infinite}
+.mc-h16-schedule{animation:mcH16Schedule 7s ease-in-out infinite;transform-box:fill-box;transform-origin:left center}
+.mc-h16-vitals{stroke-dasharray:100;animation:mcH16Vitals 7s ease-in-out infinite}
+.mc-h16-synapse{animation:mcH16Synapse 4s ease-in-out infinite;animation-delay:var(--delay,0s)}
+.mc-h16-verified{animation:mcH16Verified 7s ease-in-out infinite}
+@keyframes mcH16Flow{to{stroke-dashoffset:-166}}
+@keyframes mcH16Schedule{0%,15%,100%{transform:scaleX(.6)}40%,80%{transform:scaleX(1)}}
+@keyframes mcH16Vitals{0%,10%{stroke-dashoffset:100}65%,85%{stroke-dashoffset:0}100%{stroke-dashoffset:-100}}
+@keyframes mcH16Synapse{0%,100%{opacity:.45}40%,70%{opacity:1}}
+@keyframes mcH16Verified{0%,100%{opacity:.65}35%,80%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.mc-h16 *{animation:none!important}.mc-h16-packets{display:none}.mc-h16-vitals{stroke-dashoffset:0}}
+@media print{.mc-h16 *{animation:none!important}.mc-h16-packets{display:none}.mc-h16-vitals{stroke-dashoffset:0}}
+</style>
+<defs>
+<linearGradient id="mc-h16-ai" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#129cf4"/><stop offset="1" stop-color="#0780d3"/></linearGradient>
+<path id="mc-h16-expert-route" d="M360 116V162"/>
+<path id="mc-h16-ops-route" d="M323 246C296 279 274 301 245 301"/>
+<path id="mc-h16-care-route" d="M397 246C424 279 446 291 475 291"/>
+<path id="mc-h16-ops-return" d="M246 310C292 310 303 288 328 262"/>
+<path id="mc-h16-care-return" d="M474 310C428 310 417 288 392 262"/>
+</defs>
+<path d="M73 392H259M461 392H647" fill="none" stroke="#d5e7f1" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M93 213C113 190 205 192 234 224M486 224C515 192 607 190 627 213" fill="none" stroke="#e5f0f7" stroke-width="1.2"/>
+<!-- Expert knowledge: open clinical reference and a verified guideline. -->
+<text x="360" y="29" text-anchor="middle" class="mc-h16-title" style="font-size:17px;fill:#97732b">Tri thức chuyên gia</text>
+<g class="mc-h16-ink">
+<path d="M303 55C323 49 342 52 360 63 378 52 397 49 417 55V106C397 100 378 103 360 114 342 103 323 100 303 106Z" fill="#fff" stroke="#b79958"/>
+<path d="M360 63v51m-45-46c11-1 21 1 32 6m-32 5c11-1 21 1 32 6m-32 5c11-1 21 1 32 6m26-22c11-5 21-7 32-6m-32 17c11-5 21-7 32-6m-32 17c11-5 21-7 32-6" fill="none" stroke="#d0b777" stroke-width="1.5"/>
+<path d="M387 47h26l10 10v31h-36Z" fill="#fff8e6" stroke="#d7b76b" stroke-width="1.5"/>
+<path d="M413 47v10h10m-27 9h17m-17 7h10" fill="none" stroke="#d7b76b" stroke-width="1.3"/>
+<g class="mc-h16-verified"><circle cx="422" cy="91" r="12" fill="#ffb224" stroke="#fff" stroke-width="2"/><path d="m416 91 4 4 8-9" fill="none" stroke="#fff" stroke-width="2"/></g>
+</g>
+<!-- Expertise feeds AI; AI routes useful information to both workstreams. -->
+<use href="#mc-h16-expert-route" xlink:href="#mc-h16-expert-route" class="mc-h16-flow" stroke="#edd7a4"/>
+<use href="#mc-h16-expert-route" xlink:href="#mc-h16-expert-route" class="mc-h16-flow mc-h16-flow-accent" stroke="#e9af36"/>
+<g class="mc-h16-flow" stroke="#c6e1f0"><use href="#mc-h16-ops-route" xlink:href="#mc-h16-ops-route"/><use href="#mc-h16-care-route" xlink:href="#mc-h16-care-route"/></g>
+<g class="mc-h16-flow" stroke="#e1ecf3" stroke-dasharray="2 5" stroke-width="1"><use href="#mc-h16-ops-return" xlink:href="#mc-h16-ops-return"/><use href="#mc-h16-care-return" xlink:href="#mc-h16-care-return"/></g>
+<g class="mc-h16-flow mc-h16-flow-accent" stroke="#078cf0"><use href="#mc-h16-ops-route" xlink:href="#mc-h16-ops-route"/><use href="#mc-h16-care-route" xlink:href="#mc-h16-care-route"/></g>
+<g transform="translate(360 218)">
+<g fill="none" stroke="#72b7e1" stroke-width="1.4"><path d="m0-53 38 15 15 38-15 38-38 15-38-15-15-38 15-38Z"/><path d="M0-53V0L38-38M53 0H0l38 38M0 53V0l-38 38M-53 0H0l-38-38"/><path d="m0-53 38 91-91-38 91-38-38 91-38-91 91 38-91 38Z" opacity=".28"/></g>
+<g fill="#078cf0" stroke="#fff" stroke-width="1.7">
+<circle class="mc-h16-synapse" style="--delay:-0.0s" cx="0" cy="-53" r="5"/><circle class="mc-h16-synapse" style="--delay:-0.5s" cx="38" cy="-38" r="5"/><circle class="mc-h16-synapse" style="--delay:-1.0s" cx="53" cy="0" r="5"/><circle class="mc-h16-synapse" style="--delay:-1.5s" cx="38" cy="38" r="5"/><circle class="mc-h16-synapse" style="--delay:-2.0s" cx="0" cy="53" r="5" fill="#ffb224"/><circle class="mc-h16-synapse" style="--delay:-2.5s" cx="-38" cy="38" r="5"/><circle class="mc-h16-synapse" style="--delay:-3.0s" cx="-53" cy="0" r="5"/><circle class="mc-h16-synapse" style="--delay:-3.5s" cx="-38" cy="-38" r="5"/></g><circle r="32" fill="url(#mc-h16-ai)"/><text x="0" y="8" text-anchor="middle" fill="#fff" style="font-family:Poppins,Arial,sans-serif;font-size:25px;font-weight:700">AI</text></g>
+<text x="360" y="305" text-anchor="middle" class="mc-h16-note" style="fill:#4086af;font-size:14px;font-weight:750">AI đa phương thức</text>
+<!-- Left scene: proportioned hospital facade and operational allocations. -->
+<g transform="translate(53 222)">
+<path d="M14 156V36C14 30 18 26 24 26H112C118 26 122 30 122 36V156Z" fill="#f0f8fe" class="mc-h16-ink"/>
+<path d="M27 26V13C27 9 30 6 34 6H101C105 6 108 9 108 13V26" fill="#e1f1fd" class="mc-h16-ink"/>
+<path d="M53 6V-8H81V6" fill="#fff" class="mc-h16-detail"/><path d="M67-3v12m-6-6h12" stroke="#078cf0" stroke-width="3" stroke-linecap="round"/>
+<path d="M0 156h141" fill="none" class="mc-h16-ink"/><g fill="#a7d7f5">
+<rect x="29" y="42" width="12" height="15" rx="2"/><rect x="50" y="42" width="12" height="15" rx="2"/><rect x="71" y="42" width="12" height="15" rx="2"/><rect x="92" y="42" width="12" height="15" rx="2"/><rect x="29" y="68" width="12" height="15" rx="2"/><rect x="50" y="68" width="12" height="15" rx="2"/><rect x="71" y="68" width="12" height="15" rx="2"/><rect x="92" y="68" width="12" height="15" rx="2"/><rect x="29" y="94" width="12" height="15" rx="2"/><rect x="50" y="94" width="12" height="15" rx="2"/><rect x="71" y="94" width="12" height="15" rx="2"/><rect x="92" y="94" width="12" height="15" rx="2"/></g>
+<path d="M49 156v-30q0-5 5-5h25q5 0 5 5v30M66.5 121v35" fill="#fff" class="mc-h16-detail"/>
+<g transform="translate(91 79)">
+<rect width="119" height="84" rx="11" fill="#fff" class="mc-h16-ink"/>
+<path d="M0 21h119M22-7V7m75-14V7" fill="none" class="mc-h16-detail" stroke-width="2"/>
+<path d="M12 37h95M12 53h95M12 69h95m-71-40v48m24-48v48m24-48v48" fill="none" stroke="#e0edf6" stroke-width="1"/>
+<g stroke-width="6" stroke-linecap="round"><path d="M17 36h13m12 16h31m16 16h13" stroke="#9bd1f4"/><path d="M65 36h31m-79 32h31" stroke="#078cf0"/><path class="mc-h16-schedule" d="M42 52h34" stroke="#ffb224"/></g>
+</g></g>
+<!-- Right scene: clinical evidence, a monitored bed and patient care. -->
+<g transform="translate(457 222)">
+<g transform="translate(134 8)">
+<rect width="73" height="59" rx="8" fill="#fff" class="mc-h16-ink"/><rect x="7" y="7" width="59" height="40" rx="3" fill="#eaf7ff"/>
+<path d="M37 59v15m-16 0h32" fill="none" class="mc-h16-ink"/>
+<path class="mc-h16-vitals" d="M13 29h8l4-6 5 13 6-23 6 29 5-13h12" fill="none" stroke="#078cf0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="57" cy="53" r="2" fill="#ffb224"/>
+</g>
+<g transform="translate(10 24)">
+<path d="M3 0h51l9 9v75H3Z" fill="#fff" class="mc-h16-ink"/><path d="M54 0v9h9m-49 4h26m-26 9h37" fill="none" class="mc-h16-detail"/>
+<rect x="13" y="32" width="40" height="27" rx="3" fill="#def1ff"/>
+<path d="M32 36v9m-3-5c-8-6-12 2-12 8 0 6 8 5 12 0Zm6 0c8-6 12 2 12 8 0 6-8 5-12 0Z" fill="#9bd0f1" stroke="#6eafd6" stroke-width=".8" stroke-linejoin="round"/>
+<path d="M14 69h20m-20 6h31" fill="none" class="mc-h16-detail"/>
+</g>
+<!-- Smooth and mechanically coherent side view, with supported wheels and rails. -->
+<g class="mc-h16-ink">
+<path d="M10 117V91q0-6 6-6h5q6 0 6 6v26m171 0V97q0-6 6-6h4q6 0 6 6v42H10v-22" fill="#f0f8fe"/>
+<path d="m26 116 27-37q3-4 8-3l31 8 17 32Z" fill="#fff"/>
+<path d="m41 101 16-21q2-3 6-2l21 6q4 1 2 5l-10 15Z" fill="#e6f5ff" stroke="#9dcbe7" stroke-width="1.2"/>
+<path d="M81 103h102q8 0 12 6l3 8H72Z" fill="#a7d9fa" stroke="#6eafd7" stroke-width="1.4"/>
+<path d="M29 117h169v12H29Z" fill="#d9edfc"/>
+<path d="M25 140h176m-153 0v16m128-16v16m-120-1h113" fill="none"/>
+<path d="M45 111v-11q0-5 5-5h128q5 0 5 5v11m-119-16v16m25-16v16m25-16v16m25-16v16m25-16v16" fill="none" stroke="#80b5d7" stroke-width="1.6"/>
+<circle cx="48" cy="160" r="8" fill="#fff"/><circle cx="176" cy="160" r="8" fill="#fff"/><circle cx="48" cy="160" r="2.3" fill="#8dbddc" stroke="none"/><circle cx="176" cy="160" r="2.3" fill="#8dbddc" stroke="none"/>
+<path d="M196 117v-15m-171 15V98" fill="none"/>
+</g></g>
+<text x="160" y="432" text-anchor="middle" class="mc-h16-title">Vận hành bệnh viện</text>
+<text x="160" y="455" text-anchor="middle" class="mc-h16-note">Điều phối · Tối ưu nguồn lực</text>
+<text x="560" y="432" text-anchor="middle" class="mc-h16-title">Khám chữa bệnh</text>
+<text x="560" y="455" text-anchor="middle" class="mc-h16-note">Hỗ trợ bác sỹ · Chăm sóc người bệnh</text>
+<g class="mc-h16-packets">
+<circle r="3.2" fill="#e5ac32"><animateMotion dur="3.5s" begin="0s" repeatCount="indefinite"><mpath href="#mc-h16-expert-route" xlink:href="#mc-h16-expert-route"/></animateMotion></circle><circle r="3.2" fill="#078cf0"><animateMotion dur="4s" begin="-1s" repeatCount="indefinite"><mpath href="#mc-h16-ops-route" xlink:href="#mc-h16-ops-route"/></animateMotion></circle><circle r="3.2" fill="#078cf0"><animateMotion dur="4s" begin="-1s" repeatCount="indefinite"><mpath href="#mc-h16-care-route" xlink:href="#mc-h16-care-route"/></animateMotion></circle><circle r="2.3" fill="#a7c8df"><animateMotion dur="6s" begin="-3s" repeatCount="indefinite"><mpath href="#mc-h16-ops-return" xlink:href="#mc-h16-ops-return"/></animateMotion></circle><circle r="2.3" fill="#a7c8df"><animateMotion dur="6s" begin="-3s" repeatCount="indefinite"><mpath href="#mc-h16-care-return" xlink:href="#mc-h16-care-return"/></animateMotion></circle></g></svg>

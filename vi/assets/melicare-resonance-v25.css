@@ -1,0 +1,11 @@
+/* AI above, open clinical zones below. */
+body.mc-home .hero-grid{grid-template-columns:1fr 1.16fr;align-items:center;gap:0}
+body.mc-home .hero-art.mc-ai-hero{animation:none;transform:none;width:113%;max-width:720px;min-width:0;margin:0 -5% 0 -8%;position:relative;align-self:center}
+.mc-resonance-scene{display:block;width:100%;height:auto;overflow:visible}
+.mi-caption-ready{position:relative}.mi-caption-ready .mi-flow-caption{display:none}.mi-live-caption{position:absolute;z-index:3;left:clamp(140px,var(--caption-x,50%),calc(100% - 140px));top:clamp(43px,var(--caption-y,95%),calc(100% - 40px));transform:translate(-50%,calc(-50% + var(--caption-rise,0px)));width:max-content;max-width:min(340px,calc(100% - 26px));padding:4px;color:#16466c;background:none;border:0;border-radius:0;box-shadow:none;font-family:"Poppins",Arial,sans-serif;text-align:center;pointer-events:none;opacity:0;text-shadow:0 1px 2px #fff,0 0 6px #fff,0 0 14px #fff}.mi-live-caption:before{content:"";position:absolute;top:-7px;left:calc(50% - 14px);width:28px;height:3px;border-radius:50%;background:#ffb224;transform:rotate(-5deg)}.mi-caption-title{display:block;color:#075fa3;font-size:17.5px;font-weight:700;line-height:1.35;letter-spacing:-.35px}.mi-caption-detail{display:block;margin-top:2px;color:#234b65;font-size:14px;font-weight:600;line-height:1.4;letter-spacing:0}
+@media(max-width:480px){.mi-live-caption{padding:3px;left:clamp(128px,var(--caption-x,50%),calc(100% - 128px))}.mi-caption-title{font-size:15.5px}.mi-caption-detail{font-size:13.5px}}
+body#mcTypography.mc-home .ecosystem-footer .footer-copy>p:last-child,body#mcTypography.mc-home .ecosystem-footer .footer-copy>p:last-child>span{font-family:"Poppins","Segoe UI",Arial,sans-serif!important}
+@media(max-width:1000px){body.mc-home .hero-grid{grid-template-columns:1fr 1.1fr}body.mc-home .hero-art.mc-ai-hero{width:115%;margin-left:-9%}}
+@media(max-width:760px){body.mc-home .hero-grid{display:flex;flex-direction:column}body.mc-home .hero-art.mc-ai-hero{width:min(680px,110%);max-width:none;margin:4px -5% 0}}
+@media(max-width:480px){body.mc-home .hero-art.mc-ai-hero{width:116%;margin:12px -8% 0}}
+@media print{.mc-resonance-scene{max-height:370px}body.mc-home .hero-art.mc-ai-hero{width:100%;margin:0}}

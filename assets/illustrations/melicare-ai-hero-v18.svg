@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="mc-ai-scene mc-h18" viewBox="0 0 640 410" role="img" aria-labelledby="mc-h18-title mc-h18-desc">
-<title id="mc-h18-title">AI kết nối vận hành và chăm sóc</title>
-<desc id="mc-h18-desc">Tri thức chuyên gia nuôi dưỡng AI ở trung tâm. Một luồng kết nối liên tục hợp nhất mạng phân bổ nguồn lực bên trái và nhịp chăm sóc hình trái tim bên phải, thể hiện AI hỗ trợ vận hành bệnh viện và khám chữa bệnh.</desc>
+<title id="mc-h18-title">AI kết nối operations và care</title>
+<desc id="mc-h18-desc">Tri thức chuyên gia nuôi dưỡng AI ở trung tâm. Một luồng kết nối liên tục hợp nhất mạng phân bổ nguồn lực bên trái và nhịp care hình trái tim bên phải, thể hiện AI hỗ trợ operations bệnh viện và khám chữa bệnh.</desc>
 <style>
 .mc-h18 text{font-family:"Nunito Sans",Arial,sans-serif}
 .mc-h18-stream{stroke-dasharray:20 330;animation:mcH18Stream 13s linear infinite}
@@ -76,7 +76,7 @@
 <text x="320" y="218" text-anchor="middle" fill="#fff" font-size="22" font-weight="600" style="font-family:Poppins,Arial,sans-serif">AI</text>
 
 <text x="177" y="328" text-anchor="middle" fill="#315a72" font-size="21" font-weight="700">Vận hành</text>
-<text x="464" y="328" text-anchor="middle" fill="#315a72" font-size="21" font-weight="700">Khám chữa bệnh</text>
+<text x="464" y="328" text-anchor="middle" fill="#315a72" font-size="21" font-weight="700">Examination chữa bệnh</text>
 
 <g class="mc-h18-packets">
  <circle r="2.6" fill="#d9aa42"><animateMotion dur="4s" repeatCount="indefinite"><mpath href="#mc-h18-expertise" xlink:href="#mc-h18-expertise"/></animateMotion></circle>

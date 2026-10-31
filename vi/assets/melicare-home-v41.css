@@ -1,0 +1,50 @@
+/* Compact hero with the accepted animated hospital illustration. */
+.melicare-home-v41{--brand-blue:#123a58;--blue:#066dbb;--navy:#123a58;--amber:#f7af3e}
+.melicare-home-v41 .hero>.container{width:min(1280px,calc(100% - 64px))}
+.melicare-home-v41 .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:32px;align-items:center}
+.melicare-home-v41 .hero{padding:20px 0 24px}
+.melicare-home-v41 .hero-copy{padding:12px 0 16px}
+.melicare-home-v41 .hero-art.mc-ai-hero{display:block;width:90%;max-width:630px;min-width:0;margin:0 auto;position:relative}
+.melicare-home-v41 .mc-resonance-scene{display:block;width:100%;height:auto;overflow:visible}
+.melicare-home-v41 .hero-art svg .mi-zone-label{font-family:'Plus Jakarta Sans',Arial,sans-serif;font-weight:500}
+.melicare-home-v41 .hero h1{font-size:clamp(34px,2.9vw,44px);letter-spacing:-1.6px}
+.melicare-home-v41 .hero h1 .accent{color:#123a58}
+.melicare-home-v41 .hero-description{max-width:510px;font-size:18px;margin-top:18px}
+.melicare-home-v41 .hero .actions{margin-top:22px}
+.melicare-home-v41 .brand img{width:173px;height:auto}
+.melicare-home-v41 .wordmark{font-family:'Poppins',Arial,sans-serif;font-weight:800;color:#123a58}
+.melicare-home-v41 .product-dialog-description{color:#1e293b}
+.melicare-home-v41 .site-footer img{width:153px;height:auto}
+/* Names inside primary blue actions remain legible and keep Poppins. */
+html body#mcTypography.melicare-home-v41 .btn .mc-product-name[data-mc-product],html body#mcTypography.melicare-home-v41 .btn .mc-product-name[data-mc-product]>*{color:#fff!important}
+html body#mcTypography.melicare-home-v41 .btn-outline .mc-product-name[data-mc-product],html body#mcTypography.melicare-home-v41 .btn-outline .mc-product-name[data-mc-product]>*{color:#123a58!important}
+#pf-scene .pf-tools{grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}
+#pf-scene .pf-tool .wordmark{font-size:13px}
+#pf-scene [data-figure-tool="melicdss"]{--pf-lift:0px}
+@media(max-width:1250px) and (min-width:681px){
+ #pf-scene{--pf-scene-base-height:500px}
+ #pf-scene .pf-tools{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+ #pf-scene .pf-tool[data-figure-tool]{--pf-lift:0px;min-height:72px}
+ #pf-scene .pf-tool .wordmark{font-size:14px}
+ #pf-scene .pf-core{top:205px}
+}
+@media(max-width:1120px){
+ .melicare-home-v41 .hero-grid{grid-template-columns:1fr;gap:12px}
+ .melicare-home-v41 .hero-copy{max-width:790px;padding-bottom:0}
+ .melicare-home-v41 .hero h1{font-size:clamp(34px,4.2vw,44px)}
+ .melicare-home-v41 .hero-description{max-width:720px}
+ .melicare-home-v41 .hero-art.mc-ai-hero{width:90%;max-width:684px;margin:0 auto}
+ .melicare-home-v41 .brand img{width:150px}
+}
+@media(max-width:760px){
+ .melicare-home-v41 .hero>.container{width:calc(100% - 32px)}
+ .melicare-home-v41 .hero-grid{gap:16px}
+ .melicare-home-v41 .hero-copy{padding:0 4px}
+ .melicare-home-v41 .hero h1{font-size:clamp(31px,5.8vw,40px)}
+ .melicare-home-v41 .hero-description{font-size:16px;line-height:1.75;margin-top:16px}
+ .melicare-home-v41 .hero .actions{flex-direction:row;flex-wrap:wrap;align-items:center;gap:14px 20px}
+}
+@media(max-width:680px){#pf-scene .pf-tools{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:420px){#pf-scene .pf-tool .wordmark{font-size:12px}#pf-scene .pf-tool .wordmark>.mc-product-prefix,#pf-scene .pf-tool .wordmark>.mc-product-suffix{display:block}}
+@media(max-width:380px){.melicare-home-v41 .hero h1{font-size:30px}.melicare-home-v41 .hero .actions{flex-direction:column;align-items:flex-start}}
+@media print{.melicare-home-v41 .hero-art.mc-ai-hero{display:block;max-width:750px}}
