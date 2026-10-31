@@ -784,6 +784,34 @@ input::placeholder,textarea::placeholder{color:#111111;opacity:1}
 <link rel="stylesheet" href="assets/melicare-home-v42.css">
 <link rel="stylesheet" href="assets/melicare-home-v43.css">
 <link rel="stylesheet" href="assets/language-switch.css">
+<style id="hero-label-readability">
+/* Keep illustration captions legible throughout the animation. */
+.hero-art [data-zone-label]{opacity:1!important}
+.hero-art [data-zone-label] text{fill:#03132F!important;font-size:40px!important;font-weight:700!important;letter-spacing:-.3px!important;paint-order:stroke fill;stroke:#fff;stroke-width:1.3px;stroke-linejoin:round}
+.hero-art [data-zone-label] tspan{fill:#03132F!important;font-weight:700!important}
+.hero-description{color:#263B53!important}
+</style>
+<style id="meliq-footer-navigation">
+.site-footer{padding:30px 0 22px;background:#fff;border-top:1px solid #dce7ef}
+.site-footer .footer-inner{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:22px 40px}
+.site-footer .meliq-footer-brand{display:inline-flex;align-items:center;justify-content:center;border-radius:12px;transition:transform .2s}
+.site-footer .meliq-footer-brand:hover{transform:translateY(-2px)}
+.site-footer .meliq-footer-brand img{display:block;width:54px;height:54px;object-fit:contain}
+.site-footer .footer-nav{display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:18px 28px;font-size:13px;font-weight:600;color:#071e47}
+.site-footer .footer-nav a:hover{color:#066dbb}
+.site-footer .footer-contact{padding:0;border:0;background:none;font:inherit;color:#066dbb;cursor:pointer}
+.site-footer .footer-contact:hover{text-decoration:underline;text-underline-offset:5px}
+.site-footer .footer-brand-row{display:flex;align-items:center;gap:16px}.site-footer .footer-tagline{font-size:13px;line-height:1.45;font-weight:700;color:#071e47}.site-footer .footer-inner{column-gap:28px}.site-footer .footer-nav{gap:16px 20px}.site-footer .footer-copyright{text-align:left;margin:0;padding:0;border:0;font-size:11px;color:#526176;white-space:nowrap}
+@media(max-width:1100px){.site-footer .footer-inner{grid-template-columns:1fr;justify-items:center}.site-footer .footer-nav{justify-content:center}}
+@media(max-width:600px){.site-footer .footer-inner{grid-template-columns:1fr;justify-items:center;gap:20px}.site-footer .footer-nav{justify-content:center;gap:16px 22px}.site-footer .footer-copyright{line-height:1.7}.site-footer .footer-brand-row{gap:10px;flex-wrap:wrap;justify-content:center}.site-footer .footer-tagline{font-size:12px}.site-footer .footer-copyright{font-size:10px}.site-footer .meliq-footer-brand img{width:48px;height:48px}}
+</style>
+<style id="hero-section-height">
+/* Give the opening section the same spacious scale as the main sections. */
+.hero{min-height:calc(100svh - 84px);display:flex;align-items:center;box-sizing:border-box;padding-top:64px;padding-bottom:64px}
+.hero > .container{width:100%}
+@media(min-width:901px){.hero{min-height:max(760px,calc(100svh - 84px))}}
+@media(max-width:900px){.hero{padding-top:48px;padding-bottom:48px}}
+</style>
 </head>
 <body id="mcTypography" class="melicare-home-v41"><div id="top" aria-hidden="true"></div>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -973,7 +1001,7 @@ input::placeholder,textarea::placeholder{color:#111111;opacity:1}
   <div class="start-card"><div><p class="eyebrow">Find the right starting point together</p><h2 id="start-title">Start with a specific challenge.<br><span>Scale with your hospital's needs.</span></h2><p>Discuss MELIOR, your current scheduling workflow and a measurable pilot scope.</p></div><div class="start-action"><button class="btn" type="button" data-contact="melior">Discuss a MELIOR demo <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button><p class="small-note">One priority workflow. One pilot plan.</p></div></div>
  </section>
 </main>
-<footer class="site-footer"><div class="container footer-inner"><a href="#top" aria-label="MELICARE — back to top"><img src="assets/melicare-wordmark.svg" alt="MELICare" width="134" height="36" loading="lazy"></a><div class="footer-copy"><a href="#nen-tang">Platform vision</a><span>© 2026 MELIQ. All rights reserved.</span></div></div></footer>
+<footer class="site-footer"><div class="container footer-inner"><div class="footer-brand-row"><a class="meliq-footer-brand" href="https://meliq.ai" aria-label="Visit MELIQ"><img src="assets/meliq-favicon.svg" alt="MELIQ" width="54" height="54" loading="lazy"></a><span class="footer-tagline">Question your way<br>beyond the best.</span><p class="footer-copyright">© 2026 MELIQ. All rights reserved.</p></div><nav class="footer-nav" aria-label="Footer navigation"><a href="#nen-tang">Platform</a><a href="#melior">Start with MELIOR</a><a href="#he-sinh-thai">Ecosystem</a><button class="footer-contact" type="button" data-contact="melior">Request a demo <span aria-hidden="true">↗</span></button></nav></div></footer>
 
 <dialog id="product-dialog" data-product-theme="melior" aria-labelledby="product-dialog-title"><div class="dialog-head"><div><h2 id="product-dialog-title">MELICARE applications</h2><p id="product-dialog-subtitle"></p></div><button class="close-dialog" type="button" data-close="product-dialog" aria-label="Close product information"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div><div class="dialog-body"><p class="product-dialog-description" id="product-dialog-description"></p><ul class="product-dialog-list" id="product-dialog-features"></ul><p class="product-dialog-note" id="product-dialog-note"></p></div><div class="actions product-dialog-actions"><a class="product-launch" id="product-open" title="Sign in to open the application" href="MELIOR_Login.html"><span class="launch-symbol"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 8h18m-7 5 3 3-3 3m-6-3h9"/></svg></span><span class="launch-copy"><strong>Open application</strong><small>Sign in to get started</small></span><svg class="icon launch-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a><button class="btn btn-outline" id="product-contact" type="button">Discuss this product <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></div></dialog>
 
