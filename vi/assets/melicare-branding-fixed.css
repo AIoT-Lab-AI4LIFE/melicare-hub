@@ -1,0 +1,34 @@
+/* Canonical wordmarks. Colors and type come from MELICARE.html. */
+body#mcTypography{--mc-product-ink:#123a58;--mc-product-font:'Poppins','Segoe UI',Arial,sans-serif}
+body#mcTypography .mc-product-name,
+body#mcTypography .mc-product-name :is(.mc-product-prefix,.mc-product-suffix){
+ font-family:var(--mc-product-font)!important;font-style:normal!important;
+ letter-spacing:-.4px!important;white-space:nowrap;
+}
+body#mcTypography .mc-product-name{color:var(--mc-product-ink)!important;font-weight:800!important;line-height:1.25}
+html body#mcTypography .mc-product-name[data-mc-product]>.mc-product-prefix{color:var(--mc-product-ink)!important;font-size:inherit!important;font-weight:800!important}
+html body#mcTypography .mc-product-name[data-mc-product]>.mc-product-suffix{color:var(--mc-product-accent,#128ac3)!important;font-size:inherit!important;font-weight:500!important}
+body#mcTypography [data-mc-product="melior"]{--mc-product-accent:#078cf0}
+body#mcTypography [data-mc-product="meliocr"]{--mc-product-accent:#a0781a}
+body#mcTypography [data-mc-product="melivoice"]{--mc-product-accent:#7062b1}
+body#mcTypography [data-mc-product="meliguide"]{--mc-product-accent:#a66a41}
+body#mcTypography :is([data-mc-product="melivlm"],[data-mc-product="melicdss"]){--mc-product-accent:#128ac3}
+body#mcTypography :is([data-mc-product="melidx"],[data-mc-product="melimind"],[data-mc-product="melistroke"],[data-mc-product="melicardio"],[data-mc-product="melialz"],[data-mc-product="melidiabetes"]){--mc-product-accent:#6d63ad}
+body#mcTypography [data-mc-product="melipos"]{--mc-product-accent:#a37720}
+/* The switcher uses the same two-part wordmark, including dynamically added entries. */
+body#mcTypography .mc-switch-name>.mc-product-name{font-size:inherit!important}
+body#mcTypography .mc-suite-logo{display:block;width:246px;height:auto!important;max-width:100%;object-fit:contain}
+body#mcTypography .suite-brand .mc-suite-signature{display:block;margin-top:1px;line-height:0}
+body#mcTypography .suite-brand .mc-suite-logo{width:112px!important;height:auto!important;max-width:100%}
+body#mcTypography .suite-brand>span:last-child{display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+body#mcTypography .sidebar>a.brand{width:100%;min-width:0;gap:0}
+body#mcTypography .sidebar>a.brand .mc-suite-logo{width:218px;max-width:100%}
+body#mcTypography .mc-login-brand{gap:0;background:none;border:0}
+body#mcTypography .crumb-brand{display:inline-flex;align-items:center;line-height:1}
+body#mcTypography .crumb-brand .mc-suite-logo{width:103px!important;height:auto!important;vertical-align:middle}
+body#mcTypography .mc-directory-brand{display:inline-flex;margin-bottom:12px;padding:0;border:0;background:transparent;box-shadow:none}
+@media(min-width:999999px){
+ body#mcTypography .mc-login-brand .mc-suite-logo{width:clamp(170px,54vw,205px)}
+ body#mcTypography .suite-brand .mc-suite-logo{width:100px!important}
+ body#mcTypography .crumb-brand .mc-suite-logo{width:88px!important}
+}

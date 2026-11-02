@@ -1,0 +1,19 @@
+/* Product details: two actions, with an unmistakable, accessible close control. */
+#product-dialog{width:min(650px,calc(100vw - 32px));border:1px solid #d6e0e9;border-radius:22px;box-shadow:0 28px 90px #123a582e;padding:0}
+#product-dialog::backdrop,#contact-dialog::backdrop{background:#102d466b;backdrop-filter:blur(5px)}
+#product-dialog .dialog-head{align-items:flex-start;padding:29px 30px 21px;gap:22px;border-bottom:1px solid #e4ebf1}
+#product-dialog .dialog-head h2{font-size:30px;line-height:1.35}
+#product-dialog .dialog-head p{margin-top:7px;color:#475569;font-size:16px;line-height:1.65}
+#product-dialog .dialog-body{padding:24px 30px 30px}
+#product-dialog .product-dialog-description{font-size:17px;line-height:1.85}
+#product-dialog .product-dialog-list{margin:22px 0;gap:13px}
+#product-dialog .product-dialog-note{font-size:14px;line-height:1.75;color:#475569}
+#product-dialog .product-dialog-note[hidden]{display:none!important}
+#product-dialog .actions{display:flex;flex-wrap:wrap;gap:12px;padding-top:22px;margin-top:22px;border-top:1px solid #e4ebf1}
+#product-dialog .actions>.btn{flex:1;justify-content:center;min-height:49px;padding:11px 16px;font-size:15px}
+.melicare-home-v41 .close-dialog{display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;min-width:44px;border:1px solid #123a58;border-radius:50%;padding:0;background:#123a58;color:#fff;box-shadow:0 4px 13px #123a581f;transition:background .16s,transform .16s}
+.melicare-home-v41 .close-dialog>.icon{width:22px;height:22px;stroke-width:2.5;color:inherit}
+.melicare-home-v41 .close-dialog:hover{background:#1b4b70;transform:scale(1.05)}
+.melicare-home-v41 .close-dialog:focus-visible{outline:3px solid #f7af3e;outline-offset:4px}
+@media(min-width:999999px){#product-dialog .dialog-head{padding:23px 21px 18px;gap:14px}#product-dialog .dialog-head h2{font-size:26px}#product-dialog .dialog-body{padding:21px}#product-dialog .actions{flex-direction:column}#product-dialog .actions>.btn{width:100%;flex:auto}.melicare-home-v41 .close-dialog{flex-basis:42px;width:42px;height:42px;min-width:42px}}
+@media(prefers-reduced-motion:reduce){.melicare-home-v41 .close-dialog{transition:none}}
