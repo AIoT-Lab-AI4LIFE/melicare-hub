@@ -1,0 +1,7 @@
+html{overflow-x:clip;background:#f7f7f4}body{width:1440px!important;min-width:1440px!important;max-width:1440px!important;margin:0 auto!important;zoom:var(--mc-scale,1)}
+.hero{min-height:600px!important;height:auto!important;padding-block:40px!important}.hero>.container,.container{width:1280px!important;max-width:1280px!important;margin-inline:auto!important}
+main{display:flow-root}main>section,main>div{margin-block:0!important}.mc-full-background{box-shadow:0 0 0 100vmax var(--mc-band-color);clip-path:inset(0 -100vmax)}
+@media print{body{zoom:1!important;width:auto!important;min-width:0!important}.container{width:100%!important}}
+
+.start-section{background:#fff;box-shadow:0 0 0 100vmax #fff;clip-path:inset(0 -100vmax)}
+.platform-stage{background:#071E47!important}
