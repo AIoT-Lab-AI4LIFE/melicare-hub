@@ -1004,6 +1004,7 @@ body[data-mc-page="melivlm"] .welcome .suggestion:nth-child(3){
 <link rel="stylesheet" href="assets/melicare-product-themes.css">
 <link rel="stylesheet" href="assets/melicare-tool-workspaces.css">
 <link rel="stylesheet" href="assets/language-switch.css">
+<link rel="stylesheet" href="assets/melicare-visual-repair.css">
 </head>
 <body id="mcTypography" class="mc-neutral-workspace suite-ui suite-vlm meli-refined mc-v2 mc-layout-v3 mc-readable tool-locked" data-mc-page="melivlm" data-module="MELI_VLM" style=";--suite-accent:#128ac3;--suite-tint:#e6f5fc;--suite-edge:#b9dfef">
 <header class="suite-header"><div class="suite-bar"><a aria-label="MELIVLM" class="suite-brand" href="MELI_VLM.html"><span class="suite-brand-symbol"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><rect height="15" rx="3" width="18" x="3" y="3"></rect><path d="M8 22h8M12 18v4M6 12h3l2-5 3 8 2-4h2"></path></svg></span><span><span class="suite-word mc-product-name" data-mc-product="melivlm"><span class="meli-prefix mc-product-prefix">MELI</span><span class="tool-suffix mc-product-suffix">VLM</span></span></span></a><span class="suite-context"><i></i>CLINICAL CARE</span><div id="meliTopControlsV70"><div id="meliAuthV69">
@@ -1031,7 +1032,7 @@ body[data-mc-page="melivlm"] .welcome .suggestion:nth-child(3){
 </div>
 <div class="sidebarFooter">
 <div class="userMini">
-<div class="userAvatar">BS</div>
+<div class="userAvatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg></div>
 <div><b>Physician</b><span>MELICARE Workspace</span></div>
 </div>
 </div>
@@ -1051,13 +1052,13 @@ body[data-mc-page="melivlm"] .welcome .suggestion:nth-child(3){
 <div class="chatScroll" id="chatScroll">
 <div class="chatInner" id="chatInner">
 <div class="welcome" id="welcomeBlock">
-<div class="welcomeIcon">VLM</div>
-<h2>Ask questions directly about medical images</h2>
-<p>Upload images in the right panel, select an image, then ask about lesions, location or imaging features, or request a report from MELI VLM.</p>
+<div class="vlm-welcome-brand"><span class="vlm-welcome-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M10 5H7a2 2 0 0 0-2 2v3m17-5h3a2 2 0 0 1 2 2v3M5 22v3a2 2 0 0 0 2 2h3m12 0h3a2 2 0 0 0 2-2v-3"/><rect x="10" y="10" width="12" height="12" rx="3"/><path d="M16 13v6m-3-3h6"/></svg></span><span>MELI<span class="vlm-brand-accent">VLM</span><small>Medical imaging assistant</small></span></div>
+<h2>Explore medical images with AI</h2>
+<p>Select an image in the right panel to discuss findings, locate abnormalities, or draft an imaging report.</p>
 <div class="suggestions">
-<button class="suggestion" data-ui-icon="image">What condition does this patient have?</button>
-<button class="suggestion" data-ui-icon="focus">Highlight abnormalities in this image</button>
-<button class="suggestion" data-ui-icon="document">Write a report for this image</button>
+<button class="suggestion" data-ui-icon="image">Discuss the imaging findings</button>
+<button class="suggestion" data-ui-icon="focus">Review areas of concern</button>
+<button class="suggestion" data-ui-icon="document">Draft an imaging report</button>
 </div>
 </div>
 <div class="message user">
@@ -1065,10 +1066,10 @@ body[data-mc-page="melivlm"] .welcome .suggestion:nth-child(3){
 <div class="msgRole">You</div>
 <div class="msgText">Are there any notable abnormalities in the right lung?</div>
 </div>
-<div class="avatar">BS</div>
+<div class="avatar vlm-avatar-user" role="img" aria-label="You"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#eaf1f6" stroke="none"/><circle cx="16" cy="12" r="4.5" fill="#526b80" stroke="none"/><path d="M7.5 26c.4-5.2 3.5-8 8.5-8s8.1 2.8 8.5 8" fill="#526b80" stroke="none"/><path d="m12.5 18.8 3.5 3.4 3.5-3.4" fill="none" stroke="#eaf1f6" stroke-width="1.7"/></svg></div>
 </div>
 <div class="message">
-<div class="avatar">AI</div>
+<div class="avatar vlm-avatar-ai" role="img" aria-label="MELI VLM assistant"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="5"/><path d="M12 3v3M2 11v4m20-4v4M9 16h6"/><circle class="vlm-eye" cx="8.5" cy="11.5" r="1"/><circle class="vlm-eye" cx="15.5" cy="11.5" r="1"/><circle class="vlm-eye" cx="12" cy="2.5" r="1"/></svg></div>
 <div class="msgBody">
 <div class="msgRole">MELI VLM</div>
 <div class="msgText">There is a focal area of increased attenuation in the right upper lobe. Review adjacent slices to better assess its boundaries and extent.</div>
@@ -1096,8 +1097,8 @@ body[data-mc-page="melivlm"] .welcome .suggestion:nth-child(3){
 <p class="suite-demo-note">Demo interface · AI features and system connections are retained from the original; no backend integration yet.</p></main>
 <aside class="rightPanel">
 <div class="rightHead">
-<h2>Uploaded images</h2>
-<p>Click an image to view it alongside the response.</p>
+<span class="vlm-panel-kicker">IMAGE WORKSPACE</span><h2>Medical images</h2>
+<p>Select an image to explore it with your assistant.</p>
 </div>
 <div class="uploadArea">
 <button class="uploadBtn mc-upload-trigger" data-ui-icon="upload" id="uploadBtn"><svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><path d="M12 16V3m-4 4 4-4 4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg><span>Upload medical images</span></button>
@@ -1257,13 +1258,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if(!(currentConversation.messages||[]).length){
       chatInner.innerHTML = `
         <div class="welcome" id="welcomeBlock">
-          <div class="welcomeIcon">VLM</div>
-          <h2>Ask questions directly about medical images</h2>
-          <p>Upload images in the right panel, select an image, then ask about lesions, location or imaging features, or request a report from MELI VLM.</p>
+          <div class="vlm-welcome-brand"><span class="vlm-welcome-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M10 5H7a2 2 0 0 0-2 2v3m17-5h3a2 2 0 0 1 2 2v3M5 22v3a2 2 0 0 0 2 2h3m12 0h3a2 2 0 0 0 2-2v-3"/><rect x="10" y="10" width="12" height="12" rx="3"/><path d="M16 13v6m-3-3h6"/></svg></span><span>MELI<span class="vlm-brand-accent">VLM</span><small>Medical imaging assistant</small></span></div>
+          <h2>Explore medical images with AI</h2>
+          <p>Select an image in the right panel to discuss findings, locate abnormalities, or draft an imaging report.</p>
           <div class="suggestions">
-            <button class="suggestion" data-ui-icon="image">What condition does this patient have?</button>
-            <button class="suggestion" data-ui-icon="focus">Highlight abnormalities in this image</button>
-            <button class="suggestion" data-ui-icon="document">Write a report for this image</button>
+            <button class="suggestion" data-ui-icon="image">Discuss the imaging findings</button>
+            <button class="suggestion" data-ui-icon="focus">Review areas of concern</button>
+            <button class="suggestion" data-ui-icon="document">Draft an imaging report</button>
           </div>
         </div>`;
       return;
@@ -1281,10 +1282,10 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="msgRole">You</div>
           <div class="msgText">${safe}</div>
         </div>
-        <div class="avatar">BS</div>`;
+        <div class="avatar vlm-avatar-user" role="img" aria-label="You"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#eaf1f6" stroke="none"/><circle cx="16" cy="12" r="4.5" fill="#526b80" stroke="none"/><path d="M7.5 26c.4-5.2 3.5-8 8.5-8s8.1 2.8 8.5 8" fill="#526b80" stroke="none"/><path d="m12.5 18.8 3.5 3.4 3.5-3.4" fill="none" stroke="#eaf1f6" stroke-width="1.7"/></svg></div>`;
     }else{
       wrapper.innerHTML = `
-        <div class="avatar">AI</div>
+        <div class="avatar vlm-avatar-ai" role="img" aria-label="MELI VLM assistant"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="5"/><path d="M12 3v3M2 11v4m20-4v4M9 16h6"/><circle class="vlm-eye" cx="8.5" cy="11.5" r="1"/><circle class="vlm-eye" cx="15.5" cy="11.5" r="1"/><circle class="vlm-eye" cx="12" cy="2.5" r="1"/></svg></div>
         <div class="msgBody">
           <div class="msgRole">MELI VLM</div>
           <div class="msgText">${safe}</div>
@@ -1320,7 +1321,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.createElement('div');
     wrapper.className = 'message';
     wrapper.innerHTML = `
-      <div class="avatar">AI</div>
+      <div class="avatar vlm-avatar-ai" role="img" aria-label="MELI VLM assistant"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="5"/><path d="M12 3v3M2 11v4m20-4v4M9 16h6"/><circle class="vlm-eye" cx="8.5" cy="11.5" r="1"/><circle class="vlm-eye" cx="15.5" cy="11.5" r="1"/><circle class="vlm-eye" cx="12" cy="2.5" r="1"/></svg></div>
       <div class="msgBody">
         <div class="msgRole">MELI VLM · Report</div>
         <div class="reportBlock">
@@ -1547,5 +1548,53 @@ document.addEventListener('DOMContentLoaded',()=>{
  if(nav)nav.setAttribute('aria-label',"Switch MELICARE application");
 });
 </script><script src="assets/language-switch.js"></script>
+
+<script id="vlm-sections-and-icons">
+(()=>{
+ const paths={
+ chevron:'<path d="m7 10 5 5 5-5"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',
+ history:'<path d="M3 10a9 9 0 1 1 1 7M3 4v6h6M12 7v5l3 2"/>',
+ chat:'<path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l-3 3v-9.5A7.5 7.5 0 0 1 9.5 5H13"/><path d="M18 2v8m-4-4h8"/>',
+ image:'<rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 3-3 6 6"/>',
+ upload:'<path d="M12 16V3m-4 4 4-4 4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/>',
+ report:'<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z M14 3v6h6M8 13h8M8 17h5"/>',
+ focus:'<path d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3m8 0h3a2 2 0 0 0 2-2v-3"/><circle cx="12" cy="12" r="4"/><path d="M12 10v4m-2-2h4"/>'
+ };
+ const svg=name=>'<svg class="vlm-ui-icon" viewBox="0 0 24 24" aria-hidden="true">'+paths[name]+'</svg>';
+ const states=new Map();let nextId=0;
+ function icon(el,name,only=false){if(!el||el.dataset.vlmIcon)return;el.dataset.vlmIcon=name;el.removeAttribute('data-ui-icon');el.querySelectorAll('svg').forEach(n=>n.remove());if(only)el.textContent='';el.insertAdjacentHTML('afterbegin',svg(name));}
+ function section(el,header,key,label){
+  if(!el||!header||el.dataset.vlmSection)return;
+  el.dataset.vlmSection=key;el.classList.add('vlm-foldable');
+  const children=[...el.children].filter(n=>n!==header);
+  const ids=children.map(n=>{if(!n.id)n.id='vlm-fold-'+(++nextId);return n.id;});
+  const button=document.createElement('button');button.type='button';button.className='vlm-fold-toggle';button.innerHTML=svg('chevron');
+  button.setAttribute('aria-controls',ids.join(' '));
+  const update=()=>{const collapsed=states.get(key)===true;el.classList.toggle('vlm-is-collapsed',collapsed);button.setAttribute('aria-expanded',String(!collapsed));button.setAttribute('aria-label',(collapsed?'Expand ':'Collapse ')+label);button.title=(collapsed?'Expand ':'Collapse ')+label;};
+  button.addEventListener('click',()=>{states.set(key,!states.get(key));update();});header.appendChild(button);update();
+ }
+ function enhance(){
+  const sidebar=document.querySelector('.sidebar');
+  if(sidebar&&!sidebar.querySelector('.vlm-sidebar-head')){
+   const head=document.createElement('div');head.className='vlm-sidebar-head';
+   const title=document.createElement('span');title.textContent='Workspace';head.appendChild(title);
+   sidebar.prepend(head);
+  }
+  section(sidebar,sidebar?.querySelector('.vlm-sidebar-head'),'sidebar-panel','workspace navigation');
+  document.querySelectorAll('.sidebar .sideSection').forEach((el,i)=>section(el,el.querySelector('.sideTitle'),'sidebar-'+i,i?'history':'projects'));
+  section(document.querySelector('#welcomeBlock'),document.querySelector('#welcomeBlock .vlm-welcome-brand'),'welcome','getting started');
+  section(document.querySelector('.rightPanel'),document.querySelector('.rightPanel .rightHead'),'image-panel','image workspace');
+  section(document.querySelector('.uploadedImagesBox'),document.querySelector('.galleryTitle'),'gallery','uploaded images');
+  [['newChatBtn','chat'],['composerUploadBtn','image'],['composerReportBtn','report'],['uploadBtn','upload']].forEach(([id,name])=>icon(document.getElementById(id),name));
+  const plus=document.getElementById('openProjectsBtn'),history=document.getElementById('openHistoryBtn');
+  icon(plus,'plus',true);icon(history,'history',true);
+  if(plus)plus.setAttribute('aria-label','Open projects');if(history)history.setAttribute('aria-label','Open conversation history');
+  document.querySelectorAll('.welcome .suggestion').forEach((el,i)=>icon(el,['image','focus','report'][i%3]));
+ }
+ const start=()=>{enhance();new MutationObserver(enhance).observe(document.querySelector('.app'),{childList:true,subtree:true});};
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+</script>
 </body>
 </html>

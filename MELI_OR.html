@@ -3777,108 +3777,6 @@ body{
 <link rel="stylesheet" href="assets/melior-layout-final.css"/>
 <script defer src="assets/melior-layout-final.js"></script>
 <link rel="stylesheet" href="assets/melicare-final-upload-cardio.css"/>
-<style id="emergency-popup-fit">
-html body.mc-or #opsModal.eventMode{
-  width:min(560px,calc(100vw - 32px))!important;
-  height:auto!important;
-  max-height:calc(100dvh - 32px)!important;
-}
-html body.mc-or #opsModal.eventMode .opsModalHead{
-  padding:18px 20px 15px!important;
-}
-html body.mc-or #opsModal.eventMode .opsModalHead h3{
-  font-size:21px!important;
-  line-height:1.3!important;
-}
-html body.mc-or #opsModal.eventMode .opsModalHead p{
-  font-size:14px!important;
-  line-height:1.4!important;
-  margin-top:4px!important;
-}
-html body.mc-or #opsModal.eventMode #opsBody{
-  flex:0 0 auto!important;
-  height:auto!important;
-  min-height:0!important;
-  padding:12px 20px 4px!important;
-  overflow:visible!important;
-}
-html body.mc-or #opsModal.eventMode .opsRow{
-  grid-template-columns:120px minmax(0,1fr)!important;
-  padding:10px 0!important;
-  gap:10px!important;
-}
-html body.mc-or #opsModal.eventMode .opsRow>span:first-child,
-html body.mc-or #opsModal.eventMode .opsRow strong{
-  font-size:15px!important;
-  line-height:1.4!important;
-}
-html body.mc-or #opsModal.eventMode .opsActions{
-  margin:8px 0 0!important;
-  padding:12px 20px 14px!important;
-}
-html body.mc-or #opsModal.eventMode .opsBtn{
-  font-size:14px!important;
-  padding:9px 16px!important;
-  min-width:88px!important;
-}
-</style>
-<style id="case-pane-equal-height">
-body#mcTypography.mc-or #casesPage .caseLayout{align-items:stretch!important}
-body#mcTypography.mc-or #casesPage .caseListPane,
-body#mcTypography.mc-or #casesPage .caseDetail{
-  align-self:stretch!important;
-  display:flex!important;
-  flex-direction:column!important;
-  height:100%!important;
-  min-height:0!important;
-  max-height:none!important;
-  overflow:hidden!important;
-  box-sizing:border-box!important;
-}
-body#mcTypography.mc-or #casesPage .caseListPane>.integratedBoard{
-  flex:1 1 auto!important;
-  display:flex!important;
-  flex-direction:column!important;
-  height:100%!important;
-  min-height:0!important;
-  max-height:none!important;
-  overflow:hidden!important;
-}
-body#mcTypography.mc-or #casesPage .caseListPane .boardDateHead,
-body#mcTypography.mc-or #casesPage .caseListPane .weekMini,
-body#mcTypography.mc-or #casesPage .caseListPane .boardFilterRow,
-body#mcTypography.mc-or #casesPage .caseListHead{
-  flex:0 0 auto!important;
-}
-body#mcTypography.mc-or #casesPage .caseListPane .caseList{
-  flex:1 1 auto!important;
-  min-height:0!important;
-  max-height:none!important;
-  overflow:hidden!important;
-  display:flex!important;
-  flex-direction:column!important;
-}
-body#mcTypography.mc-or #casesPage #caseRows{
-  flex:1 1 auto!important;
-  min-height:0!important;
-  display:flex!important;
-  flex-direction:column!important;
-  overflow:auto!important;
-}
-body#mcTypography.mc-or #casesPage #caseRows .surgeryRow{
-  flex:1 1 0!important;
-  min-height:68px!important;
-  align-content:center!important;
-}
-body#mcTypography.mc-or #casesPage #caseRows .noCases,
-body#mcTypography.mc-or #casesPage #caseRows .boardEmpty{
-  flex:1 1 auto!important;
-  display:grid!important;
-  place-items:center!important;
-}
-body#mcTypography.mc-or #casesPage .caseDetail{position:static!important;top:auto!important}
-body#mcTypography.mc-or #casesPage .caseDetail .detailButtons{margin-top:auto!important}
-</style>
 <link rel="stylesheet" href="./assets/melicare-fresh-palette.css"><link rel="stylesheet" href="assets/melicare-branding.css"/>
 <script src="assets/melicare-branding.js"></script>
 <link rel="stylesheet" href="assets/melicare-theme-v40.css">
@@ -3886,6 +3784,7 @@ body#mcTypography.mc-or #casesPage .caseDetail .detailButtons{margin-top:auto!im
 <link rel="stylesheet" href="assets/melicare-product-themes.css">
 <link rel="stylesheet" href="assets/melicare-tool-workspaces.css">
 <link rel="stylesheet" href="assets/language-switch.css">
+<link rel="stylesheet" href="assets/melicare-visual-repair.css">
 </head><body id="mcTypography" class="mc-neutral-workspace mc-v2 mc-or mc-layout-v3 mc-readable tool-locked" data-mc-page="melior" data-module="MELI_OR">
 <div class="app"><aside aria-label="MELIOR navigation" class="mc-or-header"><a aria-label="MELIOR" class="mc-or-brand suite-brand" href="MELI_OR.html" title="MELIOR — Operating room coordination"><span class="suite-brand-symbol"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><rect height="16" rx="3" width="18" x="3" y="5"></rect><path d="M7 3v4m10-4v4M3 10h18m-9 3v5m-2.5-2.5h5"></path></svg></span><span><span class="suite-word mc-product-name" data-mc-product="melior"><span class="meli-prefix mc-product-prefix">MELI</span><span class="tool-suffix mc-product-suffix">OR</span></span></span></a><div aria-label="MELIOR features" class="menu mc-or-local-nav" role="navigation"><button class="active" data-page="dashboard" type="button">Overview</button><button data-page="rooms" type="button">Operating rooms</button><button data-page="cases" type="button">Surgical cases</button><button data-page="equipment" type="button">Equipment management</button><button data-page="duty" type="button">Duty roster</button></div><div class="mc-or-controls"><button class="mc-account-button" data-mc-account="" type="button"><svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg><span>Sign in</span></button></div></aside>
 <div class="workspace"><div class="topbar mc-or-topbar"><b>Coordination dashboard</b><span class="mc-or-original-meta">Sunday, 28/09/2026 · <b>10:42</b>   🔔 3</span></div><main id="dashboardPage">
@@ -3983,19 +3882,26 @@ const effRoomSel=document.getElementById("effRoom"),effWeek=document.getElementB
 function renderEfficiency(){
  const d=EFF_DATA[effRoom],values=effPeriod==="week"?d.week:d.month,cases=effPeriod==="week"?d.cases:d.monthCases;
  const labels=effPeriod==="week"?["T1","Mon","Tue","Wed","Thu","Fri","Sat","T8"]:["Wed","Thu","Fri","Sat","T8","T9"];
- const W=800,H=190,min=20,max=100,step=W/(values.length-1);
- const pts=values.map((v,i)=>[i*step,H-(v-min)/(max-min)*H]);
+ const W=Math.max(120,Math.round(effSvg.clientWidth)||800),H=Math.max(80,Math.round(effSvg.clientHeight)||190),pad=10,min=20,max=100,step=(W-2*pad)/(values.length-1);
+ effSvg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+ effWeek.setAttribute('aria-pressed',String(effPeriod==='week'));
+ effMonth.setAttribute('aria-pressed',String(effPeriod==='month'));
+ effTooltip.style.display='none';
+ const pts=values.map((v,i)=>[pad+i*step,H-pad-(v-min)/(max-min)*(H-2*pad)]);
  const line=pts.map(p=>p.join(",")).join(" ");
- const area=`0,${H} `+line+` ${W},${H}`;
+ const area=`${pad},${H-pad} `+line+` ${W-pad},${H-pad}`;
  effSvg.innerHTML=`<defs><linearGradient id="effGradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#128ac3" stop-opacity=".22"/><stop offset="100%" stop-color="#128ac3" stop-opacity=".02"/></linearGradient></defs>`+
- [0,.25,.5,.75,1].map(t=>`<line class="effGrid" x1="0" y1="${t*H}" x2="${W}" y2="${t*H}"/>`).join("")+
+ [0,.25,.5,.75,1].map(t=>`<line class="effGrid" x1="${pad}" y1="${pad+t*(H-2*pad)}" x2="${W-pad}" y2="${pad+t*(H-2*pad)}"/>`).join("")+
  `<polygon class="effArea" points="${area}"/><polyline class="effLinePath" points="${line}"/>`+
- pts.map((p,i)=>`<circle class="effPointHalo" cx="${p[0]}" cy="${p[1]}" r="9"/><circle class="effPoint" data-i="${i}" cx="${p[0]}" cy="${p[1]}" r="5"/>`).join("");
+ pts.map((p,i)=>`<g class="effPointTarget" data-i="${i}" tabindex="0" role="img" aria-label="${labels[i]}: ${values[i]}% utilization, ${cases[i]} surgical cases"><circle class="effPointHit" cx="${p[0]}" cy="${p[1]}" r="12"/><circle class="effPoint" cx="${p[0]}" cy="${p[1]}" r="3.5"/></g>`).join("");
  effX.innerHTML=labels.map(x=>`<span>${x}</span>`).join("");
  const cur=values.at(-1),best=Math.max(...values),chg=cur-values[0];
  document.getElementById("effCurrent").textContent=cur+"%";document.getElementById("effBest").textContent=best+"%";document.getElementById("effChange").textContent=(chg>=0?"+":"")+chg+" percentage points";
- effSvg.querySelectorAll(".effPoint").forEach(pt=>{
-   pt.addEventListener("mouseenter",e=>{const i=+pt.dataset.i;const rect=document.querySelector(".efficiencyPanel").getBoundingClientRect(),pr=pt.getBoundingClientRect();effTooltip.innerHTML=`<b>${effRoom==="avg"?"All rooms average":effRoom} · ${labels[i]}</b><div>Utilization: <strong>${values[i]}%</strong><br>Surgical cases: <strong>${cases[i]}</strong><br>${i?`Compared with previous period: ${values[i]-values[i-1]>=0?"+":""}${values[i]-values[i-1]} percentage points`:"First period"}</div>`;effTooltip.style.display="block";effTooltip.style.left=Math.min(pr.left-rect.left+12,rect.width-195)+"px";effTooltip.style.top=Math.max(70,pr.top-rect.top-75)+"px";});
+ effSvg.querySelectorAll(".effPointTarget").forEach(pt=>{
+   const showPointTooltip=()=>{const i=+pt.dataset.i;const rect=document.querySelector(".efficiencyPanel").getBoundingClientRect(),pr=pt.getBoundingClientRect();effTooltip.innerHTML=`<b>${effRoom==="avg"?"All rooms average":effRoom} · ${labels[i]}</b><div>Utilization: <strong>${values[i]}%</strong><br>Surgical cases: <strong>${cases[i]}</strong><br>${i?`Compared with previous period: ${values[i]-values[i-1]>=0?"+":""}${values[i]-values[i-1]} percentage points`:"First period"}</div>`;effTooltip.style.display="block";effTooltip.style.left=Math.min(pr.left-rect.left+12,rect.width-195)+"px";effTooltip.style.top=Math.max(70,pr.top-rect.top-75)+"px";};
+   pt.addEventListener("mouseenter",showPointTooltip);
+   pt.addEventListener("focus",showPointTooltip);
+   pt.addEventListener("blur",()=>effTooltip.style.display="none");
    pt.addEventListener("mouseleave",()=>effTooltip.style.display="none");
  });
 }
@@ -4003,7 +3909,10 @@ effRoomSel.onchange=e=>{effRoom=e.target.value;renderEfficiency()};
 effWeek.onclick=()=>{effPeriod="week";effWeek.classList.add("active");effMonth.classList.remove("active");renderEfficiency()};
 effMonth.onclick=()=>{effPeriod="month";effMonth.classList.add("active");effWeek.classList.remove("active");renderEfficiency()};
 renderEfficiency();
-
+if(typeof ResizeObserver!=='undefined'){
+ let effResizeFrame;
+ new ResizeObserver(()=>{cancelAnimationFrame(effResizeFrame);effResizeFrame=requestAnimationFrame(renderEfficiency);}).observe(effSvg);
+}
 
 /* Obsolete detailOverlay callbacks removed; the current opsOverlay below handles these actions. */
 </script><div class="detailOverlay" id="detailOverlay"><div class="detailModal"><div class="detailHead"><div><h3 id="detailTitle"></h3><p id="detailSub"></p></div><button class="detailClose" id="detailClose">×</button></div><div id="detailBody"></div><div class="detailActions" id="detailActions"></div></div></div>
@@ -4381,16 +4290,5 @@ function openOps(title,body){document.querySelector('.opsPageModal').classList.r
   });
 })();
 </script>
-<script src="assets/melicare-or-duty.js"></script>
-<script id="case-pane-equal-height-js">
-(()=>{const targets=['.caseListPane','#caseDetail','.caseList','#caseRows','.integratedBoard','.eqBoard','#eqDetail','.eqList'];
-function clear(){for(const sel of targets){const el=document.querySelector(sel);if(!el)continue;el.style.removeProperty('height');el.style.removeProperty('max-height');el.style.removeProperty('min-height');el.style.removeProperty('overflow');}}
-clear();
-const obs=new MutationObserver(()=>clear());
-targets.forEach(sel=>{const el=document.querySelector(sel);if(el)obs.observe(el,{attributes:true,attributeFilter:['style']});});
-document.querySelectorAll('[data-page]').forEach(btn=>btn.addEventListener('click',()=>requestAnimationFrame(clear)));
-window.addEventListener('resize',()=>requestAnimationFrame(clear),{passive:true});
-})();
-</script>
-<script src="assets/language-switch.js"></script>
+<script src="assets/melicare-or-duty.js"></script><script src="assets/language-switch.js"></script>
 </body></html>
