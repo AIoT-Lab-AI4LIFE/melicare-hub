@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+
+<html data-workspace-neutral="true" lang="vi" data-tool-id="melivoice"><head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>MELI Voice</title>
+<script src="/config.js"></script><script src="assets/melivoice-auth.js"></script>
+<link rel="stylesheet" href="assets/melivoice-storage.css"/>
+<style>
+:root{--n:var(--tool-action,#102a56);--b:var(--tool-action,#066dbb);--bg:var(--tool-soft,#f5f8fc);--tx:#142b49;--mu:#6c7e95;--ln:var(--tool-soft,#dfe8f1)}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px Inter,Segoe UI,Arial}button,input,textarea{font:inherit}.hidden{display:none!important}header{height:72px;background:#fff;border-bottom:1px solid var(--ln);display:flex;align-items:center;padding:0 30px}.brand{font-size:20px;font-weight:850;margin-right:40px}.brand b{background:linear-gradient(135deg,var(--n),var(--b));color:#fff;padding:11px;border-radius:12px;margin-right:10px}.brand span{color:var(--b)}.nav{height:72px;border:0;background:transparent;padding:0 20px;font-weight:750;color:#475569;border-bottom:3px solid transparent}.nav.active{color:var(--n);border-color:var(--tool-action,#2f7ebc)}.user{margin-left:auto;color:#64768b}main{max-width:1480px;margin:auto;padding:28px}.page{display:none}.page.active{display:block}.hero h1{margin:0;font-size:26px}.hero p{color:var(--mu);margin:6px 0 20px}.card{background:#fff;border:1px solid var(--ln);border-radius:16px;box-shadow:0 8px 28px color-mix(in srgb,var(--tool-action,#122a56) 4.314%,transparent)}.btn{border:1px solid var(--tool-line,#d4e0eb);background:#fff;border-radius:9px;padding:9px 13px;font-weight:750;color:var(--tool-action,#405a73)}.primary{background:linear-gradient(135deg,var(--n),var(--tool-action,#1d609d));color:#fff;border-color:var(--n)}.capture{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.record{min-height:290px;display:flex;flex-direction:column;align-items:center;justify-content:center}.mic{width:92px;height:92px;border-radius:50%;border:8px solid var(--tool-line,#e8f2fc);background:linear-gradient(135deg,var(--n),var(--b));color:#fff;font-size:38px}.mic.rec{background:#d94e59;box-shadow:0 0 0 12px #fbeaec}.record h2{margin:15px 0 3px}.record p,.upload p{color:var(--mu)}.timer{font-size:28px;font-weight:850;margin:12px}.upload{padding:23px}.upload h2{margin:0}.drop{margin-top:16px;padding:32px;border:1.5px dashed var(--tool-line,#b7cee3);background:var(--tool-soft,#f8fbff);border-radius:14px;text-align:center}.drop strong{display:block;font-size:16px;margin:8px}.selected{margin-top:12px;padding:10px;background:var(--tool-soft,#f0f6fb);border-radius:9px}.processing{margin-top:18px;padding:15px 18px}.workspace{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;margin-top:18px}.head{height:56px;border-bottom:1px solid var(--ln);padding:0 18px;display:flex;align-items:center}.head span{margin-left:auto;background:#fff1d8;color:#94610b;padding:6px 9px;border-radius:99px;font-weight:750}.body{height:610px;overflow:auto;padding:20px}.audio{background:var(--tool-soft,#f2f7fb);border-radius:12px;padding:13px;display:flex;gap:10px;align-items:center}.wave{height:32px;flex:1;background:repeating-linear-gradient(90deg,var(--tool-action,#91b5d3) 0 2px,transparent 2px 6px)}.transcript{font-size:18px;line-height:1.75}.time{color:var(--tool-action,#2380b9);font-size:16px;font-weight:800}.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.section{font-size:16px;text-transform:uppercase;color:#475569;font-weight:850;margin:4px 0 12px}.field label{display:block;color:#5b7087;font-size:16px;font-weight:800;margin-bottom:6px}.field input,.field textarea{width:100%;border:1px solid var(--tool-line,#d5e1ec);border-radius:9px;padding:10px;background:var(--tool-soft,#fbfdff)}.field textarea{min-height:75px}.full{grid-column:1/-1}.divider{height:1px;background:var(--tool-soft,#e5edf4);margin:19px 0}.save{text-align:right;margin-top:18px}.tools{display:flex;gap:10px;margin-bottom:14px}.tools input{flex:1;padding:10px;border:1px solid var(--ln);border-radius:9px}.table{overflow:hidden}.table table{width:100%;border-collapse:collapse}.table th{text-align:left;background:var(--tool-soft,#eef4fa);padding:13px}.table td{padding:14px;border-top:1px solid var(--tool-line,#e8eef4)}.badge{background:#e8f6f1;color:#14745f;padding:6px 9px;border-radius:99px}@media(max-width:900px){.capture,.workspace,.grid{grid-template-columns:1fr}.body{height:auto}}
+
+/* Refined MELI Voice navigation */
+.mainNav{height:100%;display:flex;align-items:center;gap:8px}
+.mainNav .nav{height:50px;border:0!important;border-radius:13px!important;padding:0 15px!important;display:flex;align-items:center;gap:10px;background:transparent!important;transition:.18s ease;position:relative}
+.mainNav .nav>span:last-child{display:flex;flex-direction:column;align-items:flex-start;line-height:1.08}
+.mainNav .nav b{font-size:18px;color:#60758d;transition:.18s}
+.mainNav .nav small{font-size:13px;color:#475569;font-weight:650;margin-top:4px;white-space:nowrap}
+.mainNav .navIco{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--tool-soft,#f0f5fa);color:#475569;transition:.18s}
+.mainNav .navIco svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mainNav .nav:hover{background:var(--tool-soft,#f7faff)!important}
+.mainNav .nav.active{background:var(--tool-soft,#edf5ff)!important;box-shadow:inset 0 0 0 1px var(--tool-action,#d9e9fa)}
+.mainNav .nav.active b{color:#123b6d}
+.mainNav .nav.active small{color:#475569}
+.mainNav .nav.active .navIco{background:linear-gradient(145deg,var(--tool-action,#123b6d),var(--tool-action,#2274b9));color:#fff;box-shadow:0 4px 10px color-mix(in srgb,var(--tool-action,#123b6d) 16.000%,transparent)}
+
+.historyHero{display:flex;align-items:center;justify-content:space-between}
+.table{overflow-x:auto}.table table{min-width:1220px}
+.pendingBadge{background:#fff1d8!important;color:#99610b!important}
+.pendingRow{background:#fffaf0}.processBtn{background:#fff4df;border-color:#ebcb8a;color:#95610b}
+.resultOnlyMode .capture,.resultOnlyMode #processing,.resultOnlyMode .hero{display:none!important}
+.resultOnlyMode #result{display:grid!important;margin-top:0}
+.resultOnlyBack{display:none;margin-bottom:14px}
+.resultOnlyMode .resultOnlyBack{display:flex!important;align-items:center;justify-content:space-between}
+
+.modelProcess{min-height:560px;display:grid;place-items:center;padding:40px 20px}
+.modelProcessCard{width:min(620px,100%);padding:38px 42px;text-align:center;background:linear-gradient(180deg,#fff,var(--tool-soft,#f9fcff))}
+.aiOrb{width:76px;height:76px;margin:0 auto 18px;border-radius:24px;display:grid;place-items:center;background:linear-gradient(145deg,var(--tool-action,#102a56),var(--tool-action,#1f6feb));box-shadow:0 12px 30px color-mix(in srgb,var(--tool-action,#1f6feb) 22.000%,transparent);position:relative}
+.aiOrb:before,.aiOrb:after{content:"";position:absolute;inset:-9px;border:1px solid var(--tool-line,#bcd9f5);border-radius:30px;animation:aiPulse 1.6s ease-out infinite}
+.aiOrb:after{inset:-18px;opacity:.45;animation-delay:.35s}@keyframes aiPulse{0%{transform:scale(.92);opacity:.9}100%{transform:scale(1.08);opacity:0}}
+.aiOrb span{color:#fff;font-size:20px;font-weight:850}.modelProcess h2{font-size:22px;margin:0 0 8px}.modelProcess p{color:#475569;margin:0 0 24px}
+.progressTrack{height:10px;background:var(--tool-soft,#e8eff6);border-radius:99px;overflow:hidden}.progressFill{height:100%;width:0;background:linear-gradient(90deg,var(--tool-action,#1f6feb),var(--tool-action,#4cc9f0));border-radius:99px;transition:width .35s ease}
+.progressMeta{display:flex;justify-content:space-between;margin-top:8px;color:#475569;font-size:15px}.progressMeta span:first-child{font-weight:850;color:var(--tool-action,#235d91)}
+.processSteps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:28px}.pstep{padding:11px 6px;border-radius:10px;background:var(--tool-soft,#f4f7fa);color:#475569;font-size:14px}.pstep b{width:22px;height:22px;border-radius:50%;background:var(--tool-soft,#e2e8ee);display:grid;place-items:center;margin:0 auto 6px}.pstep span{display:block}.pstep.active{background:var(--tool-soft,#edf5ff);color:var(--tool-action,#225e95)}.pstep.active b{background:var(--tool-action,#1f6feb);color:#fff}.pstep.done{background:#eaf7f3;color:#17735f}.pstep.done b{background:#16866f;color:#fff}
+
+/* Fancy row actions */
+.rowFancy{
+  min-width:104px;height:42px;padding:0 10px!important;border-radius:12px!important;
+  display:inline-flex;align-items:center;justify-content:flex-start;gap:8px;
+  font-size:17px!important;font-weight:800!important;transition:.18s ease;
+  box-shadow:0 3px 10px color-mix(in srgb,var(--tool-action,#18365a) 5.500%,transparent);white-space:nowrap;
+}
+.rowFancy .actionIcon{
+  width:25px;height:25px;border-radius:8px;display:grid;place-items:center;
+  font-size:16px;transition:.18s ease
+}
+.rowFancy .actionArrow{margin-left:auto;font-size:19px;line-height:1;opacity:.65;transform:translateY(-1px)}
+.viewFancy{background:var(--tool-soft,#f8fbff)!important;border-color:var(--tool-line,#cfe0ef)!important;color:var(--tool-action,#315b7d)!important}
+.viewFancy .actionIcon{background:var(--tool-soft,#e7f2fc);color:var(--tool-action,#176ca9)}
+.viewFancy:hover{background:var(--tool-soft,#edf6ff)!important;border-color:var(--tool-line,#a8cae5)!important;transform:translateY(-1px);box-shadow:0 6px 16px color-mix(in srgb,var(--tool-action,#1f6feb) 11.000%,transparent)}
+.viewFancy:hover .actionIcon{background:var(--tool-action,#176ca9);color:#fff}
+.processFancy{background:linear-gradient(135deg,#fff8e9,#fff1d3)!important;border-color:#edca82!important;color:#8e5c08!important}
+.processFancy .actionIcon{background:#f4c96f;color:#704500}
+.processFancy:hover{background:linear-gradient(135deg,#fff1d3,#ffe7b1)!important;border-color:#dfa944!important;transform:translateY(-1px);box-shadow:0 6px 16px rgba(196,132,18,.14)}
+.processFancy:hover .actionIcon{background:#b9790d;color:#fff}
+#history td:last-child{white-space:nowrap}
+html body #history .rowDelete{min-width:46px!important;width:46px;height:46px;padding:0!important;margin-left:8px;display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;background:#fff!important;border-color:#f0cfcf!important;color:#b54848!important}
+html body #history .rowDelete svg{width:22px!important;height:22px!important;max-width:none;flex:none}
+html body .rowDelete:not(:disabled):hover{background:#fdecec!important;border-color:#e3a3a3!important;color:#9b2c2c!important}
+.rowDelete:disabled{opacity:.5;cursor:wait}
+.mvConfirm{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(21,56,79,.38);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:mvFade .18s ease-out}
+.mvConfirmCard{width:100%;max-width:480px;max-height:calc(100dvh - 32px);overflow:auto;background:#fff;border:1px solid #e3ebf1;border-radius:20px;box-shadow:0 28px 80px -18px rgba(16,44,69,.42);font-family:var(--suite-body);color:var(--suite-ink,#17344a);text-align:left;animation:mvPop .22s cubic-bezier(.2,.9,.3,1.2)}
+.mvConfirmHead{display:flex;align-items:center;gap:14px;padding:22px 20px 0 24px}
+.mvConfirmIcon{flex:none;width:46px;height:46px;border-radius:14px;background:#fdecec;color:#c24141;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px #f6d4d4}
+.mvConfirmIcon svg{width:24px;height:24px}
+.mvTone-warn .mvConfirmIcon{background:#fff4dc;color:#b9790d;box-shadow:inset 0 0 0 1px #f2dcae}
+.mvTone-success .mvConfirmIcon{background:#e5f6ee;color:#1f8a5b;box-shadow:inset 0 0 0 1px #c5ead7}
+.mvTone-info .mvConfirmIcon{background:#e7f3fb;color:#128ac3;box-shadow:inset 0 0 0 1px #cbe5f4}
+html body #mvConfirm .mvConfirmMsg{margin:0 0 14px;font-size:15.5px!important;line-height:1.6;color:#3d5869;white-space:pre-line;overflow-wrap:anywhere}
+.mvConfirmBody>:last-child{margin-bottom:0!important}
+.mvConfirmHeadText{flex:1;min-width:0}
+html body #mvConfirm .mvConfirmHead h3{margin:0;font:700 20px/1.35 var(--suite-display)!important;letter-spacing:-.01em;color:var(--suite-ink,#17344a)}
+html body #mvConfirm .mvConfirmHead p{margin:3px 0 0;font-size:14.5px!important;line-height:1.5;color:var(--suite-muted,#586f7e)}
+html body #mvConfirm .mvConfirmClose{flex:none;width:36px;height:36px;min-width:36px;min-height:36px;margin:0;align-self:flex-start;padding:0;border:0;border-radius:10px;background:transparent;color:#7b8f9d;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:none}
+html body #mvConfirm .mvConfirmClose:hover{background:#f1f5f8;color:var(--suite-ink,#17344a)}
+.mvConfirmClose svg{width:18px;height:18px}
+.mvConfirmBody{padding:18px 24px 22px}
+.mvConfirmDetails{margin:0 0 14px;padding:4px 16px;border:1px solid #e6edf2;border-radius:14px;background:#f8fbfd}
+.mvConfirmDetails>div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:12px;padding:9px 0;border-bottom:1px dashed #e1e9ef}
+.mvConfirmDetails>div:last-child{border-bottom:0}
+html body #mvConfirm .mvConfirmDetails dt{margin:0;font-size:14px!important;line-height:1.5;color:#7a8e9c}
+html body #mvConfirm .mvConfirmDetails dd{margin:0;font-size:15px!important;line-height:1.5;font-weight:700;color:var(--suite-ink,#17344a);overflow-wrap:anywhere}
+html body #mvConfirm .mvConfirmNote{display:flex;gap:10px;align-items:flex-start;margin:0 0 18px;padding:11px 14px;border-radius:12px;background:#fff6e6;border:1px solid #f2dcae;color:#7a5512;font-size:14px!important;line-height:1.55}
+.mvConfirmNote svg{flex:none;width:18px;height:18px;margin-top:1px;color:#b9790d}
+.mvConfirmType{display:block;margin:0}
+html body #mvConfirm .mvConfirmType>span:first-child{display:block;margin-bottom:8px;font-size:14px!important;line-height:1.6;color:var(--suite-muted,#586f7e)}
+.mvConfirmType code{font:600 13px/1.4 ui-monospace,Menlo,Consolas,monospace;color:#9b2c2c;background:#fdecec;padding:2px 7px;border-radius:6px;white-space:nowrap}
+.mvConfirmField{position:relative;display:block}
+html body #mvConfirm .mvConfirmType input{display:block;width:100%;height:46px;box-sizing:border-box;margin:0;padding:0 42px 0 14px;border:1.5px solid #d6e1e8!important;border-radius:12px!important;background:#fff!important;font:15px ui-monospace,Menlo,Consolas,monospace!important;color:var(--suite-ink,#17344a);outline:none!important;box-shadow:none!important;transition:border-color .15s,box-shadow .15s}
+html body #mvConfirm .mvConfirmType input::placeholder{font-family:var(--suite-body);color:#a3b3be}
+html body #mvConfirm .mvConfirmType input:focus{border-color:#e3a3a3!important;box-shadow:0 0 0 4px #fdecec!important}
+html body #mvConfirm .mvConfirmType input.ok{border-color:#c24141!important}
+.mvConfirmField svg{position:absolute;right:13px;top:50%;width:20px;height:20px;margin-top:-10px;color:#c24141;opacity:0;transform:scale(.6);transition:opacity .15s,transform .15s;pointer-events:none}
+.mvConfirmField input.ok+svg{opacity:1;transform:none}
+.mvConfirmActions{display:flex;gap:10px;justify-content:flex-end;padding:16px 24px;border-top:1px solid #e8eef3;background:#f8fbfd;border-radius:0 0 20px 20px}
+html body #mvConfirm .mvConfirmActions .btn{min-width:120px;height:46px;min-height:46px;padding:0 20px}
+html body #mvConfirm .mvConfirmActions .mvConfirmDanger{background:#c24141!important;border-color:#c24141!important;color:#fff!important;box-shadow:0 8px 18px -8px rgba(194,65,65,.7)!important}
+html body #mvConfirm .mvConfirmActions .mvConfirmDanger:hover{background:#a83434!important;border-color:#a83434!important;color:#fff!important}
+html body #mvConfirm .mvConfirmActions .mvConfirmDanger:disabled{background:#efc6c6!important;border-color:#efc6c6!important;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+@keyframes mvPop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+@media(max-width:520px){.mvConfirm{align-items:flex-end;padding:0}.mvConfirmCard{max-width:none;max-height:92dvh;border-radius:22px 22px 0 0;animation-name:mvSheet}.mvConfirmHead{padding:20px 16px 0 20px}.mvConfirmBody{padding:16px 20px 20px}.mvConfirmDetails>div{grid-template-columns:88px minmax(0,1fr)}.mvConfirmActions{padding:14px 20px calc(14px + env(safe-area-inset-bottom));border-radius:0}html body #mvConfirm .mvConfirmActions .btn{flex:1;min-width:0}}
+@keyframes mvSheet{from{transform:translateY(100%)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){.mvConfirm,.mvConfirmCard{animation:none}}
+.mvTxNotice{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border-radius:12px;border:1px solid;font-size:15px;line-height:1.6}
+.mvTxNotice b{font-size:16px}
+.mvTxNotice.empty{background:#f4f7fa;border-color:#d9e3ea;color:#4d6475}
+.mvTxNotice.empty b{color:#2c475a}
+.mvTxNotice.audioErr{background:#fff7e6;border-color:#f0d49a;color:#7a5512;margin-bottom:12px}
+.mvTxNotice.audioErr b{color:#8e5c08}
+.mvAudioTag{display:inline-block;padding:3px 10px;border-radius:999px;background:#fff1d3;border:1px solid #edca82;color:#8e5c08;font-weight:700;font-size:14px;cursor:help;white-space:nowrap}
+.mvErr{font-weight:600;color:#5b7182;cursor:help}
+.mvMuted{color:#8a98a8;font-weight:500}
+#result [data-gt2]::placeholder{color:#a9b6c2;font-style:italic}
+@keyframes mvFade{from{opacity:0}to{opacity:1}}
+</style>
+<style id="meli-shared-header-nav-v2">
+/* Shared MELICARE application switcher + consistent local nav icons */
+.meliSharedHeader{
+  display:flex;align-items:center;width:100%;min-width:0;
+}
+.meliAppSwitcher{position:relative;margin-left:auto;flex:0 0 auto}
+.meliAppSwitchBtn{
+  height:44px;padding:0 11px;border:1px solid var(--tool-line,#d4e2ec);border-radius:11px;background:var(--tool-soft,#f5f9fc);
+  color:var(--tool-action,#315d77);display:flex;align-items:center;gap:7px;font-size:15px;font-weight:850;cursor:pointer
+}
+.meliAppSwitchBtn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.meliAppSwitchBtn .chev{font-size:16px;color:#475569}
+.meliAppSwitchMenu{
+  position:absolute;right:0;top:50px;width:240px;padding:7px;background:#fff;border:1px solid var(--tool-line,#dbe6ee);
+  border-radius:13px;box-shadow:0 18px 45px color-mix(in srgb,var(--tool-action,#143755) 16.000%,transparent);display:none;z-index:9999
+}
+.meliAppSwitcher.open .meliAppSwitchMenu{display:block}
+.meliAppSwitchMenu .switchTitle{padding:6px 8px 8px;color:#475569;font-size:13px;font-weight:850;text-transform:uppercase;letter-spacing:.08em}
+.meliAppSwitchMenu a{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:9px;text-decoration:none;color:#526e80;font-size:15px;font-weight:800}
+.meliAppSwitchMenu a:hover{background:var(--tool-soft,#f2f7fa);color:#214f6c}.meliAppSwitchMenu a.current{background:var(--tool-soft,#eaf3f9);color:#17486d}
+.meliAppSwitchMenu a>span:first-child{width:28px;height:28px;border-radius:8px;background:var(--tool-soft,#eaf1f6);display:grid;place-items:center}
+.meliAppSwitchMenu a.current>span:first-child{background:var(--tool-action,#245f8c);color:#fff}
+.meliAppSwitchMenu svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* shared local functional nav icon language */
+header .nav{display:inline-flex!important;align-items:center!important;gap:9px!important}
+header .nav .navIcon,header .nav .navIco{
+  width:32px!important;height:32px!important;flex:0 0 32px!important;border-radius:9px!important;
+  display:grid!important;place-items:center!important;background:var(--tool-soft,#eaf1f6)!important;color:var(--tool-action,#416b84)!important;
+  border:1px solid var(--tool-line,#d8e6ef)!important;box-shadow:inset 0 1px 0 #fff!important;transition:.18s ease!important
+}
+header .nav .navIcon svg,header .nav .navIco svg{
+  width:18px!important;height:18px!important;fill:none!important;stroke:currentColor!important;
+  stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important
+}
+header .nav.active .navIcon,header .nav.active .navIco{
+  background:linear-gradient(145deg,var(--tool-action,#174a73),var(--tool-action,#2583bd))!important;color:#fff!important;border-color:transparent!important;
+  box-shadow:0 5px 12px color-mix(in srgb,var(--tool-action,#173f70) 16.000%,transparent)!important
+}
+header .nav:hover .navIcon,header .nav:hover .navIco{transform:translateY(-1px)}
+@media(max-width:900px){
+ .meliAppSwitchBtn .switchText{display:none}.meliAppSwitchBtn{width:42px;padding:0;justify-content:center}.meliAppSwitchBtn .chev{display:none}
+}
+</style>
+<style id="meli-centered-local-nav-v3">
+/* Center the local functional navigation between product brand and app switcher */
+header .meliSharedHeader{position:relative!important}
+header .meliSharedHeader>.nav,
+header .meliSharedHeader>.mainNav{
+  position:absolute!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+}
+header .meliSharedHeader>.mainNav{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  width:max-content!important;
+}
+header .meliSharedHeader>.nav:nth-of-type(1){
+  margin-left:-82px!important;
+}
+header .meliSharedHeader>.nav:nth-of-type(2){
+  margin-left:82px!important;
+}
+header .meliSharedHeader>.meliAppSwitcher{
+  margin-left:auto!important;
+  position:relative!important;
+}
+@media(max-width:980px){
+  header .meliSharedHeader>.nav,
+  header .meliSharedHeader>.mainNav{
+    position:static!important;
+    transform:none!important;
+    left:auto!important;
+  }
+  header .meliSharedHeader>.nav:nth-of-type(1),
+  header .meliSharedHeader>.nav:nth-of-type(2){margin-left:0!important}
+  header .meliSharedHeader{gap:8px!important}
+}
+</style>
+<style id="meli-home-brand-v5">
+.meliHomeBtn{
+  width:40px;height:40px;flex:0 0 40px;
+  display:grid;place-items:center;
+  border:1px solid var(--tool-line,#d9e5ef);border-radius:11px;
+  background:var(--tool-soft,#f6f9fc);color:var(--tool-action,#315f7b);
+  text-decoration:none;cursor:pointer;transition:.18s ease;
+}
+.meliHomeBtn:hover{
+  background:var(--tool-soft,#edf5ff);color:var(--tool-action,#1f6feb);border-color:var(--tool-line,#c9def5);
+  transform:translateY(-1px);
+}
+.meliHomeBtn svg{
+  width:19px;height:19px;fill:none;stroke:currentColor;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+}
+.meliProductBrand{
+  display:flex;align-items:center;gap:10px;
+  font-weight:900;letter-spacing:-.35px;color:#102a56;
+  white-space:nowrap;
+}
+.meliProductMark{
+  width:42px;height:42px;border-radius:13px;display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--tool-action,#102a56),var(--tool-action,#1f6feb));
+  color:#fff;box-shadow:0 8px 20px color-mix(in srgb,var(--tool-action,#1f6feb) 18.000%,transparent);
+}
+.meliProductMark svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8}
+.meliProductText{font-size:18px;font-weight:900;color:#102a56}
+.meliProductText em{font-style:normal;color:var(--tool-action,#1f6feb)}
+@media(max-width:760px){
+  .meliProductText{display:none}
+  .meliProductMark{width:38px;height:38px}
+  .meliHomeBtn{width:38px;height:38px;flex-basis:38px}
+}
+</style>
+<style id="meli-nav-actions-v6">
+.meliNavActions{margin-left:auto;display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.meliNavActions .meliHomeBtn{position:static!important;margin:0!important}
+</style>
+<style id="meli-dropdown-v62">
+/* One canonical app switcher, appended directly to body to avoid parent overflow/clipping */
+#meliAppNavV62{
+  position:fixed;
+  top:16px;
+  right:18px;
+  z-index:2147483000;
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+}
+#meliAppNavBtnV62{
+  height:42px;
+  padding:0 13px;
+  border:1px solid var(--tool-line,#d6e2ec);
+  border-radius:12px;
+  background:rgba(255,255,255,.98);
+  color:var(--tool-action,#315d77);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 5px 16px color-mix(in srgb,var(--tool-action,#143456) 8.000%,transparent);
+  cursor:pointer;
+  font-size:15px;
+  font-weight:850;
+  transition:.18s ease;
+}
+#meliAppNavBtnV62:hover{
+  border-color:var(--tool-line,#bcd0df);
+  box-shadow:0 9px 24px color-mix(in srgb,var(--tool-action,#143456) 13.000%,transparent);
+  transform:translateY(-1px);
+}
+#meliAppNavBtnV62 svg{
+  width:18px;height:18px;
+  fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+#meliAppNavChevronV62{
+  margin-left:2px;
+  color:#475569;
+  transition:transform .18s ease;
+}
+#meliAppNavV62.open #meliAppNavChevronV62{transform:rotate(180deg)}
+
+#meliAppNavMenuV62{
+  position:absolute;
+  top:50px;
+  right:0;
+  width:244px;
+  padding:8px;
+  border:1px solid var(--tool-line,#dce7ef);
+  border-radius:15px;
+  background:rgba(255,255,255,.99);
+  box-shadow:0 22px 52px color-mix(in srgb,var(--tool-action,#143456) 18.000%,transparent);
+  backdrop-filter:blur(12px);
+  display:none;
+  overflow:hidden;
+}
+#meliAppNavV62.open #meliAppNavMenuV62{display:block}
+
+.meliAppNavTitleV62{
+  padding:7px 9px 6px;
+  color:#475569;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+#meliAppNavMenuV62 a{
+  min-height:40px;
+  padding:9px 10px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--tool-action,#49677b);
+  text-decoration:none;
+  font-size:15px;
+  font-weight:850;
+  transition:.14s ease;
+}
+#meliAppNavMenuV62 a:hover{
+  background:var(--tool-soft,#eef5fa);
+  color:#17486d;
+  transform:translateX(2px);
+}
+.meliAppDotV62{
+  width:29px;height:29px;border-radius:9px;
+  display:grid;place-items:center;
+  background:var(--tool-soft,#edf4f8);color:var(--tool-action,#466a82);
+  font-size:13px;font-weight:900;
+  flex:0 0 29px;
+}
+.meliAppExternalV62{
+  margin-left:auto;
+  color:#475569;
+  font-size:15px;
+}
+@media(max-width:760px){
+  #meliAppNavV62{top:12px;right:12px}
+  #meliAppNavBtnV62{width:42px;padding:0;justify-content:center}
+  #meliAppNavBtnV62 span.labelV62,#meliAppNavChevronV62{display:none}
+  #meliAppNavMenuV62{width:224px}
+}
+</style><style id="meli-home-v63">
+#meliHomeV63{
+  position:fixed;
+  top:16px;
+  right:190px;
+  z-index:2147483001;
+  width:42px;
+  height:42px;
+  border:1px solid var(--tool-line,#d6e2ec);
+  border-radius:12px;
+  background:rgba(255,255,255,.98);
+  color:var(--tool-action,#315d77);
+  display:grid;
+  place-items:center;
+  box-shadow:0 5px 16px color-mix(in srgb,var(--tool-action,#143456) 8.000%,transparent);
+  text-decoration:none;
+  transition:.18s ease;
+}
+#meliHomeV63:hover{
+  border-color:var(--tool-line,#bcd0df);
+  box-shadow:0 9px 24px color-mix(in srgb,var(--tool-action,#143456) 13.000%,transparent);
+  transform:translateY(-1px);
+}
+#meliHomeV63 svg{
+  width:19px;height:19px;
+  fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+@media(max-width:760px){
+  #meliHomeV63{
+    top:12px;
+    right:62px;
+  }
+}
+</style><style id="meli-global-auth-v69">
+/* Global auth button to the left of the app dropdown */
+#meliAuthV69{
+  position:fixed;
+  top:16px;
+  right:202px;
+  z-index:2147483100;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+}
+#meliAuthBtnV69{
+  height:42px;
+  min-width:78px;
+  padding:0 12px;
+  border:1px solid var(--tool-line,#d6e2ec);
+  border-radius:12px;
+  background:rgba(255,255,255,.98);
+  color:var(--tool-action,#315d77);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  box-shadow:0 5px 16px color-mix(in srgb,var(--tool-action,#143456) 8.000%,transparent);
+  cursor:pointer;
+  font-size:15px;
+  font-weight:850;
+  transition:.18s ease;
+}
+#meliAuthBtnV69:hover{
+  border-color:var(--tool-line,#bcd0df);
+  box-shadow:0 9px 24px color-mix(in srgb,var(--tool-action,#143456) 13.000%,transparent);
+  transform:translateY(-1px);
+}
+#meliAuthBtnV69 svg{
+  width:18px;height:18px;
+  fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+#meliAuthBtnV69.loggedInV69{
+  width:42px;
+  min-width:42px;
+  padding:0;
+  border-radius:12px;
+  background:var(--tool-soft,#eef5fb);
+  color:#17486d;
+}
+
+/* Popup */
+#meliLoginModalV69{
+  position:fixed;
+  inset:0;
+  z-index:2147483600;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:color-mix(in srgb,var(--tool-action,#0f2337) 34.000%,transparent);
+  backdrop-filter:blur(8px);
+}
+#meliLoginModalV69.open{display:flex}
+.meliLoginDialogV69{
+  width:min(430px,100%);
+  border:1px solid var(--tool-line,#dbe6ee);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 30px 80px color-mix(in srgb,var(--tool-action,#143456) 22.000%,transparent);
+  overflow:hidden;
+}
+.meliLoginHeadV69{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  padding:22px 22px 16px;
+  border-bottom:1px solid var(--tool-line,#e7eef4);
+}
+.meliLoginHeadV69 h2{
+  margin:0;
+  font-size:22px;
+  color:#173b66;
+}
+.meliLoginHeadV69 p{
+  margin:5px 0 0;
+  color:#475569;
+  font-size:15px;
+}
+.meliLoginCloseV69{
+  width:36px;height:36px;
+  border:1px solid var(--tool-line,#dce5ec);
+  border-radius:10px;
+  background:var(--tool-soft,#f8fafc);
+  color:#5d7488;
+  font-size:18px;
+  cursor:pointer;
+}
+.meliLoginBodyV69{padding:20px 22px 22px}
+.meliLoginFieldV69{margin-bottom:13px}
+.meliLoginFieldV69 label{
+  display:block;
+  margin-bottom:6px;
+  color:#61788b;
+  font-size:14px;
+  font-weight:850;
+}
+.meliLoginFieldV69 input{
+  width:100%;
+  height:44px;
+  border:1px solid var(--tool-line,#d6e1e9);
+  border-radius:10px;
+  background:var(--tool-soft,#fbfdff);
+  padding:0 12px;
+  color:#29475d;
+  font-size:16px;
+}
+.meliLoginFieldV69 input:focus{
+  outline:none;
+  border-color:var(--tool-line,#8ab7df);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--tool-action,#2f7ff7) 8.000%,transparent);
+}
+.meliLoginSubmitV69{
+  width:100%;
+  height:45px;
+  border:0;
+  border-radius:11px;
+  background:linear-gradient(135deg,var(--tool-action,#123b6d),var(--tool-action,#2f7ff7));
+  color:#fff;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+}
+.meliLoginErrorV69{
+  display:none;
+  margin-top:10px;
+  padding:9px 10px;
+  border-radius:8px;
+  background:#fff1f1;
+  border:1px solid #f0d0d3;
+  color:#a34e55;
+  font-size:14px;
+}
+.meliUserPopoverV69{
+  position:fixed;
+  top:66px;
+  right:202px;
+  z-index:2147483500;
+  width:220px;
+  padding:10px;
+  border:1px solid var(--tool-line,#dbe6ee);
+  border-radius:13px;
+  background:#fff;
+  box-shadow:0 18px 45px color-mix(in srgb,var(--tool-action,#143456) 16.000%,transparent);
+  display:none;
+}
+.meliUserPopoverV69.open{display:block}
+.meliUserPopoverV69 b{display:block;font-size:15px;color:#294e67}
+.meliUserPopoverV69 span{display:block;margin-top:3px;font-size:13px;color:#475569}
+.meliLogoutBtnV69{
+  width:100%;
+  margin-top:9px;
+  height:34px;
+  border:1px solid var(--tool-line,#dbe5ed);
+  border-radius:8px;
+  background:var(--tool-soft,#f8fafc);
+  color:#526c80;
+  font-size:14px;
+  font-weight:850;
+  cursor:pointer;
+}
+@media(max-width:760px){
+  #meliAuthV69{top:12px;right:114px}
+  #meliAuthBtnV69{min-width:42px;width:42px;padding:0}
+  #meliAuthBtnV69 .loginTextV69{display:none}
+  .meliUserPopoverV69{top:62px;right:62px}
+}
+</style><style id="meli-top-controls-v70">
+/* One shared fixed row for Home / Login(User) / App switcher.
+   This prevents independent fixed-position buttons from overlapping. */
+#meliTopControlsV70{
+  position:fixed;
+  top:14px;
+  right:18px;
+  z-index:2147483400;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:9px;
+  max-width:calc(100vw - 36px);
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+}
+
+/* All controls become normal flex children inside the shared row */
+#meliTopControlsV70 > #meliHomeV63,
+#meliTopControlsV70 > #meliAuthV69,
+#meliTopControlsV70 > #meliAppNavV62,
+#meliTopControlsV70 > .meliAuthAreaV67{
+  position:relative!important;
+  top:auto!important;
+  right:auto!important;
+  left:auto!important;
+  bottom:auto!important;
+  margin:0!important;
+  flex:0 0 auto!important;
+  z-index:auto!important;
+}
+
+/* Home */
+#meliTopControlsV70 #meliHomeV63{
+  width:42px!important;
+  height:42px!important;
+}
+
+/* Auth */
+#meliTopControlsV70 #meliAuthV69{
+  display:flex!important;
+}
+#meliTopControlsV70 #meliAuthBtnV69{
+  height:42px!important;
+}
+
+/* Landing-page auth */
+#meliTopControlsV70 .meliAuthAreaV67{
+  display:flex!important;
+  align-items:center!important;
+}
+#meliTopControlsV70 .meliLoginBtnV67,
+#meliTopControlsV70 .meliUserBtnV67{
+  height:42px!important;
+}
+
+/* Dropdown */
+#meliTopControlsV70 #meliAppNavV62{
+  display:block!important;
+}
+#meliTopControlsV70 #meliAppNavBtnV62{
+  height:42px!important;
+  min-width:170px!important;
+}
+#meliTopControlsV70 #meliAppNavMenuV62{
+  top:50px!important;
+  right:0!important;
+}
+
+/* User popover follows the grouped controls, never overlays the row */
+#meliUserPopoverV69{
+  top:64px!important;
+  right:18px!important;
+}
+
+/* Remove any stale page-specific fixed offsets that could overlap */
+#meliHomeV63,
+#meliAuthV69,
+#meliAppNavV62{
+  margin:0!important;
+}
+
+@media(max-width:900px){
+  #meliTopControlsV70{
+    top:12px;
+    right:12px;
+    gap:7px;
+    max-width:calc(100vw - 24px);
+  }
+
+  #meliTopControlsV70 #meliAppNavBtnV62{
+    min-width:42px!important;
+    width:42px!important;
+    padding:0!important;
+    justify-content:center!important;
+  }
+  #meliTopControlsV70 #meliAppNavBtnV62 .labelV62,
+  #meliTopControlsV70 #meliAppNavChevronV62{
+    display:none!important;
+  }
+
+  #meliTopControlsV70 #meliAuthBtnV69{
+    min-width:42px!important;
+    width:42px!important;
+    padding:0!important;
+  }
+  #meliTopControlsV70 #meliAuthBtnV69 .loginTextV69{
+    display:none!important;
+  }
+
+  #meliTopControlsV70 .meliLoginBtnV67,
+  #meliTopControlsV70 .meliUserBtnV67{
+    min-width:42px!important;
+    width:42px!important;
+    padding:0!important;
+    justify-content:center!important;
+  }
+  #meliTopControlsV70 .meliLoginBtnV67 span,
+  #meliTopControlsV70 .meliUserBtnV67 span{
+    display:none!important;
+  }
+
+  #meliUserPopoverV69{
+    top:62px!important;
+    right:62px!important;
+  }
+}
+</style><link href="assets/melicare-base.css" rel="stylesheet"/><meta content="#f5c54b" name="theme-color"/><style>.suite-demo-note{max-width:900px;margin:27px auto 0;padding:0 8px;font:13px/1.65 var(--suite-body);color:#475569;text-align:center}.rightPanel .suite-demo-note{margin:18px 0;padding:0 18px 22px}.trendChart text{font-family:var(--suite-body)!important;font-size:16px!important}</style><link href="assets/melicare-components.css" rel="stylesheet"/><link href="assets/melicare-v2.css" rel="stylesheet"/><link href="assets/melicare-auth.css" rel="stylesheet"/><link href="assets/melicare-layout-v3.css" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/melicare-readability.css">
+<link rel="stylesheet" href="assets/melicare-polish-v4.css">
+<link href="assets/melicare-typography-v6.css" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/melicare-request-fixes.css"/>
+<link rel="stylesheet" href="assets/melicare-fonts-local.css"/>
+<link rel="stylesheet" href="assets/melicare-unified-final.css"/>
+<link rel="stylesheet" href="assets/melicare-page-fixes-v2.css"/>
+<link rel="stylesheet" href="assets/melicare-scroll-carousel.css"/>
+<link rel="icon" href="assets/icons/favicon.ico" sizes="any"/>
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" href="assets/icons/icon-32.png" type="image/png" sizes="32x32"/>
+<link rel="apple-touch-icon" href="assets/icons/icon-180.png" sizes="180x180"/>
+<script defer src="assets/melicare-scroll-repair.js"></script>
+<link rel="stylesheet" href="assets/melicare-final-upload-cardio.css"/>
+<link rel="stylesheet" href="./assets/melicare-fresh-palette.css"><link rel="stylesheet" href="assets/melicare-branding.css"/>
+<script src="assets/melicare-branding.js"></script>
+<link rel="stylesheet" href="assets/melicare-theme-v40.css">
+<link rel="stylesheet" href="assets/melicare-standalone-v42.css">
+<link rel="stylesheet" href="assets/melicare-product-themes.css">
+<link rel="stylesheet" href="assets/melicare-tool-workspaces.css">
+<link rel="stylesheet" href="assets/melicare-visual-repair.css">
+</head><body id="mcTypography" class="mc-neutral-workspace suite-ui suite-voice meli-refined mc-v2 mc-layout-v3 mc-readable" data-mc-page="melivoice" data-module="MELI_Voice" style=";--suite-accent:#7062b1;--suite-tint:#f1edfb;--suite-edge:#dbd4f0">
+<header class="suite-header"><div class="suite-bar"><a aria-label="MELIVoice" class="suite-brand" href="./"><span class="suite-brand-symbol"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><rect height="11" rx="4" width="8" x="8" y="3"></rect><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v3M8 21h8"></path></svg></span><span><span class="suite-word mc-product-name" data-mc-product="melivoice"><span class="meli-prefix mc-product-prefix">MELI</span><span class="tool-suffix mc-product-suffix">Voice</span></span></span></a><nav aria-label="Chức năng Voice" class="suite-local-nav"><button class="nav active" onclick="page('capture',this)">
+<span class="navIco"><svg viewbox="0 0 24 24"><rect height="11" rx="4" width="8" x="8" y="3"></rect><path d="M5.5 10.5v.8a6.5 6.5 0 0 0 13 0v-.8M12 17.8V21M8.5 21h7"></path></svg></span>
+<span><b>Ghi âm</b><small>Nhập EMR</small></span>
+</button><button class="nav" onclick="page('history',this)">
+<span class="navIco"><svg viewbox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3L4.5 9"></path><path d="M4.5 4.8V9h4.2M12 8v4.4l3 1.8"></path></svg></span>
+<span><b>Lịch sử</b><small>Bản ghi đã xử lý</small></span>
+</button></nav><div id="meliTopControlsV70"><div id="meliAuthV69">
+<button aria-label="Tài khoản" data-mc-account="" id="meliAuthBtnV69" type="button">
+<svg viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path></svg>
+<span class="loginTextV69">Tài khoản</span>
+</button>
+</div></div></div></header>
+<main><section class="page active" id="capture"><div class="hero"><h1>Voice to EMR</h1><p>Ghi âm hoặc tải file giọng nói để tự động chuyển thành dữ liệu hồ sơ bệnh án.</p></div>
+<div class="resultOnlyBack"><button class="btn" data-ui-icon="back" onclick="backToHistory()" type="button">Quay lại lịch sử</button><div><b>Kết quả đã xử lý</b> · Nguyễn Văn An · BA-260930-018</div><button class="btn primary" data-ui-icon="download" onclick="downloadCurrent()" type="button">Download</button></div><div class="capture"><div class="card record"><button aria-label="Bắt đầu hoặc dừng ghi âm" class="mic" id="mic" onclick="toggleRec()"><svg aria-hidden="true" class="suite-icon" viewbox="0 0 24 24"><rect height="11" rx="4" width="8" x="8" y="3"></rect><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v3M8 21h8"></path></svg></button><h2 id="rt">Bắt đầu ghi âm</h2><p>Nhấn micro để ghi lời đọc của bác sĩ</p><div class="timer" id="timer">00:00</div><div><button class="btn ui-quiet" onclick="resetRec()" type="button">Hủy</button> <button class="btn primary" data-ui-icon="spark" onclick="processAudio()" type="button">Nhận diện &amp; bóc tách</button></div></div>
+<div class="card upload"><h2>Tải file ghi âm</h2><p>Hỗ trợ MP3, WAV, M4A và các định dạng âm thanh phổ biến.</p><div class="drop mc-upload-zone" data-mc-drop="audioFile"><span class="mc-upload-symbol"><svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><path d="M12 16V3m-4 4 4-4 4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg></span><b class="mc-upload-title">Thêm bản ghi âm</b><span class="mc-upload-hint">Kéo thả tệp vào đây hoặc chọn từ máy tính</span><button class="btn mc-upload-trigger" data-ui-icon="upload" onclick="audioFile.click()" type="button"><svg aria-hidden="true" class="mc-icon" viewbox="0 0 24 24"><path d="M12 16V3m-4 4 4-4 4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg><span>Chọn file ghi âm</span></button><input accept="audio/*" hidden="" id="audioFile" type="file"/><span class="mc-upload-formats"><span>MP3</span><span>WAV</span><span>M4A</span></span></div><div class="selected hidden" id="selected"></div><button class="btn primary hidden" data-ui-icon="spark" id="upProcess" onclick="processAudio()" style="width:100%;margin-top:12px" type="button">Nhận diện &amp; bóc tách dữ liệu</button></div></div>
+<div class="modelProcess hidden" id="historyProcessing">
+<div class="modelProcessCard card">
+<div class="aiOrb"><span>AI</span></div>
+<h2>Đang xử lý bản ghi âm</h2>
+<p id="processStep">Đang tải và chuẩn hóa tín hiệu âm thanh...</p>
+<div class="progressTrack"><div class="progressFill" id="historyProgressBar"></div></div>
+<div class="progressMeta"><span id="historyProgressText">0%</span><span>MELI Voice Clinical AI</span></div>
+<div class="processSteps">
+<div class="pstep active" id="ps1"><b>1</b><span>Chuẩn hóa audio</span></div>
+<div class="pstep" id="ps2"><b>2</b><span>Nhận diện giọng nói</span></div>
+<div class="pstep" id="ps3"><b>3</b><span>Bóc tách thông tin</span></div>
+<div class="pstep" id="ps4"><b>4</b><span>Ánh xạ vào EMR</span></div>
+</div>
+</div>
+</div><div class="card processing hidden" id="processing"><b>● Đang xử lý giọng nói...</b>   Speech-to-text → nhận diện thực thể → ánh xạ trường EMR</div>
+<div class="workspace hidden" id="result"><div class="card"><div class="head"><b>Toàn bộ nội dung nhận diện</b></div><div class="body"><div class="audio"><button aria-label="Phát bản ghi" class="btn ui-icon-only" data-ui-icon="play" type="button">▶</button><div class="wave"></div><b>01:18</b></div><div class="transcript" id="transcript"><p><span class="time">00:04</span> Bệnh nhân Nguyễn Văn An, nam, 58 tuổi, vào viện vì đau ngực trái kéo dài khoảng hai giờ.</p><p><span class="time">00:18</span> Tiền sử tăng huyết áp 8 năm, đang điều trị không đều. Không ghi nhận dị ứng thuốc.</p><p><span class="time">00:33</span> Khám lúc vào viện: tỉnh, tiếp xúc tốt. Huyết áp 160/95 mmHg, mạch 92 lần/phút, SpO₂ 97%.</p><p><span class="time">00:51</span> Chẩn đoán sơ bộ: đau ngực theo dõi hội chứng vành cấp. Chỉ định điện tâm đồ, men tim và công thức máu.</p></div></div></div>
+<div class="card"><div class="head"><b>Dữ liệu bóc tách cho EMR</b><span>2 trường cần kiểm tra</span></div><div class="body"><div class="section">Thông tin hồ sơ</div><div class="grid"><div class="field"><label>Họ và tên</label><input data-gt2="patient_name" value="Nguyễn Văn An"/></div><div class="field"><label>Mã hồ sơ</label><input data-gt2="patient_code" value="BA-260930-018"/></div><div class="field"><label>Bác sĩ</label><input data-gt2="doctor" value="BS. Lê Minh Tuấn"/></div><div class="field"><label>Khoa</label><input data-gt2="department" value="Tim mạch"/></div></div><div class="divider"></div><div class="section">Hành chính</div><div class="grid"><div class="field"><label>Giới tính (Nam / Nữ)</label><input data-gt2="hanh_chinh.gioi_tinh" value="Nam"/></div><div class="field"><label>Tuổi</label><input data-gt2="hanh_chinh.tuoi" value="58"/></div></div><div class="divider"></div><div class="section">Bệnh sử</div><div class="grid"><div class="field full"><label>Lý do vào viện</label><textarea data-gt2="ly_do_vao_vien">Đau ngực trái kéo dài khoảng 2 giờ</textarea></div><div class="field full"><label>Quá trình bệnh lý</label><textarea data-gt2="qua_trinh_benh_ly">Đau ngực trái kéo dài khoảng hai giờ trước khi vào viện</textarea></div></div><div class="divider"></div><div class="section">Tiền sử</div><div class="grid"><div class="field"><label>Tiền sử bản thân</label><textarea data-gt2="tien_su.ban_than">Tăng huyết áp 8 năm, điều trị không đều. Không ghi nhận dị ứng thuốc</textarea></div><div class="field"><label>Tiền sử gia đình</label><textarea data-gt2="tien_su.gia_dinh" placeholder="Thông tin không được tìm thấy"></textarea></div></div><div class="divider"></div><div class="section">Khám lúc vào viện</div><div class="grid"><div class="field full"><label>Khám lúc vào</label><textarea data-gt2="kham_luc_vao">Tỉnh, tiếp xúc tốt. Huyết áp 160/95 mmHg, mạch 92 lần/phút, SpO₂ 97%</textarea></div></div><div class="divider"></div><div class="section">Cận lâm sàng đề cập</div><div class="grid"><div class="field full"><label>Mục cận lâm sàng</label><div class="grid" style="margin-bottom:10px"><div class="field"><label>Tên</label><input data-gt2="can_lam_sang_de_cap[0].ten" value="Điện tâm đồ" placeholder="Thông tin không được tìm thấy"/></div><div class="field"><label>Kết quả</label><input data-gt2="can_lam_sang_de_cap[0].ket_qua" value="" placeholder="Thông tin không được tìm thấy"/></div><div class="field"><label>Text (khi không tách được)</label><input data-gt2="can_lam_sang_de_cap[0].text" value="" placeholder="Thông tin không được tìm thấy"/></div></div><div class="grid" style="margin-bottom:10px"><div class="field"><label>Tên</label><input data-gt2="can_lam_sang_de_cap[1].ten" value="Men tim" placeholder="Thông tin không được tìm thấy"/></div><div class="field"><label>Kết quả</label><input data-gt2="can_lam_sang_de_cap[1].ket_qua" value="" placeholder="Thông tin không được tìm thấy"/></div><div class="field"><label>Text (khi không tách được)</label><input data-gt2="can_lam_sang_de_cap[1].text" value="" placeholder="Thông tin không được tìm thấy"/></div></div><div class="grid" style="margin-bottom:10px"><div class="field"><label>Tên</label><input data-gt2="can_lam_sang_de_cap[2].ten" value="Công thức máu" placeholder="Thông tin không được tìm thấy"/></div><div class="field"><label>Kết quả</label><input data-gt2="can_lam_sang_de_cap[2].ket_qua" value="" placeholder="Thông tin không được tìm thấy"/></div><div class="field"><label>Text (khi không tách được)</label><input data-gt2="can_lam_sang_de_cap[2].text" value="" placeholder="Thông tin không được tìm thấy"/></div></div></div></div><div class="divider"></div><div class="section">Chẩn đoán</div><div class="grid"><div class="field"><label>Chẩn đoán chính</label><textarea data-gt2="chan_doan.chinh">Đau ngực, theo dõi hội chứng vành cấp</textarea></div><div class="field"><label>Chẩn đoán kèm theo</label><textarea data-gt2="chan_doan.kem_theo">Tăng huyết áp</textarea></div></div><div class="divider"></div><div class="section">Xử trí</div><div class="grid"><div class="field full"><label>Thủ thuật</label><div class="grid" style="margin-bottom:10px"><div class="field"><label>Phương pháp (method)</label><input data-gt2="xu_tri.thu_thuat[0].method" value="" placeholder="Thông tin không được tìm thấy"/></div><div class="field"><label>Phương pháp vô cảm</label><input data-gt2="xu_tri.thu_thuat[0].phuong_phap_vo_cam" value="" placeholder="Thông tin không được tìm thấy"/></div><div class="field"><label>Text (khi không tách được)</label><input data-gt2="xu_tri.thu_thuat[0].text" value="" placeholder="Thông tin không được tìm thấy"/></div></div></div><div class="field full"><label>Thuốc điều trị</label><textarea data-gt2="xu_tri.thuoc_dieu_tri"></textarea></div></div><div class="divider"></div><div class="section">Diễn biến &amp; kết cục</div><div class="grid"><div class="field"><label>Diễn biến &amp; biến chứng</label><textarea data-gt2="dien_bien_bien_chung" placeholder="Thông tin không được tìm thấy"></textarea></div><div class="field"><label>Kết cục</label><textarea data-gt2="ket_cuc" placeholder="Thông tin không được tìm thấy"></textarea></div><div class="field full"><label>Thực thể lâm sàng</label><input data-gt2="thuc_the_lam_sang" value="" placeholder="Thông tin không được tìm thấy" disabled/></div></div><div class="save"><button class="btn" data-ui-icon="save" type="button">Lưu nháp</button> <button class="btn primary" data-ui-icon="check" type="button">Xác nhận &amp; nhập EMR</button></div></div></div></div></section>
+<section class="page" id="history">
+<div class="hero historyHero"><div><h1>Lịch sử ghi âm</h1><p>Xem lại file âm thanh, transcript và dữ liệu EMR đã xử lý.</p></div><button class="btn primary" data-ui-icon="download" onclick="downloadHistory()" type="button">Download</button></div>
+<div class="tools"><input placeholder="Tìm bệnh nhân, bác sĩ, khoa, mã hồ sơ hoặc nội dung..."/><button class="btn" data-ui-icon="filter" type="button">Bộ lọc</button></div>
+<div class="card table"><table>
+<thead><tr><th>Thời gian</th><th>Bệnh nhân</th><th>Bác sĩ</th><th>Khoa</th><th>Nguồn</th><th>Thời lượng</th><th>Kết quả</th><th>Trạng thái</th><th></th></tr></thead>
+<tbody>
+<tr><td>30/09/2026 · 11:42</td><td><b>Nguyễn Văn An</b><br/><small>BA-260930-018</small></td><td>BS. Lê Minh Tuấn</td><td>Tim mạch</td><td>🎙 Ghi trực tiếp</td><td>01:18</td><td>5 nhóm trường EMR</td><td><span class="badge">Đã xử lý</span></td><td><button class="btn rowFancy viewFancy" onclick="viewProcessed()" type="button"><span class="actionIcon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg></span><span>Xem</span><span class="actionArrow">›</span></button></td></tr>
+<tr class="pendingRow"><td>30/09/2026 · 10:16</td><td><b>Trần Thị Mai</b><br/><small>BA-260930-012</small></td><td>BS. Nguyễn Thu Hà</td><td>Nội tổng hợp</td><td>⇧ File WAV</td><td>02:04</td><td>—</td><td><span class="badge pendingBadge">Chưa xử lý</span></td><td><button class="btn rowFancy processFancy" onclick="processHistoryItem()" type="button"><span class="actionIcon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z"></path><path d="M20 2v4m-2-2h4"></path></svg></span><span>Xử lý</span><span class="actionArrow">›</span></button></td></tr>
+<tr><td>29/09/2026 · 16:08</td><td><b>Phạm Quốc Huy</b><br/><small>BA-260929-044</small></td><td>BS. Trần Đức Long</td><td>Hô hấp</td><td>🎙 Ghi trực tiếp</td><td>01:42</td><td>6 nhóm trường EMR</td><td><span class="badge">Đã xử lý</span></td><td><button class="btn rowFancy viewFancy" onclick="viewProcessed()" type="button"><span class="actionIcon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg></span><span>Xem</span><span class="actionArrow">›</span></button></td></tr>
+</tbody></table></div></section><p class="suite-demo-note">MELIVoice · Ghi âm, kiểm tra và lưu hồ sơ bệnh án.</p></main>
+<script>let rec=false,s=0,t;function page(id,b){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));b.classList.add('active')}function toggleRec(){rec=!rec;mic.classList.toggle('rec',rec);rt.textContent=rec?'Đang ghi âm...':'Đã dừng ghi âm';if(rec)t=setInterval(()=>{s++;timer.textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')},1000);else clearInterval(t)}function resetRec(){rec=false;clearInterval(t);s=0;timer.textContent='00:00';mic.classList.remove('rec');rt.textContent='Bắt đầu ghi âm'}audioFile.onchange=e=>{if(e.target.files.length){selected.textContent='✓ '+e.target.files[0].name;selected.classList.remove('hidden');upProcess.classList.remove('hidden')}};function processAudio(){processing.classList.remove('hidden');setTimeout(()=>{processing.classList.add('hidden');result.classList.remove('hidden');result.scrollIntoView({behavior:'smooth'})},900)}function openResult(){document.querySelectorAll('.nav')[0].click();result.classList.remove('hidden');setTimeout(()=>result.scrollIntoView({behavior:'smooth'}),100)}function historyNav(){const navs=document.querySelectorAll('.nav');page('history',navs[1]);document.getElementById('capture').classList.remove('resultOnlyMode')}
+function viewProcessed(){const navs=document.querySelectorAll('.nav');page('capture',navs[0]);document.getElementById('capture').classList.add('resultOnlyMode');document.getElementById('result').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'})}
+function processHistoryItem(){
+ const navs=document.querySelectorAll('.nav');
+ page('capture',navs[0]);
+ const cap=document.getElementById('capture');
+ cap.classList.add('resultOnlyMode');
+ document.getElementById('result').classList.add('hidden');
+ document.getElementById('historyProcessing').classList.remove('hidden');
+ window.scrollTo({top:0,behavior:'smooth'});
+ let progress=0;
+ const bar=document.getElementById('historyProgressBar');
+ const txt=document.getElementById('historyProgressText');
+ const step=document.getElementById('processStep');
+ const messages=[
+   [22,'Đang chuẩn hóa và giảm nhiễu tín hiệu âm thanh...'],
+   [48,'Đang nhận diện giọng nói và chuyển thành văn bản...'],
+   [74,'Đang bóc tách thông tin lâm sàng từ transcript...'],
+   [94,'Đang ánh xạ dữ liệu vào các trường EMR...'],
+   [100,'Hoàn tất xử lý. Đang mở kết quả...']
+ ];
+ let mi=0;
+ const iv=setInterval(()=>{
+   progress=Math.min(100,progress+4+Math.floor(Math.random()*6));
+   bar.style.width=progress+'%'; txt.textContent=progress+'%';
+   while(mi<messages.length && progress>=messages[mi][0]){
+     step.textContent=messages[mi][1];
+     const stepNo=Math.min(4,mi+1);
+     for(let j=1;j<=4;j++){
+       const e=document.getElementById('ps'+j);
+       e.classList.toggle('done',j<stepNo);
+       e.classList.toggle('active',j===stepNo);
+     }
+     mi++;
+   }
+   if(progress>=100){
+     clearInterval(iv);
+     setTimeout(()=>{
+       document.getElementById('historyProcessing').classList.add('hidden');
+       document.getElementById('result').classList.remove('hidden');
+       cap.classList.add('resultOnlyMode');
+       document.querySelector('.resultOnlyBack div').innerHTML='<b>Kết quả vừa xử lý</b> · Trần Thị Mai · BA-260930-012';
+       window.scrollTo({top:0,behavior:'smooth'});
+     },650);
+   }
+ },180);
+}
+function backToHistory(){historyNav();window.scrollTo({top:0,behavior:'smooth'})}
+function saveFile(name,text){const u=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),500)}
+function downloadHistory(){saveFile('meli-voice-history.csv','Thoi gian,Benh nhan,Bac si,Khoa,Nguon,Thoi luong,Trang thai\n30/09/2026 11:42,Nguyen Van An,BS. Le Minh Tuan,Tim mach,Ghi truc tiep,01:18,Da xu ly\n30/09/2026 10:16,Tran Thi Mai,BS. Nguyen Thu Ha,Noi tong hop,File WAV,02:04,Chua xu ly')}
+function downloadCurrent(){saveFile('voice-to-emr-result.txt',document.getElementById('transcript').innerText)}
+</script>
+<script id="melicare-style-integration">
+/* Visual/accessibility integration only. Existing application logic remains intact. */
+document.addEventListener('DOMContentLoaded',()=>{
+ const $=id=>document.getElementById(id);
+ const auth=$('meliAuthBtnV69'),modal=$('meliLoginModalV69'),nav=$('meliAppNavV62');
+ if(auth){const label=()=>{const t=auth.querySelector('.loginTextV69');if(t&&t.textContent!=='Đăng nhập')t.textContent='Đăng nhập';};label();new MutationObserver(label).observe(auth,{childList:true,subtree:true});}
+ document.querySelectorAll('.suite-local-nav .nav').forEach(el=>{el.setAttribute('type','button');el.addEventListener('click',()=>{document.querySelectorAll('.suite-local-nav .nav').forEach(n=>n.setAttribute('aria-current',n.classList.contains('active')?'page':'false'));});});
+ // Keep the restored horizontal mobile timeline aligned to its existing progress.
+ const progress=$('timelineProgress');
+ if(progress){const sync=()=>progress.parentElement.style.setProperty('--suite-progress',progress.style.width||'0%');sync();new MutationObserver(sync).observe(progress,{attributes:true,attributeFilter:['style']});}
+ // The native login form is a local UI demo, not a server authentication flow.
+ if(modal){
+   modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-label','Đăng nhập MELICARE');
+   const observer=new MutationObserver(()=>{if(modal.classList.contains('open')){setTimeout(()=>modal.querySelector('input')?.focus(),40);if(nav){nav.classList.remove('open');$('meliAppNavBtnV62')?.setAttribute('aria-expanded','false');}}});
+   observer.observe(modal,{attributes:true,attributeFilter:['class']});
+   modal.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const f=[...modal.querySelectorAll('button,input,a,select,textarea')].filter(n=>n.offsetParent!==null&&!n.disabled);if(!f.length)return;const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
+ }
+ const openImages=document.querySelector('[data-suite-images]');
+ if(openImages)openImages.addEventListener('click',()=>document.querySelector('.rightPanel')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'}));
+ document.querySelector('[data-suite-history]')?.addEventListener('click',()=>$('openHistoryBtn')?.click());
+ document.querySelector('[data-suite-projects]')?.addEventListener('click',()=>$('openProjectsBtn')?.click());
+ // Mirror the compact local-demo label after dynamic UI updates.
+ if(nav)nav.setAttribute('aria-label','Chuyển ứng dụng MELICARE');
+});
+</script><script src="assets/melivoice-api.js"></script>
+<script src="assets/melivoice-nav.js"></script></body></html>
