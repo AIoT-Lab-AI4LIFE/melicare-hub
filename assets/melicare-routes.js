@@ -21,7 +21,7 @@
         { id: 'melipos', module: 'MELIPos', name: 'MELIPos', icon: 'pos', href: 'https://melipos.meliq.ai/MELIPostOp.html', login: 'MELIPos_Login.html', group: 'care', tone: '#c26374', roles: ['doctor'], sso: true },
         { id: 'melimind', module: 'MELIMind', name: 'MELI Mind', href: 'MELIMind.html', group: 'dx', parent: 'melidx' },
         { id: 'melistroke', module: 'MELIStroke', name: 'MELI Stroke', href: 'https://stoke-predict.devt.vn/', group: 'dx', parent: 'melidx' },
-        { id: 'melicardio', module: 'MELICardio', name: 'MELI Cardio', href: 'MELICardio.html', group: 'dx', parent: 'melidx' },
+        { id: 'melicardio', module: 'MELICardio', name: 'MELI Cardio', href: 'https://melipos.meliq.ai/MELICardio.html', group: 'dx', parent: 'melidx', sso: true },
         { id: 'melialz', module: 'MELIAlz', name: 'MELI Alz', href: 'MELIAlz.html', group: 'dx', parent: 'melidx' },
         { id: 'melidiabetes', module: 'MELIDiabetes', name: 'MELI Diabetes', href: 'MELIDiabetes.html', group: 'dx', parent: 'melidx' }
     ].map(route => Object.freeze({ ...route, roles: Object.freeze(route.roles || []) }));
