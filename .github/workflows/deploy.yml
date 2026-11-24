@@ -1,0 +1,36 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via Deployment Hub
+        env:
+          HOOK_URL: https://deployment.meliq.ai/github/AIoT-Lab-AI4LIFE/melicare-hub
+          HOOK_TOKEN: ${{ secrets.DEPLOY_HOOK_TOKEN }}
+        run: |
+          set -euo pipefail
+          resp=$(curl -fsS -X POST "$HOOK_URL" \
+            -H "Authorization: Bearer $HOOK_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"commit\":\"$GITHUB_SHA\",\"ref\":\"$GITHUB_REF\"}")
+          id=$(echo "$resp" | jq -r .deployment_id)
+          echo "Deployment #$id queued"
+          for i in $(seq 1 180); do
+            sleep 10
+            st=$(curl -fsS "$HOOK_URL/deployments/$id" -H "Authorization: Bearer $HOOK_TOKEN")
+            status=$(echo "$st" | jq -r .status)
+            echo "Status: $status"
+            if [ "$status" = "success" ] || [ "$status" = "failed" ]; then
+              echo "$st" | jq -r .log
+              [ "$status" = "success" ]
+              exit $?
+            fi
+          done
+          echo "Not finished after 30 minutes"
+          exit 1
