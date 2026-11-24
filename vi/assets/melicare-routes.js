@@ -11,7 +11,7 @@
 (() => {
     'use strict';
     const routes = [
-        { id: 'melior', module: 'MELIOR', name: 'MELIOR', icon: 'or', href: 'MELI_OR.html', login: 'MELIOR_Login.html', group: 'ops', tone: '#1689ba', roles: ['admin'] },
+        { id: 'melior', module: 'MELIOR', name: 'MELIOR', icon: 'or', href: 'https://melior.meliq.ai/', login: 'MELIOR_Login.html', group: 'ops', tone: '#1689ba', roles: ['admin'], sso: true },
         { id: 'meliocr', module: 'MELIOCR', name: 'MELIOCR', icon: 'ocr', href: 'https://meliocr.meliq.ai/login', login: 'MELIOCR_Login.html', group: 'ops', tone: '#af801e', roles: ['doctor'], sso: true },
         { id: 'melivoice', module: 'MELIVoice', name: 'MELIVoice', icon: 'voice', href: 'https://melivoice.meliq.ai/login', login: 'MELIVoice_Login.html', group: 'care', tone: '#8062ba', roles: ['doctor'], sso: true },
         { id: 'meliguide', module: 'MELIGuide', name: 'MELIGuide', icon: 'guide', href: 'https://medibot.leira.com.vn/login', login: 'MELIGuide_Login.html', group: 'ops', tone: '#328b7b', roles: ['admin'], sso: true },
